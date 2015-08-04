@@ -16,7 +16,7 @@ $zz_sub['title'] = 'Contact Details';
 $zz_sub['table'] = '/*_PREFIX_*/contacts_details';
 
 $zz_sub['fields'][1]['title'] = 'ID';
-$zz_sub['fields'][1]['field_name'] = 'subscriber_id';
+$zz_sub['fields'][1]['field_name'] = 'contact_detail_id';
 $zz_sub['fields'][1]['type'] = 'id';
 
 $zz_sub['fields'][2]['title'] = 'Contact';
@@ -32,6 +32,7 @@ $zz_sub['fields'][2]['class'] = 'block480a';
 
 $zz_sub['fields'][3]['field_name'] = 'identification';
 
+$zz_sub['fields'][4]['title'] = 'Category';
 $zz_sub['fields'][4]['field_name'] = 'provider_category_id';
 $zz_sub['fields'][4]['type'] = 'select';
 $zz_sub['fields'][4]['sql'] = sprintf('SELECT category_id, category
