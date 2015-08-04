@@ -13,10 +13,10 @@
 
 
 $zz_sub['title'] = 'Addresses';
-$zz_sub['table'] = 'addresses';
+$zz_sub['table'] = '/*_PREFIX_*/addresses';
 
 $zz_sub['fields'][1]['title'] = 'ID';
-$zz_sub['fields'][1]['field_name'] = '/*_PREFIX_*/address_id';
+$zz_sub['fields'][1]['field_name'] = 'address_id';
 $zz_sub['fields'][1]['type'] = 'id';
 
 $zz_sub['fields'][2]['title'] = 'Contact';
