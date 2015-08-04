@@ -31,7 +31,7 @@ $zz['fields'][4]['type'] = 'select';
 $zz['fields'][4]['sql'] = sprintf('SELECT category_id
 	FROM categories
 	WHERE main_category_id = %d',
-	$zz_setting['category_ids']['contact'][0]
+	$zz_setting['category']['contact']
 );
 
 $zz['fields'][20]['field_name'] = 'last_update';
