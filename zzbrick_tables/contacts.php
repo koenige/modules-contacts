@@ -28,7 +28,7 @@ $zz['fields'][3]['conf_identifier']['exists'] = '-';
 
 $zz['fields'][4]['field_name'] = 'contact_category_id';
 $zz['fields'][4]['type'] = 'select';
-$zz['fields'][4]['sql'] = sprintf('SELECT category_id
+$zz['fields'][4]['sql'] = sprintf('SELECT category_id, category
 	FROM categories
 	WHERE main_category_id = %d',
 	$zz_setting['category']['contact']

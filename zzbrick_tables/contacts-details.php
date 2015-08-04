@@ -34,7 +34,7 @@ $zz_sub['fields'][3]['field_name'] = 'identification';
 
 $zz_sub['fields'][4]['field_name'] = 'provider_category_id';
 $zz_sub['fields'][4]['type'] = 'select';
-$zz_sub['fields'][4]['sql'] = sprintf('SELECT category_id
+$zz_sub['fields'][4]['sql'] = sprintf('SELECT category_id, category
 	FROM categories
 	WHERE main_category_id = %d',
 	$zz_setting['category']['provider']
