@@ -44,7 +44,6 @@ $zz['fields'][5]['title'] = 'Address';
 $zz['fields'][5]['type'] = 'subtable';
 $zz['fields'][5]['min_records'] = 0;
 $zz['fields'][5]['fields'][2]['type'] = 'foreign_key';
-$zz['fields'][5]['sql'] .= $zz['fields'][5]['sqlorder'];
 
 require __DIR__.'/contacts-details.php';
 $zz['fields'][6] = $zz_sub;
@@ -54,7 +53,6 @@ $zz['fields'][6]['type'] = 'subtable';
 $zz['fields'][6]['min_records'] = 0;
 $zz['fields'][6]['fields'][2]['type'] = 'foreign_key';
 $zz['fields'][6]['form_display'] = 'lines';
-$zz['fields'][6]['sql'] .= $zz['fields'][6]['sqlorder'];
 
 $zz['fields'][7] = false; // contacts_verifications
 
