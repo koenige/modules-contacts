@@ -59,7 +59,7 @@ $zz_sub['fields'][6]['search'] = '/*_PREFIX_*/countries.country';
 $zz_sub['fields'][6]['geocode'] = 'country_id';
 $zz_sub['fields'][6]['geocode_sql'] = 'SELECT country_code
 	FROM /*_PREFIX_*/countries
-	WHERE country_code = "%s"';
+	WHERE country_id = %d';
 $zz_sub['fields'][6]['class'] = 'block480';
 
 $zz_sub['fields'][7]['field_name'] = 'latitude';
@@ -89,4 +89,4 @@ $zz_sub['sql'] = 'SELECT /*_PREFIX_*/addresses.*
 	LEFT JOIN /*_PREFIX_*/contacts USING (contact_id)
 	LEFT JOIN /*_PREFIX_*/countries USING (country_id)
 ';
-$zz_sub['sqlorder'] = ' ORDER BY /*_PREFIX_*/contacts.identifier, country, postcode, town';
+$zz_sub['sqlorder'] = ' ORDER BY /*_PREFIX_*/contacts.identifier, country, postcode, place';
