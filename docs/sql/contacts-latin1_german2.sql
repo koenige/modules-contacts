@@ -48,8 +48,8 @@ DROP TABLE IF EXISTS `contacts_verifications`;
 CREATE TABLE `contacts_verifications` (
   `cv_id` int(10) unsigned NOT NULL,
   `contact_id` int(10) unsigned NOT NULL,
-  `creation_date` datetime NOT NULL,
-  `creation_ip` varbinary(16) NOT NULL,
+  `entry_date` datetime NOT NULL,
+  `entry_ip` varbinary(16) NOT NULL,
   `verification_date` datetime DEFAULT NULL,
   `verification_ip` varbinary(16) DEFAULT NULL,
   `verification_hash` varchar(8) COLLATE latin1_german2_ci DEFAULT NULL
