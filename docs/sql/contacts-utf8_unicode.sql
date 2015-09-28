@@ -13,8 +13,12 @@ CREATE TABLE `addresses` (
   `country_id` int(10) unsigned NOT NULL,
   `latitude` decimal(9,6) DEFAULT NULL,
   `longitude` decimal(10,6) DEFAULT NULL,
+  `address_category_id` int(10) unsigned DEFAULT NULL,
   `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`address_id`)
+  PRIMARY KEY (`address_id`),
+  KEY `contact_id` (`contact_id`),
+  KEY `country_id` (`country_id`),
+  KEY `address_category_id` (`address_category_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
