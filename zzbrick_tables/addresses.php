@@ -76,16 +76,27 @@ $zz_sub['fields'][8]['kml'] = 'longitude';
 $zz_sub['fields'][8]['geocode'] = 'longitude';
 $zz_sub['fields'][8]['hide_in_list'] = true;
 
-// @todo receive_mail
+// @todo receive_mail yes/no
 
-// @todo address_type
+$zz_sub['fields'][9]['title'] = 'Type';
+$zz_sub['fields'][9]['field_name'] = 'address_category_id';
+$zz_sub['fields'][9]['type'] = 'select';
+$zz_sub['fields'][9]['sql'] = 'SELECT category_id, category, main_category_id
+	FROM categories ORDER BY sequence, category';
+$zz_sub['fields'][9]['display_field'] = 'address_type';
+$zz_sub['fields'][9]['search'] = '/*_PREFIX_*/categories.category';
+$zz_sub['fields'][9]['show_hierarchy'] = 'main_category_id';
+$zz_sub['fields'][9]['show_hierarchy_subtree'] = $zz_setting['category']['address'];
 
 $zz_sub['fields'][20]['field_name'] = 'last_update';
 $zz_sub['fields'][20]['type'] = 'timestamp';
 $zz_sub['fields'][20]['hide_in_list'] = true;
 
 $zz_sub['sql'] = 'SELECT /*_PREFIX_*/addresses.*
+		, /*_PREFIX_*/categories.category AS address_type
 	FROM /*_PREFIX_*/addresses
+	LEFT JOIN /*_PREFIX_*/categories
+		ON /*_PREFIX_*/categories.category_id = /*_PREFIX_*/addresses.address_category_id
 	LEFT JOIN /*_PREFIX_*/contacts USING (contact_id)
 	LEFT JOIN /*_PREFIX_*/countries USING (country_id)
 ';
