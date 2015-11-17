@@ -21,6 +21,7 @@ $zz['fields'][1]['type'] = 'id';
 
 $zz['fields'][2]['field_name'] = 'contact';
 $zz['fields'][2]['type'] = 'memo';
+$zz['fields'][2]['trim'] = true;
 $zz['fields'][2]['rows'] = 2;
 
 $zz['fields'][3]['field_name'] = 'identifier';
