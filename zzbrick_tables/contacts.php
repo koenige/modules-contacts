@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/newsletters
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2015 Gustaf Mossakowski
+ * @copyright Copyright © 2015-2016 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -23,6 +23,7 @@ $zz['fields'][2]['field_name'] = 'contact';
 $zz['fields'][2]['type'] = 'memo';
 $zz['fields'][2]['trim'] = true;
 $zz['fields'][2]['rows'] = 2;
+$zz['fields'][2]['export_no_html'] = true;
 
 $zz['fields'][3]['field_name'] = 'identifier';
 $zz['fields'][3]['type'] = 'identifier';
