@@ -48,6 +48,18 @@ $zz['fields'][5]['title'] = 'Address';
 $zz['fields'][5]['type'] = 'subtable';
 $zz['fields'][5]['min_records'] = 0;
 $zz['fields'][5]['fields'][2]['type'] = 'foreign_key';
+$zz['fields'][5]['subselect']['sql'] = 'SELECT category, address, postcode, place, country, contact_id
+	FROM /*_PREFIX_*/addresses
+	LEFT JOIN /*_PREFIX_*/categories
+		ON /*_PREFIX_*/addresses.address_category_id = /*_PREFIX_*/categories.category_id
+	LEFT JOIN /*_PREFIX_*/countries USING (country_id)';
+$zz['fields'][5]['subselect']['concat_fields'] = ' ';
+$zz['fields'][5]['subselect']['field_prefix'][0] = '<em>';
+$zz['fields'][5]['subselect']['field_suffix'][0] = ':</em><br>';
+$zz['fields'][5]['subselect']['field_suffix'][1] = '<br>';
+$zz['fields'][5]['subselect']['field_suffix'][3] = '<br>';
+$zz['fields'][5]['unless']['export_mode']['list_append_next'] = true;
+$zz['fields'][5]['export_no_html'] = true;
 
 require __DIR__.'/contacts-details.php';
 $zz['fields'][6] = $zz_sub;
@@ -57,6 +69,14 @@ $zz['fields'][6]['type'] = 'subtable';
 $zz['fields'][6]['min_records'] = 0;
 $zz['fields'][6]['fields'][2]['type'] = 'foreign_key';
 $zz['fields'][6]['form_display'] = 'lines';
+$zz['fields'][6]['subselect']['sql'] = 'SELECT category, identification, contact_id
+	FROM /*_PREFIX_*/contacts_details
+	LEFT JOIN /*_PREFIX_*/categories
+		ON /*_PREFIX_*/contacts_details.provider_category_id = /*_PREFIX_*/categories.category_id';
+$zz['fields'][6]['subselect']['concat_fields'] = ' ';
+$zz['fields'][6]['subselect']['field_prefix'][0] = '<em>';
+$zz['fields'][6]['subselect']['field_suffix'][0] = ':</em>';
+$zz['fields'][6]['export_no_html'] = true;
 
 $zz['fields'][7] = false; // contacts_verifications
 
