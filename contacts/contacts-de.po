@@ -49,3 +49,11 @@ msgstr "Ort"
 #: modules/contacts/zzbrick_tables/addresses.php
 msgid "Postcode/Place"
 msgstr "PLZ/Ort"
+
+#: modules/contacts/zzbrick_tables/contacts.php
+msgid "Contacts"
+msgstr "Kontakte"
+
+#: modules/contacts/zzbrick_tables/contacts.php
+msgid "Contact"
+msgstr "Kontakt"
