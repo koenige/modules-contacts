@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/newsletters
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2015-2016 Gustaf Mossakowski
+ * @copyright Copyright © 2015-2017 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -27,7 +27,7 @@ $zz['fields'][2]['export_no_html'] = true;
 
 $zz['fields'][3]['field_name'] = 'identifier';
 $zz['fields'][3]['type'] = 'identifier';
-$zz['fields'][3]['fields'] = array('contact');
+$zz['fields'][3]['fields'] = ['contact'];
 $zz['fields'][3]['conf_identifier']['exists'] = '-';
 $zz['fields'][3]['hide_in_list'] = true;
 
@@ -87,6 +87,7 @@ $zz['fields'][6]['export_no_html'] = true;
 
 $zz['fields'][7] = false; // contacts_verifications
 
+$zz['fields'][20]['title'] = 'Updated';
 $zz['fields'][20]['field_name'] = 'last_update';
 $zz['fields'][20]['type'] = 'timestamp';
 $zz['fields'][20]['hide_in_list'] = true;
