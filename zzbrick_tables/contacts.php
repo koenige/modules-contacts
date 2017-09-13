@@ -55,6 +55,7 @@ $zz['fields'][5]['subselect']['sql'] = 'SELECT address, postcode, place, country
 	LEFT JOIN /*_PREFIX_*/countries USING (country_id)';
 // @todo use category for columns
 $zz['fields'][5]['subselect']['concat_fields'] = '';
+$zz['fields'][5]['subselect']['list_field_format'] = 'nl2br';
 //$zz['fields'][5]['subselect']['field_prefix'][0] = '<em>';
 //$zz['fields'][5]['subselect']['field_suffix'][0] = ':</em><br>';
 $zz['fields'][5]['unless']['export_mode']['subselect']['field_suffix'][0] = '<br>';
