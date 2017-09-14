@@ -24,6 +24,7 @@ $zz['fields'][2]['type'] = 'memo';
 $zz['fields'][2]['trim'] = true;
 $zz['fields'][2]['rows'] = 2;
 $zz['fields'][2]['export_no_html'] = true;
+$zz['fields'][2]['unless']['export_mode']['list_format'] = 'nl2br';
 
 $zz['fields'][3]['field_name'] = 'identifier';
 $zz['fields'][3]['type'] = 'identifier';
@@ -99,5 +100,16 @@ $zz['sql'] = 'SELECT /*_PREFIX_*/contacts.*, category
 		ON /*_PREFIX_*/contacts.contact_category_id = /*_PREFIX_*/categories.category_id
 ';
 $zz['sqlorder'] = ' ORDER BY identifier';
+
+$zz['filter'][1]['sql'] = 'SELECT category_id, category
+	FROM /*_PREFIX_*/contacts
+	LEFT JOIN /*_PREFIX_*/categories
+		ON /*_PREFIX_*/contacts.contact_category_id = /*_PREFIX_*/categories.category_id
+	ORDER BY category';
+$zz['filter'][1]['title'] = wrap_text('Category');
+$zz['filter'][1]['identifier'] = 'category';
+$zz['filter'][1]['type'] = 'list';
+$zz['filter'][1]['where'] = 'contact_category_id';
+$zz['filter'][1]['field_name'] = 'contact_category_id';
 
 $zz_conf['export'] = 'CSV Excel';
