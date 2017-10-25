@@ -45,6 +45,8 @@ $zz['fields'][4]['sql'] = sprintf('SELECT category_id, category
 );
 $zz['fields'][4]['display_field'] = 'category';
 $zz['fields'][4]['geojson'] = 'category';
+$categories = wrap_db_fetch($zz['fields'][4]['sql'], 'category_id');
+if (count($categories) === 1) $zz['fields'][4]['hide_in_list'] = true;
 
 require __DIR__.'/addresses.php';
 $zz['fields'][5] = $zz_sub;
