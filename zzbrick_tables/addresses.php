@@ -43,6 +43,7 @@ $zz_sub['fields'][4]['size'] = 8;
 $zz_sub['fields'][4]['append_next'] = true;
 $zz_sub['fields'][4]['title_append'] = 'Postcode/Place';
 $zz_sub['fields'][4]['geocode'] = 'postal_code';
+$zz_sub['fields'][4]['geocode_ignore_update'] = true;
 $zz_sub['fields'][4]['class'] = 'block480a';
 
 $zz_sub['fields'][5]['field_name'] = 'place';
