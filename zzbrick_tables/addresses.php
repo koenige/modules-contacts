@@ -56,7 +56,7 @@ $zz_sub['fields'][6]['type'] = 'select';
 $zz_sub['fields'][6]['sql'] = 'SELECT country_id, country_code, country
 	FROM /*_PREFIX_*/countries
 	ORDER BY country';
-$zz_sub['fields'][6]['display_field'] = 'country';
+$zz_sub['fields'][6]['display_field'] = 'country_code';
 $zz_sub['fields'][6]['search'] = '/*_PREFIX_*/countries.country';
 $zz_sub['fields'][6]['geocode'] = 'country_id';
 $zz_sub['fields'][6]['geocode_sql'] = 'SELECT country_code
@@ -97,6 +97,8 @@ $zz_sub['fields'][20]['hide_in_list'] = true;
 
 $zz_sub['sql'] = 'SELECT /*_PREFIX_*/addresses.*
 		, /*_PREFIX_*/categories.category AS address_type
+		, /*_PREFIX_*/contacts.contact
+		, /*_PREFIX_*/countries.country_code
 	FROM /*_PREFIX_*/addresses
 	LEFT JOIN /*_PREFIX_*/categories
 		ON /*_PREFIX_*/categories.category_id = /*_PREFIX_*/addresses.address_category_id
