@@ -70,6 +70,7 @@ $zz_sub['fields'][7]['number_type'] = 'latitude';
 $zz_sub['fields'][7]['kml'] = 'latitude';
 $zz_sub['fields'][7]['geocode'] = 'latitude';
 $zz_sub['fields'][7]['hide_in_list'] = true;
+$zz_sub['fields'][7]['if']['add']['class'] = 'hidden';
 
 $zz_sub['fields'][8]['field_name'] = 'longitude';
 $zz_sub['fields'][8]['type'] = 'number';
@@ -77,6 +78,7 @@ $zz_sub['fields'][8]['number_type'] = 'longitude';
 $zz_sub['fields'][8]['kml'] = 'longitude';
 $zz_sub['fields'][8]['geocode'] = 'longitude';
 $zz_sub['fields'][8]['hide_in_list'] = true;
+$zz_sub['fields'][8]['if']['add']['class'] = 'hidden';
 
 // @todo receive_mail yes/no
 
