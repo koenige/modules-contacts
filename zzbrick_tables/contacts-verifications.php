@@ -4,7 +4,7 @@
  * Zugzwang Project
  * Table with contact verifications
  *
- * http://www.zugzwang.org/modules/newsletters
+ * http://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
  * @copyright Copyright © 2015 Gustaf Mossakowski
