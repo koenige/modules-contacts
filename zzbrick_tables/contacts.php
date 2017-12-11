@@ -27,6 +27,7 @@ $zz['fields'][2]['rows'] = 2;
 $zz['fields'][2]['geojson'] = 'title';
 $zz['fields'][2]['export_no_html'] = true;
 $zz['fields'][2]['unless']['export_mode']['list_format'] = 'nl2br';
+$zz['fields'][2]['merge_equal'] = true;
 
 $zz['fields'][3]['field_name'] = 'identifier';
 $zz['fields'][3]['type'] = 'identifier';
@@ -34,6 +35,7 @@ $zz['fields'][3]['fields'] = ['contact'];
 $zz['fields'][3]['conf_identifier']['exists'] = '-';
 $zz['fields'][3]['hide_in_list'] = true;
 $zz['fields'][3]['geojson'] = 'identifier';
+$zz['fields'][3]['merge_ignore'] = true;
 
 $zz['fields'][4]['title'] = 'Category';
 $zz['fields'][4]['field_name'] = 'contact_category_id';
