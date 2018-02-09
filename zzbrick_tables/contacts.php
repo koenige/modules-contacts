@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2015-2017 Gustaf Mossakowski
+ * @copyright Copyright © 2015-2018 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -76,7 +76,7 @@ $zz['fields'][5]['unless']['export_mode']['list_append_next'] = true;
 $zz['fields'][5]['export_no_html'] = true;
 $zz['fields'][5]['if']['export_mode']['subselect']['concat_rows'] = "\r\r";
 
-require __DIR__.'/contacts-details.php';
+require __DIR__.'/contactdetails.php';
 $zz['fields'][6] = $zz_sub;
 unset($zz_sub);
 $zz['fields'][6]['title'] = 'Details';
@@ -85,9 +85,9 @@ $zz['fields'][6]['min_records'] = 0;
 $zz['fields'][6]['fields'][2]['type'] = 'foreign_key';
 $zz['fields'][6]['form_display'] = 'lines';
 $zz['fields'][6]['subselect']['sql'] = 'SELECT category, identification, contact_id
-	FROM /*_PREFIX_*/contacts_details
+	FROM /*_PREFIX_*/contactdetails
 	LEFT JOIN /*_PREFIX_*/categories
-		ON /*_PREFIX_*/contacts_details.provider_category_id = /*_PREFIX_*/categories.category_id';
+		ON /*_PREFIX_*/contactdetails.provider_category_id = /*_PREFIX_*/categories.category_id';
 $zz['fields'][6]['subselect']['concat_fields'] = ' ';
 $zz['fields'][6]['subselect']['field_prefix'][0] = '<em>';
 $zz['fields'][6]['subselect']['field_suffix'][0] = ':</em>';

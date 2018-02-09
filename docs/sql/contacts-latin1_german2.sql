@@ -35,9 +35,9 @@ CREATE TABLE `contacts` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
 
 
-DROP TABLE IF EXISTS `contacts_details`;
-CREATE TABLE `contacts_details` (
-  `contact_detail_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+DROP TABLE IF EXISTS `contactdetails`;
+CREATE TABLE `contactdetails` (
+  `contactdetail_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `contact_id` int(10) unsigned NOT NULL,
   `identification` varchar(127) COLLATE latin1_german2_ci NOT NULL,
   `provider_category_id` int(10) unsigned NOT NULL,
