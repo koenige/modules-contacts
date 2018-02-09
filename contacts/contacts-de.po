@@ -5,7 +5,7 @@
 # http://www.zugzwang.org/modules/default
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2015 Gustaf Mossakowski
+# @copyright Copyright © 2015-2016, 2018 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 msgid ""
@@ -57,3 +57,7 @@ msgstr "Kontakte"
 #: modules/contacts/zzbrick_tables/contacts.php
 msgid "Contact"
 msgstr "Kontakt"
+
+#: modules/contacts/zzbrick_tables/contactdetails.php
+msgid "Contact Details"
+msgstr "Kontaktdaten"
