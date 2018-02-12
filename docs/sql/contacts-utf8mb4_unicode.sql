@@ -42,7 +42,7 @@ CREATE TABLE `contactdetails` (
   `identification` varchar(127) COLLATE utf8mb4_unicode_ci NOT NULL,
   `provider_category_id` int(10) unsigned NOT NULL,
   `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`contact_detail_id`),
+  PRIMARY KEY (`contactdetail_id`),
   KEY `provider_category_id` (`provider_category_id`),
   KEY `contact_id` (`contact_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
