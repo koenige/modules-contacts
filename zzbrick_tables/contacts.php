@@ -76,24 +76,51 @@ $zz['fields'][5]['unless']['export_mode']['list_append_next'] = true;
 $zz['fields'][5]['export_no_html'] = true;
 $zz['fields'][5]['if']['export_mode']['subselect']['concat_rows'] = "\r\r";
 
+$sql = 'SELECT category_id, category, parameters 
+	FROM categories
+	WHERE main_category_id = %d
+	ORDER BY sequence, path';
+$sql = sprintf($sql, $zz_setting['category']['provider']);
+$categories = wrap_db_fetch($sql, 'category_id');
+
 require __DIR__.'/contactdetails.php';
-$zz['fields'][6] = $zz_sub;
+$no = 10;
+
+foreach ($categories as $category) {
+	$parameters = [];
+	parse_str($category['parameters'], $parameters);
+	$zz['fields'][$no] = $zz_sub;
+	$zz['fields'][$no]['table_name'] = 'contactdetails_'.$category['category_id'];
+	$zz['fields'][$no]['title'] = $category['category'];
+	$zz['fields'][$no]['type'] = 'subtable';
+	$zz['fields'][$no]['min_records'] = 1;
+	$zz['fields'][$no]['max_records'] = !empty($parameters['max_records']) ? $parameters['max_records'] : 1;
+	$zz['fields'][$no]['sql'] .= sprintf(' WHERE /*_PREFIX_*/contactdetails.provider_category_id = %d', $category['category_id']);
+	$zz['fields'][$no]['fields'][2]['type'] = 'foreign_key';
+	if (!empty($parameters['type'])) {
+		$zz['fields'][$no]['fields'][3]['type'] = $parameters['type'];
+	}
+	$zz['fields'][$no]['fields'][4]['type'] = 'hidden';
+	$zz['fields'][$no]['fields'][4]['hide_in_form'] = true;
+	$zz['fields'][$no]['fields'][4]['value'] = $category['category_id'];
+	$zz['fields'][$no]['fields'][4]['def_val_ignore'] = true;
+	$zz['fields'][$no]['form_display'] = 'lines';
+	$zz['fields'][$no]['subselect']['sql'] = sprintf('SELECT category, identification, contact_id
+		FROM /*_PREFIX_*/contactdetails
+		LEFT JOIN /*_PREFIX_*/categories
+			ON /*_PREFIX_*/contactdetails.provider_category_id = /*_PREFIX_*/categories.category_id
+		WHERE /*_PREFIX_*/contactdetails.provider_category_id = %d', $category['category_id']);
+	$zz['fields'][$no]['subselect']['concat_fields'] = ' ';
+	$zz['fields'][$no]['subselect']['field_prefix'][0] = '<em>';
+	$zz['fields'][$no]['subselect']['field_suffix'][0] = ':</em>';
+	$zz['fields'][$no]['if']['export_mode']['subselect']['concat_rows'] = "\r";
+	$zz['fields'][$no]['export_no_html'] = true;
+	if ($no - 9 < count($categories)) {
+		$zz['fields'][$no]['unless']['export_mode']['list_append_next'] = true;
+	}
+	$no++;
+}
 unset($zz_sub);
-$zz['fields'][6]['title'] = 'Details';
-$zz['fields'][6]['type'] = 'subtable';
-$zz['fields'][6]['min_records'] = 0;
-$zz['fields'][6]['fields'][2]['type'] = 'foreign_key';
-$zz['fields'][6]['form_display'] = 'lines';
-$zz['fields'][6]['subselect']['sql'] = 'SELECT category, identification, contact_id
-	FROM /*_PREFIX_*/contactdetails
-	LEFT JOIN /*_PREFIX_*/categories
-		ON /*_PREFIX_*/contactdetails.provider_category_id = /*_PREFIX_*/categories.category_id';
-$zz['fields'][6]['subselect']['concat_fields'] = ' ';
-$zz['fields'][6]['subselect']['field_prefix'][0] = '<em>';
-$zz['fields'][6]['subselect']['field_suffix'][0] = ':</em>';
-$zz['fields'][6]['if']['export_mode']['subselect']['concat_rows'] = "\r";
-$zz['fields'][6]['export_no_html'] = true;
-// @todo use category for columns
 
 $zz['fields'][7] = false; // contacts_verifications
 
@@ -104,10 +131,10 @@ $zz['fields'][8]['hide_in_form'] = true;
 $zz['fields'][8]['unless']['export_mode']['hide_in_list'] = true;
 $zz['fields'][8]['geojson'] = 'latitude/longitude';
 
-$zz['fields'][20]['title'] = 'Updated';
-$zz['fields'][20]['field_name'] = 'last_update';
-$zz['fields'][20]['type'] = 'timestamp';
-$zz['fields'][20]['hide_in_list'] = true;
+$zz['fields'][99]['title'] = 'Updated';
+$zz['fields'][99]['field_name'] = 'last_update';
+$zz['fields'][99]['type'] = 'timestamp';
+$zz['fields'][99]['hide_in_list'] = true;
 
 $zz['sql'] = 'SELECT /*_PREFIX_*/contacts.*, category
 		, (SELECT CONCAT(latitude, ",", longitude) FROM /*_PREFIX_*/addresses
