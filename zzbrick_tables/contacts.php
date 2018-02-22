@@ -29,6 +29,8 @@ $zz['fields'][2]['export_no_html'] = true;
 $zz['fields'][2]['unless']['export_mode']['list_format'] = 'nl2br';
 $zz['fields'][2]['merge_equal'] = true;
 
+$zz['fields'][9] = []; // persons
+
 $zz['fields'][3]['field_name'] = 'identifier';
 $zz['fields'][3]['type'] = 'identifier';
 $zz['fields'][3]['fields'] = ['contact'];
@@ -45,6 +47,9 @@ $zz['fields'][4]['sql'] = sprintf('SELECT category_id, category
 	WHERE main_category_id = %d',
 	$zz_setting['category']['contact']
 );
+$zz['fields'][4]['key_field_name'] = 'category_id';
+$zz['fields'][4]['if']['where']['hide_in_form'] = true;
+$zz['fields'][4]['if']['where']['hide_in_list'] = true;
 $zz['fields'][4]['display_field'] = 'category';
 $zz['fields'][4]['geojson'] = 'category';
 $categories = wrap_db_fetch($zz['fields'][4]['sql'], 'category_id');
@@ -122,7 +127,7 @@ foreach ($categories as $category) {
 }
 unset($zz_sub);
 
-$zz['fields'][7] = false; // contacts_verifications
+$zz['fields'][7] = []; // contacts_verifications
 
 $zz['fields'][8]['field_name'] = 'latlon';
 $zz['fields'][8]['type'] = 'display';
