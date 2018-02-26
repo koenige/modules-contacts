@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2015, 2017 Gustaf Mossakowski
+ * @copyright Copyright © 2015, 2017-2018 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -56,6 +56,7 @@ $zz_sub['fields'][6]['type'] = 'select';
 $zz_sub['fields'][6]['sql'] = 'SELECT country_id, country_code, country
 	FROM /*_PREFIX_*/countries
 	ORDER BY country';
+$zz_sub['fields'][6]['sql_translate'] = ['country_id' => 'countries'];
 $zz_sub['fields'][6]['display_field'] = 'country_code';
 $zz_sub['fields'][6]['search'] = '/*_PREFIX_*/countries.country';
 $zz_sub['fields'][6]['geocode'] = 'country_id';
