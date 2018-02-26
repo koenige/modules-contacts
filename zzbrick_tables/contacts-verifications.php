@@ -22,6 +22,7 @@ $zz_sub['fields'][1]['type'] = 'id';
 $zz_sub['fields'][2]['title'] = 'Contact';
 $zz_sub['fields'][2]['field_name'] = 'contact_id';
 $zz_sub['fields'][2]['type'] = 'select';
+$zz_sub['fields'][2]['unique'] = true;
 $zz_sub['fields'][2]['sql'] = 'SELECT contact_id, contact, identifier
 	FROM /*_PREFIX_*/contacts
 	ORDER BY identifier';
@@ -32,14 +33,14 @@ $zz_sub['fields'][2]['class'] = 'block480a';
 
 $zz_sub['fields'][3]['title'] = 'Entry Date';
 $zz_sub['fields'][3]['field_name'] = 'entry_date';
-$zz_sub['fields'][3]['type'] = 'hidden';
+$zz_sub['fields'][3]['type'] = 'write_once';
 $zz_sub['fields'][3]['type_detail'] = 'datetime';
 $zz_sub['fields'][3]['default'] = date('Y-m-d H:i:s');
 $zz_sub['fields'][3]['unless']['export_mode']['list_append_next'] = true;
 
 $zz_sub['fields'][5]['title'] = 'Entry IP';
 $zz_sub['fields'][5]['field_name'] = 'entry_ip';
-$zz_sub['fields'][5]['type'] = 'hidden';
+$zz_sub['fields'][5]['type'] = 'write_once';
 $zz_sub['fields'][5]['type_detail'] = 'ip';
 $zz_sub['fields'][5]['default'] = $_SERVER['REMOTE_ADDR'];
 $zz_sub['fields'][5]['unless']['export_mode']['list_prefix'] = '<br><small style="color: #999;">';
