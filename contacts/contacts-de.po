@@ -61,3 +61,7 @@ msgstr "Kontakt"
 #: modules/contacts/zzbrick_tables/contactdetails.php
 msgid "Contact Details"
 msgstr "Kontaktdaten"
+
+#: modules/contacts/zzbrick_request/contactverification.inc.php
+msgid "Confirm Registration"
+msgstr "Registrierung bestätigen"

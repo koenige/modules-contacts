@@ -12,7 +12,7 @@
  */
 
 
-function mod_contacts_contactverification() {
+function mod_contacts_contactverification($params, $settings) {
 	global $zz_conf;
 	global $zz_setting;
 	global $zz_page;
@@ -23,12 +23,17 @@ function mod_contacts_contactverification() {
 
 	$form = [];
 	$form['reminder'] = false;
-	$form['own_e_mail'] = $zz_setting['own_e_mail'];
-	$url = parse_url($_SERVER['REQUEST_URI']);
-	$form['action'] = $url['path'];
+	$form['own_e_mail'] = !empty($settings['e_mail']) ? $settings['e_mail'] : $zz_setting['own_e_mail'];
+	if (!empty($settings['path'])) {
+		$form['action'] = $settings['path'];
+	} else {
+		$url = parse_url($_SERVER['REQUEST_URI']);
+		$form['action'] = $url['path'];
+	}
 
 	$possible_actions = ['confirm', 'delete'];
 	$page['query_strings'] = ['code', 'action', 'confirm', 'delete'];
+	$page['breadcrumbs'][] = wrap_text('Confirm Registration');
 
 	// What to do?
 	if (!empty($_GET['code']) && !empty($_GET['action'])
@@ -83,9 +88,13 @@ function mod_contacts_contactverification() {
 		return $page;
 	}
 
+	$sql = 'SELECT cv_id FROM contacts_verifications WHERE contact_id = %d';
+	$sql = sprintf($sql, $data['contact_id']);
+	$cv_id = wrap_db_fetch($sql, '', 'single value');
+
 	require_once $zz_conf['dir'].'/zzform.php';
 	$values = [];
-	$values['POST']['contact_id'] = $data['contact_id'];
+	$values['POST']['cv_id'] = $cv_id;
 	if ($action === 'confirm') {
 		$values['action'] = 'update';
 		$values['POST']['verification_date'] = date('Y-m-d H:i:s');;
@@ -93,7 +102,7 @@ function mod_contacts_contactverification() {
 	} else {
 		$values['action'] = 'delete';
 	}
-	$ops = zzform_multi('contacts_verifications', $values);
+	$ops = zzform_multi('contacts-verifications', $values);
 	if (!$ops['id']) {
 		wrap_error(sprintf(
 			'Registration ID %s could not be %sd. %s',
