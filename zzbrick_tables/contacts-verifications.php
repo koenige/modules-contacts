@@ -75,3 +75,6 @@ $zz_sub['sql'] = 'SELECT /*_PREFIX_*/contacts_verifications.*, contact
 	LEFT JOIN /*_PREFIX_*/contacts USING (contact_id)
 ';
 $zz_sub['sqlorder'] = ' ORDER BY entry_date DESC, contact, identifier';
+
+$zz_sub['subselect']['sql'] = 'SELECT contact_id, verification_date
+	FROM /*_PREFIX_*/contacts_verifications';
