@@ -115,9 +115,14 @@ foreach ($categories as $category) {
 		LEFT JOIN /*_PREFIX_*/categories
 			ON /*_PREFIX_*/contactdetails.provider_category_id = /*_PREFIX_*/categories.category_id
 		WHERE /*_PREFIX_*/contactdetails.provider_category_id = %d', $category['category_id']);
+	$zz['fields'][$no]['if']['export_mode']['subselect']['sql'] = sprintf('SELECT identification, contact_id
+		FROM /*_PREFIX_*/contactdetails
+		LEFT JOIN /*_PREFIX_*/categories
+			ON /*_PREFIX_*/contactdetails.provider_category_id = /*_PREFIX_*/categories.category_id
+		WHERE /*_PREFIX_*/contactdetails.provider_category_id = %d', $category['category_id']);
 	$zz['fields'][$no]['subselect']['concat_fields'] = ' ';
-	$zz['fields'][$no]['subselect']['field_prefix'][0] = '<em>';
-	$zz['fields'][$no]['subselect']['field_suffix'][0] = ':</em>';
+	$zz['fields'][$no]['unless']['export_mode']['subselect']['field_prefix'][0] = '<em>';
+	$zz['fields'][$no]['unless']['export_mode']['subselect']['field_suffix'][0] = ':</em>';
 	$zz['fields'][$no]['if']['export_mode']['subselect']['concat_rows'] = "\r";
 	$zz['fields'][$no]['export_no_html'] = true;
 	if ($no - 9 < count($categories)) {
