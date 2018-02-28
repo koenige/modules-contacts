@@ -78,3 +78,4 @@ $zz_sub['sqlorder'] = ' ORDER BY entry_date DESC, contact, identifier';
 
 $zz_sub['subselect']['sql'] = 'SELECT contact_id, verification_date
 	FROM /*_PREFIX_*/contacts_verifications';
+$zz_sub['export_no_html'] = true;
