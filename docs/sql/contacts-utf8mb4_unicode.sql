@@ -50,11 +50,14 @@ CREATE TABLE `contactdetails` (
 
 DROP TABLE IF EXISTS `contacts_verifications`;
 CREATE TABLE `contacts_verifications` (
-  `cv_id` int(10) unsigned NOT NULL,
+  `cv_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `contact_id` int(10) unsigned NOT NULL,
   `entry_date` datetime NOT NULL,
   `entry_ip` varbinary(16) NOT NULL,
   `verification_date` datetime DEFAULT NULL,
   `verification_ip` varbinary(16) DEFAULT NULL,
-  `verification_hash` varchar(8) CHARACTER SET latin1 COLLATE latin1_general_cs DEFAULT NULL
+  `verification_hash` varchar(8) CHARACTER SET latin1 COLLATE latin1_general_cs DEFAULT NULL,
+  PRIMARY KEY (`cv_id`),
+  UNIQUE KEY `contact_id` (`contact_id`),
+  UNIQUE KEY `verification_hash` (`verification_hash`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
