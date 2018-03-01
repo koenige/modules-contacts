@@ -21,6 +21,12 @@ function mod_contacts_contactverification($params, $settings) {
 	$zz_setting['extra_http_headers'][] = 'X-Frame-Options: Deny';
 	$zz_setting['extra_http_headers'][] = "Content-Security-Policy: frame-ancestors 'self'";
 
+	$tpl = 'contact-verification';
+	$informal_supported_langugages = ['de'];
+	if (!empty($settings['informal']) AND in_array($zz_setting['lang'], $informal_supported_langugages)) {
+		$tpl .= '-informal';
+	}
+
 	$form = [];
 	$form['reminder'] = false;
 	$form['own_e_mail'] = !empty($settings['e_mail']) ? $settings['e_mail'] : $zz_setting['own_e_mail'];
@@ -54,7 +60,7 @@ function mod_contacts_contactverification($params, $settings) {
 	} else {
 		$form['code'] = false;
 		$form['form'] = true;
-		$page['text'] = wrap_template('contact-verification', $form);
+		$page['text'] = wrap_template($tpl, $form);
 		return $page;
 	}
 
@@ -67,7 +73,7 @@ function mod_contacts_contactverification($params, $settings) {
 	if (!$data) {
 		$form['no_data'] = true;
 		$form['form'] = true;
-		$page['text'] = wrap_template('contact-verification', $form);
+		$page['text'] = wrap_template($tpl, $form);
 		return $page;
 	}
 	
@@ -79,12 +85,12 @@ function mod_contacts_contactverification($params, $settings) {
 		} else {
 			$form['form'] = true;
 		}
-		$page['text'] = wrap_template('contact-verification', $form);
+		$page['text'] = wrap_template($tpl, $form);
 		return $page;
 	}
 	
 	if (!$action) {
-		$page['text'] = wrap_template('contact-verification', $form);
+		$page['text'] = wrap_template($tpl, $form);
 		return $page;
 	}
 
@@ -111,6 +117,6 @@ function mod_contacts_contactverification($params, $settings) {
 	}
 	$form[$action] = true;
 
-	$page['text'] = wrap_template('contact-verification', $form);
+	$page['text'] = wrap_template($tpl, $form);
 	return $page;
 }
