@@ -9,7 +9,7 @@
 # @copyright Copyright © 2018 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
-<div class="newsletter">
+<div class="contactverification">
 <div class="msg">
 %%% condition if delete %%%
 <p>Deine Daten wurden wieder erfolgreich aus unserer Datenbank entfernt!</p>

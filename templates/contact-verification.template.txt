@@ -1,14 +1,14 @@
-# newsletter module
-# HTML for confirmation of newsletter subscription
+# contacts module
+# HTML for confirmation of contact registration
 #
 # Part of »Zugzwang Project«
-# http://www.zugzwang.org/modules/newsletter
+# http://www.zugzwang.org/modules/contacts
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2015 Gustaf Mossakowski
+# @copyright Copyright © 2015, 2018 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
-<div class="newsletter">
+<div class="contactverification">
 <div class="msg">
 %%% condition if delete %%%
 <p>Your data was removed successfully from our database!</p>

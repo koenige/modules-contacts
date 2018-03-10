@@ -2,9 +2,9 @@
 
 /**
  * Zugzwang Project
- * Common functions for newsletters module
+ * Common functions for contacts module
  *
- * http://www.zugzwang.org/modules/newsletters
+ * http://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
  * @copyright Copyright © 2015, 2018 Gustaf Mossakowski
