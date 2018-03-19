@@ -43,8 +43,8 @@ erneute Bestätigung ist nicht notwendig.</p>
 <tr><th><label for="code">Code:</label></th> <td><input type="text" name="code" id="code" size="32" value="%%% item code %%%"></td></tr>
 <tr><th><td>
 %%% condition if reminder %%%<div class="reminder">%%% condition endif %%%
-<label for="confirm"><input type="radio" name="action" value="confirm" id="confirm" required="required"> Registrierung bestätigen</label>
-<label for="delete"><input type="radio" name="action" value="delete" id="delete" required="required"> Registrierung löschen</label>
+<label for="confirm"><input type="radio" name="action" value="confirm" id="confirm" required="required"%%% item check_confirm " checked" %%%> Registrierung bestätigen</label>
+<label for="delete"><input type="radio" name="action" value="delete" id="delete" required="required"%%% item check_delete " checked" %%%> Registrierung löschen</label>
 %%% condition if reminder %%%</div>%%% condition endif %%%
 <br><input type="submit" class="submit"></td></tr>
 </table>

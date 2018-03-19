@@ -73,6 +73,7 @@ function mod_contacts_contactverification($params, $settings) {
 	if (!$data) {
 		$form['no_data'] = true;
 		$form['form'] = true;
+		$form['check_'.$action] = true;
 		$page['text'] = wrap_template($tpl, $form);
 		return $page;
 	}
