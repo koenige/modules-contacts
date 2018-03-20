@@ -151,6 +151,7 @@ $zz['sql'] = 'SELECT /*_PREFIX_*/contacts.*, category
 			WHERE /*_PREFIX_*/addresses.contact_id = /*_PREFIX_*/contacts.contact_id
 			LIMIT 1) AS latlon
 	FROM /*_PREFIX_*/contacts
+	LEFT JOIN /*_PREFIX_*/contacts_verifications USING (contact_id)
 	LEFT JOIN /*_PREFIX_*/categories
 		ON /*_PREFIX_*/contacts.contact_category_id = /*_PREFIX_*/categories.category_id
 ';
