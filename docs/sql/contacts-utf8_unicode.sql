@@ -57,7 +57,10 @@ CREATE TABLE `contacts_verifications` (
   `verification_date` datetime DEFAULT NULL,
   `verification_ip` varbinary(16) DEFAULT NULL,
   `verification_hash` varchar(8) CHARACTER SET latin1 COLLATE latin1_general_cs DEFAULT NULL,
+  `status` enum('unverified','confirmed per link','confirmed manually','unsubscribed','deleted') CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
+  `language_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`cv_id`),
   UNIQUE KEY `contact_id` (`contact_id`),
-  UNIQUE KEY `verification_hash` (`verification_hash`)
+  UNIQUE KEY `verification_hash` (`verification_hash`),
+  KEY `language_id` (`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

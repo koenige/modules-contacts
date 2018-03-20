@@ -70,6 +70,23 @@ $zz_sub['fields'][8]['type_detail'] = 'ip';
 $zz_sub['fields'][8]['unless']['export_mode']['list_prefix'] = '<br><small style="color: #999;">';
 $zz_sub['fields'][8]['unless']['export_mode']['list_suffix'] = '</small>';
 
+$zz_sub['fields'][10]['field_name'] = 'status';
+$zz_sub['fields'][10]['type'] = 'select';
+$zz_sub['fields'][10]['enum'] = [
+	'unverified', 'confirmed per link', 'confirmed manually', 'unsubscribed',
+	'deleted'
+];
+$zz_sub['fields'][10]['default'] = 'unverified';
+
+$zz_sub['fields'][11]['field_name'] = 'language_id';
+$zz_sub['fields'][11]['type'] = 'write_once';
+$zz_sub['fields'][11]['type_detail'] = 'select';
+$zz_sub['fields'][11]['default'] = $zz_setting['language_ids'][$zz_setting['lang']];
+$zz_sub['fields'][11]['hide_in_list'] = true;
+$zz_sub['fields'][11]['sql'] = 'SELECT language_id, language_en
+	FROM /*_PREFIX_*/languages
+	ORDER BY language_en';
+
 $zz_sub['sql'] = 'SELECT /*_PREFIX_*/contacts_verifications.*, contact
 	FROM /*_PREFIX_*/contacts_verifications
 	LEFT JOIN /*_PREFIX_*/contacts USING (contact_id)
