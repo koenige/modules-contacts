@@ -58,6 +58,26 @@ msgstr "Kontakte"
 msgid "Contact"
 msgstr "Kontakt"
 
+#: modules/contacts/zzbrick_tables/contacts-verifications.php
+msgid "unverified"
+msgstr "unbestätigt"
+
+#: modules/contacts/zzbrick_tables/contacts-verifications.php
+msgid "confirmed per link"
+msgstr "per Link bestätigt"
+
+#: modules/contacts/zzbrick_tables/contacts-verifications.php
+msgid "confirmed manually"
+msgstr "per Hand bestätigt"
+
+#: modules/contacts/zzbrick_tables/contacts-verifications.php
+msgid "unsubscribed"
+msgstr "abgemeldet"
+
+#: modules/contacts/zzbrick_tables/contacts-verifications.php
+msgid "deleted"
+msgstr "gelöscht"
+
 #: modules/contacts/zzbrick_tables/contactdetails.php
 msgid "Contact Details"
 msgstr "Kontaktdaten"
