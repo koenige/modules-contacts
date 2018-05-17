@@ -71,6 +71,10 @@ msgid "confirmed manually"
 msgstr "per Hand bestätigt"
 
 #: modules/contacts/zzbrick_tables/contacts-verifications.php
+msgid "complete"
+msgstr "komplett"
+
+#: modules/contacts/zzbrick_tables/contacts-verifications.php
 msgid "unsubscribed"
 msgstr "abgemeldet"
 
