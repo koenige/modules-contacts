@@ -73,8 +73,8 @@ $zz_sub['fields'][8]['unless']['export_mode']['list_suffix'] = '</small>';
 $zz_sub['fields'][10]['field_name'] = 'status';
 $zz_sub['fields'][10]['type'] = 'select';
 $zz_sub['fields'][10]['enum'] = [
-	'unverified', 'confirmed per link', 'confirmed manually', 'unsubscribed',
-	'deleted'
+	'unverified', 'confirmed per link', 'confirmed manually', 'complete',
+	'unsubscribed', 'deleted'
 ];
 $zz_sub['fields'][10]['default'] = 'unverified';
 
