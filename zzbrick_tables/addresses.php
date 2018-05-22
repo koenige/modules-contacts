@@ -30,6 +30,7 @@ $zz_sub['fields'][2]['if']['where']['hide_in_form'] = true;
 $zz_sub['fields'][2]['if']['where']['hide_in_list'] = true;
 $zz_sub['fields'][2]['class'] = 'block480a';
 
+$zz_sub['fields'][3]['title'] = 'Street/No.';
 $zz_sub['fields'][3]['field_name'] = 'address';
 $zz_sub['fields'][3]['type'] = 'memo';
 $zz_sub['fields'][3]['rows'] = 4;

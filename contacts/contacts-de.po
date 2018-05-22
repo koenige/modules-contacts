@@ -50,6 +50,10 @@ msgstr "Ort"
 msgid "Postcode/Place"
 msgstr "PLZ/Ort"
 
+#: modules/contacts/zzbrick_tables/addresses.php
+msgid "Street/No."
+msgstr "Straße/Nr."
+
 #: modules/contacts/zzbrick_tables/contacts.php
 msgid "Contacts"
 msgstr "Kontakte"
