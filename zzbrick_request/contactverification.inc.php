@@ -105,7 +105,9 @@ function mod_contacts_contactverification($params, $settings) {
 	if ($action === 'confirm') {
 		$values['action'] = 'update';
 		$values['POST']['verification_date'] = date('Y-m-d H:i:s');;
-		$values['POST']['verification_ip'] = $_SERVER['REMOTE_ADDR'];
+		$values['POST']['verification_ip'] 
+			= !empty($_SERVER['HTTP_X_FORWARDED_FOR'])
+			? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'];
 		$values['POST']['status'] = 'confirmed per link';
 	} else {
 		$values['action'] = 'delete';

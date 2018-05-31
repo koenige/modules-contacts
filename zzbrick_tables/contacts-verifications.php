@@ -42,7 +42,8 @@ $zz_sub['fields'][5]['title'] = 'Entry IP';
 $zz_sub['fields'][5]['field_name'] = 'entry_ip';
 $zz_sub['fields'][5]['type'] = 'write_once';
 $zz_sub['fields'][5]['type_detail'] = 'ip';
-$zz_sub['fields'][5]['default'] = $_SERVER['REMOTE_ADDR'];
+$zz_sub['fields'][5]['default'] = !empty($_SERVER['HTTP_X_FORWARDED_FOR'])
+	? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'];
 $zz_sub['fields'][5]['unless']['export_mode']['list_prefix'] = '<br><small style="color: #999;">';
 $zz_sub['fields'][5]['unless']['export_mode']['list_suffix'] = '</small>';
 $zz_sub['fields'][5]['unless']['export_mode']['list_append_next'] = true;
