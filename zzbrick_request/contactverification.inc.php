@@ -22,10 +22,6 @@ function mod_contacts_contactverification($params, $settings) {
 	$zz_setting['extra_http_headers'][] = "Content-Security-Policy: frame-ancestors 'self'";
 
 	$tpl = 'contact-verification';
-	$informal_supported_langugages = ['de'];
-	if (!empty($settings['informal']) AND in_array($zz_setting['lang'], $informal_supported_langugages)) {
-		$tpl .= '-informal';
-	}
 
 	$form = [];
 	$form['reminder'] = false;
