@@ -93,3 +93,7 @@ msgstr "Kontaktdaten"
 #: modules/contacts/zzbrick_request/contactverification.inc.php
 msgid "Confirm Registration"
 msgstr "Registrierung bestätigen"
+
+#: modules/contacts/templates/contact-verification.de.template.txt
+msgid "Registration"
+msgstr "Registrierung"

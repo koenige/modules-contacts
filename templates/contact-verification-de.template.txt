@@ -16,7 +16,7 @@
 
 %%% condition elseif confirmed_delete %%%
 <p>Ihre Daten konnten nicht wieder aus unserer Datenbank entfernt werden, da Sie 
-Ihre Registrierung offensichtlich schon bestätigt hatten. Auf diesem Wege ist eine 
+Ihre %%% item category wrap_text %%% offensichtlich schon bestätigt hatten. Auf diesem Wege ist eine 
 Abmeldung nicht mehr möglich.</p>
 <p>Bitte setzen Sie sich direkt mit uns in Verbindung (E-Mail: 
 <a href="mailto:%%% item own_e_mail %%%">%%% item own_e_mail %%%</a>).</p>
@@ -25,10 +25,10 @@ Abmeldung nicht mehr möglich.</p>
 <p><strong>Ihre Daten wurden in der Datenbank nicht gefunden.</strong></p>
 
 %%% condition elseif confirm %%%
-<p>Vielen Dank für Ihr Interesse. Ihre Registrierung wurde bestätigt.</p>
+<p>Vielen Dank für Ihr Interesse. Ihre %%% item category wrap_text %%% wurde bestätigt.</p>
 
 %%% condition elseif already_confirmed %%%
-<p><strong>Sie haben Ihre Registrierung bereits bestätigt.</strong> Eine 
+<p><strong>Sie haben Ihre %%% item category wrap_text %%% bereits bestätigt.</strong> Eine 
 erneute Bestätigung ist nicht notwendig.</p>
 
 %%% condition endif %%%
@@ -36,15 +36,15 @@ erneute Bestätigung ist nicht notwendig.</p>
 
 %%% condition if form %%%
 <fieldset>
-<legend>Bestätigung/Löschung der Registrierung</legend>
+<legend>Bestätigung/Löschung der %%% item category wrap_text %%%</legend>
 <p>Bitte geben Sie den Bestätigungscode aus der E-Mail per Hand in das Formular ein:</p>
 <form method="GET" action="%%% item action wrap_html_escape %%%" id="confirmation">
 <table>
 <tr><th><label for="code">Code:</label></th> <td><input type="text" name="code" id="code" size="32" value="%%% item code %%%"></td></tr>
 <tr><th><td>
 %%% condition if reminder %%%<div class="reminder">%%% condition endif %%%
-<label for="confirm"><input type="radio" name="action" value="confirm" id="confirm" required="required"%%% item check_confirm " checked" %%%> Registrierung bestätigen</label>
-<label for="delete"><input type="radio" name="action" value="delete" id="delete" required="required"%%% item check_delete " checked" %%%> Registrierung löschen</label>
+<label for="confirm"><input type="radio" name="action" value="confirm" id="confirm" required="required"%%% item check_confirm " checked" %%%> %%% item category wrap_text %%% bestätigen</label>
+<label for="delete"><input type="radio" name="action" value="delete" id="delete" required="required"%%% item check_delete " checked" %%%> %%% item category wrap_text %%% löschen</label>
 %%% condition if reminder %%%</div>%%% condition endif %%%
 <br><input type="submit" class="submit"></td></tr>
 </table>

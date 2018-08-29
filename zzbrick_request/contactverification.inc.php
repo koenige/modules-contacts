@@ -26,6 +26,7 @@ function mod_contacts_contactverification($params, $settings) {
 	$form = [];
 	$form['reminder'] = false;
 	$form['own_e_mail'] = !empty($settings['e_mail']) ? $settings['e_mail'] : $zz_setting['own_e_mail'];
+	$form['category'] = !empty($settings['category']) ? $settings['category'] : 'Registration';
 	if (!empty($settings['path'])) {
 		$form['action'] = $settings['path'];
 	} else {
@@ -35,7 +36,7 @@ function mod_contacts_contactverification($params, $settings) {
 
 	$possible_actions = ['confirm', 'delete'];
 	$page['query_strings'] = ['code', 'action', 'confirm', 'delete'];
-	$page['breadcrumbs'][] = wrap_text('Confirm Registration');
+	$page['breadcrumbs'][] = wrap_text(sprintf('Confirm %s', $form['category']));
 
 	// What to do?
 	if (!empty($_GET['code']) && !empty($_GET['action'])
@@ -109,8 +110,8 @@ function mod_contacts_contactverification($params, $settings) {
 	$ops = zzform_multi('contacts-verifications', $values);
 	if (!$ops['id']) {
 		wrap_error(sprintf(
-			'Registration ID %s could not be %sd. %s',
-			$data['contact_id'], $values['action'], implode(', ', $ops['error'])
+			'%s ID %s could not be %sd. %s',
+			$form['category'], $data['contact_id'], $values['action'], implode(', ', $ops['error'])
 		), E_USER_ERROR);
 	}
 	$form[$action] = true;
