@@ -90,6 +90,8 @@ $zz_sub['fields'][11]['sql'] = 'SELECT language_id, language_en
 $zz_sub['fields'][12]['field_name'] = 'mails_sent';
 $zz_sub['fields'][12]['type'] = 'number';
 $zz_sub['fields'][12]['hide_in_list'] = true;
+$zz_sub['fields'][12]['default'] = 0;
+$zz_sub['fields'][12]['null'] = true;
 
 
 $zz_sub['sql'] = 'SELECT /*_PREFIX_*/contacts_verifications.*, contact
