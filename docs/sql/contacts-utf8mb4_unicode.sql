@@ -57,7 +57,7 @@ CREATE TABLE `contacts_verifications` (
   `verification_date` datetime DEFAULT NULL,
   `verification_ip` varbinary(16) DEFAULT NULL,
   `verification_hash` varchar(8) CHARACTER SET latin1 COLLATE latin1_general_cs DEFAULT NULL,
-  `mails_sent` tinyint(3) unsigned NOT NULL,
+  `mails_sent` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `status` enum('unverified','confirmed per link','confirmed manually','complete','unsubscribed','deleted') CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
   `language_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`cv_id`),
