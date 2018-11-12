@@ -28,6 +28,7 @@ $zz['fields'][2]['geojson'] = 'title';
 $zz['fields'][2]['export_no_html'] = true;
 $zz['fields'][2]['unless']['export_mode']['list_format'] = 'nl2br';
 $zz['fields'][2]['merge_equal'] = true;
+$zz['fields'][2]['write_details'] = true;
 
 $zz['fields'][9] = []; // persons
 
