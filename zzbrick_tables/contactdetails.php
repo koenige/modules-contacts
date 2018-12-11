@@ -53,3 +53,6 @@ $zz_sub['sql'] = 'SELECT /*_PREFIX_*/contactdetails.*, contact
 		ON /*_PREFIX_*/categories.category_id = /*_PREFIX_*/contactdetails.provider_category_id
 ';
 $zz_sub['sqlorder'] = ' ORDER BY identifier, path, identification';
+
+$zz_sub['unique'][] = ['contact_id', 'identification', 'provider_category_id'];
+
