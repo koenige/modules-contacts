@@ -56,7 +56,11 @@ $zz['fields'][4]['geojson'] = 'category';
 $categories = wrap_db_fetch($zz['fields'][4]['sql'], 'category_id');
 if (count($categories) === 1) $zz['fields'][4]['hide_in_list'] = true;
 
-require __DIR__.'/addresses.php';
+if (file_exists($file = $zz_conf['form_scripts'].'/addresses.php')) {
+	require $file;
+} else {
+	require __DIR__.'/addresses.php';
+}
 $zz['fields'][5] = $zz_sub;
 unset($zz_sub);
 $zz['fields'][5]['title'] = 'Address';
