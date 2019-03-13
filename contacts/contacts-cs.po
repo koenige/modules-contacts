@@ -5,7 +5,7 @@
 # http://www.zugzwang.org/modules/default
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2015-2016, 2018-2019 Gustaf Mossakowski
+# @copyright Copyright © 2019 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 msgid ""
@@ -15,7 +15,7 @@ msgstr ""
 "PO-Revision-Date: \n"
 "Last-Translator: Gustaf Mossakowski <gustaf@koenige.org>\n"
 "Language-Team: \n"
-"Language: de\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,43 +24,43 @@ msgstr ""
 
 #: zzbrick_tables/addresses.php
 msgid "Addresses"
-msgstr "Adressen"
+msgstr "Adresy"
 
 #: zzbrick_tables/addresses.php
 msgid "Address"
-msgstr "Adresse"
+msgstr "Adresa"
 
 #: zzbrick_tables/addresses.php
 msgid "Country"
-msgstr "Land"
+msgstr "Země"
 
 #: zzbrick_tables/addresses.php
 msgid "Latitude"
-msgstr "Breitengrad"
+msgstr "Zeměpisná šířka"
 
 #: zzbrick_tables/addresses.php
 msgid "Longitude"
-msgstr "Längengrad"
+msgstr "Zeměpisná délka"
 
 #: zzbrick_tables/addresses.php
 msgid "Postcode"
-msgstr "PLZ"
+msgstr "PSČ"
 
 #: zzbrick_tables/addresses.php
 msgid "Place"
-msgstr "Ort"
+msgstr "Místo"
 
 #: zzbrick_tables/addresses.php
 msgid "Postcode/Place"
-msgstr "PLZ/Ort"
+msgstr "PSČ / místo"
 
 #: zzbrick_tables/addresses.php
 msgid "Street/No."
-msgstr "Straße/Nr."
+msgstr "Ulice/ č.p."
 
 #: zzbrick_tables/contacts.php
 msgid "Contacts"
-msgstr "Kontakte"
+msgstr "Kontakty"
 
 #: zzbrick_tables/contacts.php
 msgid "Contact"
@@ -68,36 +68,36 @@ msgstr "Kontakt"
 
 #: zzbrick_tables/contacts-verifications.php
 msgid "unverified"
-msgstr "unbestätigt"
+msgstr "neověřeno"
 
 #: zzbrick_tables/contacts-verifications.php
 msgid "confirmed per link"
-msgstr "per Link bestätigt"
+msgstr "potvrzeno na odkaz"
 
 #: zzbrick_tables/contacts-verifications.php
 msgid "confirmed manually"
-msgstr "per Hand bestätigt"
+msgstr "potvrzeno ručně"
 
 #: zzbrick_tables/contacts-verifications.php
 msgid "complete"
-msgstr "komplett"
+msgstr "dokončeno"
 
 #: zzbrick_tables/contacts-verifications.php
 msgid "unsubscribed"
-msgstr "abgemeldet"
+msgstr "neodebíraný"
 
 #: zzbrick_tables/contacts-verifications.php
 msgid "deleted"
-msgstr "gelöscht"
+msgstr "odstraněno"
 
 #: zzbrick_tables/contactdetails.php
 msgid "Contact Details"
-msgstr "Kontaktdaten"
+msgstr "Kontaktní detaily"
 
 #: zzbrick_request/contactverification.inc.php
 msgid "Confirm Registration"
-msgstr "Registrierung bestätigen"
+msgstr "Potvrdit registraci"
 
 #: templates/contact-verification.de.template.txt
 msgid "Registration"
-msgstr "Registrierung"
+msgstr "Registrace"
