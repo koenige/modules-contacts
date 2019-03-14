@@ -39,6 +39,8 @@ $zz['fields'][3]['conf_identifier']['exists'] = '-';
 $zz['fields'][3]['hide_in_list'] = true;
 $zz['fields'][3]['geojson'] = 'identifier';
 $zz['fields'][3]['merge_ignore'] = true;
+$zz['fields'][3]['unique'] = true;
+$zz['fields'][3]['character_set'] = 'latin1';
 
 $zz['fields'][4]['title'] = 'Category';
 $zz['fields'][4]['field_name'] = 'contact_category_id';
