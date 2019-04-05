@@ -12,7 +12,7 @@
  */
 
 
-$zz_sub['title'] = 'Contact Verification';
+$zz_sub['title'] = 'Contact Verifications';
 $zz_sub['table'] = '/*_PREFIX_*/contacts_verifications';
 
 $zz_sub['fields'][1]['title'] = 'ID';
@@ -34,9 +34,9 @@ $zz_sub['fields'][2]['if']['where']['hide_in_list'] = true;
 $zz_sub['fields'][2]['if']['where']['list_append_next'] = false;
 $zz_sub['fields'][2]['class'] = 'block480a';
 
-$zz_sub['fields'][13]['title'] = 'Verification Mail';
-$zz_sub['fields'][13]['field_name'] = 'verification_mail';
-$zz_sub['fields'][13]['type'] = 'hidden';
+$zz_sub['fields'][13]['title'] = 'Confirmed Mail';
+$zz_sub['fields'][13]['field_name'] = 'confirmed_mail';
+$zz_sub['fields'][13]['type'] = 'write_once';
 $zz_sub['fields'][13]['type_detail'] = 'mail';
 
 $zz_sub['fields'][3]['title'] = 'Entry Date';
