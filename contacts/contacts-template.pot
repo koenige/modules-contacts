@@ -66,6 +66,50 @@ msgstr ""
 msgid "Contact"
 msgstr ""
 
+#: zzbrick_tables/contacts.php
+msgid "Identifier"
+msgstr ""
+
+#: zzbrick_tables/contacts.php
+msgid "Category"
+msgstr ""
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Contact Verifications"
+msgstr ""
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Confirmed Mail"
+msgstr ""
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Entry Date"
+msgstr ""
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Entry IP"
+msgstr ""
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Verification Date"
+msgstr ""
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Verification IP"
+msgstr ""
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Status"
+msgstr ""
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Language"
+msgstr ""
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Mails sent"
+msgstr ""
+
 #: zzbrick_tables/contacts-verifications.php
 msgid "unverified"
 msgstr ""

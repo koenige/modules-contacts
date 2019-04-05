@@ -66,6 +66,50 @@ msgstr "Kontakte"
 msgid "Contact"
 msgstr "Kontakt"
 
+#: zzbrick_tables/contacts.php
+msgid "Identifier"
+msgstr "Kennung"
+
+#: zzbrick_tables/contacts.php
+msgid "Category"
+msgstr "Kategorie"
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Contact Verifications"
+msgstr ""
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Confirmed Mail"
+msgstr "Bestätigte Mail"
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Entry Date"
+msgstr "Eintragsdatum"
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Entry IP"
+msgstr "Eintrags-IP"
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Verification Date"
+msgstr "Bestätigungsdatum"
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Verification IP"
+msgstr "Bestätigungs-IP"
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Status"
+msgstr "Status"
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Language"
+msgstr "Sprache"
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Mails sent"
+msgstr "E-Mails versandt"
+
 #: zzbrick_tables/contacts-verifications.php
 msgid "unverified"
 msgstr "unbestätigt"
