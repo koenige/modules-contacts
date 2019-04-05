@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2015, 2017-2018 Gustaf Mossakowski
+ * @copyright Copyright © 2015, 2017-2019 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -40,13 +40,14 @@ $zz_sub['fields'][4]['sql'] = sprintf('SELECT category_id, category
 	WHERE main_category_id = %d',
 	$zz_setting['category']['provider']
 );
+$zz_sub['fields'][4]['display_field'] = 'category';
 
-$zz_sub['fields'][20]['title'] = 'Updated';
 $zz_sub['fields'][20]['field_name'] = 'last_update';
 $zz_sub['fields'][20]['type'] = 'timestamp';
 $zz_sub['fields'][20]['hide_in_list'] = true;
 
 $zz_sub['sql'] = 'SELECT /*_PREFIX_*/contactdetails.*, contact
+		, category
 	FROM /*_PREFIX_*/contactdetails
 	LEFT JOIN /*_PREFIX_*/contacts USING (contact_id)
 	LEFT JOIN /*_PREFIX_*/categories
