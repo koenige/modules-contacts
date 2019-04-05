@@ -80,7 +80,7 @@ msgstr ""
 
 #: zzbrick_tables/contacts-verifications.php
 msgid "Confirmed Mail"
-msgstr "Bestätigte Mail"
+msgstr "Bestätigte E-Mail"
 
 #: zzbrick_tables/contacts-verifications.php
 msgid "Entry Date"
