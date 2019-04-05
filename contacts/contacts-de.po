@@ -94,6 +94,10 @@ msgstr "gelöscht"
 msgid "Contact Details"
 msgstr "Kontaktdaten"
 
+#: zzbrick_tables/contactdetails.php
+msgid "Identification"
+msgstr "Identifikation"
+
 #: zzbrick_request/contactverification.inc.php
 msgid "Confirm Registration"
 msgstr "Registrierung bestätigen"

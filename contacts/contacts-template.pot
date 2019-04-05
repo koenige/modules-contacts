@@ -94,6 +94,10 @@ msgstr ""
 msgid "Contact Details"
 msgstr ""
 
+#: zzbrick_tables/contactdetails.php
+msgid "Identification"
+msgstr ""
+
 #: zzbrick_request/contactverification.inc.php
 msgid "Confirm Registration"
 msgstr ""
