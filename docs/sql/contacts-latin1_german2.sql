@@ -22,19 +22,6 @@ CREATE TABLE `addresses` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
 
 
-DROP TABLE IF EXISTS `contacts`;
-CREATE TABLE `contacts` (
-  `contact_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `contact` varchar(255) COLLATE latin1_german2_ci NOT NULL,
-  `identifier` varchar(63) COLLATE latin1_german2_ci NOT NULL,
-  `contact_category_id` int(10) unsigned NOT NULL,
-  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`contact_id`),
-  UNIQUE KEY `identifier` (`identifier`),
-  KEY `contact_category_id` (`contact_category_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
-
-
 DROP TABLE IF EXISTS `contactdetails`;
 CREATE TABLE `contactdetails` (
   `contactdetail_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -48,6 +35,19 @@ CREATE TABLE `contactdetails` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
 
 
+DROP TABLE IF EXISTS `contacts`;
+CREATE TABLE `contacts` (
+  `contact_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `contact` varchar(255) COLLATE latin1_german2_ci NOT NULL,
+  `identifier` varchar(63) COLLATE latin1_german2_ci NOT NULL,
+  `contact_category_id` int(10) unsigned NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`contact_id`),
+  UNIQUE KEY `identifier` (`identifier`),
+  KEY `contact_category_id` (`contact_category_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+
+
 DROP TABLE IF EXISTS `contacts_verifications`;
 CREATE TABLE `contacts_verifications` (
   `cv_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -57,6 +57,7 @@ CREATE TABLE `contacts_verifications` (
   `verification_date` datetime DEFAULT NULL,
   `verification_ip` varbinary(16) DEFAULT NULL,
   `verification_hash` varchar(8) COLLATE latin1_german2_ci DEFAULT NULL,
+  `verification_mail` varchar(127) COLLATE latin1_german2_ci DEFAULT NULL,
   `mails_sent` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `status` enum('unverified','confirmed per link','confirmed manually','complete','unsubscribed','deleted') CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
   `language_id` int(10) unsigned NOT NULL,

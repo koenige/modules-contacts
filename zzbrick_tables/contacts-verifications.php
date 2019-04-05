@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2015, 2018 Gustaf Mossakowski
+ * @copyright Copyright © 2015, 2018-2019 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -27,9 +27,17 @@ $zz_sub['fields'][2]['sql'] = 'SELECT contact_id, contact, identifier
 	FROM /*_PREFIX_*/contacts
 	ORDER BY identifier';
 $zz_sub['fields'][2]['display_field'] = 'contact';
+$zz_sub['fields'][2]['list_append_next'] = true;
+$zz_sub['fields'][2]['list_suffix'] = '<br>';
 $zz_sub['fields'][2]['if']['where']['hide_in_form'] = true;
 $zz_sub['fields'][2]['if']['where']['hide_in_list'] = true;
+$zz_sub['fields'][2]['if']['where']['list_append_next'] = false;
 $zz_sub['fields'][2]['class'] = 'block480a';
+
+$zz_sub['fields'][13]['title'] = 'Verification Mail';
+$zz_sub['fields'][13]['field_name'] = 'verification_mail';
+$zz_sub['fields'][13]['type'] = 'hidden';
+$zz_sub['fields'][13]['type_detail'] = 'mail';
 
 $zz_sub['fields'][3]['title'] = 'Entry Date';
 $zz_sub['fields'][3]['field_name'] = 'entry_date';
@@ -69,6 +77,7 @@ $zz_sub['fields'][8]['type'] = 'hidden';
 $zz_sub['fields'][8]['type_detail'] = 'ip';
 $zz_sub['fields'][8]['unless']['export_mode']['list_prefix'] = '<br><small style="color: #999;">';
 $zz_sub['fields'][8]['unless']['export_mode']['list_suffix'] = '</small>';
+
 
 $zz_sub['fields'][10]['field_name'] = 'status';
 $zz_sub['fields'][10]['type'] = 'select';
