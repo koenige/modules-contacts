@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2015-2018 Gustaf Mossakowski
+ * @copyright Copyright © 2015-2019 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -148,7 +148,6 @@ $zz['fields'][8]['hide_in_form'] = true;
 $zz['fields'][8]['unless']['export_mode']['hide_in_list'] = true;
 $zz['fields'][8]['geojson'] = 'latitude/longitude';
 
-$zz['fields'][99]['title'] = 'Updated';
 $zz['fields'][99]['field_name'] = 'last_update';
 $zz['fields'][99]['type'] = 'timestamp';
 $zz['fields'][99]['hide_in_list'] = true;

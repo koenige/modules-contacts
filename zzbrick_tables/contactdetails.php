@@ -32,7 +32,7 @@ $zz_sub['fields'][2]['class'] = 'block480a';
 
 $zz_sub['fields'][3]['field_name'] = 'identification';
 
-$zz_sub['fields'][4]['title'] = 'Category';
+$zz_sub['fields'][4]['title'] = 'Type';
 $zz_sub['fields'][4]['field_name'] = 'provider_category_id';
 $zz_sub['fields'][4]['type'] = 'select';
 $zz_sub['fields'][4]['sql'] = sprintf('SELECT category_id, category

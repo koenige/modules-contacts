@@ -96,7 +96,6 @@ $zz_sub['fields'][9]['search'] = '/*_PREFIX_*/categories.category';
 $zz_sub['fields'][9]['show_hierarchy'] = 'main_category_id';
 $zz_sub['fields'][9]['show_hierarchy_subtree'] = $zz_setting['category']['address'];
 
-$zz_sub['fields'][20]['title'] = 'Updated';
 $zz_sub['fields'][20]['field_name'] = 'last_update';
 $zz_sub['fields'][20]['type'] = 'timestamp';
 $zz_sub['fields'][20]['hide_in_list'] = true;
