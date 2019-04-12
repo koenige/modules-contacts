@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2015, 2017-2018 Gustaf Mossakowski
+ * @copyright Copyright © 2015, 2017-2019 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -69,12 +69,18 @@ $zz_sub['fields'][6]['geocode_sql'] = 'SELECT country_code
 $zz_sub['fields'][6]['class'] = 'block480';
 
 $zz_sub['fields'][7]['field_name'] = 'latitude';
+$zz_sub['fields'][7]['title_append'] = 'Latitude / Longitude';
 $zz_sub['fields'][7]['type'] = 'number';
 $zz_sub['fields'][7]['number_type'] = 'latitude';
 $zz_sub['fields'][7]['kml'] = 'latitude';
 $zz_sub['fields'][7]['geocode'] = 'latitude';
 $zz_sub['fields'][7]['hide_in_list'] = true;
 $zz_sub['fields'][7]['if']['add']['class'] = 'hidden';
+$zz_sub['fields'][7]['kml'] = 'latitude';
+$zz_sub['fields'][7]['geojson'] = 'latitude';
+$zz_sub['fields'][7]['geocode'] = 'latitude';
+$zz_sub['fields'][7]['append_next'] = true;
+$zz_sub['fields'][7]['suffix'] = ' / ';
 
 $zz_sub['fields'][8]['field_name'] = 'longitude';
 $zz_sub['fields'][8]['type'] = 'number';
@@ -83,6 +89,8 @@ $zz_sub['fields'][8]['kml'] = 'longitude';
 $zz_sub['fields'][8]['geocode'] = 'longitude';
 $zz_sub['fields'][8]['hide_in_list'] = true;
 $zz_sub['fields'][8]['if']['add']['class'] = 'hidden';
+$zz_sub['fields'][8]['kml'] = 'longitude';
+$zz_sub['fields'][8]['geojson'] = 'longitude';
 
 // @todo receive_mail yes/no
 
