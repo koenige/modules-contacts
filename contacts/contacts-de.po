@@ -43,6 +43,10 @@ msgid "Longitude"
 msgstr "Längengrad"
 
 #: zzbrick_tables/addresses.php
+msgid "Latitude / Longitude"
+msgstr "Breite / Länge"
+
+#: zzbrick_tables/addresses.php
 msgid "Postcode"
 msgstr "PLZ"
 
@@ -74,9 +78,13 @@ msgstr "Kennung"
 msgid "Category"
 msgstr "Kategorie"
 
+#: zzbrick_tables/contacts.php
+msgid "Description"
+msgstr "Beschreibung"
+
 #: zzbrick_tables/contacts-verifications.php
 msgid "Contact Verifications"
-msgstr ""
+msgstr "Kontaktverifizierungen"
 
 #: zzbrick_tables/contacts-verifications.php
 msgid "Confirmed Mail"

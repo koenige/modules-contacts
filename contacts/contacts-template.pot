@@ -43,6 +43,10 @@ msgid "Longitude"
 msgstr ""
 
 #: zzbrick_tables/addresses.php
+msgid "Latitude / Longitude"
+msgstr ""
+
+#: zzbrick_tables/addresses.php
 msgid "Postcode"
 msgstr ""
 
@@ -72,6 +76,10 @@ msgstr ""
 
 #: zzbrick_tables/contacts.php
 msgid "Category"
+msgstr ""
+
+#: zzbrick_tables/contacts.php
+msgid "Description"
 msgstr ""
 
 #: zzbrick_tables/contacts-verifications.php
