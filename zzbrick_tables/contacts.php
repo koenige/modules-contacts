@@ -24,6 +24,7 @@ $zz['fields'][2]['field_name'] = 'contact';
 $zz['fields'][2]['type'] = 'memo';
 $zz['fields'][2]['trim'] = true;
 $zz['fields'][2]['rows'] = 2;
+$zz['fields'][2]['cols'] = 50;
 $zz['fields'][2]['geojson'] = 'title';
 $zz['fields'][2]['export_no_html'] = true;
 $zz['fields'][2]['unless']['export_mode']['list_format'] = 'nl2br';
@@ -109,7 +110,7 @@ foreach ($categories as $category) {
 	$zz['fields'][$no]['max_records'] = !empty($parameters['max_records']) ? $parameters['max_records'] : 1;
 	$zz['fields'][$no]['sql'] .= sprintf(' WHERE /*_PREFIX_*/contactdetails.provider_category_id = %d', $category['category_id']);
 	$zz['fields'][$no]['fields'][2]['type'] = 'foreign_key';
-	if (!empty($parameters['type'])) {
+	if (!empty($parameters['type']) AND in_array($parameters['type'], ['mail', 'url'])) {
 		$zz['fields'][$no]['fields'][3]['type'] = $parameters['type'];
 	}
 	$zz['fields'][$no]['fields'][4]['type'] = 'hidden';
