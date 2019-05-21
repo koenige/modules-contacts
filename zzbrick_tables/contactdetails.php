@@ -41,6 +41,7 @@ $zz_sub['fields'][4]['sql'] = sprintf('SELECT category_id, category
 	$zz_setting['category']['provider']
 );
 $zz_sub['fields'][4]['display_field'] = 'category';
+$zz_sub['fields'][4]['character_set'] = 'utf8';
 
 $zz_sub['fields'][20]['field_name'] = 'last_update';
 $zz_sub['fields'][20]['type'] = 'timestamp';
