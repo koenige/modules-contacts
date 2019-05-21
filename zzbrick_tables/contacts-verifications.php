@@ -33,6 +33,7 @@ $zz_sub['fields'][2]['if']['where']['hide_in_form'] = true;
 $zz_sub['fields'][2]['if']['where']['hide_in_list'] = true;
 $zz_sub['fields'][2]['if']['where']['list_append_next'] = false;
 $zz_sub['fields'][2]['class'] = 'block480a';
+$zz_sub['fields'][2]['character_set'] = 'utf8';
 
 $zz_sub['fields'][13]['title'] = 'Confirmed Mail';
 $zz_sub['fields'][13]['field_name'] = 'confirmed_mail';
