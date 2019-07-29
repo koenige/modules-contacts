@@ -97,7 +97,7 @@ $sql = sprintf($sql, $zz_setting['category']['provider']);
 $categories = wrap_db_fetch($sql, 'category_id');
 
 require __DIR__.'/contactdetails.php';
-$no = 10;
+$no = 30;
 
 foreach ($categories as $category) {
 	$parameters = [];
