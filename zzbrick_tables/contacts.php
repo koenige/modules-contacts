@@ -133,7 +133,7 @@ foreach ($categories as $category) {
 	$zz['fields'][$no]['unless']['export_mode']['subselect']['field_suffix'][0] = ':</em>';
 	$zz['fields'][$no]['if']['export_mode']['subselect']['concat_rows'] = "\r";
 	$zz['fields'][$no]['export_no_html'] = true;
-	if ($no - 9 < count($categories)) {
+	if ($no - 29 < count($categories)) {
 		$zz['fields'][$no]['unless']['export_mode']['list_append_next'] = true;
 	}
 	$no++;
