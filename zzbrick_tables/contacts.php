@@ -56,8 +56,8 @@ $zz['fields'][4]['if']['where']['hide_in_form'] = true;
 $zz['fields'][4]['if']['where']['hide_in_list'] = true;
 $zz['fields'][4]['display_field'] = 'category';
 $zz['fields'][4]['geojson'] = 'category';
-$categories = wrap_db_fetch($zz['fields'][4]['sql'], 'category_id');
-if (count($categories) === 1) $zz['fields'][4]['hide_in_list'] = true;
+$contact_categories = wrap_db_fetch($zz['fields'][4]['sql'], 'category_id');
+if (count($contact_categories) === 1) $zz['fields'][4]['hide_in_list'] = true;
 
 if (file_exists($file = $zz_conf['form_scripts'].'/addresses.php')) {
 	require $file;
@@ -89,17 +89,19 @@ $zz['fields'][5]['unless']['export_mode']['list_append_next'] = true;
 $zz['fields'][5]['export_no_html'] = true;
 $zz['fields'][5]['if']['export_mode']['subselect']['concat_rows'] = "\r\r";
 
-$sql = 'SELECT category_id, category, parameters 
-	FROM categories
-	WHERE main_category_id = %d
-	ORDER BY sequence, path';
-$sql = sprintf($sql, $zz_setting['category']['provider']);
-$categories = wrap_db_fetch($sql, 'category_id');
+if (empty($contactdetails)) {
+	$sql = 'SELECT category_id, category, parameters 
+		FROM categories
+		WHERE main_category_id = %d
+		ORDER BY sequence, path';
+	$sql = sprintf($sql, $zz_setting['category']['provider']);
+	$contactdetails = wrap_db_fetch($sql, 'category_id');
+}
 
 require __DIR__.'/contactdetails.php';
 $no = 30;
 
-foreach ($categories as $category) {
+foreach ($contactdetails as $category) {
 	$parameters = [];
 	parse_str($category['parameters'], $parameters);
 	$zz['fields'][$no] = $zz_sub;
@@ -110,7 +112,7 @@ foreach ($categories as $category) {
 	$zz['fields'][$no]['max_records'] = !empty($parameters['max_records']) ? $parameters['max_records'] : 1;
 	$zz['fields'][$no]['sql'] .= sprintf(' WHERE /*_PREFIX_*/contactdetails.provider_category_id = %d', $category['category_id']);
 	$zz['fields'][$no]['fields'][2]['type'] = 'foreign_key';
-	if (!empty($parameters['type']) AND in_array($parameters['type'], ['mail', 'url'])) {
+	if (!empty($parameters['type']) AND in_array($parameters['type'], ['mail', 'url', 'phone'])) {
 		$zz['fields'][$no]['fields'][3]['type'] = $parameters['type'];
 	}
 	$zz['fields'][$no]['fields'][4]['type'] = 'hidden';
@@ -133,7 +135,7 @@ foreach ($categories as $category) {
 	$zz['fields'][$no]['unless']['export_mode']['subselect']['field_suffix'][0] = ':</em>';
 	$zz['fields'][$no]['if']['export_mode']['subselect']['concat_rows'] = "\r";
 	$zz['fields'][$no]['export_no_html'] = true;
-	if ($no - 29 < count($categories)) {
+	if ($no - 29 < count($contactdetails)) {
 		$zz['fields'][$no]['unless']['export_mode']['list_append_next'] = true;
 	}
 	$no++;
