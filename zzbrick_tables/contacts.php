@@ -25,6 +25,7 @@ $zz['fields'][2]['type'] = 'memo';
 $zz['fields'][2]['trim'] = true;
 $zz['fields'][2]['rows'] = 2;
 $zz['fields'][2]['cols'] = 50;
+$zz['fields'][2]['kml'] = 'title';
 $zz['fields'][2]['geojson'] = 'title';
 $zz['fields'][2]['export_no_html'] = true;
 $zz['fields'][2]['unless']['export_mode']['list_format'] = 'nl2br';
