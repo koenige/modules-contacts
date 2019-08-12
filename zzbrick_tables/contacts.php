@@ -59,13 +59,7 @@ $zz['fields'][4]['geojson'] = 'category';
 $contact_categories = wrap_db_fetch($zz['fields'][4]['sql'], 'category_id');
 if (count($contact_categories) === 1) $zz['fields'][4]['hide_in_list'] = true;
 
-if (file_exists($file = $zz_conf['form_scripts'].'/addresses.php')) {
-	require $file;
-} else {
-	require __DIR__.'/addresses.php';
-}
-$zz['fields'][5] = $zz_sub;
-unset($zz_sub);
+$zz['fields'][5] = zzform_include_table('addresses');
 $zz['fields'][5]['title'] = 'Address';
 $zz['fields'][5]['type'] = 'subtable';
 $zz['fields'][5]['min_records'] = 0;
