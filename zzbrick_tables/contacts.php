@@ -89,7 +89,7 @@ $zz['fields'][5]['unless']['export_mode']['list_append_next'] = true;
 $zz['fields'][5]['export_no_html'] = true;
 $zz['fields'][5]['if']['export_mode']['subselect']['concat_rows'] = "\r\r";
 
-if (empty($contactdetails)) {
+if (!isset($contactdetails)) {
 	$sql = 'SELECT category_id, category, parameters 
 		FROM categories
 		WHERE main_category_id = %d
@@ -100,7 +100,6 @@ if (empty($contactdetails)) {
 
 require __DIR__.'/contactdetails.php';
 $no = 30;
-
 foreach ($contactdetails as $category) {
 	$parameters = [];
 	parse_str($category['parameters'], $parameters);
