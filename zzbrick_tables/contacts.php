@@ -20,6 +20,8 @@ $zz['fields'][1]['field_name'] = 'contact_id';
 $zz['fields'][1]['type'] = 'id';
 $zz['fields'][1]['geojson'] = 'id';
 
+$zz['fields'][98] = []; // image
+
 $zz['fields'][2]['field_name'] = 'contact';
 $zz['fields'][2]['type'] = 'memo';
 $zz['fields'][2]['trim'] = true;
@@ -31,6 +33,10 @@ $zz['fields'][2]['export_no_html'] = true;
 $zz['fields'][2]['unless']['export_mode']['list_format'] = 'nl2br';
 $zz['fields'][2]['merge_equal'] = true;
 $zz['fields'][2]['add_details_destination'] = true;
+
+$zz['fields'][10] = []; // contact_short;
+
+$zz['fields'][11] = []; // contact_abbr
 
 $zz['fields'][9] = []; // persons
 
@@ -59,6 +65,7 @@ $zz['fields'][4]['display_field'] = 'category';
 $zz['fields'][4]['geojson'] = 'category';
 $contact_categories = wrap_db_fetch($zz['fields'][4]['sql'], 'category_id');
 if (count($contact_categories) === 1) $zz['fields'][4]['hide_in_list'] = true;
+$zz['fields'][4]['exclude_from_search'] = true;
 
 $zz['fields'][5] = zzform_include_table('addresses');
 $zz['fields'][5]['title'] = 'Address';
@@ -144,6 +151,12 @@ $zz['fields'][8]['exclude_from_search'] = true;
 $zz['fields'][8]['hide_in_form'] = true;
 $zz['fields'][8]['unless']['export_mode']['hide_in_list'] = true;
 $zz['fields'][8]['geojson'] = 'latitude/longitude';
+
+$zz['fields'][12] = [];  // description
+
+$zz['fields'][13] = [];  // remarks
+
+$zz['fields'][14] = [];  // published
 
 $zz['fields'][99]['field_name'] = 'last_update';
 $zz['fields'][99]['type'] = 'timestamp';
