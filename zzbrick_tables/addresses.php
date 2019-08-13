@@ -26,6 +26,7 @@ $zz_sub['fields'][2]['sql'] = 'SELECT contact_id, contact, identifier
 	FROM /*_PREFIX_*/contacts
 	ORDER BY identifier';
 $zz_sub['fields'][2]['display_field'] = 'contact';
+$zz_sub['fields'][2]['sql_character_set'][1] = 'utf8';
 $zz_sub['fields'][2]['if']['where']['hide_in_form'] = true;
 $zz_sub['fields'][2]['if']['where']['hide_in_list'] = true;
 $zz_sub['fields'][2]['class'] = 'block480a';
@@ -94,6 +95,7 @@ $zz_sub['fields'][8]['kml'] = 'longitude';
 $zz_sub['fields'][8]['geojson'] = 'longitude';
 
 // @todo receive_mail yes/no
+$zz_sub['fields'][10] = [];
 
 $zz_sub['fields'][9]['title'] = 'Type';
 $zz_sub['fields'][9]['field_name'] = 'address_category_id';
@@ -104,6 +106,8 @@ $zz_sub['fields'][9]['display_field'] = 'address_type';
 $zz_sub['fields'][9]['search'] = '/*_PREFIX_*/categories.category';
 $zz_sub['fields'][9]['show_hierarchy'] = 'main_category_id';
 $zz_sub['fields'][9]['show_hierarchy_subtree'] = $zz_setting['category']['address'];
+$zz_sub['fields'][9]['def_val_ignore'] = true;
+$zz_sub['fields'][9]['class'] = 'hidden480';
 
 $zz_sub['fields'][20]['field_name'] = 'last_update';
 $zz_sub['fields'][20]['type'] = 'timestamp';
