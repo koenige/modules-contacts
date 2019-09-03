@@ -82,6 +82,18 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
+#: zzbrick_tables/contacts-contacts.php
+msgid "Relations of Contacts"
+msgstr ""
+
+#: zzbrick_tables/contacts-contacts.php
+msgid "Relation"
+msgstr ""
+
+#: zzbrick_tables/contacts-contacts.php
+msgid "Main Contact"
+msgstr ""
+
 #: zzbrick_tables/contacts-verifications.php
 msgid "Contact Verifications"
 msgstr ""

@@ -48,6 +48,23 @@ CREATE TABLE `contacts` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
+DROP TABLE IF EXISTS `contacts_contacts`;
+CREATE TABLE `contacts_contacts` (
+  `cc_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `contact_id` int(10) unsigned NOT NULL,
+  `main_contact_id` int(10) unsigned NOT NULL,
+  `relation_category_id` int(10) unsigned NOT NULL,
+  `remarks` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `sequence` tinyint(3) unsigned NOT NULL DEFAULT '1',
+  `published` enum('yes','no') CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL DEFAULT 'no',
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`cc_id`),
+  UNIQUE KEY `contact_id` (`contact_id`,`main_contact_id`),
+  KEY `main_contact_id` (`main_contact_id`),
+  KEY `relation_category_id` (`relation_category_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
 DROP TABLE IF EXISTS `contacts_verifications`;
 CREATE TABLE `contacts_verifications` (
   `cv_id` int(10) unsigned NOT NULL AUTO_INCREMENT,

@@ -82,6 +82,18 @@ msgstr "Kategorie"
 msgid "Description"
 msgstr "Beschreibung"
 
+#: zzbrick_tables/contacts-contacts.php
+msgid "Relations of Contacts"
+msgstr "Beziehungen der Kontakte"
+
+#: zzbrick_tables/contacts-contacts.php
+msgid "Relation"
+msgstr "Beziehung"
+
+#: zzbrick_tables/contacts-contacts.php
+msgid "Main Contact"
+msgstr "Hauptkontakt"
+
 #: zzbrick_tables/contacts-verifications.php
 msgid "Contact Verifications"
 msgstr "Kontaktverifizierungen"
