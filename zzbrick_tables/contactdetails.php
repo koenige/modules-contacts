@@ -37,7 +37,7 @@ $zz_sub['fields'][4]['title'] = 'Type';
 $zz_sub['fields'][4]['field_name'] = 'provider_category_id';
 $zz_sub['fields'][4]['type'] = 'select';
 $zz_sub['fields'][4]['sql'] = sprintf('SELECT category_id, category
-	FROM categories
+	FROM /*_PREFIX_*/categories
 	WHERE main_category_id = %d',
 	$zz_setting['category']['provider']
 );
