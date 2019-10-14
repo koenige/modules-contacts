@@ -25,6 +25,7 @@ $zz_sub['fields'][2]['type'] = 'select';
 $zz_sub['fields'][2]['sql'] = 'SELECT contact_id, contact, identifier
 	FROM /*_PREFIX_*/contacts
 	ORDER BY identifier';
+$zz_sub['fields'][2]['character_set'] = 'utf8';
 $zz_sub['fields'][2]['display_field'] = 'contact';
 $zz_sub['fields'][2]['if']['where']['hide_in_form'] = true;
 $zz_sub['fields'][2]['if']['where']['hide_in_list'] = true;
