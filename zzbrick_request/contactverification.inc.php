@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/contact
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2015-2016, 2018 Gustaf Mossakowski
+ * @copyright Copyright © 2015-2016, 2018-2019 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -92,13 +92,17 @@ function mod_contacts_contactverification($params, $settings) {
 		return $page;
 	}
 
-	$sql = 'SELECT cv_id FROM contacts_verifications WHERE contact_id = %d';
+	$sql = 'SELECT cv_id, identifier
+		FROM contacts_verifications
+		LEFT JOIN contacts USING (contact_id)
+		WHERE contact_id = %d';
 	$sql = sprintf($sql, $data['contact_id']);
-	$cv_id = wrap_db_fetch($sql, '', 'single value');
+	$cv = wrap_db_fetch($sql);
 
 	require_once $zz_conf['dir'].'/zzform.php';
+	$zz_conf['user'] = $cv['identifier'];
 	$values = [];
-	$values['POST']['cv_id'] = $cv_id;
+	$values['POST']['cv_id'] = $cv['cv_id'];
 	if ($action === 'confirm') {
 		$values['action'] = 'update';
 		$values['POST']['verification_date'] = date('Y-m-d H:i:s');
