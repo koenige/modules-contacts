@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2019 Gustaf Mossakowski
+ * @copyright Copyright © 2019-2020 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -56,6 +56,7 @@ $zz_sub['fields'][3]['sql'] = 'SELECT contact_id, contact, identifier
 	ORDER BY identifier';
 $zz_sub['fields'][3]['display_field'] = 'main_contact';
 $zz_sub['fields'][3]['search'] = 'main_contacts.contact';
+$zz_sub['fields'][3]['character_set'] = 'utf8';
 
 $zz_sub['fields'][9]['field_name'] = 'remarks';
 $zz_sub['fields'][9]['type'] = 'memo';
