@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2015, 2018-2019 Gustaf Mossakowski
+ * @copyright Copyright © 2015, 2018-2020 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -96,6 +96,8 @@ $zz_sub['fields'][11]['hide_in_list'] = true;
 $zz_sub['fields'][11]['sql'] = 'SELECT language_id, language_en
 	FROM /*_PREFIX_*/languages
 	ORDER BY language_en';
+$zz_sub['fields'][11]['display_field'] = 'iso_639_1';
+$zz_sub['fields'][11]['exclude_from_search'] = true;
 
 $zz_sub['fields'][12]['field_name'] = 'mails_sent';
 $zz_sub['fields'][12]['type'] = 'number';
@@ -106,8 +108,10 @@ $zz_sub['fields'][12]['export'] = false;
 
 
 $zz_sub['sql'] = 'SELECT /*_PREFIX_*/contacts_verifications.*, contact
+		, /*_PREFIX_*/languages.iso_639_1
 	FROM /*_PREFIX_*/contacts_verifications
 	LEFT JOIN /*_PREFIX_*/contacts USING (contact_id)
+	LEFT JOIN /*_PREFIX_*/languages USING (language_id)
 ';
 $zz_sub['sqlorder'] = ' ORDER BY entry_date DESC, contact, identifier';
 
