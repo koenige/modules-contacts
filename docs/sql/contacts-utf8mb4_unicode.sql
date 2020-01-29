@@ -39,8 +39,13 @@ DROP TABLE IF EXISTS `contacts`;
 CREATE TABLE `contacts` (
   `contact_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `contact` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `contact_short` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `contact_abbr` varchar(8) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `identifier` varchar(63) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci,
+  `remarks` text COLLATE utf8mb4_unicode_ci,
   `contact_category_id` int(10) unsigned NOT NULL,
+  `parameters` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`contact_id`),
   UNIQUE KEY `identifier` (`identifier`),
