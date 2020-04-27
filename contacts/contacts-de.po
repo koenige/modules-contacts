@@ -5,7 +5,7 @@
 # http://www.zugzwang.org/modules/default
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2015-2016, 2018-2019 Gustaf Mossakowski
+# @copyright Copyright © 2015-2016, 2018-2020 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 msgid ""
@@ -161,6 +161,54 @@ msgstr "Kontaktdaten"
 #: zzbrick_tables/contactdetails.php
 msgid "Identification"
 msgstr "Identifikation"
+
+#: zzbrick_tables/persons.php
+msgid "Persons"
+msgstr "Personen"
+
+#: zzbrick_tables/persons.php
+msgid "Title (prefix)"
+msgstr "Titel (Präfix)"
+
+#: zzbrick_tables/persons.php
+msgid "First name"
+msgstr "Vorname"
+
+#: zzbrick_tables/persons.php
+msgid "Particle"
+msgstr "Namenspartikel"
+
+#: zzbrick_tables/persons.php
+msgid "Last name"
+msgstr "Nachname"
+
+#: zzbrick_tables/persons.php
+msgid "Title (suffix)"
+msgstr "Titel (Suffix)"
+
+#: zzbrick_tables/persons.php
+msgid "Sex"
+msgstr "Geschlecht"
+
+#: zzbrick_tables/persons.php
+msgid "female"
+msgstr "weiblich"
+
+#: zzbrick_tables/persons.php
+msgid "male"
+msgstr "männlich"
+
+#: zzbrick_tables/persons.php
+msgid "diverse"
+msgstr "divers"
+
+#: zzbrick_tables/persons.php
+msgid "Birthday"
+msgstr "Geburtstag"
+
+#: zzbrick_tables/persons.php
+msgid "Nationality"
+msgstr "Nationalität"
 
 #: zzbrick_request/contactverification.inc.php
 msgid "Confirm Registration"

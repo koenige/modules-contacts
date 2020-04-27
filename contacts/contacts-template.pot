@@ -5,7 +5,7 @@
 # http://www.zugzwang.org/modules/default
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2019 Gustaf Mossakowski
+# @copyright Copyright © 2019-2020 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 msgid ""
@@ -160,6 +160,54 @@ msgstr ""
 
 #: zzbrick_tables/contactdetails.php
 msgid "Identification"
+msgstr ""
+
+#: zzbrick_tables/persons.php
+msgid "Persons"
+msgstr ""
+
+#: zzbrick_tables/persons.php
+msgid "Title (prefix)"
+msgstr ""
+
+#: zzbrick_tables/persons.php
+msgid "First name"
+msgstr ""
+
+#: zzbrick_tables/persons.php
+msgid "Particle"
+msgstr ""
+
+#: zzbrick_tables/persons.php
+msgid "Last name"
+msgstr ""
+
+#: zzbrick_tables/persons.php
+msgid "Title (suffix)"
+msgstr ""
+
+#: zzbrick_tables/persons.php
+msgid "Sex"
+msgstr ""
+
+#: zzbrick_tables/persons.php
+msgid "female"
+msgstr ""
+
+#: zzbrick_tables/persons.php
+msgid "male"
+msgstr ""
+
+#: zzbrick_tables/persons.php
+msgid "diverse"
+msgstr ""
+
+#: zzbrick_tables/persons.php
+msgid "Birthday"
+msgstr ""
+
+#: zzbrick_tables/persons.php
+msgid "Nationality"
 msgstr ""
 
 #: zzbrick_request/contactverification.inc.php
