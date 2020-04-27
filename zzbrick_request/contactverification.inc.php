@@ -25,7 +25,7 @@ function mod_contacts_contactverification($params, $settings) {
 
 	$form = [];
 	$form['reminder'] = false;
-	$form['own_e_mail'] = !empty($settings['e_mail']) ? $settings['e_mail'] : $zz_setting['own_e_mail'];
+	$form['own_e_mail'] = !empty($settings['e_mail']) ? $settings['e_mail'] : wrap_get_setting('own_e_mail');
 	$form['category'] = !empty($settings['category']) ? $settings['category'] : 'Registration';
 	if (!empty($settings['path'])) {
 		$form['action'] = $settings['path'];
