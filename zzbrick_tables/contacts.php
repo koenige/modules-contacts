@@ -91,18 +91,18 @@ $zz['fields'][5]['unless']['export_mode']['list_append_next'] = true;
 $zz['fields'][5]['export_no_html'] = true;
 $zz['fields'][5]['if']['export_mode']['subselect']['concat_rows'] = "\r\r";
 
-if (!isset($contactdetails)) {
+if (!isset($values['contactdetails'])) {
 	$sql = 'SELECT category_id, category, parameters 
 		FROM categories
 		WHERE main_category_id = %d
 		ORDER BY sequence, path';
 	$sql = sprintf($sql, $zz_setting['category']['provider']);
-	$contactdetails = wrap_db_fetch($sql, 'category_id');
+	$values['contactdetails'] = wrap_db_fetch($sql, 'category_id');
 }
 
 require __DIR__.'/contactdetails.php';
 $no = 30;
-foreach ($contactdetails as $category) {
+foreach ($values['contactdetails'] as $category) {
 	$parameters = [];
 	parse_str($category['parameters'], $parameters);
 	$zz['fields'][$no] = $zz_sub;
@@ -136,7 +136,7 @@ foreach ($contactdetails as $category) {
 	$zz['fields'][$no]['unless']['export_mode']['subselect']['field_suffix'][0] = ':</em>';
 	$zz['fields'][$no]['if']['export_mode']['subselect']['concat_rows'] = "\r";
 	$zz['fields'][$no]['export_no_html'] = true;
-	if ($no - 29 < count($contactdetails)) {
+	if ($no - 29 < count($values['contactdetails'])) {
 		$zz['fields'][$no]['unless']['export_mode']['list_append_next'] = true;
 	}
 	$no++;
