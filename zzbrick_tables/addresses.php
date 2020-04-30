@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2015, 2017-2019 Gustaf Mossakowski
+ * @copyright Copyright © 2015, 2017-2020 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -105,7 +105,7 @@ $zz_sub['fields'][9]['sql'] = 'SELECT category_id, category, main_category_id
 $zz_sub['fields'][9]['display_field'] = 'address_type';
 $zz_sub['fields'][9]['search'] = '/*_PREFIX_*/categories.category';
 $zz_sub['fields'][9]['show_hierarchy'] = 'main_category_id';
-$zz_sub['fields'][9]['show_hierarchy_subtree'] = $zz_setting['category']['address'];
+$zz_sub['fields'][9]['show_hierarchy_subtree'] = wrap_category_id('address');
 $zz_sub['fields'][9]['def_val_ignore'] = true;
 $zz_sub['fields'][9]['class'] = 'hidden480';
 

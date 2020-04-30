@@ -56,7 +56,7 @@ $zz['fields'][4]['type'] = 'select';
 $zz['fields'][4]['sql'] = sprintf('SELECT category_id, category
 	FROM /*_PREFIX_*/categories
 	WHERE main_category_id = %d',
-	$zz_setting['category']['contact']
+	wrap_category_id('contact')
 );
 $zz['fields'][4]['key_field_name'] = 'category_id';
 $zz['fields'][4]['if']['where']['hide_in_form'] = true;
@@ -96,7 +96,7 @@ if (!isset($values['contactdetails'])) {
 		FROM categories
 		WHERE main_category_id = %d
 		ORDER BY sequence, path';
-	$sql = sprintf($sql, $zz_setting['category']['provider']);
+	$sql = sprintf($sql, wrap_category_id('provider'));
 	$values['contactdetails'] = wrap_db_fetch($sql, 'category_id');
 }
 

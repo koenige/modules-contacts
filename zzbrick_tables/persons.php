@@ -24,7 +24,7 @@ $zz['fields'][2]['type'] = 'select';
 $zz['fields'][2]['sql'] = sprintf('SELECT contact_id, contact
 	FROM contacts
 	WHERE contact_category_id = %d
-	ORDER BY contact', wrap_category_id('contacts/person'));
+	ORDER BY contact', wrap_category_id('contact/person'));
 $zz['fields'][2]['display_field'] = 'contact';
 $zz['fields'][2]['character_set'] = 'utf8';
 $zz['fields'][2]['hide_in_list'] = true;

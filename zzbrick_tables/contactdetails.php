@@ -40,7 +40,7 @@ $zz_sub['fields'][4]['type'] = 'select';
 $zz_sub['fields'][4]['sql'] = sprintf('SELECT category_id, category
 	FROM /*_PREFIX_*/categories
 	WHERE main_category_id = %d',
-	$zz_setting['category']['provider']
+	wrap_category_id('provider')
 );
 $zz_sub['fields'][4]['display_field'] = 'category';
 $zz_sub['fields'][4]['character_set'] = 'utf8';
