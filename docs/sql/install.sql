@@ -35,6 +35,14 @@ CREATE TABLE `addresses` (
   KEY `address_category_id` (`address_category_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'contacts', 'contact_id', (SELECT DATABASE()), 'addresses', 'address_id', 'contact_id', 'delete');
+INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'countries', 'country_id', (SELECT DATABASE()), 'addresses', 'address_id', 'country_id', 'no-delete');
+INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'categories', 'category_id', (SELECT DATABASE()), 'addresses', 'address_id', 'address_category_id', 'no-delete');
+
+INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Addresses', NULL, NULL, 'addresses', 'alias=address', NULL, NOW());
+INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Home', NULL, (SELECT category_id FROM categories c WHERE path = 'addresses'), 'addresses/home', NULL, NULL, NOW());
+INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Work', NULL, (SELECT category_id FROM categories c WHERE path = 'addresses'), 'addresses/work', NULL, NULL, NOW());
+
 
 DROP TABLE IF EXISTS `contactdetails`;
 CREATE TABLE `contactdetails` (
@@ -47,6 +55,15 @@ CREATE TABLE `contactdetails` (
   KEY `contact_id` (`contact_id`),
   KEY `provider_category_id` (`provider_category_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'contacts', 'contact_id', (SELECT DATABASE()), 'contactdetails', 'contactdetail_id', 'contact_id', 'delete');
+INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'categories', 'category_id', (SELECT DATABASE()), 'contactdetails', 'contactdetail_id', 'provider_category_id', 'no-delete');
+
+INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Provider', NULL, NULL, 'provider', NULL, NULL, NOW());
+INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('E-Mail', NULL, (SELECT category_id FROM categories c WHERE path = 'provider'), 'provider/e-mail', 'type=mail', NULL, NOW());
+INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Website', NULL, (SELECT category_id FROM categories c WHERE path = 'provider'), 'provider/website', 'type=url', NULL, NOW());
+INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Phone', NULL, (SELECT category_id FROM categories c WHERE path = 'provider'), 'provider/phone', 'type=phone', NULL, NOW());
+INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Fax', NULL, (SELECT category_id FROM categories c WHERE path = 'provider'), 'provider/fax', 'type=phone', NULL, NOW());
 
 
 DROP TABLE IF EXISTS `contacts`;
@@ -67,6 +84,12 @@ CREATE TABLE `contacts` (
   KEY `contact_category_id` (`contact_category_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'categories', 'category_id', (SELECT DATABASE()), 'contacts', 'contact_id', 'contact_category_id', 'no-delete');
+
+INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Contact', NULL, NULL, 'contact', NULL, NULL, NOW());
+INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Organisation', NULL, (SELECT category_id FROM categories c WHERE path = 'contact'), 'contact/organisation', NULL, NULL, NOW());
+INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Person', NULL, (SELECT category_id FROM categories c WHERE path = 'contact'), 'contact/person', NULL, NULL, NOW());
+
 
 DROP TABLE IF EXISTS `contacts_contacts`;
 CREATE TABLE `contacts_contacts` (
@@ -83,6 +106,11 @@ CREATE TABLE `contacts_contacts` (
   KEY `main_contact_id` (`main_contact_id`),
   KEY `relation_category_id` (`relation_category_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'contacts', 'contact_id', (SELECT DATABASE()), 'contacts_contacts', 'cc_id', 'contact_id', 'delete');
+INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'contacts', 'contact_id', (SELECT DATABASE()), 'contacts_contacts', 'cc_id', 'main_contact_id', 'no-delete');
+INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'categories', 'category_id', (SELECT DATABASE()), 'contacts_contacts', 'cc_id', 'contact_category_id', 'no-delete');
+
 
 DROP TABLE IF EXISTS `contacts_verifications`;
 CREATE TABLE `contacts_verifications` (
@@ -104,6 +132,7 @@ CREATE TABLE `contacts_verifications` (
   KEY `language_id` (`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+
 DROP TABLE IF EXISTS `persons`;
 CREATE TABLE `persons` (
   `person_id` int unsigned NOT NULL AUTO_INCREMENT,
@@ -122,16 +151,5 @@ CREATE TABLE `persons` (
   KEY `nationality_country_id` (`nationality_country_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Contact', NULL, NULL, 'contact', NULL, NULL, NOW());
-INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Organisation', NULL, (SELECT category_id FROM categories c WHERE path = 'contact'), 'contact/organisation', NULL, NULL, NOW());
-INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Person', NULL, (SELECT category_id FROM categories c WHERE path = 'contact'), 'contact/person', NULL, NULL, NOW());
-
-INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Provider', NULL, NULL, 'provider', NULL, NULL, NOW());
-INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('E-Mail', NULL, (SELECT category_id FROM categories c WHERE path = 'provider'), 'provider/e-mail', 'type=mail', NULL, NOW());
-INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Website', NULL, (SELECT category_id FROM categories c WHERE path = 'provider'), 'provider/website', 'type=url', NULL, NOW());
-INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Phone', NULL, (SELECT category_id FROM categories c WHERE path = 'provider'), 'provider/phone', 'type=phone', NULL, NOW());
-INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Fax', NULL, (SELECT category_id FROM categories c WHERE path = 'provider'), 'provider/fax', 'type=phone', NULL, NOW());
-
-INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Addresses', NULL, NULL, 'addresses', 'alias=address', NULL, NOW());
-INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Home', NULL, (SELECT category_id FROM categories c WHERE path = 'addresses'), 'addresses/home', NULL, NULL, NOW());
-INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Work', NULL, (SELECT category_id FROM categories c WHERE path = 'addresses'), 'addresses/work', NULL, NULL, NOW());
+INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'contacts', 'contact_id', (SELECT DATABASE()), 'persons', 'person_id', 'contact_id', 'delete');
+INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'countries', 'country_id', (SELECT DATABASE()), 'persons', 'person_id', 'nationality_country_id', 'no-delete');
