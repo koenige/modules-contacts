@@ -10,12 +10,12 @@ Managing contacts (persons and organisations) in Zugzwang Project CMS.
 
 * Install as a Module in folder `_inc/modules`
 * Add required categories in categories table of default module
-* Set category_ids for 
+* Set category_ids via `path` = category or parameter `alias=category` for 
 
-    $zz_setting['category']['address'] = n;
-    $zz_setting['category']['contact'] = n;
-    $zz_setting['category']['provider'] = n;
-    $zz_setting['category']['relation'] = n;
+    'address' = list of different address types (home, work)
+    'contact' = list of different contact types (person, organisation)
+    'provider' = list of different contact providers (e-mail, website, phone)
+    'relation' = list of contact relations (member)
 
 * Database files found in `docs/sql` folder
 
