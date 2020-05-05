@@ -41,7 +41,7 @@ $zz_sub['fields'][4]['type'] = 'select';
 $zz_sub['fields'][4]['sql'] = sprintf('SELECT category_id, category
 	FROM /*_PREFIX_*/categories
 	WHERE main_category_id = %d',
-	$zz_setting['category']['relation']
+	wrap_category_id('relation')
 );
 $zz_sub['fields'][4]['sql_translate'] = ['category_id' => 'categories'];
 $zz_sub['fields'][4]['display_field'] = 'category';
