@@ -34,6 +34,7 @@ $zz['fields'][2]['unless']['export_mode']['list_format'] = 'nl2br';
 $zz['fields'][2]['merge_equal'] = true;
 $zz['fields'][2]['add_details_destination'] = true;
 
+$zz['fields'][10]['title'] = 'Short';
 $zz['fields'][10]['field_name'] = 'contact_short';
 $zz['fields'][10]['class'] = 'hidden480';
 $zz['fields'][10]['hide_in_list_if_empty'] = true;
@@ -106,41 +107,61 @@ if (!isset($values['contactdetails'])) {
 require __DIR__.'/contactdetails.php';
 $no = 30;
 foreach ($values['contactdetails'] as $category) {
-	$parameters = [];
-	parse_str($category['parameters'], $parameters);
+	if (empty($category['parameters']))
+		$category['parameters'] = [];
+	elseif (!is_array($category['parameters']))
+		parse_str($category['parameters'], $category['parameters']);
+	
 	$zz['fields'][$no] = $zz_sub;
+	$zz['fields'][$no]['class'] = 'contactdetails';
 	$zz['fields'][$no]['table_name'] = 'contactdetails_'.$category['category_id'];
 	$zz['fields'][$no]['title'] = $category['category'];
 	$zz['fields'][$no]['type'] = 'subtable';
-	$zz['fields'][$no]['min_records'] = 1;
-	$zz['fields'][$no]['max_records'] = !empty($parameters['max_records']) ? $parameters['max_records'] : 1;
-	$zz['fields'][$no]['sql'] .= sprintf(' WHERE /*_PREFIX_*/contactdetails.provider_category_id = %d', $category['category_id']);
+	$zz['fields'][$no]['min_records'] = !empty($category['parameters']['min_records']) ? $category['parameters']['min_records'] : 1;
+	$zz['fields'][$no]['max_records'] = !empty($category['parameters']['max_records']) ? $category['parameters']['max_records'] : 1;
 	$zz['fields'][$no]['fields'][2]['type'] = 'foreign_key';
-	if (!empty($parameters['type']) AND in_array($parameters['type'], ['mail', 'url', 'phone'])) {
-		$zz['fields'][$no]['fields'][3]['type'] = $parameters['type'];
+	if (!empty($category['parameters']['type']) AND in_array($category['parameters']['type'], ['mail', 'url', 'phone'])) {
+		$zz['fields'][$no]['fields'][3]['type'] = $category['parameters']['type'];
 	}
-	if (!empty($parameters['explanation']))
-		$zz['fields'][$no]['fields'][3]['explanation'] = $parameters['explanation'];
-	$zz['fields'][$no]['fields'][4]['type'] = 'hidden';
-	$zz['fields'][$no]['fields'][4]['hide_in_form'] = true;
-	$zz['fields'][$no]['fields'][4]['value'] = $category['category_id'];
+	if (!empty($category['parameters']['explanation']))
+		$zz['fields'][$no]['fields'][3]['explanation'] = $category['parameters']['explanation'];
+	if (empty($category['categories']))
+		$category['categories'][$category['category_id']] = $category;
+	$zz['fields'][$no]['sql'] .= sprintf(
+		' WHERE /*_PREFIX_*/contactdetails.provider_category_id IN (%s)'
+		, implode(',', array_keys($category['categories']))
+	);
+	if (count($category['categories']) === 1) {
+		$zz['fields'][$no]['fields'][4]['type'] = 'hidden';
+		$zz['fields'][$no]['fields'][4]['hide_in_form'] = true;
+		$zz['fields'][$no]['fields'][4]['value'] = $category['category_id'];
+	} else {
+		$zz['fields'][$no]['fields'][4]['sql'] .= sprintf(
+			' AND category_id IN (%s)'
+			, implode(',', array_keys($category['categories']))
+		);
+		$zz['fields'][$no]['fields'][4]['default'] = key($category['categories']);
+	}
 	$zz['fields'][$no]['fields'][4]['def_val_ignore'] = true;
+	$zz['fields'][$no]['fields'][4]['for_action_ignore'] = true;
 	$zz['fields'][$no]['form_display'] = 'lines';
 	$zz['fields'][$no]['subselect']['sql'] = sprintf('SELECT category, identification, contact_id
 		FROM /*_PREFIX_*/contactdetails
 		LEFT JOIN /*_PREFIX_*/categories
 			ON /*_PREFIX_*/contactdetails.provider_category_id = /*_PREFIX_*/categories.category_id
-		WHERE /*_PREFIX_*/contactdetails.provider_category_id = %d', $category['category_id']);
+		WHERE /*_PREFIX_*/contactdetails.provider_category_id IN (%s)', implode(',', array_keys($category['categories'])));
 	$zz['fields'][$no]['if']['export_mode']['subselect']['sql'] = sprintf('SELECT identification, contact_id
 		FROM /*_PREFIX_*/contactdetails
 		LEFT JOIN /*_PREFIX_*/categories
 			ON /*_PREFIX_*/contactdetails.provider_category_id = /*_PREFIX_*/categories.category_id
-		WHERE /*_PREFIX_*/contactdetails.provider_category_id = %d', $category['category_id']);
+		WHERE /*_PREFIX_*/contactdetails.provider_category_id IN (%s)', implode(',', array_keys($category['categories'])));
 	$zz['fields'][$no]['subselect']['concat_fields'] = ' ';
 	$zz['fields'][$no]['unless']['export_mode']['subselect']['field_prefix'][0] = '<em>';
 	$zz['fields'][$no]['unless']['export_mode']['subselect']['field_suffix'][0] = ':</em>';
 	$zz['fields'][$no]['if']['export_mode']['subselect']['concat_rows'] = "\r";
 	$zz['fields'][$no]['export_no_html'] = true;
+	if (!empty($category['field_sequence']))
+		$zz['fields'][$no]['field_sequence'] = $category['field_sequence'];
 	if ($no - 29 < count($values['contactdetails'])) {
 		$zz['fields'][$no]['unless']['export_mode']['list_append_next'] = true;
 	}
