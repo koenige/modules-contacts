@@ -82,6 +82,14 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
+#: zzbrick_tables/contacts.php
+msgid "Short"
+msgstr ""
+
+#: zzbrick_tables/contacts.php
+msgid "Publish on website?"
+msgstr ""
+
 #: zzbrick_tables/contacts-contacts.php
 msgid "Relations of Contacts"
 msgstr ""
@@ -208,6 +216,26 @@ msgstr ""
 
 #: zzbrick_tables/persons.php
 msgid "Nationality"
+msgstr ""
+
+#: zzbrick_tables/persons.php
+msgid "Change identifier?"
+msgstr ""
+
+#: zzbrick_tables/persons.php
+msgid "To change the identifier. Important: this is the login username, please inform the person of the change."
+msgstr ""
+
+#: zzbrick_tables/persons.php
+msgid "Phone"
+msgstr ""
+
+#: zzbrick_tables/persons.php
+msgid "About me"
+msgstr ""
+
+#: zzbrick_tables/persons.php
+msgid "A few lines about the person."
 msgstr ""
 
 #: zzbrick_request/contactverification.inc.php
