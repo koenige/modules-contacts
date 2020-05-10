@@ -119,6 +119,8 @@ foreach ($values['contactdetails'] as $category) {
 	if (!empty($parameters['type']) AND in_array($parameters['type'], ['mail', 'url', 'phone'])) {
 		$zz['fields'][$no]['fields'][3]['type'] = $parameters['type'];
 	}
+	if (!empty($parameters['explanation']))
+		$zz['fields'][$no]['fields'][3]['explanation'] = $parameters['explanation'];
 	$zz['fields'][$no]['fields'][4]['type'] = 'hidden';
 	$zz['fields'][$no]['fields'][4]['hide_in_form'] = true;
 	$zz['fields'][$no]['fields'][4]['value'] = $category['category_id'];
