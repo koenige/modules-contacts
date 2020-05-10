@@ -10,12 +10,6 @@
  */
 
 
-SET NAMES utf8mb4;
-SET time_zone = '+00:00';
-SET foreign_key_checks = 0;
-SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
-
-DROP TABLE IF EXISTS `addresses`;
 CREATE TABLE `addresses` (
   `address_id` int unsigned NOT NULL AUTO_INCREMENT,
   `contact_id` int unsigned NOT NULL,
@@ -44,7 +38,6 @@ INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `
 INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Work', NULL, (SELECT category_id FROM categories c WHERE path = 'addresses'), 'addresses/work', NULL, NULL, NOW());
 
 
-DROP TABLE IF EXISTS `contactdetails`;
 CREATE TABLE `contactdetails` (
   `contactdetail_id` int unsigned NOT NULL AUTO_INCREMENT,
   `contact_id` int unsigned NOT NULL,
@@ -66,7 +59,6 @@ INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `
 INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Fax', NULL, (SELECT category_id FROM categories c WHERE path = 'provider'), 'provider/fax', 'type=phone', NULL, NOW());
 
 
-DROP TABLE IF EXISTS `contacts`;
 CREATE TABLE `contacts` (
   `contact_id` int unsigned NOT NULL AUTO_INCREMENT,
   `contact` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -112,7 +104,6 @@ INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`
 INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'categories', 'category_id', (SELECT DATABASE()), 'contacts_contacts', 'cc_id', 'contact_category_id', 'no-delete');
 
 
-DROP TABLE IF EXISTS `contacts_verifications`;
 CREATE TABLE `contacts_verifications` (
   `cv_id` int unsigned NOT NULL AUTO_INCREMENT,
   `contact_id` int unsigned NOT NULL,
@@ -133,7 +124,6 @@ CREATE TABLE `contacts_verifications` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
-DROP TABLE IF EXISTS `persons`;
 CREATE TABLE `persons` (
   `person_id` int unsigned NOT NULL AUTO_INCREMENT,
   `contact_id` int unsigned NOT NULL,
