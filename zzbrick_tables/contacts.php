@@ -34,7 +34,9 @@ $zz['fields'][2]['unless']['export_mode']['list_format'] = 'nl2br';
 $zz['fields'][2]['merge_equal'] = true;
 $zz['fields'][2]['add_details_destination'] = true;
 
-$zz['fields'][10] = []; // contact_short;
+$zz['fields'][10]['field_name'] = 'contact_short';
+$zz['fields'][10]['class'] = 'hidden480';
+$zz['fields'][10]['hide_in_list_if_empty'] = true;
 
 $zz['fields'][11] = []; // contact_abbr
 
@@ -42,8 +44,9 @@ $zz['fields'][9] = []; // persons
 
 $zz['fields'][3]['field_name'] = 'identifier';
 $zz['fields'][3]['type'] = 'identifier';
-$zz['fields'][3]['fields'] = ['contact'];
+$zz['fields'][3]['fields'] = ['contact_short', 'contact'];
 $zz['fields'][3]['conf_identifier']['exists'] = '-';
+$zz['fields'][3]['conf_identifier']['ignore_this_if']['contact'] = 'contact_short';
 $zz['fields'][3]['hide_in_list'] = true;
 $zz['fields'][3]['geojson'] = 'identifier';
 $zz['fields'][3]['merge_ignore'] = true;
@@ -152,16 +155,24 @@ $zz['fields'][8]['hide_in_form'] = true;
 $zz['fields'][8]['unless']['export_mode']['hide_in_list'] = true;
 $zz['fields'][8]['geojson'] = 'latitude/longitude';
 
-$zz['fields'][12] = [];  // description
+$zz['fields'][12]['field_name'] = 'description';
+$zz['fields'][12]['type'] = 'memo';
+$zz['fields'][12]['hide_in_list'] = true;
+$zz['fields'][12]['format'] = 'markdown';
 
 $zz['fields'][13] = [];  // remarks
 
-$zz['fields'][14] = [];  // published
+$zz['fields'][14]['title_tab'] = 'Pub.';
+$zz['fields'][14]['field_name'] = 'published';
+$zz['fields'][14]['type'] = 'select';
+$zz['fields'][14]['enum'] = ['yes', 'no'];
+$zz['fields'][14]['default'] = 'yes';
+$zz['fields'][14]['class'] = 'hidden480';
+$zz['fields'][14]['explanation'] = 'Publish on website?';
 
-$zz['fields'][15] = [];  // parameters
-//$zz['fields'][15]['field_name'] = 'parameters';
-//$zz['fields'][15]['type'] = 'parameter';
-//$zz['fields'][15]['hide_in_list'] = true;
+$zz['fields'][15]['field_name'] = 'parameters';
+$zz['fields'][15]['type'] = 'parameter';
+$zz['fields'][15]['hide_in_list'] = true;
 
 $zz['fields'][99]['field_name'] = 'last_update';
 $zz['fields'][99]['type'] = 'timestamp';
