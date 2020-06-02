@@ -64,7 +64,7 @@ CREATE TABLE `contacts` (
   `contact` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `contact_short` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `contact_abbr` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `identifier` varchar(80) CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL,
+  `identifier` varchar(80) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `remarks` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `contact_category_id` int unsigned NOT NULL,
