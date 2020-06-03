@@ -99,6 +99,7 @@ $zz_sub['fields'][10] = [];
 
 $zz_sub['fields'][9]['title'] = 'Type';
 $zz_sub['fields'][9]['field_name'] = 'address_category_id';
+$zz_sub['fields'][9]['key_field_name'] = 'category_id';
 $zz_sub['fields'][9]['type'] = 'select';
 $zz_sub['fields'][9]['sql'] = 'SELECT category_id, category, main_category_id
 	FROM categories ORDER BY sequence, category';
