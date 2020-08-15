@@ -83,7 +83,6 @@ INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `
 INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Person', NULL, (SELECT category_id FROM categories c WHERE path = 'contact'), 'contact/person', NULL, NULL, NOW());
 
 
-DROP TABLE IF EXISTS `contacts_contacts`;
 CREATE TABLE `contacts_contacts` (
   `cc_id` int unsigned NOT NULL AUTO_INCREMENT,
   `contact_id` int unsigned NOT NULL,
