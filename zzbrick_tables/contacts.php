@@ -185,6 +185,37 @@ $zz['fields'][12]['format'] = 'markdown';
 
 $zz['fields'][13] = [];  // remarks
 
+if (!isset($values['relations'])) {
+	$sql = 'SELECT category_id, category, parameters 
+		FROM categories
+		WHERE main_category_id = %d
+		ORDER BY sequence, path';
+	$sql = sprintf($sql, wrap_category_id('relation'));
+	$values['relations'] = wrap_db_fetch($sql, 'category_id');
+}
+
+$no = 60;
+foreach ($values['relations'] as $relation) {
+	$zz['fields'][$no] = zzform_include_table('contacts-contacts');
+	$zz['fields'][$no]['type'] = 'subtable';
+	$zz['fields'][$no]['form_display'] = 'lines';
+	$zz['fields'][$no]['title'] = $relation['category'];
+	$zz['fields'][$no]['fields'][2]['type'] = 'foreign_key';
+	// category
+	$zz['fields'][$no]['fields'][4]['type'] = 'hidden';
+	$zz['fields'][$no]['fields'][4]['type_detail'] = 'select';
+	$zz['fields'][$no]['fields'][4]['value'] = $relation['category_id'];
+	$zz['fields'][$no]['fields'][4]['hide_in_form'] = true;
+	// remarks
+	unset($zz['fields'][$no]['fields'][9]);
+	// published
+	$zz['fields'][$no]['fields'][10]['type'] = 'hidden';
+	$zz['fields'][$no]['fields'][10]['value'] = 'yes';
+	$zz['fields'][$no]['fields'][10]['hide_in_form'] = true;
+	
+	$no++;
+}
+
 $zz['fields'][14]['title_tab'] = 'Pub.';
 $zz['fields'][14]['field_name'] = 'published';
 $zz['fields'][14]['type'] = 'select';
