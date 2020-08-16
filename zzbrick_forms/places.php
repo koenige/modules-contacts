@@ -20,6 +20,14 @@ $sql = 'SELECT category_id, category, parameters
 $sql = sprintf($sql, wrap_category_id('provider'));
 $values['contactdetails'] = wrap_db_fetch($sql, 'category_id');
 
+$sql = 'SELECT category_id, category, parameters 
+	FROM categories
+	WHERE main_category_id = %d
+	AND parameters LIKE "%%&places=1%%"
+	ORDER BY sequence, path';
+$sql = sprintf($sql, wrap_category_id('relation'));
+$values['relations'] = wrap_db_fetch($sql, 'category_id');
+
 $zz = zzform_include_table('contacts', $values);
 $zz['title'] = 'Places';
 
@@ -44,6 +52,7 @@ $zz['fields'][5]['fields'][9]['sql'] = 'SELECT category_id, category, main_categ
 	FROM categories
 	WHERE parameters LIKE "%&places=1%"
 	ORDER BY sequence, category';
+unset($zz['fields'][5]['fields'][9]['default']);
 
 // published
 $zz['fields'][14]['type'] = 'hidden';
