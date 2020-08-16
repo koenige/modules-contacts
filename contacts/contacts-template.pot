@@ -22,6 +22,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.8.6\n"
 
+#: zzbrick_forms/organisers.php
+msgid "Organisers"
+msgstr ""
+
+#: zzbrick_forms/places.php
+msgid "Places"
+msgstr ""
+
 #: zzbrick_tables/addresses.php
 msgid "Addresses"
 msgstr ""

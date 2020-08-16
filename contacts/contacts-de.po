@@ -22,6 +22,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.8.12\n"
 
+#: zzbrick_forms/organisers.php
+msgid "Organisers"
+msgstr "Organisatoren"
+
+#: zzbrick_forms/places.php
+msgid "Places"
+msgstr "Orte"
+
 #: zzbrick_tables/addresses.php
 msgid "Addresses"
 msgstr "Adressen"
@@ -227,8 +235,8 @@ msgid ""
 "To change the identifier. Important: this is the login username, please "
 "inform the person of the change."
 msgstr ""
-"Um die Kennung zu ändern. Wichtig: Dies ist der Login-Benutzername. "
-"Bitte informieren Sie die Person über die Änderung."
+"Um die Kennung zu ändern. Wichtig: Dies ist der Login-Benutzername. Bitte "
+"informieren Sie die Person über die Änderung."
 
 #: zzbrick_tables/persons.php
 msgid "Phone"
