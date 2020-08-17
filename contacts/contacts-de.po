@@ -192,7 +192,7 @@ msgstr "Vorname"
 
 #: zzbrick_tables/persons.php
 msgid "Particle"
-msgstr "Namenspartikel"
+msgstr "Namenszusatz"
 
 #: zzbrick_tables/persons.php
 msgid "Last name"

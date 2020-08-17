@@ -22,6 +22,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.8.12\n"
 
+#: zzbrick_forms/organisers.php
+msgid "Organisers"
+msgstr ""
+
+#: zzbrick_forms/places.php
+msgid "Places"
+msgstr ""
+
 #: zzbrick_tables/addresses.php
 msgid "Addresses"
 msgstr "Adresy"
@@ -41,6 +49,10 @@ msgstr "Szer. geo."
 #: zzbrick_tables/addresses.php
 msgid "Longitude"
 msgstr "Dł. geo."
+
+#: zzbrick_tables/addresses.php
+msgid "Latitude / Longitude"
+msgstr ""
 
 #: zzbrick_tables/addresses.php
 msgid "Postcode"
@@ -65,6 +77,74 @@ msgstr "Łączność"
 #: zzbrick_tables/contacts.php
 msgid "Contact"
 msgstr "Kontakt"
+
+#: zzbrick_tables/contacts.php
+msgid "Identifier"
+msgstr ""
+
+#: zzbrick_tables/contacts.php
+msgid "Category"
+msgstr ""
+
+#: zzbrick_tables/contacts.php
+msgid "Description"
+msgstr ""
+
+#: zzbrick_tables/contacts.php
+msgid "Short"
+msgstr ""
+
+#: zzbrick_tables/contacts.php
+msgid "Publish on website?"
+msgstr ""
+
+#: zzbrick_tables/contacts-contacts.php
+msgid "Relations of Contacts"
+msgstr ""
+
+#: zzbrick_tables/contacts-contacts.php
+msgid "Relation"
+msgstr ""
+
+#: zzbrick_tables/contacts-contacts.php
+msgid "Main Contact"
+msgstr ""
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Contact Verifications"
+msgstr ""
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Confirmed Mail"
+msgstr ""
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Entry Date"
+msgstr ""
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Entry IP"
+msgstr ""
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Verification Date"
+msgstr ""
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Verification IP"
+msgstr ""
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Status"
+msgstr ""
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Language"
+msgstr ""
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Mails sent"
+msgstr ""
 
 #: zzbrick_tables/contacts-verifications.php
 msgid "unverified"
@@ -93,6 +173,80 @@ msgstr "usunięte"
 #: zzbrick_tables/contactdetails.php
 msgid "Contact Details"
 msgstr "Dane kontaktowe"
+
+#: zzbrick_tables/contactdetails.php
+msgid "Identification"
+msgstr ""
+
+#: zzbrick_tables/persons.php
+msgid "Persons"
+msgstr ""
+
+#: zzbrick_tables/persons.php
+msgid "Title (prefix)"
+msgstr ""
+
+#: zzbrick_tables/persons.php
+msgid "First name"
+msgstr "Imię"
+
+#: zzbrick_tables/persons.php
+msgid "Particle"
+msgstr ""
+
+#: zzbrick_tables/persons.php
+msgid "Last name"
+msgstr "Nazwisko"
+
+#: zzbrick_tables/persons.php
+msgid "Title (suffix)"
+msgstr ""
+
+#: zzbrick_tables/persons.php
+msgid "Sex"
+msgstr "Płeć"
+
+#: zzbrick_tables/persons.php
+msgid "female"
+msgstr ""
+
+#: zzbrick_tables/persons.php
+msgid "male"
+msgstr ""
+
+#: zzbrick_tables/persons.php
+msgid "diverse"
+msgstr ""
+
+#: zzbrick_tables/persons.php
+msgid "Birthday"
+msgstr ""
+
+#: zzbrick_tables/persons.php
+msgid "Nationality"
+msgstr ""
+
+#: zzbrick_tables/persons.php
+msgid "Change identifier?"
+msgstr ""
+
+#: zzbrick_tables/persons.php
+msgid ""
+"To change the identifier. Important: this is the login username, please "
+"inform the person of the change."
+msgstr ""
+
+#: zzbrick_tables/persons.php
+msgid "Phone"
+msgstr ""
+
+#: zzbrick_tables/persons.php
+msgid "About me"
+msgstr ""
+
+#: zzbrick_tables/persons.php
+msgid "A few lines about the person."
+msgstr ""
 
 #: zzbrick_request/contactverification.inc.php
 msgid "Confirm Registration"
