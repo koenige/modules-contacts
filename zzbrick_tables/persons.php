@@ -55,6 +55,12 @@ $zz['fields'][6]['list_prefix'] = ' ';
 $zz['fields'][6]['merge_equal'] = true;
 $zz['fields'][6]['field_sequence'] = 24;
 
+$zz['fields'][12]['field_name'] = 'birth_name';
+$zz['fields'][12]['explanation'] = 'if different from last name';
+$zz['fields'][12]['list_prefix'] = ' (born ';
+$zz['fields'][12]['list_suffix'] = ')';
+$zz['fields'][12]['field_sequence'] = 16;
+
 $zz['fields'][7]['title'] = 'Title (suffix)';
 $zz['fields'][7]['field_name'] = 'title_suffix';
 $zz['fields'][7]['hide_in_list'] = true;

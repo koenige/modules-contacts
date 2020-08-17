@@ -199,6 +199,14 @@ msgid "Last name"
 msgstr "Nazwisko"
 
 #: zzbrick_tables/persons.php
+msgid "Birth name"
+msgstr "Nazwisko rodowe"
+
+#: zzbrick_tables/persons.php
+msgid "if different from last name"
+msgstr "w przypadku zmiany nazwiska"
+
+#: zzbrick_tables/persons.php
 msgid "Title (suffix)"
 msgstr ""
 
