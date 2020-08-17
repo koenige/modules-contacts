@@ -219,8 +219,12 @@ msgid "diverse"
 msgstr "divers"
 
 #: zzbrick_tables/persons.php
-msgid "Birthday"
-msgstr "Geburtstag"
+msgid "Date of Birth"
+msgstr "Geburtsdatum"
+
+#: zzbrick_tables/persons.php
+msgid "Date of Death"
+msgstr "Sterbedatum"
 
 #: zzbrick_tables/persons.php
 msgid "Nationality"

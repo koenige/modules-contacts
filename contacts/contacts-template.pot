@@ -219,7 +219,11 @@ msgid "diverse"
 msgstr ""
 
 #: zzbrick_tables/persons.php
-msgid "Birthday"
+msgid "Date of Birth"
+msgstr ""
+
+#: zzbrick_tables/persons.php
+msgid "Date of Death"
 msgstr ""
 
 #: zzbrick_tables/persons.php

@@ -68,10 +68,16 @@ $zz['fields'][8]['hide_novalue'] = false;
 $zz['fields'][8]['hide_in_list'] = true;
 $zz['fields'][8]['field_sequence'] = 26;
 
-$zz['fields'][9]['field_name'] = 'birthday';
+$zz['fields'][9]['field_name'] = 'date_of_birth';
 $zz['fields'][9]['type'] = 'date';
 $zz['fields'][9]['hide_in_list'] = true;
 $zz['fields'][9]['field_sequence'] = 27;
+
+$zz['fields'][11]['field_name'] = 'date_of_death';
+$zz['fields'][11]['type'] = 'date';
+$zz['fields'][11]['hide_in_list'] = true;
+$zz['fields'][11]['hide_in_form'] = true;
+$zz['fields'][11]['field_sequence'] = 28;
 
 $zz['fields'][10]['title'] = 'Nationality';
 $zz['fields'][10]['field_name'] = 'nationality_country_id';
@@ -81,12 +87,12 @@ $zz['fields'][10]['sql'] = 'SELECT country_id, country_code, country
 	FROM /*_PREFIX_*/countries
 	ORDER BY country_code';
 $zz['fields'][10]['hide_in_list'] = true;
-$zz['fields'][10]['field_sequence'] = 28;
+$zz['fields'][10]['field_sequence'] = 29;
 
 $zz['fields'][99]['field_name'] = 'last_update';
 $zz['fields'][99]['type'] = 'timestamp';
 $zz['fields'][99]['hide_in_list'] = true;
-$zz['fields'][99]['field_sequence'] = 29;
+$zz['fields'][99]['field_sequence'] = 30;
 
 
 $zz['sql'] = 'SELECT DISTINCT /*_PREFIX_*/persons.*
