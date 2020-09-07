@@ -200,6 +200,7 @@ foreach ($values['relations'] as $relation) {
 	$zz['fields'][$no]['type'] = 'subtable';
 	$zz['fields'][$no]['form_display'] = 'lines';
 	$zz['fields'][$no]['title'] = $relation['category'];
+	$zz['fields'][$no]['sql'] .= ' ORDER BY sequence, contact';
 	$zz['fields'][$no]['fields'][2]['type'] = 'foreign_key';
 	// category
 	$zz['fields'][$no]['fields'][4]['type'] = 'hidden';
