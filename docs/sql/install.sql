@@ -42,6 +42,7 @@ CREATE TABLE `contactdetails` (
   `contactdetail_id` int unsigned NOT NULL AUTO_INCREMENT,
   `contact_id` int unsigned NOT NULL,
   `identification` varchar(127) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `label` varchar(127) COLLATE 'utf8mb4_unicode_ci' NULL,
   `provider_category_id` int unsigned NOT NULL,
   `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`contactdetail_id`),
