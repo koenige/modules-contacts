@@ -24,3 +24,4 @@
 /* 2020-08-17-1 */	ALTER TABLE `persons` CHANGE `birthday` `date_of_birth` date NULL;
 /* 2020-08-17-2 */	ALTER TABLE `persons` ADD `date_of_death` date NULL AFTER `date_of_birth`;
 /* 2020-08-17-3 */	ALTER TABLE `persons` ADD `birth_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL AFTER `last_name`;
+/* 2020-09-11-1 */	ALTER TABLE `contacts` ADD `created` datetime NULL AFTER `parameters`;

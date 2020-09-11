@@ -229,6 +229,12 @@ $zz['fields'][15]['field_name'] = 'parameters';
 $zz['fields'][15]['type'] = 'parameter';
 $zz['fields'][15]['hide_in_list'] = true;
 
+$zz['fields'][97]['field_name'] = 'created';
+$zz['fields'][97]['type'] = 'hidden';
+$zz['fields'][97]['type_detail'] = 'datetime';
+$zz['fields'][97]['default'] = date('Y-m-d H:i:s');
+$zz['fields'][97]['hide_in_list'] = true;
+
 $zz['fields'][99]['field_name'] = 'last_update';
 $zz['fields'][99]['type'] = 'timestamp';
 $zz['fields'][99]['hide_in_list'] = true;
