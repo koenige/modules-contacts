@@ -9,7 +9,10 @@
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
+/* 2018-03-20-1 */	ALTER TABLE `contacts_verifications` ADD `status` enum('unverified','confirmed per link','confirmed manually','unsubscribed','deleted') COLLATE 'latin1_general_cs' NOT NULL, ADD `language_id` int unsigned NOT NULL AFTER `status`;
+/* 2018-03-20-2 */	ALTER TABLE `contacts_verifications` ADD INDEX `language_id` (`language_id`);
 /* 2018-05-17-1 */	ALTER TABLE `contacts_verifications` CHANGE `status` `status` enum('unverified','confirmed per link','confirmed manually','complete','unsubscribed','deleted') COLLATE 'latin1_general_cs' NOT NULL AFTER `verification_hash`;
+/* 2018-06-29-1 */	ALTER TABLE `contacts_verifications` ADD `completion_date` datetime NULL;
 /* 2018-10-16-1 */	ALTER TABLE `contacts_verifications` ADD `mails_sent` tinyint unsigned NOT NULL DEFAULT '0' AFTER `verification_hash`;
 /* 2019-04-05-1 */	ALTER TABLE `contacts_verifications` ADD `confirmed_mail` varchar(127) COLLATE 'utf8mb4_unicode_ci' NULL AFTER `verification_hash`;
 /* 2019-10-20-1 */	ALTER TABLE `contacts` ADD `contact_short` varchar(32) NULL AFTER `contact`;
