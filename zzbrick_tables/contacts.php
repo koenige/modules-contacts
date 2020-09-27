@@ -235,6 +235,7 @@ $zz['fields'][97]['type_detail'] = 'datetime';
 $zz['fields'][97]['default'] = date('Y-m-d H:i:s');
 $zz['fields'][97]['hide_in_list'] = true;
 $zz['fields'][97]['merge_ignore'] = true;
+$zz['fields'][97]['if']['add']['hide_in_form'] = true;
 
 $zz['fields'][99]['field_name'] = 'last_update';
 $zz['fields'][99]['type'] = 'timestamp';
