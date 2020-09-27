@@ -29,3 +29,4 @@
 /* 2020-08-17-3 */	ALTER TABLE `persons` ADD `birth_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL AFTER `last_name`;
 /* 2020-09-11-1 */	ALTER TABLE `contacts` ADD `created` datetime NULL AFTER `parameters`;
 /* 2020-09-11-2 */	ALTER TABLE `contactdetails` ADD `label` varchar(127) COLLATE 'utf8mb4_unicode_ci' NULL AFTER `identification`;
+/* 2020-09-11-3 */	UPDATE contacts LEFT JOIN _logging ON _logging.query LIKE "INSERT INTO contacts %" AND _logging.record_id = contacts.contact_id SET contacts.created = _logging.last_update WHERE !ISNULL(_logging.last_update);
