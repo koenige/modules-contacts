@@ -256,7 +256,7 @@ msgstr ""
 
 #: zzbrick_tables/persons.php
 msgid "Phone"
-msgstr "Telefonnummer"
+msgstr "Telefon"
 
 #: zzbrick_tables/persons.php
 msgid "About me"
