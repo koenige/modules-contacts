@@ -111,12 +111,48 @@ if (!isset($values['contactdetails'])) {
 
 require __DIR__.'/contactdetails.php';
 $no = 30;
-foreach ($values['contactdetails'] as $category) {
-	if (empty($category['parameters']))
-		$category['parameters'] = [];
-	elseif (!is_array($category['parameters']))
-		parse_str($category['parameters'], $category['parameters']);
+foreach ($values['contactdetails'] as $category_id => $category) {
+	if (empty($category['parameters'])) {
+		$values['contactdetails'][$category_id]['parameters'] = [];
+		continue;
+	}
+	if (!is_array($category['parameters'])) {
+		parse_str($category['parameters'], $parameters);
+		$values['contactdetails'][$category_id]['parameters'] = $parameters;
+	}
 	
+	// group contactdetails?
+	if (!empty($parameters['separate'])) {
+		if ($parameters['separate'] === 1) continue;
+		if (!empty($values['contactdetails_restrict_to'])
+			AND !empty($parameters['separate'][$values['contactdetails_restrict_to']]))
+			continue;
+	}
+	$key = $parameters['type'];
+	if (!array_key_exists($key, $values['contactdetails'])) {
+		$values['contactdetails'][$key]['parameters'] = [];
+		$values['contactdetails'][$key]['type'] = $parameters['type'];
+	}
+	$values['contactdetails'][$key]['categories'][$category['category_id']] = $category;
+	$values['contactdetails'][$key]['category_id'] = $category['category_id'];
+	$values['contactdetails'][$key]['parameters'] += $parameters;
+	unset($values['contactdetails'][$category_id]);
+}
+
+foreach ($values['contactdetails'] as $category) {
+	if (!empty($category['categories'])) {
+		if (!empty($category['parameters']['category'])) {
+			$category['category'] = $category['parameters']['category'];
+			$category['category'] = wrap_text($category['category']);
+		} elseif (count($category['categories']) === 1) {
+			$category['category'] = reset($category['categories']);
+			$category['category'] = $category['category']['category'];
+		} else {
+			$category['category'] = ucfirst($category['parameters']['type']);
+			$category['category'] = wrap_text($category['category']);
+		}
+	}
+
 	$zz['fields'][$no] = $zz_sub;
 	$zz['fields'][$no]['class'] = 'contactdetails';
 	$zz['fields'][$no]['table_name'] = 'contactdetails_'.$category['category_id'];
