@@ -12,33 +12,7 @@
  */
 
 
-$sql = 'SELECT category_id, category, parameters 
-	FROM categories
-	WHERE main_category_id = %d
-	ORDER BY sequence, path';
-$sql = sprintf($sql, wrap_category_id('provider'));
-$contactdetails = wrap_db_fetch($sql, 'category_id');
-$values['contactdetails'] = [];
-$i = 50;
-foreach ($contactdetails as $category_id => $provider) {
-	parse_str($provider['parameters'], $parameters);
-	if (!empty($parameters['separate']))
-		$key = $provider['category_id'];
-	else
-		$key = $parameters['type'];
-	$values['contactdetails'][$key]['categories'][$provider['category_id']] = $provider;
-	$values['contactdetails'][$key]['category'] = (count($values['contactdetails'][$key]['categories']) === 1)
-		? $provider['category']
-		: (!empty($parameters['category']) ? $parameters['category'] : ucfirst($parameters['type']));
-	$values['contactdetails'][$key]['category'] = wrap_text($values['contactdetails'][$key]['category']);
-	$values['contactdetails'][$key]['type'] = $parameters['type'];
-	$values['contactdetails'][$key]['category_id'] = $provider['category_id'];
-	if (empty($values['contactdetails'][$key]['parameters']))
-		$values['contactdetails'][$key]['parameters'] = [];
-	$values['contactdetails'][$key]['parameters'] += $parameters;
-	$values['contactdetails'][$key]['field_sequence'] = $i;
-	$i++;
-}
+$values['contactdetails_restrict_to'] = 'persons';
 
 $zz = zzform_include_table('contacts', $values);
 $zz['title'] = 'Persons';
@@ -65,7 +39,7 @@ $zz['fields'][3]['fields'] = [
 	'identifier'
 ];
 $zz['fields'][3]['merge_ignore'] = true;
-$zz['fields'][3]['field_sequence'] = 41;
+$zz['fields'][3]['field_sequence'] = 26;
 $zz['fields'][3]['separator'] = true;
 $zz['fields'][3]['separator_before'] = true;
 
@@ -85,7 +59,7 @@ if (brick_access_rights()) {
 		'no' => ['fields' => ['persons.first_name', 'persons.name_particle', 'persons.last_name', 'identifier']]
 	];
 	$zz['fields'][17]['default'] = 'no';
-	$zz['fields'][17]['field_sequence'] = 42;
+	$zz['fields'][17]['field_sequence'] = 27;
 	$zz['fields'][17]['separator'] = true;
 }
 
@@ -109,11 +83,11 @@ $zz['fields'][4]['hide_in_list'] = true;
 $zz['fields'][4]['type'] = 'hidden';
 $zz['fields'][4]['value'] = wrap_category_id('contact/person');
 $zz['fields'][4]['export'] = false; // contact_category_id
-$zz['fields'][4]['field_sequence'] = 43;
+$zz['fields'][4]['field_sequence'] = 28;
 
 // latlon
 $zz['fields'][8]['export'] = false;
-$zz['fields'][8]['field_sequence'] = 44;
+$zz['fields'][8]['field_sequence'] = 29;
 
 // addresses
 $zz['fields'][5]['field_sequence'] = 70;
@@ -183,7 +157,7 @@ $zz['fields'][93]['hide_in_list'] = true;
 $zz['fields'][93]['export'] = false;
 */
 
-$zz['add_details_return_field'] = 'personen.person_id';
+$zz['add_details_return_field'] = 'persons.person_id';
 
 $zz['sql'] = 'SELECT /*_PREFIX_*/contacts.*, category
 		, (SELECT CONCAT(latitude, ",", longitude) FROM /*_PREFIX_*/addresses
