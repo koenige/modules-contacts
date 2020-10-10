@@ -159,7 +159,9 @@ foreach ($values['contactdetails'] as $category) {
 	$zz['fields'][$no]['title'] = $category['category'];
 	$zz['fields'][$no]['type'] = 'subtable';
 	$zz['fields'][$no]['min_records'] = isset($category['parameters']['min_records']) ? $category['parameters']['min_records'] : 1;
-	$zz['fields'][$no]['max_records'] = !empty($category['parameters']['max_records']) ? $category['parameters']['max_records'] : 1;
+	$zz['fields'][$no]['max_records'] = !empty($category['parameters']['max_records'])
+		? $category['parameters']['max_records']
+		: (!empty($category['categories']) ? count($category['categories']) : 1);
 	$zz['fields'][$no]['fields'][2]['type'] = 'foreign_key';
 	if (!empty($category['parameters']['type']) AND in_array($category['parameters']['type'], ['mail', 'url', 'phone'])) {
 		$zz['fields'][$no]['fields'][3]['type'] = $category['parameters']['type'];
