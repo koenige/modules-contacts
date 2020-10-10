@@ -12,13 +12,7 @@
  */
 
 
-$sql = 'SELECT category_id, category, parameters 
-	FROM categories
-	WHERE main_category_id = %d
-	AND parameters LIKE "%%&places=1%%"
-	ORDER BY sequence, path';
-$sql = sprintf($sql, wrap_category_id('provider'));
-$values['contactdetails'] = wrap_db_fetch($sql, 'category_id');
+$values['contactdetails_restrict_to'] = 'places';
 
 $sql = 'SELECT category_id, category, parameters 
 	FROM categories
