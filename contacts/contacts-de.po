@@ -98,6 +98,10 @@ msgstr "Kurz"
 msgid "Publish on website?"
 msgstr "Auf der Website veröffentlichen?"
 
+#: zzbrick_tables/contacts.php
+msgid "Created"
+msgstr "Erstellt"
+
 #: zzbrick_tables/contacts-contacts.php
 msgid "Relations of Contacts"
 msgstr "Beziehungen der Kontakte"
