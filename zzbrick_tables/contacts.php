@@ -96,11 +96,16 @@ $zz['fields'][5]['export_no_html'] = true;
 $zz['fields'][5]['if']['export_mode']['subselect']['concat_rows'] = "\r\r";
 
 if (!isset($values['contactdetails'])) {
+	if (isset($values['contactdetails_restrict_to']))
+		$restrict_to = 'AND parameters LIKE "%%&'.$values['contactdetails_restrict_to'].'=1%%"';
+	else
+		$restrict_to = '';
 	$sql = 'SELECT category_id, category, parameters 
 		FROM categories
 		WHERE main_category_id = %d
+		%s
 		ORDER BY sequence, path';
-	$sql = sprintf($sql, wrap_category_id('provider'));
+	$sql = sprintf($sql, wrap_category_id('provider'), $restrict_to);
 	$values['contactdetails'] = wrap_db_fetch($sql, 'category_id');
 }
 
