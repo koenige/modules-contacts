@@ -277,3 +277,7 @@ msgstr "Registrierung bestätigen"
 #: templates/contact-verification.de.template.txt
 msgid "Registration"
 msgstr "Registrierung"
+
+#: templates/leaflet-markercluster-mapbox-zzform-map.template.txt
+msgid "Further information"
+msgstr "Weitere Informationen"
