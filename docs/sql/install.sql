@@ -105,6 +105,21 @@ INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`
 INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'categories', 'category_id', (SELECT DATABASE()), 'contacts_contacts', 'cc_id', 'relation_category_id', 'no-delete');
 
 
+CREATE TABLE `contacts_media` (
+  `contact_medium_id` int unsigned NOT NULL AUTO_INCREMENT,
+  `contact_id` int unsigned NOT NULL,
+  `medium_id` int unsigned NOT NULL,
+  `sequence` tinyint NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`contact_medium_id`),
+  UNIQUE KEY `medium_contact` (`medium_id`,`contact_id`),
+  KEY `contact_id` (`contact_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'contacts', 'contact_id', (SELECT DATABASE()), 'contacts_media', 'contact_medium_id', 'contact_id', 'delete');
+INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'media', 'medium_id', (SELECT DATABASE()), 'contacts_media', 'contact_medium_id', 'medium_id', 'no-delete');
+
+
 CREATE TABLE `contacts_verifications` (
   `cv_id` int unsigned NOT NULL AUTO_INCREMENT,
   `contact_id` int unsigned NOT NULL,
