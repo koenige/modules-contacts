@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2019-2020 Gustaf Mossakowski
+ * @copyright Copyright © 2019-2021 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -21,7 +21,7 @@ $zz['title'] = 'Persons';
 $zz['fields'][2]['type'] = 'hidden';
 $zz['fields'][2]['hide_in_form'] = true;
 $zz['fields'][2]['hide_in_list'] = true;
-$zz['fields'][2]['function'] = 'mod_contacts_edit_contact_name';
+$zz['fields'][2]['function'] = 'mf_contacts_edit_contact_name';
 $zz['fields'][2]['fields'] = [
 	'persons.first_name', 'persons.name_particle', 'persons.last_name'
 ];

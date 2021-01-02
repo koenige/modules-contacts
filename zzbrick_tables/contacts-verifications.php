@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2015, 2018-2020 Gustaf Mossakowski
+ * @copyright Copyright © 2015, 2018-2021 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -61,7 +61,7 @@ $zz_sub['fields'][9]['field_name'] = 'verification_hash';
 $zz_sub['fields'][9]['type'] = 'hidden';
 $zz_sub['fields'][9]['class'] = 'hidden';
 $zz_sub['fields'][9]['hide_in_list'] = true;
-$zz_sub['fields'][9]['function'] = 'mod_contacts_random_hash';
+$zz_sub['fields'][9]['function'] = 'mf_contacts_random_hash';
 $zz_sub['fields'][9]['fields'] = ['verification_hash'];
 
 $zz_sub['fields'][7]['title'] = 'Verification Date';
