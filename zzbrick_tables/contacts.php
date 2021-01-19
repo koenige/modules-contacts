@@ -229,11 +229,16 @@ $zz['fields'][12]['format'] = 'markdown';
 $zz['fields'][13] = [];  // remarks
 
 if (!isset($values['relations'])) {
+	if (isset($values['relations_restrict_to']))
+		$restrict_to = 'AND parameters LIKE "%%&'.$values['relations_restrict_to'].'=1%%"';
+	else
+		$restrict_to = '';
 	$sql = 'SELECT category_id, category, parameters 
 		FROM categories
 		WHERE main_category_id = %d
+		%s
 		ORDER BY sequence, path';
-	$sql = sprintf($sql, wrap_category_id('relation'));
+	$sql = sprintf($sql, wrap_category_id('relation'), $restrict_to);
 	$values['relations'] = wrap_db_fetch($sql, 'category_id');
 }
 
