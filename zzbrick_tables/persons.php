@@ -51,6 +51,7 @@ $zz['fields'][5]['field_sequence'] = 16;
 $zz['fields'][6]['title'] = 'Last name';
 $zz['fields'][6]['field_name'] = 'last_name';
 $zz['fields'][6]['list_append_show_title'] = true;
+$zz['fields'][6]['list_append_next'] = true;
 $zz['fields'][6]['list_prefix'] = ' ';
 $zz['fields'][6]['merge_equal'] = true;
 $zz['fields'][6]['field_sequence'] = 17;
