@@ -117,7 +117,8 @@ $zz['fields'][12]['title'] = 'About me';
 $zz['fields'][12]['explanation'] = 'A few lines about the person.';
 
 // remarks
-$zz['fields'][13]['field_sequence'] = 72;
+if (!empty($zz['fields'][13]))
+	$zz['fields'][13]['field_sequence'] = 72;
 
 // published
 $zz['fields'][14]['field_sequence'] = 73;
