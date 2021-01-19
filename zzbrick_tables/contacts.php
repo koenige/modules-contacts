@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2015-2020 Gustaf Mossakowski
+ * @copyright Copyright © 2015-2021 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -243,6 +243,7 @@ foreach ($values['relations'] as $relation) {
 	$zz['fields'][$no]['type'] = 'subtable';
 	$zz['fields'][$no]['form_display'] = 'lines';
 	$zz['fields'][$no]['title'] = $relation['category'];
+	$zz['fields'][$no]['sql'] .= sprintf(' WHERE relation_category_id = %d', $relation['category_id']);
 	$zz['fields'][$no]['sql'] .= ' ORDER BY sequence, contact';
 	$zz['fields'][$no]['fields'][2]['type'] = 'foreign_key';
 	// category
@@ -256,6 +257,7 @@ foreach ($values['relations'] as $relation) {
 	$zz['fields'][$no]['fields'][10]['type'] = 'hidden';
 	$zz['fields'][$no]['fields'][10]['value'] = 'yes';
 	$zz['fields'][$no]['fields'][10]['hide_in_form'] = true;
+	$zz['fields'][$no]['hide_in_list'] = true;
 	
 	$no++;
 }
