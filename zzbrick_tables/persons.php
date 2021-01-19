@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2011-2015, 2020 Gustaf Mossakowski
+ * @copyright Copyright © 2011-2015, 2020-2021 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -74,11 +74,13 @@ $zz['fields'][8]['hide_novalue'] = false;
 $zz['fields'][8]['hide_in_list'] = true;
 $zz['fields'][8]['field_sequence'] = 20;
 
+$zz['fields'][9]['title'] = 'Date of Birth';
 $zz['fields'][9]['field_name'] = 'date_of_birth';
 $zz['fields'][9]['type'] = 'date';
 $zz['fields'][9]['hide_in_list'] = true;
 $zz['fields'][9]['field_sequence'] = 21;
 
+$zz['fields'][11]['title'] = 'Date of Death';
 $zz['fields'][11]['field_name'] = 'date_of_death';
 $zz['fields'][11]['type'] = 'date';
 $zz['fields'][11]['hide_in_list'] = true;
