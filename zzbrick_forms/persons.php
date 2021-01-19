@@ -89,8 +89,21 @@ $zz['fields'][4]['field_sequence'] = 28;
 $zz['fields'][8]['export'] = false;
 $zz['fields'][8]['field_sequence'] = 29;
 
+// contactdetails
+$no = 30;
+while ($no) {
+	if (empty($zz['fields'][$no])) {
+		$no = false;
+		continue;
+	}
+	$zz['fields'][12]['separator_before'] = true;
+	$zz['fields'][$no]['field_sequence'] = $no;
+	$no++;
+}
+
 // addresses
-$zz['fields'][5]['field_sequence'] = 70;
+$zz['fields'][5]['separator_before'] = true;
+$zz['fields'][5]['field_sequence'] = 50;
 $zz['fields'][5]['fields'][7]['hide_in_form'] = true; // lat
 $zz['fields'][5]['fields'][8]['hide_in_form'] = true; // lon
 $zz['fields'][5]['min_records'] = 1;
@@ -103,13 +116,31 @@ $zz['fields'][12]['field_sequence'] = 71;
 $zz['fields'][12]['title'] = 'About me';
 $zz['fields'][12]['explanation'] = 'A few lines about the person.';
 
+// remarks
+$zz['fields'][13]['field_sequence'] = 72;
+
 // published
-$zz['fields'][14]['field_sequence'] = 72;
+$zz['fields'][14]['field_sequence'] = 73;
 
 // unwanted fields
 unset($zz['fields'][15]); // parameters
 unset($zz['fields'][10]); // contact_short
 unset($zz['fields'][11]); // contact_abbr
+
+// contacts-contacts, starting at 60
+$no = 60;
+while ($no) {
+	if (empty($zz['fields'][$no])) {
+		$no = false;
+		continue;
+	}
+	$zz['fields'][12]['separator_before'] = true;
+	$zz['fields'][$no]['field_sequence'] = $no;
+	$no++;
+}
+
+// created
+$zz['fields'][97]['field_sequence'] = 97;
 
 // last_update
 $zz['fields'][99]['field_sequence'] = 99;
