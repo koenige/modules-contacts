@@ -1,0 +1,59 @@
+# contacts module
+# HTML for single contact
+#
+# Part of »Zugzwang Project«
+# http://www.zugzwang.org/modules/contacts
+#
+# @author Gustaf Mossakowski <gustaf@koenige.org>
+# @copyright Copyright © 2021 Gustaf Mossakowski
+# @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
+#
+<div class="contact">
+<h1>%%% item title_prefix "<em>%s</em> " %%%%%% item first_name %%% %%% item name_particle %%% %%% item last_name %%% %%% item title_suffix " <em>%s</em>" %%%%%% item " (born %s)" {birth_name} %%%</h1>
+
+%%% item contact_short %%%
+%%% item contact_abbr %%%
+
+<table>
+%%% condition if date_of_birth %%%
+<tr><th>%%% text Date of Birth %%%</th><td>%%% item date_of_birth wrap_date "*%s" %%%</td></tr>
+%%% condition endif %%%
+%%% condition if date_of_death %%%
+<tr><th>%%% text Date of Death %%%</th><td>%%% item date_of_death wrap_date "†%s" %%%</td></tr>
+%%% condition endif %%%
+%%% condition if country %%%
+<tr><th>%%% text Nationality %%%</th><td>%%% item country %%%</td></tr>
+%%% condition endif %%%
+%%% loop mail %%%
+<tr><th>%%% item category %%%</th><td>%%% item mailto %%%%%% item label " (%s)" %%%</td></tr>
+%%% loop end %%%
+%%% loop phone %%%
+<tr><th>%%% item category %%%</th><td><a href="tel:%%% item identification %%%">%%% item identification %%%</a>%%% item label " (%s)" %%%</td></tr>
+%%% loop end %%%
+%%% loop website %%%
+<tr><th>%%% item category %%%</th><td><a href="%%% item identification %%%">%%% item identification %%%</a>%%% item label " (%s)" %%%</td></tr>
+%%% loop end %%%
+%%% loop addresses %%%
+<tr><th>%%% text Address %%%</th><td><em>%%% item category %%%:</em><br>%%% item address %%%<br>%%% item postcode %%% %%% item place %%%<br>%%% item country %%%</td></tr>
+%%% loop end %%%
+%%% condition if description %%%
+<tr><th>%%% text Description %%%</th><td>%%% item description markdown %%%</td></tr>
+%%% condition endif %%%
+%%% condition if participations %%%
+<tr><th>%%% text Participations %%%</th>
+<td>
+<ul>
+%%% loop participations %%%
+<li><a href="../usergroups/%%% item identifier %%%/">%%% item usergroup %%%</a> %%% item date_begin wrap_date %%%%%% item date_end wrap_date "–%s" %%% %%% item remarks %%%</li>
+%%% loop end %%%
+</ul>
+</td></tr>
+%%% condition endif %%%
+%%% condition if remarks %%%
+<tr class="remarks"><th>%%% text Remarks %%%</th><td>%%% item remarks markdown %%%</td></tr>
+%%% condition endif %%%
+</table>
+
+<p class="edit"><a href="../?edit=%%% item contact_id %%%">%%% text Edit record %%%</a></p>
+
+</div>
