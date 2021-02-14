@@ -199,6 +199,7 @@ $zz['sql'] = 'SELECT /*_PREFIX_*/contacts.*, category
 	LEFT JOIN /*_PREFIX_*/persons USING (contact_id)
 	LEFT JOIN /*_PREFIX_*/categories
 		ON /*_PREFIX_*/contacts.contact_category_id = /*_PREFIX_*/categories.category_id
+	WHERE NOT ISNULL(person_id)
 ';
 $zz['sqlorder'] = ' ORDER BY last_name, first_name ASC, identifier';
 
