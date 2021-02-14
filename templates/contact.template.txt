@@ -62,7 +62,7 @@
 <td>
 <ul>
 %%% loop participations %%%
-<li><a href="../usergroups/%%% item identifier %%%/">%%% item usergroup %%%</a> %%% item date_begin wrap_date %%%%%% item date_end wrap_date "–%s" %%% %%% item remarks %%%</li>
+<li>%%% item profile_path "<a href='%s'>" %%%%%% item usergroup %%%%%% item profile_path "</a>" %%% %%% item date_begin wrap_date %%%%%% condition if date_begin | date_end %%%–%%% condition endif %%%%%% item date_end wrap_date %%% %%% item remarks %%%</li>
 %%% loop end %%%
 </ul>
 </td></tr>

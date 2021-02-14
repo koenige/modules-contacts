@@ -2,7 +2,7 @@
 
 /**
  * Zugzwang Project
- * Confirm contact registration
+ * Contact profile
  *
  * http://www.zugzwang.org/modules/contact
  *
@@ -119,6 +119,14 @@ function mod_contacts_contact($params, $settings) {
 			WHERE contact_id = %d';
 		$sql = sprintf($sql, $data['contact_id']);
 		$data['participations'] = wrap_db_fetch($sql, 'participation_id');
+		if (!empty($zz_setting['activities_profile_path']['usergroup'])) {
+			foreach ($data['participations'] as $participation_id => $participation) {
+				$data['participations'][$participation_id]['profile_path'] = sprintf(
+					$zz_setting['activities_profile_path']['usergroup'],
+					$participation['identifier']
+				);
+			}
+		}
 	}
 
 	$page['title'] = trim($data['title_prefix'].' '.$data['contact'].' '.$data['title_suffix']);
