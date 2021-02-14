@@ -61,3 +61,29 @@ function mf_contacts_contactdetails($contact_ids) {
 	if (!$data) return [];
 	return $data;
 }
+
+/**
+ * get path to profile for a person
+ *
+ * @param string $identifier
+ * @return string
+ */
+function mf_contacts_person_path($identifier) {
+	global $zz_setting;
+	if (empty($zz_setting['contacts_person_path'])) {
+		$sql = 'SELECT CONCAT(identifier, IF(ending = "none", "", ending)) AS path
+			FROM webpages
+			WHERE content LIKE "%%%% request contact * scope=person %%%%"';
+		$path = wrap_db_fetch($sql, '', 'single value');
+		if (!$path) {
+			$sql = 'SELECT CONCAT(identifier, IF(ending = "none", "", ending)) AS path
+				FROM webpages
+				WHERE content LIKE "%%%% request contact * %%%%"';
+			$path = wrap_db_fetch($sql, '', 'single value');
+			if (!$path) return false;
+		}
+		$path = str_replace('*', '/%s', $path);
+		wrap_setting_write('contacts_person_path', $path);
+	}
+	return sprintf($zz_setting['contacts_person_path'], $identifier);
+}

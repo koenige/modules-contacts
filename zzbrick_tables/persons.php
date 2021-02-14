@@ -41,18 +41,22 @@ $zz['fields'][4]['field_name'] = 'first_name';
 $zz['fields'][4]['list_append_next'] = true;
 $zz['fields'][4]['merge_equal'] = true;
 $zz['fields'][4]['field_sequence'] = 15;
+$zz['fields'][4]['link'] = [
+	'mode' => 'mf_contacts_person_path',
+	'field' => 'identifier'
+];
+$zz['fields'][4]['unless']['export_mode']['display_field'] = 'contact';
 
 $zz['fields'][5]['title'] = 'Particle';
 $zz['fields'][5]['field_name'] = 'name_particle';
-$zz['fields'][5]['list_append_next'] = true;
-$zz['fields'][5]['list_prefix'] = ' ';
+$zz['fields'][5]['hide_in_list'] = true;
 $zz['fields'][5]['field_sequence'] = 16;
 
 $zz['fields'][6]['title'] = 'Last name';
 $zz['fields'][6]['field_name'] = 'last_name';
 $zz['fields'][6]['list_append_show_title'] = true;
 $zz['fields'][6]['list_append_next'] = true;
-$zz['fields'][6]['list_prefix'] = ' ';
+$zz['fields'][6]['list_hide_value'] = true;
 $zz['fields'][6]['merge_equal'] = true;
 $zz['fields'][6]['field_sequence'] = 17;
 
@@ -105,6 +109,7 @@ $zz['fields'][99]['field_sequence'] = 23;
 
 
 $zz['sql'] = 'SELECT DISTINCT /*_PREFIX_*/persons.*
+		, /*_PREFIX_*/contacts.contact
 	FROM /*_PREFIX_*/persons
 	LEFT JOIN /*_PREFIX_*/contacts USING (contact_id)
 	LEFT JOIN /*_PREFIX_*/countries
