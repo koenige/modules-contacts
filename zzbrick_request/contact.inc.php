@@ -68,6 +68,43 @@ function mod_contacts_contact($params, $settings) {
 	// contacts_media
 	
 	// contacts_contacts
+	// @todo associations, depending on relations.parameters
+	$sql = 'SELECT cc_id, contact, cc.remarks, cc.sequence, relations.category AS relation
+			, IF(cc.main_contact_id = %d, "parents", "children") AS relation_type
+			, identifier
+			, contact_categories.category AS category
+			, contact_categories.parameters AS category_parameters
+		FROM contacts_contacts cc
+		LEFT JOIN categories relations
+			ON cc.relation_category_id = relations.category_id
+		LEFT JOIN contacts
+			ON (IF(cc.main_contact_id = %d, cc.contact_id, cc.main_contact_id)) = contacts.contact_id
+		LEFT JOIN categories contact_categories
+			ON contacts.contact_category_id = contact_categories.category_id
+		WHERE cc.main_contact_id = %d
+		OR cc.contact_id = %d
+		ORDER BY cc.sequence, contact';
+	$sql = sprintf($sql
+		, $data['contact_id']
+		, $data['contact_id']
+		, $data['contact_id']
+		, $data['contact_id']
+	);
+	$data += wrap_db_fetch($sql, ['relation_type', 'cc_id']);
+	$relation_types = ['associations', 'parents', 'children'];
+	foreach ($relation_types as $relation_type) {
+		if (!array_key_exists($relation_type, $data)) continue;
+		foreach ($data[$relation_type] as $cc_id => $contactrelation) {
+			parse_str($contactrelation['category_parameters'], $cparams);
+			if (!empty($cparams['alias'])) {
+				$type = substr($cparams['alias'], strrpos($cparams['alias'], '/') + 1);
+				if (empty($zz_setting['contacts_profile_path'][$type])) continue;
+				$data[$relation_type][$cc_id]['profile_path'] = sprintf(
+					$zz_setting['contacts_profile_path'][$type], $contactrelation['identifier']
+				);
+			}
+		}
+	}
 	
 	// participations
 	// usergroups
