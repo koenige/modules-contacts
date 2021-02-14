@@ -9,17 +9,20 @@
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 <div class="contact">
-<h1>%%% item title_prefix "<em>%s</em> " %%%%%% item first_name %%% %%% item name_particle %%% %%% item last_name %%% %%% item title_suffix " <em>%s</em>" %%%%%% item " (born %s)" {birth_name} %%%</h1>
+<h1>%%% item title_prefix "<em>%s</em> " %%%%%% item first_name %%% %%% item name_particle %%% %%% item last_name %%% %%% item title_suffix " <em>%s</em>" %%%</h1>
+%%% condition if birth_name %%%
+<h2>%%% text " (born %s)" birth_name %%%</h2>
+%%% condition endif %%%
 
 %%% item contact_short %%%
 %%% item contact_abbr %%%
 
 <table>
 %%% condition if date_of_birth %%%
-<tr><th>%%% text Date of Birth %%%</th><td>%%% item date_of_birth wrap_date "*%s" %%%</td></tr>
+<tr><th>%%% text Date of Birth %%%</th><td>%%% item date_of_birth wrap_date "*&nbsp;%s" %%% %%% condition if male %%%♂%%% condition elseif female %%%♀%%% condition elseif diverse %%%⚪︎%%% condition endif %%% %%% text "(Age: %d)" age %%%</td></tr>
 %%% condition endif %%%
 %%% condition if date_of_death %%%
-<tr><th>%%% text Date of Death %%%</th><td>%%% item date_of_death wrap_date "†%s" %%%</td></tr>
+<tr><th>%%% text Date of Death %%%</th><td>%%% item date_of_death wrap_date "†&nbsp;%s" %%%</td></tr>
 %%% condition endif %%%
 %%% condition if country %%%
 <tr><th>%%% text Nationality %%%</th><td>%%% item country %%%</td></tr>
@@ -54,6 +57,6 @@
 %%% condition endif %%%
 </table>
 
-<p class="edit"><a href="../?edit=%%% item contact_id %%%">%%% text Edit record %%%</a></p>
+<p class="edit"><a href="../?edit=%%% item contact_id %%%&amp;nolist&referer=%%% page url_path %%%">%%% text Edit record %%%</a></p>
 
 </div>

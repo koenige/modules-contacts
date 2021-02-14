@@ -274,6 +274,14 @@ msgstr ""
 msgid "Confirm Registration"
 msgstr ""
 
+#: templates/contact.template.txt
+msgid " (born %s)"
+msgstr ""
+
+#: templates/contact.template.txt
+msgid "(Age: %d)"
+msgstr ""
+
 #: templates/contact-verification.de.template.txt
 msgid "Registration"
 msgstr ""

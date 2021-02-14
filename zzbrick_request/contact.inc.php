@@ -33,12 +33,14 @@ function mod_contacts_contact($params, $settings) {
 			$sql = 'SELECT person_id, first_name, name_particle, last_name
 					, birth_name, sex, title_prefix, title_suffix
 					, date_of_birth, date_of_death, country_id, country
+					, IFNULL(TIMESTAMPDIFF(YEAR, date_of_birth, CURDATE()), YEAR(CURDATE()) - YEAR(date_of_birth)) AS age
 				FROM persons
 				LEFT JOIN countries
 					ON persons.nationality_country_id = countries.country_id
 				WHERE contact_id = %d';
 			$sql = sprintf($sql, $data['contact_id']);
 			$data += wrap_db_fetch($sql);
+			if ($data['sex']) $data[$data['sex']] = true;
 			$data = wrap_translate($data, 'countries', 'country_id');
 			break;
 		case 'organisation':
