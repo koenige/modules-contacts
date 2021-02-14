@@ -70,7 +70,7 @@ function mf_contacts_contactdetails($contact_ids) {
  */
 function mf_contacts_person_path($identifier) {
 	global $zz_setting;
-	if (empty($zz_setting['contacts_person_path'])) {
+	if (empty($zz_setting['contacts_profile_path']['person'])) {
 		$sql = 'SELECT CONCAT(identifier, IF(ending = "none", "", ending)) AS path
 			FROM webpages
 			WHERE content LIKE "%%%% request contact * scope=person %%%%"';
@@ -83,7 +83,7 @@ function mf_contacts_person_path($identifier) {
 			if (!$path) return false;
 		}
 		$path = str_replace('*', '/%s', $path);
-		wrap_setting_write('contacts_person_path', $path);
+		wrap_setting_write('contacts_profile_path[person]', $path);
 	}
-	return sprintf($zz_setting['contacts_person_path'], $identifier);
+	return sprintf($zz_setting['contacts_profile_path']['person'], $identifier);
 }
