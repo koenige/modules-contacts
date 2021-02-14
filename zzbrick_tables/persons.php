@@ -42,8 +42,8 @@ $zz['fields'][4]['list_append_next'] = true;
 $zz['fields'][4]['merge_equal'] = true;
 $zz['fields'][4]['field_sequence'] = 15;
 $zz['fields'][4]['link'] = [
-	'mode' => 'mf_contacts_person_path',
-	'field' => 'identifier'
+	'function' => 'mf_contacts_person_path',
+	'fields' => ['identifier', 'contact_parameters']
 ];
 $zz['fields'][4]['unless']['export_mode']['display_field'] = 'contact';
 
@@ -110,6 +110,8 @@ $zz['fields'][99]['field_sequence'] = 23;
 
 $zz['sql'] = 'SELECT DISTINCT /*_PREFIX_*/persons.*
 		, /*_PREFIX_*/contacts.contact
+		, /*_PREFIX_*/contacts.identifier
+		, "type=person" AS contact_parameters
 	FROM /*_PREFIX_*/persons
 	LEFT JOIN /*_PREFIX_*/contacts USING (contact_id)
 	LEFT JOIN /*_PREFIX_*/countries
