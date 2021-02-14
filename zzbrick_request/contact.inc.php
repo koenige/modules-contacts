@@ -13,6 +13,7 @@
 
 
 function mod_contacts_contact($params, $settings) {
+	global $zz_setting;
 	if (empty($params)) return false;
 
 	$sql = 'SELECT contact_id, contact, contact_short, contact_abbr,
@@ -68,16 +69,18 @@ function mod_contacts_contact($params, $settings) {
 	
 	// participations
 	// usergroups
-	$sql = 'SELECT participation_id
-			, usergroup_id, usergroup, identifier
-			, date_begin, date_end, remarks
-		FROM participations
-		LEFT JOIN usergroups USING (usergroup_id)
-		LEFT JOIN categories
-			ON participations.status_category_id = categories.category_id
-		WHERE contact_id = %d';
-	$sql = sprintf($sql, $data['contact_id']);
-	$data['participations'] = wrap_db_fetch($sql, 'participation_id');
+	if (in_array('activities', $zz_setting['modules'])) {
+		$sql = 'SELECT participation_id
+				, usergroup_id, usergroup, identifier
+				, date_begin, date_end, remarks
+			FROM participations
+			LEFT JOIN usergroups USING (usergroup_id)
+			LEFT JOIN categories
+				ON participations.status_category_id = categories.category_id
+			WHERE contact_id = %d';
+		$sql = sprintf($sql, $data['contact_id']);
+		$data['participations'] = wrap_db_fetch($sql, 'participation_id');
+	}
 
 	$page['title'] = trim($data['title_prefix'].' '.$data['contact'].' '.$data['title_suffix']);
 	$page['breadcrumbs'][] = $data['contact'];

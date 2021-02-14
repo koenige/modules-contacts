@@ -40,7 +40,7 @@
 <tr><th>%%% text Description %%%</th><td>%%% item description markdown %%%</td></tr>
 %%% condition endif %%%
 %%% condition if participations %%%
-<tr><th>%%% text Participations %%%</th>
+<tr><th>%%% text Usergroups %%%</th>
 <td>
 <ul>
 %%% loop participations %%%
