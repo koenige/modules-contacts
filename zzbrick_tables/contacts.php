@@ -247,6 +247,7 @@ foreach ($values['relations'] as $relation) {
 	$zz['fields'][$no] = zzform_include_table('contacts-contacts');
 	$zz['fields'][$no]['type'] = 'subtable';
 	$zz['fields'][$no]['form_display'] = 'lines';
+	$zz['fields'][$no]['table_name'] = 'contacts_contacts'.$relation['category_id'];
 	$zz['fields'][$no]['title'] = $relation['category'];
 	$zz['fields'][$no]['sql'] .= sprintf(' WHERE relation_category_id = %d', $relation['category_id']);
 	$zz['fields'][$no]['sql'] .= ' ORDER BY sequence, contact';
