@@ -289,3 +289,6 @@ msgstr ""
 #: templates/leaflet-markercluster-mapbox-zzform-map.template.txt
 msgid "Further information"
 msgstr ""
+
+msgid "and"
+msgstr ""
