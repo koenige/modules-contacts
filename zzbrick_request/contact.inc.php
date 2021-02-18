@@ -33,7 +33,13 @@ function mod_contacts_contact($params, $settings) {
 			$sql = 'SELECT person_id, first_name, name_particle, last_name
 					, birth_name, sex, title_prefix, title_suffix
 					, date_of_birth, date_of_death, country_id, country
-					, IFNULL(TIMESTAMPDIFF(YEAR, date_of_birth, CURDATE()), YEAR(CURDATE()) - YEAR(date_of_birth)) AS age
+					, IFNULL(
+						TIMESTAMPDIFF(YEAR, date_of_birth, IFNULL(CAST(IF(
+							SUBSTRING(date_of_death, -6) = "-00-00",
+							CONCAT(YEAR(date_of_death), "-01-01"), date_of_death) AS DATE
+						), CURDATE())),
+						YEAR(IFNULL(date_of_death, CURDATE())) - YEAR(date_of_birth)
+					) AS age
 				FROM persons
 				LEFT JOIN countries
 					ON persons.nationality_country_id = countries.country_id
