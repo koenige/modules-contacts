@@ -76,15 +76,21 @@ function mod_contacts_contact($params, $settings) {
 	// contacts_contacts
 	// @todo associations, depending on relations.parameters
 	$sql = 'SELECT cc_id, contact, cc.remarks, cc.sequence, relations.category AS relation
-			, IF(cc.main_contact_id = %d, "parents", "children") AS relation_type
+			, IF(relations.parameters LIKE "%%&relation=association%%"
+				, "associations"
+				, IF(cc.main_contact_id = %d, "parents", "children")
+			) AS relation_type
 			, identifier
 			, contact_categories.category AS category
 			, contact_categories.parameters AS category_parameters
+			, IF(persons.date_of_death, 1, NULL) AS dead
 		FROM contacts_contacts cc
 		LEFT JOIN categories relations
 			ON cc.relation_category_id = relations.category_id
 		LEFT JOIN contacts
 			ON (IF(cc.main_contact_id = %d, cc.contact_id, cc.main_contact_id)) = contacts.contact_id
+		LEFT JOIN persons
+			ON contacts.contact_id = persons.contact_id
 		LEFT JOIN categories contact_categories
 			ON contacts.contact_category_id = contact_categories.category_id
 		WHERE cc.main_contact_id = %d
