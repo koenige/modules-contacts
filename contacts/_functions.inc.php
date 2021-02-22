@@ -95,5 +95,5 @@ function mf_contacts_person_path($values) {
 		}
 		wrap_setting_write('contacts_profile_path['.$params['type'].']', $path);
 	}
-	return sprintf($zz_setting['contacts_profile_path'][$params['type']], $values['identifier']);
+	return sprintf($zz_setting['base'].$zz_setting['contacts_profile_path'][$params['type']], $values['identifier']);
 }
