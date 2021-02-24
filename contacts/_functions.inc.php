@@ -36,6 +36,7 @@ function mf_contacts_contactdetails($contact_ids) {
 	$ids = !is_array($contact_ids) ? [$contact_ids] : $contact_ids;
 	$sql = 'SELECT contact_id, contactdetail_id, identification, contact
 			, categories.parameters, category, label
+			, category_id
 		FROM contactdetails
 		LEFT JOIN contacts USING (contact_id)
 		LEFT JOIN categories
