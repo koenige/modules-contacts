@@ -108,11 +108,10 @@ function mod_contacts_contact($params, $settings) {
 		if (!array_key_exists($relation_type, $data)) continue;
 		foreach ($data[$relation_type] as $cc_id => $contactrelation) {
 			parse_str($contactrelation['category_parameters'], $cparams);
-			if (!empty($cparams['alias'])) {
-				$type = substr($cparams['alias'], strrpos($cparams['alias'], '/') + 1);
-				if (empty($zz_setting['contacts_profile_path'][$type])) continue;
+			if (!empty($cparams['type'])) {
+				if (empty($zz_setting['contacts_profile_path'][$cparams['type']])) continue;
 				$data[$relation_type][$cc_id]['profile_path'] = sprintf(
-					$zz_setting['contacts_profile_path'][$type], $contactrelation['identifier']
+					$zz_setting['contacts_profile_path'][$cparams['type']], $contactrelation['identifier']
 				);
 			}
 		}
@@ -141,7 +140,11 @@ function mod_contacts_contact($params, $settings) {
 		}
 	}
 
-	$page['title'] = trim($data['title_prefix'].' '.$data['contact'].' '.$data['title_suffix']);
+	if ($data['scope'] === 'person') {
+		$page['title'] = trim($data['title_prefix'].' '.$data['contact'].' '.$data['title_suffix']);
+	} else {
+		$page['title'] = $data['contact'];
+	}
 	$page['breadcrumbs'][] = $data['contact'];
 	$page['dont_show_h1'] = true;
 	$page['text'] = wrap_template('contact', $data);

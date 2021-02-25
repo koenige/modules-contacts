@@ -9,9 +9,13 @@
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 <div class="contact">
+%%% condition if first_name | last_name %%%
 <h1>%%% item title_prefix "<em>%s</em> " %%%%%% item first_name %%% %%% item name_particle %%% %%% item last_name %%% %%% item title_suffix " <em>%s</em>" %%%%%% item date_of_death "†" %%%</h1>
 %%% condition if birth_name %%%
 <h2>%%% text " (born %s)" birth_name %%%</h2>
+%%% condition endif %%%
+%%% condition else %%%
+<h1>%%% item contact %%%</h1>
 %%% condition endif %%%
 
 %%% item contact_short %%%
