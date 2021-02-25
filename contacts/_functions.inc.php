@@ -71,29 +71,23 @@ function mf_contacts_contactdetails($contact_ids) {
  *		string contact_parameters
  * @return string
  */
-function mf_contacts_person_path($values) {
+function mf_contacts_profile_path($values) {
 	global $zz_setting;
 	parse_str($values['contact_parameters'], $params);
 	if (empty($params['type'])) return '';
 	if (empty($zz_setting['contacts_profile_path'][$params['type']])) {
-		switch ($params['type']) {
-		case 'person':
+		$sql = 'SELECT CONCAT(identifier, IF(ending = "none", "", ending)) AS path
+			FROM webpages
+			WHERE content LIKE "%\%\%\% request contact * scope='.$params['type'].' %\%\%%"';
+		$path = wrap_db_fetch($sql, '', 'single value');
+		if (!$path) {
 			$sql = 'SELECT CONCAT(identifier, IF(ending = "none", "", ending)) AS path
 				FROM webpages
-				WHERE content LIKE "%%%% request contact * scope=person %%%%"';
+				WHERE content LIKE "%\%\%\% request contact * \%\%\%%"';
 			$path = wrap_db_fetch($sql, '', 'single value');
-			if (!$path) {
-				$sql = 'SELECT CONCAT(identifier, IF(ending = "none", "", ending)) AS path
-					FROM webpages
-					WHERE content LIKE "%%%% request contact * %%%%"';
-				$path = wrap_db_fetch($sql, '', 'single value');
-				if (!$path) return false;
-			}
-			$path = str_replace('*', '/%s', $path);
-			break;
-		default:
-			return '';
+			if (!$path) return false;
 		}
+		$path = str_replace('*', '/%s', $path);
 		wrap_setting_write('contacts_profile_path['.$params['type'].']', $path);
 	}
 	return sprintf($zz_setting['base'].$zz_setting['contacts_profile_path'][$params['type']], $values['identifier']);

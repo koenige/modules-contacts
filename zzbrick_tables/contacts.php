@@ -33,6 +33,10 @@ $zz['fields'][2]['export_no_html'] = true;
 $zz['fields'][2]['unless']['export_mode']['list_format'] = 'nl2br';
 $zz['fields'][2]['merge_equal'] = true;
 $zz['fields'][2]['add_details_destination'] = true;
+$zz['fields'][2]['link'] = [
+	'function' => 'mf_contacts_profile_path',
+	'fields' => ['identifier', 'contact_parameters']
+];
 
 $zz['fields'][10]['title'] = 'Short';
 $zz['fields'][10]['field_name'] = 'contact_short';
@@ -296,6 +300,7 @@ $zz['sql'] = 'SELECT /*_PREFIX_*/contacts.*, category
 		, (SELECT CONCAT(latitude, ",", longitude) FROM /*_PREFIX_*/addresses
 			WHERE /*_PREFIX_*/addresses.contact_id = /*_PREFIX_*/contacts.contact_id
 			LIMIT 1) AS latlon
+		, /*_PREFIX_*/categories.parameters AS contact_parameters
 	FROM /*_PREFIX_*/contacts
 	LEFT JOIN /*_PREFIX_*/contacts_verifications USING (contact_id)
 	LEFT JOIN /*_PREFIX_*/categories

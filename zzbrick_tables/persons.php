@@ -42,7 +42,7 @@ $zz['fields'][4]['list_append_next'] = true;
 $zz['fields'][4]['merge_equal'] = true;
 $zz['fields'][4]['field_sequence'] = 15;
 $zz['fields'][4]['link'] = [
-	'function' => 'mf_contacts_person_path',
+	'function' => 'mf_contacts_profile_path',
 	'fields' => ['identifier', 'contact_parameters']
 ];
 $zz['fields'][4]['unless']['export_mode']['display_field'] = 'contact';
