@@ -319,4 +319,6 @@ $zz['filter'][1]['type'] = 'list';
 $zz['filter'][1]['where'] = 'contact_category_id';
 $zz['filter'][1]['field_name'] = 'contact_category_id';
 
+$zz['hooks']['after_update'][] = 'mf_contacts_contact_update';
+
 $zz_conf['export'][] = 'CSV Excel';
