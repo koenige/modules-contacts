@@ -89,7 +89,9 @@ $zz['fields'][11]['title'] = 'Date of Death';
 $zz['fields'][11]['field_name'] = 'date_of_death';
 $zz['fields'][11]['type'] = 'date';
 $zz['fields'][11]['hide_in_list'] = true;
-$zz['fields'][11]['hide_in_form'] = true;
+if (!brick_access_rights()) {
+	$zz['fields'][11]['hide_in_form'] = true;
+}
 $zz['fields'][11]['field_sequence'] = 22;
 
 $zz['fields'][10]['title'] = 'Nationality';
