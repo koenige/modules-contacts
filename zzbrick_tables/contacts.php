@@ -139,6 +139,16 @@ foreach ($values['contactdetails'] as $category_id => $category) {
 	}
 	$values['contactdetails'][$key]['categories'][$category['category_id']] = $category;
 	$values['contactdetails'][$key]['category_id'] = $category['category_id'];
+	foreach ($parameters as $pkey => $pvalue) {
+		if (array_key_exists($pkey, $values['contactdetails'][$key]['parameters'])) {
+			if (is_numeric($pvalue))
+				$values['contactdetails'][$key]['parameters'][$pkey] += $pvalue;
+			else
+				$values['contactdetails'][$key]['parameters'][$pkey] = $pvalue;
+		} else {
+			$values['contactdetails'][$key]['parameters'][$pkey] = $pvalue;
+		}
+	}
 	$values['contactdetails'][$key]['parameters'] += $parameters;
 	unset($values['contactdetails'][$category_id]);
 }
@@ -326,3 +336,6 @@ $zz['filter'][1]['field_name'] = 'contact_category_id';
 $zz['hooks']['after_update'][] = 'mf_contacts_contact_update';
 
 $zz_conf['export'][] = 'CSV Excel';
+
+if (brick_access_rights())
+	$zz_conf['merge'] = true;
