@@ -248,6 +248,7 @@ if (!isset($values['relations'])) {
 
 $no = 60;
 foreach ($values['relations'] as $relation) {
+	parse_str($relation['parameters'], $relation_parameters);
 	$zz['fields'][$no] = zzform_include_table('contacts-contacts');
 	$zz['fields'][$no]['type'] = 'subtable';
 	$zz['fields'][$no]['form_display'] = 'lines';
@@ -263,6 +264,9 @@ foreach ($values['relations'] as $relation) {
 	$zz['fields'][$no]['fields'][4]['hide_in_form'] = true;
 	// remarks
 	unset($zz['fields'][$no]['fields'][9]);
+	// role
+	if (empty($relation_parameters['role']))
+		unset($zz['fields'][$no]['fields'][11]);
 	// published
 	$zz['fields'][$no]['fields'][10]['type'] = 'hidden';
 	$zz['fields'][$no]['fields'][10]['value'] = 'yes';

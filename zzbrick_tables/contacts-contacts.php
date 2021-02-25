@@ -58,6 +58,11 @@ $zz['fields'][3]['display_field'] = 'main_contact';
 $zz['fields'][3]['search'] = 'main_contacts.contact';
 $zz['fields'][3]['character_set'] = 'utf8';
 
+$zz['fields'][11]['field_name'] = 'role';
+$zz['fields'][11]['type'] = 'text';
+$zz['fields'][11]['size'] = 12;
+$zz['fields'][11]['hide_in_list'] = true;
+
 $zz['fields'][9]['field_name'] = 'remarks';
 $zz['fields'][9]['type'] = 'memo';
 $zz['fields'][9]['hide_in_list'] = true;

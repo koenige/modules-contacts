@@ -90,6 +90,7 @@ CREATE TABLE `contacts_contacts` (
   `contact_id` int unsigned NOT NULL,
   `main_contact_id` int unsigned NOT NULL,
   `relation_category_id` int unsigned NOT NULL,
+  `role` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `remarks` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `sequence` tinyint unsigned NOT NULL DEFAULT '1',
   `published` enum('yes','no') CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL DEFAULT 'no',
