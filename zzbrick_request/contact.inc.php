@@ -84,6 +84,7 @@ function mod_contacts_contact($params, $settings) {
 			, contact_categories.category AS category
 			, contact_categories.parameters AS category_parameters
 			, IF(persons.date_of_death, 1, NULL) AS dead
+			, role
 		FROM contacts_contacts cc
 		LEFT JOIN categories relations
 			ON cc.relation_category_id = relations.category_id

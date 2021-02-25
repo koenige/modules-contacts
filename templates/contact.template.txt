@@ -34,7 +34,7 @@
 %%% loop phone %%%
 <tr><th>%%% item category %%%</th><td><a href="tel:%%% item identification %%%">%%% item identification %%%</a>%%% item label " (%s)" %%%</td></tr>
 %%% loop end %%%
-%%% loop website %%%
+%%% loop url %%%
 <tr><th>%%% item category %%%</th><td><a href="%%% item identification %%%">%%% item identification %%%</a>%%% item label " (%s)" %%%</td></tr>
 %%% loop end %%%
 %%% loop addresses %%%
@@ -45,17 +45,17 @@
 %%% condition endif %%%
 %%% condition if parents %%%
 %%% loop parents %%%
-<tr><th>%%% item relation %%%</th><td>%%% item profile_path "<a href='%s'>" %%%%%% item contact %%%%%% item profile_path </a> %%%</td></tr>
+<tr><th>%%% item relation %%%</th><td>%%% item profile_path "<a href='%s'>" %%%%%% item contact %%%%%% item profile_path </a> %%% %%% item role %%%</td></tr>
 %%% loop end %%%
 %%% condition endif %%%
 %%% condition if children %%%
 %%% loop children %%%
-<tr><th>%%% item relation %%%</th><td>%%% item profile_path "<a href='%s'>" %%%%%% item contact %%%%%% item profile_path </a> %%%</td></tr>
+<tr><th>%%% item relation %%%</th><td>%%% item profile_path "<a href='%s'>" %%%%%% item contact %%%%%% item profile_path </a> %%% %%% item role %%%</td></tr>
 %%% loop end %%%
 %%% condition endif %%%
 %%% condition if associations %%%
 %%% loop associations %%%
-<tr><th>%%% item relation %%%</th><td>%%% item profile_path "<a href='%s'>" %%%%%% item contact %%%%%% item profile_path </a> %%%%%% item dead " †" %%%</td></tr>
+<tr><th>%%% item relation %%%</th><td>%%% item profile_path "<a href='%s'>" %%%%%% item contact %%%%%% item profile_path </a> %%%%%% item dead " †" %%% %%% item role %%%</td></tr>
 %%% loop end %%%
 %%% condition endif %%%
 %%% condition if participations %%%
