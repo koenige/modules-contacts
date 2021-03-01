@@ -13,7 +13,7 @@
 
 
 function mf_contacts_edit_contact_name($fields) {
-	return $fields['persons.first_name']
-		.($fields['persons.name_particle'] ? ' '.$fields['persons.name_particle'] : '')
-		.' '.$fields['persons.last_name'];
+	return trim($fields['persons.first_name'])
+		.($fields['persons.name_particle'] ? ' '.trim($fields['persons.name_particle']) : '')
+		.' '.trim($fields['persons.last_name']);
 }
