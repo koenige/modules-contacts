@@ -76,19 +76,12 @@ function mf_contacts_profile_path($values) {
 	parse_str($values['contact_parameters'], $params);
 	if (empty($params['type'])) return '';
 	if (empty($zz_setting['contacts_profile_path'][$params['type']])) {
-		$sql = 'SELECT CONCAT(identifier, IF(ending = "none", "", ending)) AS path
-			FROM webpages
-			WHERE content LIKE "%\%\%\% request contact * scope='.$params['type'].' %\%\%%"';
-		$path = wrap_db_fetch($sql, '', 'single value');
-		if (!$path) {
-			$sql = 'SELECT CONCAT(identifier, IF(ending = "none", "", ending)) AS path
-				FROM webpages
-				WHERE content LIKE "%\%\%\% request contact * \%\%\%%"';
-			$path = wrap_db_fetch($sql, '', 'single value');
-			if (!$path) return false;
-		}
-		$path = str_replace('*', '/%s', $path);
-		wrap_setting_write('contacts_profile_path['.$params['type'].']', $path);
+		$success = wrap_setting_path(
+			'contacts_profile_path['.$params['type'].']'
+			, 'request contact'
+			, ['scope' => $params['type']]
+		);
+		if (!$success) return false;
 	}
 	return sprintf($zz_setting['base'].$zz_setting['contacts_profile_path'][$params['type']], $values['identifier']);
 }
