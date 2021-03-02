@@ -137,7 +137,10 @@ function mod_contacts_contact($params, $settings) {
 				= mf_activities_group_path(['identifier' => $participation['identifier']]);
 		}
 		$data['participation_contact_path']
-			= mf_activities_contact_path(['identifier' => $data['identifier']]);
+			= mf_activities_contact_path([
+				'identifier' => $data['identifier']
+				, 'category_parameters' => 'type=person'
+			]);
 	}
 
 	if ($data['scope'] === 'person') {
