@@ -14,7 +14,7 @@
 
 function mod_contacts_contact($params, $settings) {
 	global $zz_setting;
-	if (empty($params)) return false;
+	if (count($params) !== 1) return false;
 
 	$sql = 'SELECT contact_id, contact, contact_short, contact_abbr,
 			identifier, contacts.description, remarks
