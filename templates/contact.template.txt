@@ -59,7 +59,10 @@
 %%% loop end %%%
 %%% condition endif %%%
 %%% condition if participations %%%
-<tr><th>%%% text Usergroups %%%</th>
+<tr><th>%%% text Usergroups %%%
+%%% condition if participation_contact_path %%%
+<p class="edit"><small><a href="%%% item participation_contact_path %%%">%%% text Edit %%%</a></small></p>
+%%% condition endif %%%</th>
 <td>
 <ul>
 %%% loop participations %%%

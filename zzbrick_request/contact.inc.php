@@ -70,6 +70,7 @@ function mod_contacts_contact($params, $settings) {
 	$sql = sprintf($sql, $data['contact_id']);
 	$data['addresses'] = wrap_db_fetch($sql, 'address_id');
 	$data['addresses'] = wrap_translate($data['addresses'], 'countries', 'country_id');
+	$data['addresses'] = wrap_translate($data['addresses'], 'categories', 'category_id');
 
 	// contacts_media
 	
@@ -131,14 +132,12 @@ function mod_contacts_contact($params, $settings) {
 			WHERE contact_id = %d';
 		$sql = sprintf($sql, $data['contact_id']);
 		$data['participations'] = wrap_db_fetch($sql, 'participation_id');
-		if (!empty($zz_setting['activities_profile_path']['usergroup'])) {
-			foreach ($data['participations'] as $participation_id => $participation) {
-				$data['participations'][$participation_id]['profile_path'] = sprintf(
-					$zz_setting['activities_profile_path']['usergroup'],
-					$participation['identifier']
-				);
-			}
+		foreach ($data['participations'] as $participation_id => $participation) {
+			$data['participations'][$participation_id]['profile_path']
+				= mf_activities_group_path(['identifier' => $participation['identifier']]);
 		}
+		$data['participation_contact_path']
+			= mf_activities_contact_path(['identifier' => $data['identifier']]);
 	}
 
 	if ($data['scope'] === 'person') {

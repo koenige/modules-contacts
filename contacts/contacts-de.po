@@ -290,6 +290,10 @@ msgstr "(geb. %s)"
 msgid "(Age: %d)"
 msgstr "(Alter: %d)"
 
+#: templates/contact.template.txt
+msgid "Edit"
+msgstr "Bearbeiten"
+
 #: templates/contact-verification.de.template.txt
 msgid "Registration"
 msgstr "Registrierung"
