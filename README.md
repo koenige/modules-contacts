@@ -17,7 +17,7 @@ Managing contacts (persons and organisations) in Zugzwang Project CMS.
     'provider' = list of different contact providers (e-mail, website, phone)
     'relation' = list of contact relations (member)
 
-* Database files found in `docs/sql` folder
+* Database files found in `configuration` folder
 
 ## Who do I talk to? ###
 
