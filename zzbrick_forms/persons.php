@@ -43,7 +43,7 @@ $zz['fields'][3]['field_sequence'] = 26;
 $zz['fields'][3]['separator'] = true;
 $zz['fields'][3]['separator_before'] = true;
 
-if (brick_access_rights()) {
+if (wrap_access('contacts_change_identifier')) {
 	// make it possible to change identifier
 	$zz['fields'][3]['read_options'] = 17;
 	$zz['fields'][3]['separator'] = false;
@@ -217,6 +217,6 @@ $zz['filter'][1]['selection']['no'] = wrap_text('no');
 
 $zz_conf['search'] = 'both';
 
-if (brick_access_rights()) {
+if (wrap_access('contacts_merge')) {
 	$zz_conf['merge'] = true;
 }
