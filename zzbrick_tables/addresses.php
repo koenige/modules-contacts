@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2015, 2017-2020 Gustaf Mossakowski
+ * @copyright Copyright © 2015, 2017-2021 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -48,11 +48,17 @@ $zz_sub['fields'][4]['title_append'] = 'Postcode/Place';
 $zz_sub['fields'][4]['geocode'] = 'postal_code';
 $zz_sub['fields'][4]['geocode_ignore_update'] = true;
 $zz_sub['fields'][4]['class'] = 'block480a';
+$zz_sub['fields'][4]['dependencies'] = [5, 6];
 
 $zz_sub['fields'][5]['field_name'] = 'place';
 $zz_sub['fields'][5]['type'] = 'text';
 $zz_sub['fields'][5]['geocode'] = 'locality';
 $zz_sub['fields'][5]['class'] = 'block480a';
+$zz_sub['fields'][5]['sql'] = 'SELECT DISTINCT place, place FROM /*_PREFIX_*/addresses ORDER BY place';
+$zz_sub['fields'][5]['dependencies'] = [6];
+$zz_sub['fields'][5]['sql_dependency'][4] = 'SELECT DISTINCT place
+	FROM /*_PREFIX_*/addresses
+	WHERE postcode = "%s"';
 
 $zz_sub['fields'][6]['field_name'] = 'country_id';
 $zz_sub['fields'][6]['type'] = 'select';
@@ -69,6 +75,14 @@ $zz_sub['fields'][6]['geocode_sql'] = 'SELECT country_code
 	FROM /*_PREFIX_*/countries
 	WHERE country_id = %d';
 $zz_sub['fields'][6]['class'] = 'block480';
+$zz_sub['fields'][6]['sql_dependency'][4] = 'SELECT DISTINCT country, country_id
+	FROM /*_PREFIX_*/addresses
+	LEFT JOIN /*_PREFIX_*/countries USING (country_id)
+	WHERE postcode = "%s"';
+$zz_sub['fields'][6]['sql_dependency'][5] = 'SELECT DISTINCT country, country_id
+	FROM /*_PREFIX_*/addresses
+	LEFT JOIN /*_PREFIX_*/countries USING (country_id)
+	WHERE place = "%s"';
 
 $zz_sub['fields'][7]['field_name'] = 'latitude';
 $zz_sub['fields'][7]['title_append'] = 'Latitude / Longitude';
