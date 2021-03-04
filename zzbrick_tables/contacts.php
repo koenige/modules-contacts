@@ -337,5 +337,7 @@ $zz['hooks']['after_update'][] = 'mf_contacts_contact_update';
 
 $zz_conf['export'][] = 'CSV Excel';
 
+$zz_conf['redirect_to_referer_zero_records'] = true;
+
 if (wrap_access('contacts_merge'))
 	$zz_conf['merge'] = true;
