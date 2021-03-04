@@ -78,4 +78,10 @@
 
 <p class="edit"><a href="../?edit=%%% item contact_id %%%&amp;nolist&referer=%%% page url_path %%%">%%% text Edit record %%%</a></p>
 
+%%% condition unless participations %%%
+%%% condition if participation_contact_path %%%
+<p class="edit"><a href="%%% item participation_contact_path %%%?add">%%% text Add to a group %%%</a></p>
+%%% condition endif %%%
+%%% condition endif %%%
+
 </div>

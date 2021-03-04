@@ -290,6 +290,10 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
+#: templates/contact.template.txt
+msgid "Add to a group"
+msgstr ""
+
 #: templates/contact-verification.de.template.txt
 msgid "Registration"
 msgstr ""
