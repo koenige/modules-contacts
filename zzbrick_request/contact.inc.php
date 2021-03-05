@@ -143,6 +143,14 @@ function mod_contacts_contact($params, $settings) {
 			]);
 	}
 
+	// duplicates?
+	$sql = 'SELECT contact_id, identifier
+		FROM contacts
+		WHERE contact LIKE "%%%s%%"
+		AND contact_id != %d';
+	$sql = sprintf($sql, $data['contact'], $data['contact_id']);
+	$data['duplicates'] = wrap_db_fetch($sql, 'contact_id');
+
 	if ($data['scope'] === 'person') {
 		$page['title'] = trim($data['title_prefix'].' '.$data['contact'].' '.$data['title_suffix']);
 	} else {

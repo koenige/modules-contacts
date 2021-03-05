@@ -86,4 +86,8 @@
 %%% condition endif %%%
 %%% condition endif %%%
 
+%%% condition if duplicates %%%
+<p class="edit"><a href="../?q=%%% item contact rawurlencode %%%">%%% text Possible duplicates of this record %%%</a></p>
+%%% condition endif %%%
+
 </div>
