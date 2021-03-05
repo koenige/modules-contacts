@@ -294,6 +294,10 @@ msgstr ""
 msgid "Add to a group"
 msgstr ""
 
+#: templates/contact.template.txt
+msgid "Possible duplicates of this record"
+msgstr ""
+
 #: templates/contact-verification.de.template.txt
 msgid "Registration"
 msgstr ""
