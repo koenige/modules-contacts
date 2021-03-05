@@ -13,6 +13,8 @@
 
 
 $values = [];
+$values['relations_restrict_to'] = 'contacts';
+
 $zz = zzform_include_table('contacts', $values);
 $zz['title'] = 'Contacts (without persons)';
 
