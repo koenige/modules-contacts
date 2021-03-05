@@ -76,7 +76,9 @@
 %%% condition endif %%%
 </table>
 
-<p class="edit"><a href="../?edit=%%% item contact_id %%%&amp;nolist&referer=%%% page url_path %%%">%%% text Edit record %%%</a></p>
+<p class="edit"><a href="../?edit=%%% item contact_id %%%&amp;nolist&referer=%%% page url_path %%%">%%% text Edit record %%%</a>
+%%% condition unless parents | children | associations %%% | <a href="../?delete=%%% item contact_id %%%">%%% text Delete record %%%</a>
+%%% condition endif %%%</p>
 
 %%% condition unless participations %%%
 %%% condition if participation_contact_path %%%
