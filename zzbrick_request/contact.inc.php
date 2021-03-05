@@ -148,7 +148,7 @@ function mod_contacts_contact($params, $settings) {
 		FROM contacts
 		WHERE contact LIKE "%%%s%%"
 		AND contact_id != %d';
-	$sql = sprintf($sql, $data['contact'], $data['contact_id']);
+	$sql = sprintf($sql, wrap_db_escape($data['contact']), wrap_db_escape($data['contact_id']));
 	$data['duplicates'] = wrap_db_fetch($sql, 'contact_id');
 
 	if ($data['scope'] === 'person') {
