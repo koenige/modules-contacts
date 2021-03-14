@@ -298,6 +298,10 @@ msgstr ""
 msgid "Possible duplicates of this record"
 msgstr ""
 
+#: templates/contact.template.txt
+msgid "since"
+msgstr ""
+
 #: templates/contact-verification.de.template.txt
 msgid "Registration"
 msgstr ""

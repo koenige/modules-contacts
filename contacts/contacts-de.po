@@ -302,6 +302,10 @@ msgstr "Zu einer Gruppe hinzufügen"
 msgid "Possible duplicates of this record"
 msgstr "Mögliche Duplikate dieses Eintrags"
 
+#: templates/contact.template.txt
+msgid "since"
+msgstr "seit"
+
 #: templates/contact-verification.de.template.txt
 msgid "Registration"
 msgstr "Registrierung"

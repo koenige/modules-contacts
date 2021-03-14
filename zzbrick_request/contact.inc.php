@@ -124,7 +124,7 @@ function mod_contacts_contact($params, $settings) {
 	if (in_array('activities', $zz_setting['modules'])) {
 		$sql = 'SELECT participation_id
 				, usergroup_id, usergroup, identifier
-				, date_begin, date_end, remarks
+				, date_begin, date_end, remarks, role
 			FROM participations
 			LEFT JOIN usergroups USING (usergroup_id)
 			LEFT JOIN categories

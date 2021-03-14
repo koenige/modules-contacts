@@ -66,7 +66,7 @@
 <td>
 <ul>
 %%% loop participations %%%
-<li>%%% item profile_path "<a href='%s'>" %%%%%% item usergroup %%%%%% item profile_path "</a>" %%% %%% item date_begin wrap_date %%%%%% condition if date_begin | date_end %%%–%%% condition endif %%%%%% item date_end wrap_date %%% %%% item remarks %%%</li>
+<li>%%% item profile_path "<a href='%s'>" %%%%%% item usergroup %%%%%% item profile_path "</a>" %%% %%% item role %%% %%% condition if date_begin %%%%%% condition unless date_end %%%%%% text since %%% %%% condition endif %%%%%% condition endif %%%%%% item date_begin wrap_date %%%%%% condition if date_end %%%–%%% condition endif %%%%%% item date_end wrap_date %%% %%% item remarks "<em>%s</em>" %%%</li>
 %%% loop end %%%
 </ul>
 </td></tr>
