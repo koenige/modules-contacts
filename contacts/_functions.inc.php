@@ -73,6 +73,7 @@ function mf_contacts_contactdetails($contact_ids) {
  */
 function mf_contacts_profile_path($values) {
 	global $zz_setting;
+	if (empty($values['contact_parameters'])) return false;
 	parse_str($values['contact_parameters'], $params);
 	if (empty($params['type'])) return '';
 	if (empty($zz_setting['contacts_profile_path'][$params['type']])) {
