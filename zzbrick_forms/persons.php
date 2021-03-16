@@ -196,7 +196,7 @@ $zz['sql'] = 'SELECT /*_PREFIX_*/contacts.*, category
 		, (SELECT CONCAT(latitude, ",", longitude) FROM /*_PREFIX_*/addresses
 			WHERE /*_PREFIX_*/addresses.contact_id = /*_PREFIX_*/contacts.contact_id
 			LIMIT 1) AS latlon
-		, "type=person" AS contact_parameters
+		, /*_PREFIX_*/categories.parameters AS contact_parameters
 	FROM /*_PREFIX_*/contacts
 	LEFT JOIN /*_PREFIX_*/persons USING (contact_id)
 	LEFT JOIN /*_PREFIX_*/categories
