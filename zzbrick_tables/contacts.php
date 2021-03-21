@@ -240,7 +240,12 @@ $zz['fields'][12]['type'] = 'memo';
 $zz['fields'][12]['hide_in_list'] = true;
 $zz['fields'][12]['format'] = 'markdown';
 
-$zz['fields'][13] = [];  // remarks
+$zz['fields'][13]['field_name'] = 'remarks';
+$zz['fields'][13]['type'] = 'memo';
+$zz['fields'][13]['format'] = 'markdown';
+$zz['fields'][13]['hide_in_list'] = true;
+$zz['fields'][13]['merge_append'] = true;
+$zz['fields'][13]['rows'] = 3;
 
 if (!isset($values['relations'])) {
 	if (isset($values['relations_restrict_to']))
