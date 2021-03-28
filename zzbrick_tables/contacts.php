@@ -4,7 +4,7 @@
  * Zugzwang Project
  * Table with contacts
  *
- * http://www.zugzwang.org/modules/contacts
+ * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
  * @copyright Copyright © 2015-2021 Gustaf Mossakowski
@@ -240,12 +240,14 @@ $zz['fields'][12]['type'] = 'memo';
 $zz['fields'][12]['hide_in_list'] = true;
 $zz['fields'][12]['format'] = 'markdown';
 
-$zz['fields'][13]['field_name'] = 'remarks';
-$zz['fields'][13]['type'] = 'memo';
-$zz['fields'][13]['format'] = 'markdown';
-$zz['fields'][13]['hide_in_list'] = true;
-$zz['fields'][13]['merge_append'] = true;
-$zz['fields'][13]['rows'] = 3;
+if (wrap_access('contacts_remarks')) {
+	$zz['fields'][13]['field_name'] = 'remarks';
+	$zz['fields'][13]['type'] = 'memo';
+	$zz['fields'][13]['format'] = 'markdown';
+	$zz['fields'][13]['hide_in_list'] = true;
+	$zz['fields'][13]['merge_append'] = true;
+	$zz['fields'][13]['rows'] = 3;
+}
 
 if (!isset($values['relations'])) {
 	if (isset($values['relations_restrict_to']))
