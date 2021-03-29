@@ -43,21 +43,15 @@
 %%% condition if description %%%
 <tr><th>%%% text Description %%%</th><td>%%% item description markdown %%%</td></tr>
 %%% condition endif %%%
-%%% condition if parents %%%
-%%% loop parents %%%
-<tr><th>%%% item relation %%%</th><td>%%% item profile_path "<a href='%s'>" %%%%%% item contact %%%%%% item profile_path </a> %%% %%% item role %%%</td></tr>
+%%% loop relations %%%
+<tr><th>%%% item relation %%%</th><td>
+<ul>
+%%% loop contacts %%%
+<li>%%% item profile_path "<a href='%s'>" %%%%%% item contact %%%%%% item profile_path </a> %%%%%% item dead " †" %%%  %%% item role %%%</li>
 %%% loop end %%%
-%%% condition endif %%%
-%%% condition if children %%%
-%%% loop children %%%
-<tr><th>%%% item relation %%%</th><td>%%% item profile_path "<a href='%s'>" %%%%%% item contact %%%%%% item profile_path </a> %%% %%% item role %%%</td></tr>
+</ul>
+</td></tr>
 %%% loop end %%%
-%%% condition endif %%%
-%%% condition if associations %%%
-%%% loop associations %%%
-<tr><th>%%% item relation %%%</th><td>%%% item profile_path "<a href='%s'>" %%%%%% item contact %%%%%% item profile_path </a> %%%%%% item dead " †" %%% %%% item role %%%</td></tr>
-%%% loop end %%%
-%%% condition endif %%%
 %%% condition if participations %%%
 <tr><th>%%% text Usergroups %%%
 %%% condition if participation_contact_path %%%

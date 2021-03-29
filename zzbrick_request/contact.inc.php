@@ -104,15 +104,14 @@ function mod_contacts_contact($params, $settings) {
 		, $data['contact_id']
 		, $data['contact_id']
 	);
-	$data += wrap_db_fetch($sql, ['relation_type', 'cc_id']);
-	$relation_types = ['associations', 'parents', 'children'];
-	foreach ($relation_types as $relation_type) {
-		if (!array_key_exists($relation_type, $data)) continue;
-		foreach ($data[$relation_type] as $cc_id => $contactrelation) {
+	$data['relations'] = wrap_db_fetch($sql, ['relation', 'cc_id'], 'list relation contacts');
+	$data['relations'] = array_values($data['relations']);
+	foreach ($data['relations'] as $index => $relation_types) {
+		foreach ($relation_types['contacts'] as $cc_id => $contactrelation) {
 			parse_str($contactrelation['category_parameters'], $cparams);
 			if (!empty($cparams['type'])) {
 				if (empty($zz_setting['contacts_profile_path'][$cparams['type']])) continue;
-				$data[$relation_type][$cc_id]['profile_path'] = sprintf(
+				$data['relations'][$index]['contacts'][$cc_id]['profile_path'] = sprintf(
 					$zz_setting['contacts_profile_path'][$cparams['type']], $contactrelation['identifier']
 				);
 			}
