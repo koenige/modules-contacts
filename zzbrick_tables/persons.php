@@ -34,11 +34,13 @@ $zz['fields'][2]['field_sequence'] = 13;
 $zz['fields'][3]['title'] = 'Title (prefix)';
 $zz['fields'][3]['field_name'] = 'title_prefix';
 $zz['fields'][3]['hide_in_list'] = true;
+$zz['fields'][3]['replace_values'] = ['-' => ''];
 $zz['fields'][3]['field_sequence'] = 14;
 
 $zz['fields'][4]['title'] = 'First name';
 $zz['fields'][4]['field_name'] = 'first_name';
 $zz['fields'][4]['list_append_next'] = true;
+$zz['fields'][4]['if']['multi']['null_string'] = true;
 $zz['fields'][4]['merge_equal'] = true;
 $zz['fields'][4]['field_sequence'] = 15;
 $zz['fields'][4]['link'] = [
@@ -49,6 +51,8 @@ $zz['fields'][4]['unless']['export_mode']['display_field'] = 'contact';
 
 $zz['fields'][5]['title'] = 'Particle';
 $zz['fields'][5]['field_name'] = 'name_particle';
+$zz['fields'][5]['replace_values'] = ['-' => ''];
+$zz['fields'][5]['merge_equal'] = true;
 $zz['fields'][5]['hide_in_list'] = true;
 $zz['fields'][5]['field_sequence'] = 16;
 
@@ -56,6 +60,7 @@ $zz['fields'][6]['title'] = 'Last name';
 $zz['fields'][6]['field_name'] = 'last_name';
 $zz['fields'][6]['list_append_show_title'] = true;
 $zz['fields'][6]['list_append_next'] = true;
+$zz['fields'][6]['if']['multi']['null_string'] = true;
 $zz['fields'][6]['list_hide_value'] = true;
 $zz['fields'][6]['merge_equal'] = true;
 $zz['fields'][6]['field_sequence'] = 17;
@@ -102,6 +107,8 @@ $zz['fields'][10]['sql'] = 'SELECT country_id, country_code, country
 	FROM /*_PREFIX_*/countries
 	ORDER BY country_code';
 $zz['fields'][10]['hide_in_list'] = true;
+$zz['fields'][10]['display_field'] = 'country';
+$zz['fields'][10]['character_set'] = 'utf8';
 $zz['fields'][10]['field_sequence'] = 23;
 
 $zz['fields'][99]['field_name'] = 'last_update';
@@ -114,6 +121,7 @@ $zz['sql'] = 'SELECT DISTINCT /*_PREFIX_*/persons.*
 		, /*_PREFIX_*/contacts.contact
 		, /*_PREFIX_*/contacts.identifier
 		, "type=person" AS contact_parameters
+		, country
 	FROM /*_PREFIX_*/persons
 	LEFT JOIN /*_PREFIX_*/contacts USING (contact_id)
 	LEFT JOIN /*_PREFIX_*/countries
