@@ -47,6 +47,7 @@ $zz['fields'][4]['link'] = [
 	'function' => 'mf_contacts_profile_path',
 	'fields' => ['identifier', 'contact_parameters']
 ];
+$zz['fields'][4]['add_details_destination'] = true;
 $zz['fields'][4]['unless']['export_mode']['display_field'] = 'contact';
 
 $zz['fields'][5]['title'] = 'Particle';
