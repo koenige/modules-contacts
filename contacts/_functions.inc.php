@@ -67,7 +67,7 @@ function mf_contacts_contactdetails($contact_ids) {
  * get path to profile for a person
  *
  * @param array $values
- *		string identifier
+ *		string identifier (or whatever it is called, first parameter)
  *		string contact_parameters
  * @return string
  */
@@ -84,5 +84,5 @@ function mf_contacts_profile_path($values) {
 		);
 		if (!$success) return false;
 	}
-	return sprintf($zz_setting['base'].$zz_setting['contacts_profile_path'][$params['type']], $values['identifier']);
+	return sprintf($zz_setting['base'].$zz_setting['contacts_profile_path'][$params['type']], reset($values));
 }
