@@ -38,7 +38,7 @@
 <tr><th>%%% item category %%%</th><td><a href="%%% item identification %%%">%%% item identification %%%</a>%%% item label " (%s)" %%%</td></tr>
 %%% loop end %%%
 %%% loop addresses %%%
-<tr><th>%%% text Address %%%</th><td><em>%%% item category %%%:</em><br>%%% item address %%%<br>%%% item postcode %%% %%% item place %%%<br>%%% item country %%%</td></tr>
+<tr><th>%%% text Address %%%</th><td><em>%%% item category %%%:</em><br>%%% item address nl2br %%%<br>%%% item postcode %%% %%% item place %%%<br>%%% item country %%%</td></tr>
 %%% loop end %%%
 %%% condition if description %%%
 <tr><th>%%% text Description %%%</th><td>%%% item description markdown %%%</td></tr>
