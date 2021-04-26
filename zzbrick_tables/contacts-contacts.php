@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2019-2020 Gustaf Mossakowski
+ * @copyright Copyright © 2019-2021 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -60,7 +60,7 @@ $zz['fields'][3]['character_set'] = 'utf8';
 
 $zz['fields'][11]['field_name'] = 'role';
 $zz['fields'][11]['type'] = 'text';
-$zz['fields'][11]['size'] = 12;
+$zz['fields'][11]['size'] = 18;
 $zz['fields'][11]['hide_in_list'] = true;
 
 $zz['fields'][9]['field_name'] = 'remarks';
