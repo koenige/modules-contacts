@@ -1,10 +1,11 @@
 <?php 
 
 /**
- * Zugzwang Project
+ * contacts module
  * Table with addresses
  *
- * http://www.zugzwang.org/modules/contacts
+ * https://www.zugzwang.org/modules/contacts
+ * Part of »Zugzwang Project«
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
  * @copyright Copyright © 2015, 2017-2021 Gustaf Mossakowski
@@ -42,6 +43,7 @@ $zz_sub['fields'][3]['class'] = 'block480a';
 
 $zz_sub['fields'][4]['field_name'] = 'postcode';
 $zz_sub['fields'][4]['type'] = 'text';
+$zz_sub['fields'][4]['placeholder'] = true;
 $zz_sub['fields'][4]['size'] = 8;
 $zz_sub['fields'][4]['append_next'] = true;
 $zz_sub['fields'][4]['title_append'] = 'Postcode/Place';
@@ -52,6 +54,7 @@ $zz_sub['fields'][4]['dependencies'] = [5, 6];
 
 $zz_sub['fields'][5]['field_name'] = 'place';
 $zz_sub['fields'][5]['type'] = 'text';
+$zz_sub['fields'][5]['placeholder'] = true;
 $zz_sub['fields'][5]['geocode'] = 'locality';
 $zz_sub['fields'][5]['class'] = 'block480a';
 $zz_sub['fields'][5]['sql'] = 'SELECT DISTINCT place, place FROM /*_PREFIX_*/addresses ORDER BY place';

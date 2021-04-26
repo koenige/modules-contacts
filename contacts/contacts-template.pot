@@ -1,8 +1,8 @@
-# contact module
+# contacts module
 # Translations, template
 #
 # Part of »Zugzwang Project«
-# http://www.zugzwang.org/modules/default
+# https://www.zugzwang.org/modules/default
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
 # @copyright Copyright © 2019-2021 Gustaf Mossakowski
@@ -120,6 +120,10 @@ msgstr ""
 
 #: zzbrick_tables/contacts-contacts.php
 msgid "Main Contact"
+msgstr ""
+
+#: zzbrick_tables/contacts-contacts.php
+msgid "No."
 msgstr ""
 
 #: zzbrick_tables/contacts-verifications.php

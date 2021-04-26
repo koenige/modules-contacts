@@ -1,10 +1,11 @@
 <?php 
 
 /**
- * Zugzwang Project
+ * contacts module
  * Table with contacts
  *
  * https://www.zugzwang.org/modules/contacts
+ * Part of »Zugzwang Project«
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
  * @copyright Copyright © 2015-2021 Gustaf Mossakowski
@@ -276,6 +277,8 @@ foreach ($values['relations'] as $relation) {
 	$zz['fields'][$no]['sql'] .= sprintf(' WHERE relation_category_id = %d', $relation['category_id']);
 	$zz['fields'][$no]['sql'] .= ' ORDER BY sequence, contact';
 	$zz['fields'][$no]['fields'][2]['type'] = 'foreign_key';
+	$zz['fields'][$no]['fields'][3]['placeholder'] = $relation['category'];
+	$zz['fields'][$no]['fields'][6]['placeholder'] = 'No.';
 	// category
 	$zz['fields'][$no]['fields'][4]['type'] = 'hidden';
 	$zz['fields'][$no]['fields'][4]['type_detail'] = 'select';
@@ -286,6 +289,8 @@ foreach ($values['relations'] as $relation) {
 	// role
 	if (empty($relation_parameters['role']))
 		unset($zz['fields'][$no]['fields'][11]);
+	else
+		$zz['fields'][$no]['fields'][11]['placeholder'] = true;
 	// published
 	$zz['fields'][$no]['fields'][10]['type'] = 'hidden';
 	$zz['fields'][$no]['fields'][10]['value'] = 'yes';
