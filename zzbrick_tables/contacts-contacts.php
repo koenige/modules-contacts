@@ -1,10 +1,11 @@
 <?php 
 
 /**
- * Zugzwang Project
+ * contacts module
  * Table relating contacts to contacts
  *
- * http://www.zugzwang.org/modules/contacts
+ * https://www.zugzwang.org/modules/contacts
+ * Part of »Zugzwang Project«
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
  * @copyright Copyright © 2019-2021 Gustaf Mossakowski
@@ -25,6 +26,8 @@ $zz['fields'][6]['type'] = 'number';
 $zz['fields'][6]['default'] = 1;
 $zz['fields'][6]['auto_value'] = 'increment';
 $zz['fields'][6]['def_val_ignore'] = true;
+$zz['fields'][6]['placeholder'] = 'No.';
+$zz['fields'][6]['for_action_ignore'] = true;
 
 $zz['fields'][2]['field_name'] = 'contact_id';
 $zz['fields'][2]['type'] = 'select';
@@ -33,6 +36,7 @@ $zz['fields'][2]['sql'] = 'SELECT contact_id, contact, identifier
 	ORDER BY identifier';
 $zz['fields'][2]['display_field'] = 'contact';
 $zz['fields'][2]['search'] = 'contacts.contact';
+$zz['fields'][2]['placeholder'] = true;
 
 $zz['fields'][4]['title'] = 'Relation';
 $zz['fields'][4]['field_name'] = 'relation_category_id';
