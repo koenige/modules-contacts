@@ -39,7 +39,7 @@ $zz['fields'][3]['field_sequence'] = 14;
 
 $zz['fields'][4]['title'] = 'First name';
 $zz['fields'][4]['field_name'] = 'first_name';
-$zz['fields'][4]['list_append_next'] = true;
+$zz['fields'][4]['unless']['export_mode']['list_append_next'] = true;
 $zz['fields'][4]['if']['multi']['null_string'] = true;
 $zz['fields'][4]['merge_equal'] = true;
 $zz['fields'][4]['field_sequence'] = 15;
