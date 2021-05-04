@@ -126,6 +126,10 @@ msgstr ""
 msgid "No."
 msgstr ""
 
+#: zzbrick_tables/contacts-media.php
+msgid "Media for Contacts"
+msgstr ""
+
 #: zzbrick_tables/contacts-verifications.php
 msgid "Contact Verifications"
 msgstr ""
