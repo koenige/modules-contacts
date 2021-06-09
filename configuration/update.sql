@@ -1,8 +1,9 @@
 /**
- * Zugzwang Project
- * SQL updates for contacts module
+ * contacts module
+ * SQL updates
  *
- * http://www.zugzwang.org/modules/contacts
+ * Part of »Zugzwang Project«
+ * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
  * @copyright Copyright © 2018-2021 Gustaf Mossakowski
@@ -34,3 +35,4 @@
 /* 2020-12-20-2 */	INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'contacts', 'contact_id', (SELECT DATABASE()), 'contacts_media', 'contact_medium_id', 'contact_id', 'delete');
 /* 2020-12-20-3 */	INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'media', 'medium_id', (SELECT DATABASE()), 'contacts_media', 'contact_medium_id', 'medium_id', 'no-delete');
 /* 2021-02-25-1 */	ALTER TABLE `contacts_contacts` ADD `role` varchar(255) COLLATE 'utf8mb4_unicode_ci' NULL AFTER `relation_category_id`;
+/* 2021-06-09-1 */	ALTER TABLE `contacts` CHANGE `parameters` `parameters` varchar(750) COLLATE 'utf8mb4_unicode_ci' NULL AFTER `published`;

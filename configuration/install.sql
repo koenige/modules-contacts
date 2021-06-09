@@ -1,11 +1,12 @@
 /**
- * Zugzwang Project
- * SQL for installation of contacts module
+ * contacts module
+ * SQL for installation
  *
- * http://www.zugzwang.org/modules/contacts
+ * Part of »Zugzwang Project«
+ * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2018-2020 Gustaf Mossakowski
+ * @copyright Copyright © 2018-2021 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -70,7 +71,7 @@ CREATE TABLE `contacts` (
   `remarks` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `contact_category_id` int unsigned NOT NULL,
   `published` enum('yes','no') CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL DEFAULT 'no',
-  `parameters` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `parameters` varchar(750) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`contact_id`),
