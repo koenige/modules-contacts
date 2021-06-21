@@ -126,6 +126,10 @@ msgstr "Hauptkontakt"
 msgid "No."
 msgstr "Nr."
 
+#: zzbrick_tables/contacts-media.php
+msgid "Media for Contacts"
+msgstr "Medien für Kontakte"
+
 #: zzbrick_tables/contacts-verifications.php
 msgid "Contact Verifications"
 msgstr "Kontaktverifizierungen"
@@ -200,7 +204,7 @@ msgstr "Personen"
 
 #: zzbrick_tables/persons.php
 msgid "Title (prefix)"
-msgstr "Titel (Präfix)"
+msgstr "Titel (vorne)"
 
 #: zzbrick_tables/persons.php
 msgid "First name"
@@ -228,7 +232,7 @@ msgstr " (geb. "
 
 #: zzbrick_tables/persons.php
 msgid "Title (suffix)"
-msgstr "Titel (Suffix)"
+msgstr "Titel (hinten)"
 
 #: zzbrick_tables/persons.php
 msgid "Sex"
