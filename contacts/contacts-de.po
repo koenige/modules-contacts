@@ -74,6 +74,12 @@ msgstr "PLZ/Ort"
 msgid "Street/No."
 msgstr "Straße/Nr."
 
+#: zzbrick_tables/addresses.php
+msgid "If there is more than one address:<br>Send letters to this address?"
+msgstr ""
+"Falls es mehr als eine Adresse gibt:<br>Sollen Briefe hierhin gesendet "
+"werden?"
+
 #: zzbrick_tables/contacts.php
 msgid "Contacts"
 msgstr "Kontakte"

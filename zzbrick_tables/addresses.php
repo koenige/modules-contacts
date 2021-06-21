@@ -111,8 +111,18 @@ $zz_sub['fields'][8]['if']['add']['class'] = 'hidden';
 $zz_sub['fields'][8]['kml'] = 'longitude';
 $zz_sub['fields'][8]['geojson'] = 'longitude';
 
-// @todo receive_mail yes/no
-$zz_sub['fields'][10] = [];
+$zz_sub['fields'][10]['field_name'] = 'receive_mail';
+$zz_sub['fields'][10]['type'] = 'select';
+$zz_sub['fields'][10]['enum'] = ['yes', 'no'];
+$zz_sub['fields'][10]['default'] = 'yes';
+$zz_sub['fields'][10]['def_val_ignore'] = true;
+$zz_sub['fields'][10]['explanation'] = 'If there is more than one address:<br>Send letters to this address?';
+$zz_sub['fields'][10]['class'] = 'hidden480';
+$zz_sub['fields'][10]['if_single_record']['hide_in_form'] = true;
+$zz_sub['fields'][10]['if_single_record']['type'] = 'hidden';
+$zz_sub['fields'][10]['if_single_record']['value'] = 'yes';
+$zz_sub['fields'][10]['hide_in_form'] = true;
+$zz_sub['fields'][10]['hide_in_list'] = true;
 
 $zz_sub['fields'][9]['title'] = 'Type';
 $zz_sub['fields'][9]['field_name'] = 'address_category_id';

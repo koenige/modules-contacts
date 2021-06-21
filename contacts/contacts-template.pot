@@ -74,6 +74,10 @@ msgstr ""
 msgid "Street/No."
 msgstr ""
 
+#: zzbrick_tables/addresses.php
+msgid "If there is more than one address:<br>Send letters to this address?"
+msgstr ""
+
 #: zzbrick_tables/contacts.php
 msgid "Contacts"
 msgstr ""
