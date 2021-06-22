@@ -37,6 +37,7 @@ $zz_sub['fields'][3]['field_name'] = 'address';
 $zz_sub['fields'][3]['type'] = 'memo';
 $zz_sub['fields'][3]['rows'] = 2;
 $zz_sub['fields'][3]['format'] = 'nl2br';
+$zz_sub['fields'][3]['hide_format_in_title_desc'] = true;
 $zz_sub['fields'][3]['cols'] = 40;
 $zz_sub['fields'][3]['trim'] = true;
 $zz_sub['fields'][3]['geocode'] = 'street_name';
