@@ -68,6 +68,7 @@ $zz['fields'][3]['search'] = 'main_contacts.contact';
 $zz['fields'][3]['character_set'] = 'utf8';
 $zz['fields'][3]['select_dont_force_single_value'] = true;
 $zz['fields'][3]['select_empty_no_add'] = true;
+$zz['fields'][3]['not_identical_with'] = 'contact_id';
 
 $zz['fields'][11]['field_name'] = 'role';
 $zz['fields'][11]['type'] = 'text';
