@@ -275,14 +275,12 @@ foreach ($values['relations'] as $index => $relation) {
 	parse_str($relation['parameters'], $values['relations'][$index]['params']);
 	if (!empty($values['relations'][$index]['params']['association'])) {
 		$new[$pos] = $values['relations'][$index];
-		$new[$pos]['params']['max_records'] = 0;
-		$new[$pos]['params']['min_records'] = 0;
-		$new[$pos]['params']['show_title'] = false;
+		$new[$pos]['params']['integrate_in_next'] = true;
 		$new[$pos]['association'] = true;
 	}
 }
 foreach ($new as $pos => $association) {
-	array_splice($values['relations'], $pos, 0, [$association]);
+	array_splice($values['relations'], $pos -1, 0, [$association]);
 }
 
 foreach ($values['relations'] as $index => $relation) {
@@ -303,6 +301,8 @@ foreach ($values['relations'] as $index => $relation) {
 	$zz['fields'][$no]['sql'] .= ' ORDER BY sequence, contact';
 	if (isset($relation['params']['show_title']))
 		$zz['fields'][$no]['show_title'] = $relation['params']['show_title'];
+	if (isset($relation['params']['integrate_in_next']))
+		$zz['fields'][$no]['integrate_in_next'] = $relation['params']['integrate_in_next'];
 	if (isset($relation['params']['min_records']))
 		$zz['fields'][$no]['min_records'] = $relation['params']['min_records'];
 	if (isset($relation['params']['max_records']))
