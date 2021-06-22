@@ -268,7 +268,7 @@ if (!isset($values['relations'])) {
 
 $no = 60;
 foreach ($values['relations'] as $relation) {
-	parse_str($relation['parameters'], $relation_parameters);
+	parse_str($relation['parameters'], $relation_params);
 	$zz['fields'][$no] = zzform_include_table('contacts-contacts');
 	$zz['fields'][$no]['type'] = 'subtable';
 	$zz['fields'][$no]['form_display'] = 'lines';
@@ -276,26 +276,30 @@ foreach ($values['relations'] as $relation) {
 	$zz['fields'][$no]['title'] = $relation['category'];
 	$zz['fields'][$no]['sql'] .= sprintf(' WHERE relation_category_id = %d', $relation['category_id']);
 	$zz['fields'][$no]['sql'] .= ' ORDER BY sequence, contact';
-	if (isset($relation_parameters['min_records']))
-		$zz['fields'][$no]['min_records'] = $relation_parameters['min_records'];
-	if (isset($relation_parameters['max_records']))
-		$zz['fields'][$no]['max_records'] = $relation_parameters['max_records'];
+	if (isset($relation_params['min_records']))
+		$zz['fields'][$no]['min_records'] = $relation_params['min_records'];
+	if (isset($relation_params['max_records']))
+		$zz['fields'][$no]['max_records'] = $relation_params['max_records'];
 	$zz['fields'][$no]['fields'][2]['type'] = 'foreign_key';
 	$zz['fields'][$no]['fields'][3]['placeholder'] = $relation['category'];
-	if (!empty($relation_parameters['contact_category'])) {
+	if (!empty($relation_params['main_contact']['category'])) {
 		$zz['fields'][$no]['fields'][3]['sql'] = wrap_edit_sql(
 			$zz['fields'][$no]['fields'][3]['sql'], 'WHERE',
-			sprintf('contact_category_id = %d', wrap_category_id('contact/'.$relation_parameters['contact_category']))
+			sprintf('contact_category_id = %d', wrap_category_id('contact/'.$relation_params['main_contact']['category']))
 		);
 	}
+	if (!empty($relation_params['main_contact']['add_details'])) {
+		$zz['fields'][$no]['fields'][3]['add_details']
+			= $zz_setting['base'].$relation_params['main_contact']['add_details'];
+	}
 	$zz['fields'][$no]['fields'][6]['placeholder'] = 'No.';
-	if (isset($relation_parameters['sequence'])) {
-		if ($relation_parameters['sequence'] === 'hidden') {
+	if (isset($relation_params['sequence'])) {
+		if ($relation_params['sequence'] === 'hidden') {
 			$zz['fields'][$no]['fields'][6]['type'] = 'hidden';
 			$zz['fields'][$no]['fields'][6]['class'] = 'hidden';
-		} elseif ($relation_parameters['sequence'] === 'sequence') {
+		} elseif ($relation_params['sequence'] === 'sequence') {
 			$zz['fields'][$no]['fields'][6]['type'] = 'sequence';
-		} elseif (!$relation_parameters['sequence']) {
+		} elseif (!$relation_params['sequence']) {
 			$zz['fields'][$no]['fields'][6]['hide_in_form'] = true;
 		}
 	}
@@ -307,7 +311,7 @@ foreach ($values['relations'] as $relation) {
 	// remarks
 	unset($zz['fields'][$no]['fields'][9]);
 	// role
-	if (empty($relation_parameters['role']))
+	if (empty($relation_params['role']))
 		unset($zz['fields'][$no]['fields'][11]);
 	else
 		$zz['fields'][$no]['fields'][11]['placeholder'] = true;
