@@ -84,6 +84,7 @@ function mod_contacts_contact($params, $settings) {
 			, identifier
 			, contact_categories.category AS category
 			, contact_categories.parameters AS category_parameters
+			, relations.parameters AS relation_parameters
 			, IF(persons.date_of_death, 1, NULL) AS dead
 			, role
 		FROM contacts_contacts cc
@@ -108,6 +109,11 @@ function mod_contacts_contact($params, $settings) {
 	$data['relations'] = array_values($data['relations']);
 	foreach ($data['relations'] as $index => $relation_types) {
 		foreach ($relation_types['contacts'] as $cc_id => $contactrelation) {
+			parse_str($contactrelation['relation_parameters'], $rparams);
+			if (!empty($rparams[$contactrelation['relation_type']]['relation'])) {
+				$data['relations'][$index]['relation']
+					= $rparams[$contactrelation['relation_type']]['relation'];
+			}
 			parse_str($contactrelation['category_parameters'], $cparams);
 			if (!empty($cparams['type'])) {
 				if (empty($zz_setting['contacts_profile_path'][$cparams['type']])) continue;
