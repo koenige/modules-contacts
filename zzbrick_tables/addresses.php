@@ -149,6 +149,15 @@ $zz_sub['subselect']['sql'] = 'SELECT contact_id
 	LEFT JOIN /*_PREFIX_*/countries USING (country_id)';
 $zz_sub['subselect']['sql_translate'] = ['country_id' => 'countries'];
 $zz_sub['subselect']['sql_ignore'] = ['country_id'];
+$zz_sub['subselect']['concat_fields'] = '';
+$zz_sub['subselect']['list_field_format'] = 'nl2br';
+$zz_sub['unless']['export_mode']['subselect']['field_suffix'][0] = '<br>';
+$zz_sub['if']['export_mode']['subselect']['field_suffix'][0] = "\r";
+$zz_sub['subselect']['field_suffix'][1] = ' ';
+$zz_sub['unless']['export_mode']['subselect']['field_suffix'][2] = '<br>';
+$zz_sub['if']['export_mode']['subselect']['field_suffix'][2] = "\r";
+$zz_sub['export_no_html'] = true;
+$zz_sub['if']['export_mode']['subselect']['concat_rows'] = "\r\r";
 
 $zz_sub['sql'] = 'SELECT /*_PREFIX_*/addresses.*
 		, /*_PREFIX_*/categories.category AS address_type

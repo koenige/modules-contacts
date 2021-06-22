@@ -83,18 +83,7 @@ $zz['fields'][5]['type'] = 'subtable';
 $zz['fields'][5]['min_records'] = 0;
 $zz['fields'][5]['fields'][2]['type'] = 'foreign_key';
 // @todo use category for columns
-$zz['fields'][5]['subselect']['concat_fields'] = '';
-$zz['fields'][5]['subselect']['list_field_format'] = 'nl2br';
-//$zz['fields'][5]['subselect']['field_prefix'][0] = '<em>';
-//$zz['fields'][5]['subselect']['field_suffix'][0] = ':</em><br>';
-$zz['fields'][5]['unless']['export_mode']['subselect']['field_suffix'][0] = '<br>';
-$zz['fields'][5]['if']['export_mode']['subselect']['field_suffix'][0] = "\r";
-$zz['fields'][5]['subselect']['field_suffix'][1] = ' ';
-$zz['fields'][5]['unless']['export_mode']['subselect']['field_suffix'][2] = '<br>';
-$zz['fields'][5]['if']['export_mode']['subselect']['field_suffix'][2] = "\r";
 $zz['fields'][5]['unless']['export_mode']['list_append_next'] = true;
-$zz['fields'][5]['export_no_html'] = true;
-$zz['fields'][5]['if']['export_mode']['subselect']['concat_rows'] = "\r\r";
 
 if (!isset($values['contactdetails'])) {
 	if (isset($values['contactdetails_restrict_to']))
