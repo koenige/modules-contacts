@@ -77,7 +77,7 @@ function mod_contacts_contact($params, $settings) {
 	// contacts_contacts
 	// @todo associations, depending on relations.parameters
 	$sql = 'SELECT cc_id, contact, cc.remarks, cc.sequence, relations.category AS relation
-			, IF(relations.parameters LIKE "%%&relation=association%%"
+			, IF(relations.parameters LIKE "%%&association=1%%"
 				, "associations"
 				, IF(cc.main_contact_id = %d, "parents", "children")
 			) AS relation_type
