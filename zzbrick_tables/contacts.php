@@ -25,6 +25,7 @@ $zz['fields'][98] = []; // image
 
 $zz['fields'][2]['field_name'] = 'contact';
 $zz['fields'][2]['type'] = 'memo';
+$zz['fields'][2]['typo_cleanup'] = true;
 $zz['fields'][2]['trim'] = true;
 $zz['fields'][2]['rows'] = 2;
 $zz['fields'][2]['cols'] = 50;
