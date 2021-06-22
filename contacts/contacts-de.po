@@ -229,8 +229,12 @@ msgid "Birth name"
 msgstr "Geburtsname"
 
 #: zzbrick_tables/persons.php
-msgid "if different from last name"
-msgstr "falls abweichend vom Nachnamen"
+msgid "e. g. nobiliary particle"
+msgstr "z. B. Adelsprädikat (von, zu …)"
+
+#: zzbrick_tables/persons.php
+msgid "if different from current last name"
+msgstr "falls abweichend vom aktuellen Nachnamen"
 
 #: zzbrick_tables/persons.php
 msgid " (born "

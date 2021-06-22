@@ -203,7 +203,7 @@ msgid "Birth name"
 msgstr "Nazwisko rodowe"
 
 #: zzbrick_tables/persons.php
-msgid "if different from last name"
+msgid "if different from current last name"
 msgstr "w przypadku zmiany nazwiska"
 
 #: zzbrick_tables/persons.php

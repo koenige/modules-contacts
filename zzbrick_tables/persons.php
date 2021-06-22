@@ -36,6 +36,7 @@ $zz['fields'][3]['field_name'] = 'title_prefix';
 $zz['fields'][3]['hide_in_list'] = true;
 $zz['fields'][3]['replace_values'] = ['-' => ''];
 $zz['fields'][3]['field_sequence'] = 14;
+$zz['fields'][3]['sql'] = 'SELECT DISTINCT title_prefix, title_prefix FROM persons ORDER BY title_prefix';
 
 $zz['fields'][4]['title'] = 'First name';
 $zz['fields'][4]['field_name'] = 'first_name';
@@ -56,6 +57,7 @@ $zz['fields'][5]['replace_values'] = ['-' => ''];
 $zz['fields'][5]['merge_equal'] = true;
 $zz['fields'][5]['hide_in_list'] = true;
 $zz['fields'][5]['field_sequence'] = 16;
+$zz['fields'][5]['explanation'] = 'e. g. nobiliary particle';
 
 $zz['fields'][6]['title'] = 'Last name';
 $zz['fields'][6]['field_name'] = 'last_name';
@@ -67,7 +69,7 @@ $zz['fields'][6]['merge_equal'] = true;
 $zz['fields'][6]['field_sequence'] = 17;
 
 $zz['fields'][12]['field_name'] = 'birth_name';
-$zz['fields'][12]['explanation'] = 'if different from last name';
+$zz['fields'][12]['explanation'] = 'if different from current last name';
 $zz['fields'][12]['list_prefix'] = ' (born ';
 $zz['fields'][12]['list_suffix'] = ')';
 $zz['fields'][12]['field_sequence'] = 18;
@@ -76,6 +78,7 @@ $zz['fields'][7]['title'] = 'Title (suffix)';
 $zz['fields'][7]['field_name'] = 'title_suffix';
 $zz['fields'][7]['hide_in_list'] = true;
 $zz['fields'][7]['field_sequence'] = 19;
+$zz['fields'][7]['sql'] = 'SELECT DISTINCT title_suffix, title_suffix FROM persons ORDER BY title_suffix';
 
 $zz['fields'][8]['field_name'] = 'sex';
 $zz['fields'][8]['type'] = 'select';
@@ -107,6 +110,7 @@ $zz['fields'][10]['type'] = 'select';
 $zz['fields'][10]['sql'] = 'SELECT country_id, country_code, country
 	FROM /*_PREFIX_*/countries
 	ORDER BY country_code';
+$zz['fields'][10]['sql_translate'] = ['country_id' => 'countries'];
 $zz['fields'][10]['hide_in_list'] = true;
 $zz['fields'][10]['display_field'] = 'country';
 $zz['fields'][10]['character_set'] = 'utf8';
