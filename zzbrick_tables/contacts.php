@@ -114,7 +114,6 @@ if (!isset($values['contactdetails'])) {
 	$values['contactdetails'] = wrap_db_fetch($sql, 'category_id');
 }
 
-require __DIR__.'/contactdetails.php';
 $no = 30;
 foreach ($values['contactdetails'] as $category_id => $category) {
 	if (empty($category['parameters'])) {
@@ -168,7 +167,7 @@ foreach ($values['contactdetails'] as $category) {
 		}
 	}
 
-	$zz['fields'][$no] = $zz_sub;
+	$zz['fields'][$no] = zzform_include_table('contactdetails');
 	$zz['fields'][$no]['class'] = 'contactdetails';
 	$zz['fields'][$no]['table_name'] = 'contactdetails_'.$category['category_id'];
 	$zz['fields'][$no]['title'] = $category['category'];
@@ -202,6 +201,9 @@ foreach ($values['contactdetails'] as $category) {
 	}
 	$zz['fields'][$no]['fields'][4]['def_val_ignore'] = true;
 	$zz['fields'][$no]['fields'][4]['for_action_ignore'] = true;
+	$zz['fields'][$no]['fields'][5]['hide_in_form']
+		= isset($category['parameters']['label']) ? !$category['parameters']['label']
+		: (!empty($zz_setting['contacts_details_with_label']) ? false : true);
 	$zz['fields'][$no]['form_display'] = 'lines';
 	$zz['fields'][$no]['subselect']['sql'] = sprintf('SELECT category, identification, contact_id
 		FROM /*_PREFIX_*/contactdetails
@@ -225,7 +227,6 @@ foreach ($values['contactdetails'] as $category) {
 	}
 	$no++;
 }
-unset($zz_sub);
 
 $zz['fields'][7] = []; // contacts_verifications
 
