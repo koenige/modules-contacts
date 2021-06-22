@@ -53,6 +53,7 @@ $zz['fields'][4]['sql'] = sprintf('SELECT category_id, category
 $zz['fields'][4]['sql_translate'] = ['category_id' => 'categories'];
 $zz['fields'][4]['display_field'] = 'category';
 $zz['fields'][4]['character_set'] = 'utf8';
+$zz['fields'][4]['for_action_ignore'] = true;
 
 $zz['fields'][3]['title'] = 'Main Contact';
 $zz['fields'][3]['field_name'] = 'main_contact_id';
