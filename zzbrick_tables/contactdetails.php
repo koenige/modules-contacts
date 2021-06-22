@@ -12,59 +12,59 @@
  */
 
 
-$zz_sub['title'] = 'Contact Details';
-$zz_sub['table'] = '/*_PREFIX_*/contactdetails';
+$zz['title'] = 'Contact Details';
+$zz['table'] = '/*_PREFIX_*/contactdetails';
 
-$zz_sub['fields'][1]['title'] = 'ID';
-$zz_sub['fields'][1]['field_name'] = 'contactdetail_id';
-$zz_sub['fields'][1]['type'] = 'id';
+$zz['fields'][1]['title'] = 'ID';
+$zz['fields'][1]['field_name'] = 'contactdetail_id';
+$zz['fields'][1]['type'] = 'id';
 
-$zz_sub['fields'][2]['title'] = 'Contact';
-$zz_sub['fields'][2]['field_name'] = 'contact_id';
-$zz_sub['fields'][2]['type'] = 'select';
-$zz_sub['fields'][2]['sql'] = 'SELECT contact_id, contact, identifier
+$zz['fields'][2]['title'] = 'Contact';
+$zz['fields'][2]['field_name'] = 'contact_id';
+$zz['fields'][2]['type'] = 'select';
+$zz['fields'][2]['sql'] = 'SELECT contact_id, contact, identifier
 	FROM /*_PREFIX_*/contacts
 	ORDER BY identifier';
-$zz_sub['fields'][2]['character_set'] = 'utf8';
-$zz_sub['fields'][2]['display_field'] = 'contact';
-$zz_sub['fields'][2]['if']['where']['hide_in_form'] = true;
-$zz_sub['fields'][2]['if']['where']['hide_in_list'] = true;
-$zz_sub['fields'][2]['class'] = 'block480a';
+$zz['fields'][2]['character_set'] = 'utf8';
+$zz['fields'][2]['display_field'] = 'contact';
+$zz['fields'][2]['if']['where']['hide_in_form'] = true;
+$zz['fields'][2]['if']['where']['hide_in_list'] = true;
+$zz['fields'][2]['class'] = 'block480a';
 
-$zz_sub['fields'][3]['field_name'] = 'identification';
-$zz_sub['fields'][3]['remove_local_hostname'] = false;
+$zz['fields'][3]['field_name'] = 'identification';
+$zz['fields'][3]['remove_local_hostname'] = false;
 
-$zz_sub['fields'][5]['field_name'] = 'label';
-$zz_sub['fields'][5]['type'] = 'text';
-$zz_sub['fields'][5]['hide_in_list'] = true;
-$zz_sub['fields'][5]['hide_in_form'] = true;
-$zz_sub['fields'][5]['size'] = 6;
+$zz['fields'][5]['field_name'] = 'label';
+$zz['fields'][5]['type'] = 'text';
+$zz['fields'][5]['hide_in_list'] = true;
+$zz['fields'][5]['hide_in_form'] = true;
+$zz['fields'][5]['size'] = 6;
 if (!empty($zz_setting['contacts_details_with_label']))
-	$zz_sub['fields'][5]['hide_in_form'] = false;
+	$zz['fields'][5]['hide_in_form'] = false;
 
-$zz_sub['fields'][4]['title'] = 'Type';
-$zz_sub['fields'][4]['field_name'] = 'provider_category_id';
-$zz_sub['fields'][4]['type'] = 'select';
-$zz_sub['fields'][4]['sql'] = sprintf('SELECT category_id, category
+$zz['fields'][4]['title'] = 'Type';
+$zz['fields'][4]['field_name'] = 'provider_category_id';
+$zz['fields'][4]['type'] = 'select';
+$zz['fields'][4]['sql'] = sprintf('SELECT category_id, category
 	FROM /*_PREFIX_*/categories
 	WHERE main_category_id = %d',
 	wrap_category_id('provider')
 );
-$zz_sub['fields'][4]['display_field'] = 'category';
-$zz_sub['fields'][4]['character_set'] = 'utf8';
+$zz['fields'][4]['display_field'] = 'category';
+$zz['fields'][4]['character_set'] = 'utf8';
 
-$zz_sub['fields'][20]['field_name'] = 'last_update';
-$zz_sub['fields'][20]['type'] = 'timestamp';
-$zz_sub['fields'][20]['hide_in_list'] = true;
+$zz['fields'][20]['field_name'] = 'last_update';
+$zz['fields'][20]['type'] = 'timestamp';
+$zz['fields'][20]['hide_in_list'] = true;
 
-$zz_sub['sql'] = 'SELECT /*_PREFIX_*/contactdetails.*, contact
+$zz['sql'] = 'SELECT /*_PREFIX_*/contactdetails.*, contact
 		, category
 	FROM /*_PREFIX_*/contactdetails
 	LEFT JOIN /*_PREFIX_*/contacts USING (contact_id)
 	LEFT JOIN /*_PREFIX_*/categories
 		ON /*_PREFIX_*/categories.category_id = /*_PREFIX_*/contactdetails.provider_category_id
 ';
-$zz_sub['sqlorder'] = ' ORDER BY identifier, path, identification';
+$zz['sqlorder'] = ' ORDER BY identifier, path, identification';
 
-$zz_sub['unique'][] = ['contact_id', 'identification', 'provider_category_id'];
+$zz['unique'][] = ['contact_id', 'identification', 'provider_category_id'];
 
