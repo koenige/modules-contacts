@@ -141,6 +141,15 @@ $zz_sub['fields'][20]['field_name'] = 'last_update';
 $zz_sub['fields'][20]['type'] = 'timestamp';
 $zz_sub['fields'][20]['hide_in_list'] = true;
 
+$zz_sub['subselect']['sql'] = 'SELECT contact_id
+		, address, postcode, place, country_id, country
+	FROM /*_PREFIX_*/addresses
+	LEFT JOIN /*_PREFIX_*/categories
+		ON /*_PREFIX_*/addresses.address_category_id = /*_PREFIX_*/categories.category_id
+	LEFT JOIN /*_PREFIX_*/countries USING (country_id)';
+$zz_sub['subselect']['sql_translate'] = ['country_id' => 'countries'];
+$zz_sub['subselect']['sql_ignore'] = ['country_id'];
+
 $zz_sub['sql'] = 'SELECT /*_PREFIX_*/addresses.*
 		, /*_PREFIX_*/categories.category AS address_type
 		, /*_PREFIX_*/contacts.contact

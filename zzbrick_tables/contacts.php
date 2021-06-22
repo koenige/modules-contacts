@@ -81,11 +81,6 @@ $zz['fields'][5]['title'] = 'Address';
 $zz['fields'][5]['type'] = 'subtable';
 $zz['fields'][5]['min_records'] = 0;
 $zz['fields'][5]['fields'][2]['type'] = 'foreign_key';
-$zz['fields'][5]['subselect']['sql'] = 'SELECT address, postcode, place, country, contact_id
-	FROM /*_PREFIX_*/addresses
-	LEFT JOIN /*_PREFIX_*/categories
-		ON /*_PREFIX_*/addresses.address_category_id = /*_PREFIX_*/categories.category_id
-	LEFT JOIN /*_PREFIX_*/countries USING (country_id)';
 // @todo use category for columns
 $zz['fields'][5]['subselect']['concat_fields'] = '';
 $zz['fields'][5]['subselect']['list_field_format'] = 'nl2br';
