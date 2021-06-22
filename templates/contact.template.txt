@@ -15,7 +15,7 @@
 <h2>%%% text " (born %s)" birth_name %%%</h2>
 %%% condition endif %%%
 %%% condition else %%%
-<h1>%%% item contact %%%</h1>
+<h1>%%% item contact nl2br %%%</h1>
 %%% condition endif %%%
 
 %%% item contact_short %%%
