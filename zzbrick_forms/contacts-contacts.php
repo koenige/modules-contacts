@@ -24,11 +24,9 @@ if (!$contact) wrap_quit(404);
 if (!empty($brick['local_settings']['scope'])) {
 	$sql = 'SELECT category_id, category, parameters
 		FROM categories
-		WHERE main_category_id = %d
-		AND path LIKE "%%%s"';
+		WHERE category_id = %d';
 	$sql = sprintf($sql
-		, wrap_category_id('relation')
-		, $brick['local_settings']['scope']
+		, wrap_category_id('relation/'.$brick['local_settings']['scope'])
 	);
 	$category = wrap_db_fetch($sql);
 	parse_str($category['parameters'], $category['parameters']);
