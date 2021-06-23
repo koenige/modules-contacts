@@ -44,7 +44,11 @@
 <tr><th>%%% text Description %%%</th><td>%%% item description markdown %%%</td></tr>
 %%% condition endif %%%
 %%% loop relations %%%
-<tr><th>%%% item relation %%%</th><td>
+<tr><th>%%% item relation %%%
+%%% condition if relations_path %%%
+<p class="edit"><small><a href="%%% item relations_path %%%">%%% text Edit %%%</a></small></p>
+%%% condition endif %%%
+</th><td>
 <ul>
 %%% loop contacts %%%
 <li>%%% item profile_path "<a href='%s'>" %%%%%% item contact %%%%%% item profile_path </a> %%%%%% item dead " †" %%%  %%% item role %%%</li>

@@ -81,6 +81,7 @@ function mod_contacts_contact($params, $settings) {
 				, "associations"
 				, IF(cc.main_contact_id = %d, "parents", "children")
 			) AS relation_type
+			, relations.path AS relation_path
 			, identifier
 			, contact_categories.category AS category
 			, contact_categories.parameters AS category_parameters
@@ -108,6 +109,7 @@ function mod_contacts_contact($params, $settings) {
 	$data['relations'] = wrap_db_fetch($sql, ['relation', 'cc_id'], 'list relation contacts');
 	$data['relations'] = array_values($data['relations']);
 	foreach ($data['relations'] as $index => $relation_types) {
+		$relation = [];
 		foreach ($relation_types['contacts'] as $cc_id => $contactrelation) {
 			parse_str($contactrelation['relation_parameters'], $rparams);
 			if (!empty($rparams[$contactrelation['relation_type']]['relation'])) {
@@ -121,7 +123,19 @@ function mod_contacts_contact($params, $settings) {
 					$zz_setting['contacts_profile_path'][$cparams['type']], $contactrelation['identifier']
 				);
 			}
+			if (!$relation) {
+				$relation = $contactrelation;
+				$relation['relation_parameters'] = $rparams;
+			}
 		}
+		$type = !empty($relation['relation_parameters']['alias'])
+			? $relation['relation_parameters']['alias'] : $relation['relation_path'];
+		$type = substr($type, strrpos($type, '/') + 1);
+		if (empty($zz_setting['contacts_relations_path'][$type]))
+			$success = wrap_setting_path('contacts_relations_path['.$type.']', 'forms contacts-contacts', ['scope' => $type]);
+		$data['relations'][$index]['relations_path'] = sprintf(
+			$zz_setting['contacts_relations_path'][$type], $params[0]
+		);
 	}
 	
 	// participations
