@@ -103,6 +103,11 @@ msgid "Remarks"
 msgstr ""
 
 #: zzbrick_tables/contacts.php
+#: zzbrick_tables/contacts-contacts.php
+msgid "Internal remarks"
+msgstr ""
+
+#: zzbrick_tables/contacts.php
 msgid "Short"
 msgstr ""
 

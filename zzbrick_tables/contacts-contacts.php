@@ -54,6 +54,8 @@ $zz['fields'][4]['sql_translate'] = ['category_id' => 'categories'];
 $zz['fields'][4]['display_field'] = 'category';
 $zz['fields'][4]['character_set'] = 'utf8';
 $zz['fields'][4]['for_action_ignore'] = true;
+$zz['fields'][4]['if']['where']['hide_in_form'] = true;
+$zz['fields'][4]['if']['where']['hide_in_list'] = true;
 
 $zz['fields'][3]['title'] = 'Main Contact';
 $zz['fields'][3]['field_name'] = 'main_contact_id';
@@ -69,16 +71,22 @@ $zz['fields'][3]['character_set'] = 'utf8';
 $zz['fields'][3]['select_dont_force_single_value'] = true;
 $zz['fields'][3]['select_empty_no_add'] = true;
 $zz['fields'][3]['not_identical_with'] = 'contact_id';
+$zz['fields'][3]['if']['where']['hide_in_form'] = true;
+$zz['fields'][3]['if']['where']['hide_in_list'] = true;
 
 $zz['fields'][11]['field_name'] = 'role';
 $zz['fields'][11]['type'] = 'text';
 $zz['fields'][11]['size'] = 18;
-$zz['fields'][11]['hide_in_list'] = true;
 
 $zz['fields'][9]['field_name'] = 'remarks';
 $zz['fields'][9]['type'] = 'memo';
 $zz['fields'][9]['hide_in_list'] = true;
+$zz['fields'][9]['hide_in_form'] = true;
 $zz['fields'][9]['rows'] = 2;
+$zz['fields'][9]['explanation'] = 'Internal remarks';
+if (wrap_access('contacts_remarks')) {
+	$zz['fields'][9]['hide_in_form'] = false;
+}
 
 $zz['fields'][10]['title_tab'] = 'WWW?';
 $zz['fields'][10]['field_name'] = 'published';
@@ -86,6 +94,11 @@ $zz['fields'][10]['type'] = 'select';
 $zz['fields'][10]['enum'] = ['yes', 'no'];
 $zz['fields'][10]['default'] = 'no';
 $zz['fields'][10]['def_val_ignore'] = true;
+$zz['fields'][10]['hide_in_list'] = true;
+$zz['fields'][10]['hide_in_form'] = true;
+if (wrap_access('contacts_published')) {
+	$zz['fields'][10]['hide_in_form'] = false;
+}
 
 $zz['fields'][99]['field_name'] = 'last_update';
 $zz['fields'][99]['type'] = 'timestamp';

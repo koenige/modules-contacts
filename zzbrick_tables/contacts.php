@@ -234,6 +234,7 @@ $zz['fields'][13]['merge_append'] = true;
 $zz['fields'][13]['rows'] = 3;
 $zz['fields'][13]['hide_in_list'] = true;
 $zz['fields'][13]['hide_in_form'] = true;
+$zz['fields'][13]['explanation'] = 'Internal remarks';
 if (wrap_access('contacts_remarks')) {
 	$zz['fields'][13]['hide_in_form'] = false;
 }
