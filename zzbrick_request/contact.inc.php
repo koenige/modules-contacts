@@ -128,6 +128,7 @@ function mod_contacts_contact($params, $settings) {
 				$relation['relation_parameters'] = $rparams;
 			}
 		}
+		if ($relation['relation_type'] !== 'parents') continue;
 		$type = !empty($relation['relation_parameters']['alias'])
 			? $relation['relation_parameters']['alias'] : $relation['relation_path'];
 		$type = substr($type, strrpos($type, '/') + 1);
