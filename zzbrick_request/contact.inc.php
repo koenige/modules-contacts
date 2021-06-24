@@ -119,7 +119,7 @@ function mod_contacts_contact($params, $settings) {
 			parse_str($contactrelation['category_parameters'], $cparams);
 			if (!empty($cparams['type'])) {
 				if (empty($zz_setting['contacts_profile_path'][$cparams['type']])) continue;
-				$data['relations'][$index]['contacts'][$cc_id]['profile_path'] = sprintf(
+				$data['relations'][$index]['contacts'][$cc_id]['profile_path'] = $zz_setting['base'].sprintf(
 					$zz_setting['contacts_profile_path'][$cparams['type']], $contactrelation['identifier']
 				);
 			}
@@ -134,7 +134,7 @@ function mod_contacts_contact($params, $settings) {
 		$type = substr($type, strrpos($type, '/') + 1);
 		if (empty($zz_setting['contacts_relations_path'][$type]))
 			$success = wrap_setting_path('contacts_relations_path['.$type.']', 'forms contacts-contacts', ['scope' => $type]);
-		$data['relations'][$index]['relations_path'] = sprintf(
+		$data['relations'][$index]['relations_path'] = $zz_setting['base'].sprintf(
 			$zz_setting['contacts_relations_path'][$type], $params[0]
 		);
 	}
@@ -159,7 +159,7 @@ function mod_contacts_contact($params, $settings) {
 		$data['participation_contact_path']
 			= mf_activities_contact_path([
 				'identifier' => $data['identifier']
-				, 'category_parameters' => 'type=person'
+				, 'category_parameters' => 'type='.$data['scope']
 			]);
 	}
 
