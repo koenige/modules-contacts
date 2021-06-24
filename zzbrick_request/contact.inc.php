@@ -46,7 +46,7 @@ function mod_contacts_contact($params, $settings) {
 				WHERE contact_id = %d';
 			$sql = sprintf($sql, $data['contact_id']);
 			$data += wrap_db_fetch($sql);
-			if ($data['sex']) $data[$data['sex']] = true;
+			if (!empty($data['sex'])) $data[$data['sex']] = true;
 			$data = wrap_translate($data, 'countries', 'country_id');
 			break;
 		case 'organisation':
@@ -172,7 +172,9 @@ function mod_contacts_contact($params, $settings) {
 	$data['duplicates'] = wrap_db_fetch($sql, 'contact_id');
 
 	if ($data['scope'] === 'person') {
-		$page['title'] = trim($data['title_prefix'].' '.$data['contact'].' '.$data['title_suffix']);
+		$page['title'] = trim((!empty($data['title_prefix']) ? $data['title_prefix'].' ' : '')
+			.$data['contact']
+			.(!empty($data['title_suffix']) ? ' '.$data['title_suffix'] : ''));
 	} else {
 		$page['title'] = $data['contact'];
 	}
