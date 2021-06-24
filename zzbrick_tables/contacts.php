@@ -331,7 +331,6 @@ foreach ($values['relations'] as $index => $relation) {
 		$zz['fields'][$no]['fields'][11]['placeholder'] = true;
 	// published
 	$zz['fields'][$no]['fields'][10]['type'] = 'hidden';
-	$zz['fields'][$no]['fields'][10]['value'] = 'yes';
 	$zz['fields'][$no]['fields'][10]['hide_in_form'] = true;
 	$zz['fields'][$no]['hide_in_list'] = true;
 	
