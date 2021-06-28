@@ -305,6 +305,12 @@ foreach ($values['relations'] as $index => $relation) {
 	if (!empty($relation['params']['main_contact']['add_details'])) {
 		$zz['fields'][$no]['fields'][$contact_no]['add_details']
 			= $zz_setting['base'].$relation['params']['main_contact']['add_details'];
+		// no recursive linking on forms that link to add_details on themselves
+		// this is not possible to edit
+		$my_url = parse_url($zz_setting['request_uri']);
+		if ($zz['fields'][$no]['fields'][$contact_no]['add_details'] === $my_url['path']) {
+			$zz['fields'][$no]['hide_in_form'] = true;
+		}
 	}
 	$zz['fields'][$no]['fields'][6]['placeholder'] = 'No.';
 	if (isset($relation['params']['sequence'])) {
