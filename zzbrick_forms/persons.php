@@ -180,17 +180,14 @@ $zz['fields'][94]['hide_in_form'] = true;
 $zz['fields'][94]['hide_in_list'] = true;
 $zz['fields'][94]['export'] = false;
 
-/*
 $zz['fields'][93]['field_name'] = 'person';
 $zz['fields'][93]['type'] = 'display';
-$zz['fields'][93]['search'] = 'CONCAT(first_name, " ", IFNULL(CONCAT(name_particle, " "), ""), maiden_name)';
+$zz['fields'][93]['search'] = 'CONCAT(first_name, " ", IFNULL(CONCAT(name_particle, " "), ""), birth_name)';
 $zz['fields'][93]['character_set'] = 'utf8';
 $zz['fields'][93]['hide_in_form'] = true;
 $zz['fields'][93]['hide_in_list'] = true;
 $zz['fields'][93]['export'] = false;
-*/
 
-$zz['add_details_return_field'] = 'persons.person_id';
 
 $zz['sql'] = 'SELECT /*_PREFIX_*/contacts.*, category
 		, (SELECT CONCAT(latitude, ",", longitude) FROM /*_PREFIX_*/addresses
