@@ -107,6 +107,24 @@ INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`
 INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'categories', 'category_id', (SELECT DATABASE()), 'contacts_contacts', 'cc_id', 'relation_category_id', 'no-delete');
 
 
+CREATE TABLE `contacts_identifiers` (
+  `contact_identifier_id` int unsigned NOT NULL AUTO_INCREMENT,
+  `contact_id` int unsigned NOT NULL,
+  `identifier` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `identifier_category_id` int unsigned NOT NULL,
+  `current` enum('yes') CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`contact_identifier_id`),
+  UNIQUE KEY `identifier_category_id` (`identifier_category_id`,`identifier`),
+  UNIQUE KEY `contact_id` (`contact_id`,`identifier_category_id`,`current`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'contacts', 'contact_id', (SELECT DATABASE()), 'contacts_identifiers', 'contact_identifier_id', 'contact_id', 'delete');
+INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'categories', 'category_id', (SELECT DATABASE()), 'contacts_identifiers', 'contact_identifier_id', 'identifier_category_id', 'no-delete');
+
+INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Identifiers', NULL, NULL, 'identifiers', NULL, NULL, NOW());
+
+
 CREATE TABLE `contacts_media` (
   `contact_medium_id` int unsigned NOT NULL AUTO_INCREMENT,
   `contact_id` int unsigned NOT NULL,

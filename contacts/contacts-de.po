@@ -136,6 +136,14 @@ msgstr "Hauptkontakt"
 msgid "No."
 msgstr "Nr."
 
+#: zzbrick_tables/contacts-identifiers.php
+msgid "Identifiers of Contacts"
+msgstr "Kennungen von Kontakten"
+
+#: zzbrick_tables/contacts-identifiers.php
+msgid "current"
+msgstr "aktuell"
+
 #: zzbrick_tables/contacts-media.php
 msgid "Media for Contacts"
 msgstr "Medien für Kontakte"

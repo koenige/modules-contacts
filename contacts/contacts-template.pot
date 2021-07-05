@@ -135,6 +135,14 @@ msgstr ""
 msgid "No."
 msgstr ""
 
+#: zzbrick_tables/contacts-identifiers.php
+msgid "Identifiers of Contacts"
+msgstr ""
+
+#: zzbrick_tables/contacts-identifiers.php
+msgid "current"
+msgstr ""
+
 #: zzbrick_tables/contacts-media.php
 msgid "Media for Contacts"
 msgstr ""
