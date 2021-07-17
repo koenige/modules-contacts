@@ -1,10 +1,11 @@
 <?php 
 
 /**
- * Zugzwang Project
- * Form for places
+ * contacts module
+ * form for organisers
  *
- * http://www.zugzwang.org/modules/contacts
+ * Part of »Zugzwang Project«
+ * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
  * @copyright Copyright © 2020-2021 Gustaf Mossakowski

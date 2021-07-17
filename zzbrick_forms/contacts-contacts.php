@@ -1,10 +1,11 @@
 <?php 
 
 /**
- * Zugzwang Project
- * Form for contacts without persons
+ * contacts module
+ * Form for association of contacts to other contacts
  *
- * http://www.zugzwang.org/modules/contacts
+ * Part of »Zugzwang Project«
+ * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
  * @copyright Copyright © 2021 Gustaf Mossakowski

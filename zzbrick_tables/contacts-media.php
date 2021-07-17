@@ -1,10 +1,11 @@
 <?php 
 
 /**
- * Zugzwang Project
+ * contacts module
  * Database table 'Contacts/Media'
  *
- * http://www.zugzwang.org/modules/contacts
+ * Part of »Zugzwang Project«
+ * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
  * @copyright Copyright © 2014-2015, 2017-2018, 2021 Gustaf Mossakowski

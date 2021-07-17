@@ -1,9 +1,9 @@
-# contact module
+# contacts module
 # HTML for confirmation of contact registration
 # German language, informal
 #
 # Part of »Zugzwang Project«
-# http://www.zugzwang.org/modules/contacts
+# https://www.zugzwang.org/modules/contacts
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
 # @copyright Copyright © 2018 Gustaf Mossakowski

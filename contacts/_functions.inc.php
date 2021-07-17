@@ -1,10 +1,11 @@
 <?php 
 
 /**
- * Zugzwang Project
- * Common functions for contacts module
+ * contacts module
+ * common functions
  *
- * http://www.zugzwang.org/modules/contacts
+ * Part of »Zugzwang Project«
+ * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
  * @copyright Copyright © 2015, 2018, 2021 Gustaf Mossakowski
