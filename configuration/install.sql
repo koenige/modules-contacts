@@ -106,6 +106,8 @@ INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`
 INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'contacts', 'contact_id', (SELECT DATABASE()), 'contacts_contacts', 'cc_id', 'main_contact_id', 'no-delete');
 INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'categories', 'category_id', (SELECT DATABASE()), 'contacts_contacts', 'cc_id', 'relation_category_id', 'no-delete');
 
+INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Relation', NULL, NULL, 'relation', NULL, NULL, NOW());
+
 
 CREATE TABLE `contacts_identifiers` (
   `contact_identifier_id` int unsigned NOT NULL AUTO_INCREMENT,
