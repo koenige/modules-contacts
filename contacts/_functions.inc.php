@@ -54,6 +54,9 @@ function mf_contacts_contactdetails($contact_ids) {
 			if ($type['type'] === 'mail') {
 				$detail['mailto'] = wrap_mailto($detail['contact'], $detail['identification']);
 			}
+			if ($type['type'] === 'username' AND !empty($type['url'])) {
+				$detail['username_url'] = sprintf($type['url'], $detail['identification']);
+			}
 			$data[$contact_id][$type['type']][] = $detail;
 			
 		}
