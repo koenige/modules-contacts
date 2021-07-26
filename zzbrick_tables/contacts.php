@@ -165,7 +165,7 @@ foreach ($values['contactdetails'] as $category) {
 	if (!empty($category['parameters']['type']) AND in_array($category['parameters']['type'], ['mail', 'url', 'phone', 'username'])) {
 		$zz['fields'][$no]['fields'][3]['type'] = $category['parameters']['type'];
 	}
-	$parameters_to_fields = ['explanation', 'parse_url', 'url'];
+	$parameters_to_fields = ['explanation', 'parse_url', 'url', 'dont_check_username_online'];
 	foreach ($parameters_to_fields as $parameter_to_field) {
 		if (empty($category['parameters'][$parameter_to_field])) continue;
 		$zz['fields'][$no]['fields'][3][$parameter_to_field] = $category['parameters'][$parameter_to_field];
