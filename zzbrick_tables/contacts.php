@@ -111,6 +111,7 @@ foreach ($values['contactdetails'] as $category_id => $category) {
 	}
 	
 	// group contactdetails?
+	if (!empty($values['contactdetails_separate'])) continue;
 	if (!empty($parameters['separate'])) {
 		if (!is_array($parameters['separate']) AND $parameters['separate'].'' === '1') continue;
 		if (!empty($values['contactdetails_restrict_to'])
