@@ -112,7 +112,7 @@ foreach ($values['contactdetails'] as $category_id => $category) {
 	
 	// group contactdetails?
 	if (!empty($parameters['separate'])) {
-		if ($parameters['separate'] === 1) continue;
+		if (!is_array($parameters['separate']) AND $parameters['separate'].'' === '1') continue;
 		if (!empty($values['contactdetails_restrict_to'])
 			AND !empty($parameters['separate'][$values['contactdetails_restrict_to']]))
 			continue;
@@ -162,11 +162,14 @@ foreach ($values['contactdetails'] as $category) {
 		? $category['parameters']['max_records']
 		: (!empty($category['categories']) ? count($category['categories']) : 1);
 	$zz['fields'][$no]['fields'][2]['type'] = 'foreign_key';
-	if (!empty($category['parameters']['type']) AND in_array($category['parameters']['type'], ['mail', 'url', 'phone'])) {
+	if (!empty($category['parameters']['type']) AND in_array($category['parameters']['type'], ['mail', 'url', 'phone', 'username'])) {
 		$zz['fields'][$no]['fields'][3]['type'] = $category['parameters']['type'];
 	}
-	if (!empty($category['parameters']['explanation']))
-		$zz['fields'][$no]['fields'][3]['explanation'] = $category['parameters']['explanation'];
+	$parameters_to_fields = ['explanation', 'parse_url', 'url'];
+	foreach ($parameters_to_fields as $parameter_to_field) {
+		if (empty($category['parameters'][$parameter_to_field])) continue;
+		$zz['fields'][$no]['fields'][3][$parameter_to_field] = $category['parameters'][$parameter_to_field];
+	}
 	if (empty($category['categories']))
 		$category['categories'][$category['category_id']] = $category;
 	$zz['fields'][$no]['sql'] .= sprintf(
