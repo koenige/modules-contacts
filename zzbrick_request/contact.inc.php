@@ -59,19 +59,7 @@ function mod_contacts_contact($params, $settings) {
 	$data += mf_contacts_contactdetails($data['contact_id']);
 	
 	// addresses
-	$sql = 'SELECT address_id, address, postcode, place
-			, country_id, country
-			, latitude, longitude
-			, category_id, category
-		FROM addresses
-		LEFT JOIN countries USING (country_id)
-		LEFT JOIN categories
-			ON categories.category_id = addresses.address_category_id
-		WHERE contact_id = %d';
-	$sql = sprintf($sql, $data['contact_id']);
-	$data['addresses'] = wrap_db_fetch($sql, 'address_id');
-	$data['addresses'] = wrap_translate($data['addresses'], 'countries', 'country_id');
-	$data['addresses'] = wrap_translate($data['addresses'], 'categories', 'category_id');
+	$data['addresses'] = mf_contacts_addresses($data['contact_id']);
 
 	// contacts_media
 	

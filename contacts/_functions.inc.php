@@ -68,6 +68,39 @@ function mf_contacts_contactdetails($contact_ids) {
 }
 
 /**
+ * read all addresses for a contact from database
+ *
+ * @param mixed $contactdetails (int or array)
+ * @return array
+ */
+function mf_contacts_addresses($contact_ids) {
+	if (!$contact_ids) return [];
+	$ids = !is_array($contact_ids) ? [$contact_ids] : $contact_ids;
+	$sql = 'SELECT address_id, address, postcode, place
+			, country_id, country
+			, latitude, longitude
+			, category_id, category
+			, contact_id
+		FROM /*_PREFIX_*/addresses
+		LEFT JOIN /*_PREFIX_*/countries USING (country_id)
+		LEFT JOIN /*_PREFIX_*/categories
+			ON /*_PREFIX_*/categories.category_id = /*_PREFIX_*/addresses.address_category_id
+		WHERE contact_id IN (%d)';
+	$sql = sprintf($sql, implode(',', $ids));
+	$addresses = wrap_db_fetch($sql, 'address_id');
+	$addresses = wrap_translate($addresses, 'countries', 'country_id');
+	$addresses = wrap_translate($addresses, 'categories', 'category_id');
+	$data = [];
+	foreach ($addresses as $address_id => $address) {
+		$data[$address['contact_id']][$address['address_id']] = $address;
+	}
+	if (is_array($contact_ids)) return $data;
+	$data = reset($data);
+	if (!$data) return [];
+	return $data;
+}
+
+/**
  * get path to profile for a person
  *
  * @param array $values
