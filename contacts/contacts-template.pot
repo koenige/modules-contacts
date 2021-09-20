@@ -22,6 +22,30 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.8.6\n"
 
+#: zzbrick_forms/addlogin.php
+msgid "Add a new login"
+msgstr ""
+
+#: zzbrick_forms/addlogin.php
+msgid "Set a Password"
+msgstr ""
+
+#: zzbrick_forms/addlogin.php
+msgid "Please set a password for the login."
+msgstr ""
+
+#: zzbrick_forms/addlogin.php
+msgid "The password must be at least %d characters long."
+msgstr ""
+
+#: zzbrick_forms/addlogin.php
+msgid "In the future, access is granted with the username below and the password you chose."
+msgstr ""
+
+#: zzbrick_forms/addlogin.php
+msgid "Save password"
+msgstr ""
+
 #: zzbrick_forms/contacts-general.php
 msgid "Contacts (without persons)"
 msgstr ""
