@@ -359,6 +359,14 @@ msgstr ""
 msgid "masquerade login"
 msgstr ""
 
+#: templates/contact.template.txt
+msgid "An access code for the login has been sent!"
+msgstr ""
+
+#: templates/contact.template.txt
+msgid "Send mail with access code"
+msgstr ""
+
 #: templates/contact-verification.de.template.txt
 msgid "Registration"
 msgstr ""

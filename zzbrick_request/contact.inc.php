@@ -17,6 +17,10 @@ function mod_contacts_contact($params, $settings) {
 	global $zz_setting;
 	if (count($params) !== 1) return false;
 
+	if (isset($_GET['sendlogin']) AND !empty($_POST['sendlogin'])) {
+		return brick_format('%%% make sendlogin '.implode(' ', $params).' %%%');
+	}
+
 	$sql = 'SELECT contact_id, contact, contact_short, contact_abbr,
 			identifier, contacts.description, remarks
 			, SUBSTRING_INDEX(path, "/", -1) AS scope
@@ -190,6 +194,7 @@ function mod_contacts_contact($params, $settings) {
 	} else {
 		$page['title'] = $data['contact'];
 	}
+	$page['query_strings'] = ['sendlogin'];
 	$page['breadcrumbs'][] = $data['contact'];
 	$page['dont_show_h1'] = true;
 	$page['text'] = wrap_template('contact', $data);

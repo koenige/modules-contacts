@@ -87,6 +87,11 @@
 %%% condition endif %%%
 %%% condition else %%%
 %%% text without a login %%%
+%%% condition if sendlogin %%%
+<p class="infomsg">%%% text An access code for the login has been sent! %%%</p>
+%%% condition elseif mail %%%
+<form method="POST" action="./?sendlogin"><input type="submit" value="%%% text Send mail with access code %%%" name="sendlogin"></form>
+%%% condition endif %%%
 %%% condition endif %%%
 </td></tr>
 %%% condition endif %%% 

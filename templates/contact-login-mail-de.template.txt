@@ -1,0 +1,26 @@
+# contacts module
+# send a login by mail, German formal
+#
+# Part of »Zugzwang Project«
+# https://www.zugzwang.org/modules/contacts
+#
+# @author Gustaf Mossakowski <gustaf@koenige.org>
+# @copyright Copyright © 2019-2021 Gustaf Mossakowski
+# @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
+#
+Subject: Zugang zur Website %%% setting project %%%
+
+Sehr geehrte%%% condition if male %%%r Herr%%% condition elseif female %%% Frau%%% condition else %%%/r%%% condition endif %%% %%% item last_name %%%,
+
+wir haben für Sie einen Zugang zum internen Bereich unserer Website angelegt.
+Sie können sich zukünftig mit dem Benutzernamen
+
+	%%% item identifier %%%
+
+anmelden. Ein Passwort für den Zugang können Sie über diesen Link setzen:
+
+	%%% setting host_base %%%%%% setting login_url %%%?request=%%% item identifier %%%-%%% item addlogin_hash %%%
+
+Mit freundlichen Grüßen
+%%% item project %%% 
+%%% item sender %%% 
