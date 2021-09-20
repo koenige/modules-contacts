@@ -161,8 +161,10 @@ function mod_contacts_contact($params, $settings) {
 	$data['duplicates'] = wrap_db_fetch($sql, 'contact_id');
 
 	// logins
-	if ($data['scope'] === 'person' AND wrap_get_setting('login_with_contact_id')
-		AND wrap_access('contacts_login')) {
+	if ($data['scope'] === 'person'
+		AND wrap_get_setting('login_with_contact_id')
+		AND wrap_access('contacts_login')
+	) {
 		$data['logindata'] = true;
 		$sql = 'SELECT login_id, login_rights
 				, FROM_UNIXTIME(last_click) AS last_click
@@ -175,7 +177,10 @@ function mod_contacts_contact($params, $settings) {
 			, $data['contact_id']
 		);
 		$login = wrap_db_fetch($sql);
-		if ($login) $data += $login;		
+		if ($login) {
+			$data += $login;
+			$data['masquerade_link'] = wrap_path('default_masquerade', $data['contact_id']);
+		}
 	}
 
 	if ($data['scope'] === 'person') {

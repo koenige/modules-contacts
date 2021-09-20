@@ -360,6 +360,10 @@ msgstr "inaktives Login"
 msgid "without a login"
 msgstr "ohne Login"
 
+#: templates/contact.template.txt
+msgid "masquerade login"
+msgstr "Maskiertes Login"
+
 #: templates/contact-verification.de.template.txt
 msgid "Registration"
 msgstr "Registrierung"

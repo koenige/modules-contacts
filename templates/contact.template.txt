@@ -73,7 +73,7 @@
 <tr class="online_state"><th>%%% text Online? %%%</th>
 <td>%%% condition if login_id %%%
 %%% condition if logged_in %%%
-%%% text currently online %%%
+%%% text currently online %%% 
 %%% condition elseif last_click %%%
 %%% text last seen %%% %%% item last_click wrap_date %%%
 %%% condition else %%%
@@ -81,6 +81,9 @@
 %%% condition endif %%%
 %%% condition unless active %%%
 %%% text inactive login %%%
+%%% condition endif %%%
+%%% condition if masquerade_link %%%
+ – <a href="%%% item masquerade_link %%%">%%% text masquerade login %%%</a>
 %%% condition endif %%%
 %%% condition else %%%
 %%% text without a login %%%
