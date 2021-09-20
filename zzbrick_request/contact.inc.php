@@ -195,6 +195,7 @@ function mod_contacts_contact($params, $settings) {
 		$page['title'] = $data['contact'];
 	}
 	$page['query_strings'] = ['sendlogin'];
+	if (isset($_GET['sendlogin'])) $data['sendlogin'] = true;
 	$page['breadcrumbs'][] = $data['contact'];
 	$page['dont_show_h1'] = true;
 	$page['text'] = wrap_template('contact', $data);
