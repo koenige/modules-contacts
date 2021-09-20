@@ -336,6 +336,30 @@ msgstr "Mögliche Duplikate dieses Eintrags"
 msgid "since"
 msgstr "seit"
 
+#: templates/contact.template.txt
+msgid "Online?"
+msgstr "Online?"
+
+#: templates/contact.template.txt
+msgid "currently online"
+msgstr "gerade online"
+
+#: templates/contact.template.txt
+msgid "last seen"
+msgstr "zuletzt online"
+
+#: templates/contact.template.txt
+msgid "never online"
+msgstr "nie online"
+
+#: templates/contact.template.txt
+msgid "inactive login"
+msgstr "inaktives Login"
+
+#: templates/contact.template.txt
+msgid "without a login"
+msgstr "ohne Login"
+
 #: templates/contact-verification.de.template.txt
 msgid "Registration"
 msgstr "Registrierung"

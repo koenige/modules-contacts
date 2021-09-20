@@ -69,6 +69,24 @@
 </ul>
 </td></tr>
 %%% condition endif %%%
+%%% condition if logindata %%%
+<tr class="online_state"><th>%%% text Online? %%%</th>
+<td>%%% condition if login_id %%%
+%%% condition if logged_in %%%
+%%% text currently online %%%
+%%% condition elseif last_click %%%
+%%% text last seen %%% %%% item last_click wrap_date %%%
+%%% condition else %%%
+%%% text never online %%%
+%%% condition endif %%%
+%%% condition unless active %%%
+%%% text inactive login %%%
+%%% condition endif %%%
+%%% condition else %%%
+%%% text without a login %%%
+%%% condition endif %%%
+</td></tr>
+%%% condition endif %%% 
 %%% condition if remarks %%%
 <tr class="remarks"><th>%%% text Remarks %%%</th><td>%%% item remarks markdown %%%</td></tr>
 %%% condition endif %%%

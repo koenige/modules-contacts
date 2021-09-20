@@ -160,6 +160,24 @@ function mod_contacts_contact($params, $settings) {
 	$sql = sprintf($sql, wrap_db_escape($data['contact']), wrap_db_escape($data['contact_id']));
 	$data['duplicates'] = wrap_db_fetch($sql, 'contact_id');
 
+	// logins
+	if ($data['scope'] === 'person' AND wrap_get_setting('login_with_contact_id')
+		AND wrap_access('contacts_login')) {
+		$data['logindata'] = true;
+		$sql = 'SELECT login_id, login_rights
+				, FROM_UNIXTIME(last_click) AS last_click
+				, IF(logged_in = "yes", IF((last_click + 60 * %d >= UNIX_TIMESTAMP()), 1, NULL), NULL) AS logged_in
+				, IF(active = "yes", 1, NULL) as active
+			FROM logins
+			WHERE contact_id = %d';
+		$sql = sprintf($sql
+			, $zz_setting['logout_inactive_after']
+			, $data['contact_id']
+		);
+		$login = wrap_db_fetch($sql);
+		if ($login) $data += $login;		
+	}
+
 	if ($data['scope'] === 'person') {
 		$page['title'] = trim((!empty($data['title_prefix']) ? $data['title_prefix'].' ' : '')
 			.$data['contact']

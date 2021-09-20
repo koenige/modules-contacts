@@ -331,6 +331,30 @@ msgstr ""
 msgid "since"
 msgstr ""
 
+#: templates/contact.template.txt
+msgid "Online?"
+msgstr ""
+
+#: templates/contact.template.txt
+msgid "currently online"
+msgstr ""
+
+#: templates/contact.template.txt
+msgid "last seen"
+msgstr ""
+
+#: templates/contact.template.txt
+msgid "never online"
+msgstr ""
+
+#: templates/contact.template.txt
+msgid "inactive login"
+msgstr ""
+
+#: templates/contact.template.txt
+msgid "without a login"
+msgstr ""
+
 #: templates/contact-verification.de.template.txt
 msgid "Registration"
 msgstr ""
