@@ -65,7 +65,8 @@ $zz['fields'][4]['field_name'] = 'contact_category_id';
 $zz['fields'][4]['type'] = 'select';
 $zz['fields'][4]['sql'] = sprintf('SELECT category_id, category
 	FROM /*_PREFIX_*/categories
-	WHERE main_category_id = %d',
+	WHERE main_category_id = %d
+	ORDER BY sequence, category',
 	wrap_category_id('contact')
 );
 $zz['fields'][4]['key_field_name'] = 'category_id';
