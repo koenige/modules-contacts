@@ -39,6 +39,7 @@ $zz['fields'][2]['link'] = [
 	'function' => 'mf_contacts_profile_path',
 	'fields' => ['identifier', 'contact_parameters']
 ];
+$zz['fields'][2]['link_record'] = true;
 
 $zz['fields'][10]['title'] = 'Short';
 $zz['fields'][10]['field_name'] = 'contact_short';
