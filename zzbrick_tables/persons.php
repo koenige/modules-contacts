@@ -51,6 +51,7 @@ $zz['fields'][4]['link'] = [
 ];
 $zz['fields'][4]['add_details_destination'] = true;
 $zz['fields'][4]['unless']['export_mode']['display_field'] = 'contact';
+$zz['fields'][4]['validate']['forbidden_strings'] = ['://'];
 
 $zz['fields'][5]['title'] = 'Particle';
 $zz['fields'][5]['field_name'] = 'name_particle';
@@ -68,6 +69,7 @@ $zz['fields'][6]['if']['multi']['null_string'] = true;
 $zz['fields'][6]['list_hide_value'] = true;
 $zz['fields'][6]['merge_equal'] = true;
 $zz['fields'][6]['field_sequence'] = 17;
+$zz['fields'][6]['validate']['forbidden_strings'] = ['://'];
 
 $zz['fields'][12]['field_name'] = 'birth_name';
 $zz['fields'][12]['explanation'] = 'if different from current last name';
