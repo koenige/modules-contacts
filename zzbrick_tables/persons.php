@@ -118,6 +118,7 @@ $zz['fields'][10]['hide_in_list'] = true;
 $zz['fields'][10]['display_field'] = 'country';
 $zz['fields'][10]['character_set'] = 'utf8';
 $zz['fields'][10]['field_sequence'] = 23;
+$zz['fields'][10]['search'] = '/*_PREFIX_*/countries.country';
 
 $zz['fields'][99]['field_name'] = 'last_update';
 $zz['fields'][99]['type'] = 'timestamp';
