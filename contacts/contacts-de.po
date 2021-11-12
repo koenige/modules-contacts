@@ -39,8 +39,12 @@ msgid "The password must be at least %d characters long."
 msgstr "Das Passwort muss mindestens %d Zeichen enthalten."
 
 #: zzbrick_forms/addlogin.php
-msgid "In the future, access is granted with the username below and the password you chose."
-msgstr "Sie haben beim nächsten Mal Zugang mit dem untenstehenden Benutzernamen und dem von Ihnen gesetzen Passwort."
+msgid ""
+"In the future, access is granted with the username below and the password "
+"you chose."
+msgstr ""
+"Sie haben beim nächsten Mal Zugang mit dem untenstehenden Benutzernamen und "
+"dem von Ihnen gesetzen Passwort."
 
 #: zzbrick_forms/addlogin.php
 msgid "Save password"
@@ -406,3 +410,29 @@ msgstr "Weitere Informationen"
 
 msgid "and"
 msgstr "und"
+
+#: zzform/hooks.inc.php
+msgid "Please check the name you entered."
+msgstr "Bitte überprüfen Sie den eingegebenen Namen."
+
+#: zzform/hooks.inc.php
+msgid ""
+"Is it true that your name contains capital letters after the first letter?"
+msgstr ""
+"Stimmt es, dass Ihr Name nach dem ersten Buchstaben Großbuchstaben enthält?"
+
+#: zzform/hooks.inc.php
+msgid "Yes, that’s right."
+msgstr "Ja, das stimmt."
+
+#: zzform/hooks.inc.php
+msgid ""
+"If so, please resubmit the form. If not, please enter the correct "
+"information."
+msgstr ""
+"Senden Sie in diesem Fall das Formular erneut. Wenn nicht, geben Sie bitte "
+"die richtigen Informationen ein."
+
+#: zzform/hooks.inc.php
+msgid "Is it true that your first and last name are the same?"
+msgstr "Stimmt es, dass Ihr Vor- und Nachname gleich sind?"
