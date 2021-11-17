@@ -4,8 +4,8 @@
  * contacts module
  * Table script: 3rd party identifiers of contacts
  *
- * https://www.zugzwang.org/modules/contacts
  * Part of »Zugzwang Project«
+ * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
  * @copyright Copyright © 2013-2014, 2017-2021 Gustaf Mossakowski
