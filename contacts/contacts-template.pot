@@ -143,6 +143,18 @@ msgstr ""
 msgid "Created"
 msgstr ""
 
+#: zzbrick_tables/contacts.php
+msgid "Start date"
+msgstr ""
+
+#: zzbrick_tables/contacts.php
+msgid "End date"
+msgstr ""
+
+#: zzbrick_tables/contacts.php
+msgid "Parameters"
+msgstr ""
+
 #: zzbrick_tables/contacts-contacts.php
 msgid "Relations of Contacts"
 msgstr ""

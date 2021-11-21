@@ -233,6 +233,25 @@ $zz['fields'][12]['type'] = 'memo';
 $zz['fields'][12]['hide_in_list'] = true;
 $zz['fields'][12]['format'] = 'markdown';
 
+$zz['fields'][16]['field_name'] = 'start_date';
+$zz['fields'][16]['type'] = 'date';
+$zz['fields'][16]['hide_in_list'] = true;
+
+$zz['fields'][17]['field_name'] = 'end_date';
+$zz['fields'][17]['type'] = 'date';
+$zz['fields'][17]['hide_in_list'] = true;
+
+$zz['fields'][18]['field_name'] = 'country_id';
+$zz['fields'][18]['type'] = 'select';
+$zz['fields'][18]['sql'] = 'SELECT country_id, country_code, country
+	FROM /*_PREFIX_*/countries
+	ORDER BY country';
+$zz['fields'][18]['sql_translate'] = ['country_id' => 'countries'];
+$zz['fields'][18]['sql_character_set'][1] = 'latin1';
+$zz['fields'][18]['sql_character_set'][2] = 'latin1';
+$zz['fields'][18]['search'] = '/*_PREFIX_*/countries.country';
+$zz['fields'][18]['hide_in_list'] = true;
+
 $zz['fields'][13]['field_name'] = 'remarks';
 $zz['fields'][13]['type'] = 'memo';
 $zz['fields'][13]['format'] = 'markdown';

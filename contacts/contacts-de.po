@@ -148,6 +148,18 @@ msgstr "Auf der Website veröffentlichen?"
 msgid "Created"
 msgstr "Erstellt"
 
+#: zzbrick_tables/contacts.php
+msgid "Start date"
+msgstr "Anfangsdatum"
+
+#: zzbrick_tables/contacts.php
+msgid "End date"
+msgstr "Enddatum"
+
+#: zzbrick_tables/contacts.php
+msgid "Parameters"
+msgstr "Parameter"
+
 #: zzbrick_tables/contacts-contacts.php
 msgid "Relations of Contacts"
 msgstr "Beziehungen der Kontakte"

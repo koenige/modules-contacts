@@ -70,16 +70,22 @@ CREATE TABLE `contacts` (
   `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `remarks` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `contact_category_id` int unsigned NOT NULL,
+  `country_id` int unsigned DEFAULT NULL,
+  `start_date` date DEFAULT NULL,
+  `end_date` date DEFAULT NULL,
   `published` enum('yes','no') CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL DEFAULT 'no',
   `parameters` varchar(750) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`contact_id`),
   UNIQUE KEY `identifier` (`identifier`),
-  KEY `contact_category_id` (`contact_category_id`)
+  KEY `contact_category_id` (`contact_category_id`),
+  KEY `country_id` (`country_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+
 INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'categories', 'category_id', (SELECT DATABASE()), 'contacts', 'contact_id', 'contact_category_id', 'no-delete');
+INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'countries', 'country_id', (SELECT DATABASE()), 'contacts', 'contact_id', 'country_id', 'no-delete');
 
 INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Contact', NULL, NULL, 'contact', NULL, NULL, NOW());
 INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Organisation', NULL, (SELECT category_id FROM categories c WHERE path = 'contact'), 'contact/organisation', NULL, NULL, NOW());
