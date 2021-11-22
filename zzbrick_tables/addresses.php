@@ -168,7 +168,7 @@ $zz_sub['sql'] = 'SELECT /*_PREFIX_*/addresses.*
 	FROM /*_PREFIX_*/addresses
 	LEFT JOIN /*_PREFIX_*/categories
 		ON /*_PREFIX_*/categories.category_id = /*_PREFIX_*/addresses.address_category_id
-	LEFT JOIN /*_PREFIX_*/contacts USING (contact_id)
 	LEFT JOIN /*_PREFIX_*/countries USING (country_id)
+	LEFT JOIN /*_PREFIX_*/contacts USING (contact_id)
 ';
 $zz_sub['sqlorder'] = ' ORDER BY /*_PREFIX_*/contacts.identifier, country, postcode, place';
