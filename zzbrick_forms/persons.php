@@ -196,6 +196,7 @@ $zz['sql'] = 'SELECT /*_PREFIX_*/contacts.*, category
 			LIMIT 1) AS latlon
 		, /*_PREFIX_*/categories.parameters AS contact_parameters
 	FROM /*_PREFIX_*/contacts
+	LEFT JOIN /*_PREFIX_*/countries USING (country_id)
 	LEFT JOIN /*_PREFIX_*/persons USING (contact_id)
 	LEFT JOIN /*_PREFIX_*/categories
 		ON /*_PREFIX_*/contacts.contact_category_id = /*_PREFIX_*/categories.category_id
