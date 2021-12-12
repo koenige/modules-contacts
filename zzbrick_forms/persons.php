@@ -19,6 +19,14 @@ $values['relations_restrict_to'] = 'persons';
 $zz = zzform_include_table('contacts', $values);
 $zz['title'] = 'Persons';
 
+// unwanted fields
+unset($zz['fields'][15]); // parameters
+unset($zz['fields'][10]); // contact_short
+unset($zz['fields'][11]); // contact_abbr
+unset($zz['fields'][18]); // country_id
+unset($zz['fields'][17]); // end_date
+unset($zz['fields'][16]); // start_date
+
 // contact
 $zz['fields'][2]['type'] = 'hidden';
 $zz['fields'][2]['hide_in_form'] = true;
@@ -124,11 +132,6 @@ if (!empty($zz['fields'][13]))
 
 // published
 $zz['fields'][14]['field_sequence'] = 73;
-
-// unwanted fields
-unset($zz['fields'][15]); // parameters
-unset($zz['fields'][10]); // contact_short
-unset($zz['fields'][11]); // contact_abbr
 
 // contacts-contacts, starting at 60
 $no = 60;
