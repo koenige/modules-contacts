@@ -369,6 +369,15 @@ foreach ($values['relations'] as $index => $relation) {
 	$no++;
 }
 
+if (wrap_get_setting('contacts_identifiers')) {
+	$zz['fields'][19] = zzform_include_table('contacts-identifiers');
+	$zz['fields'][19]['type'] = 'subtable';
+	$zz['fields'][19]['fields'][2]['type'] = 'foreign_key';
+	$zz['fields'][19]['sql'] .= $zz['fields'][19]['sqlorder'];
+	$zz['fields'][19]['fields'][4]['exclude_from_search'] = true;
+	$zz['fields'][19]['form_display'] = 'lines';
+}
+
 $zz['fields'][14]['title_tab'] = 'Pub.';
 $zz['fields'][14]['field_name'] = 'published';
 $zz['fields'][14]['type'] = 'select';

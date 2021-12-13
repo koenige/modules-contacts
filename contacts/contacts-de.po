@@ -181,8 +181,8 @@ msgid "No."
 msgstr "Nr."
 
 #: zzbrick_tables/contacts-identifiers.php
-msgid "Identifiers of Contacts"
-msgstr "Kennungen von Kontakten"
+msgid "Identifiers"
+msgstr "Kennungen"
 
 #: zzbrick_tables/contacts-identifiers.php
 msgid "current"

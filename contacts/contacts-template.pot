@@ -176,7 +176,7 @@ msgid "No."
 msgstr ""
 
 #: zzbrick_tables/contacts-identifiers.php
-msgid "Identifiers of Contacts"
+msgid "Identifiers"
 msgstr ""
 
 #: zzbrick_tables/contacts-identifiers.php

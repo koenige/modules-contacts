@@ -13,7 +13,7 @@
  */
 
 
-$zz['title'] = 'Identifiers of Contacts';
+$zz['title'] = 'Identifiers';
 $zz['table'] = 'contacts_identifiers';
 
 $zz['fields'][1]['title'] = 'ID';

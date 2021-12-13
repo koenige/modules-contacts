@@ -121,6 +121,9 @@ $zz['fields'][5]['max_records'] = 10;
 $zz['fields'][5]['hide_in_list'] = true;
 $zz['fields'][5]['separator'] = true;
 
+if (!empty($zz['fields'][19]))
+	$zz['fields'][19]['field_sequence'] = 50;
+
 // description
 $zz['fields'][12]['field_sequence'] = 71;
 $zz['fields'][12]['title'] = 'About me';
