@@ -94,6 +94,7 @@ $zz['fields'][4]['type'] = 'hidden';
 $zz['fields'][4]['value'] = wrap_category_id('contact/person');
 $zz['fields'][4]['export'] = false; // contact_category_id
 $zz['fields'][4]['field_sequence'] = 28;
+$zz['fields'][4]['exclude_from_search'] = true;
 
 // latlon
 $zz['fields'][8]['export'] = false;
