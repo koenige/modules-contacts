@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2015, 2018, 2021 Gustaf Mossakowski
+ * @copyright Copyright © 2015, 2018, 2021-2022 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -50,7 +50,12 @@ function mf_contacts_contactdetails($contact_ids) {
 	$data = [];
 	foreach ($details as $contact_id => $contactdetails) {
 		foreach ($contactdetails as $id => $detail) {
-			parse_str($detail['parameters'], $type);
+			if ($detail['parameters'])
+				parse_str($detail['parameters'], $type);
+			else {
+				$type = [];
+				$type['type'] = '';
+			}
 			if ($type['type'] === 'mail') {
 				$detail['mailto'] = wrap_mailto($detail['contact'], $detail['identification']);
 			}
