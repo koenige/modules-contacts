@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2021 Gustaf Mossakowski
+ * @copyright Copyright © 2021-2022 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -104,12 +104,16 @@ function mod_contacts_contact($params, $settings) {
 	foreach ($data['relations'] as $index => $relation_types) {
 		$relation = [];
 		foreach ($relation_types['contacts'] as $cc_id => $contactrelation) {
-			parse_str($contactrelation['relation_parameters'], $rparams);
+			$rparams = [];
+			if ($contactrelation['relation_parameters'])
+				parse_str($contactrelation['relation_parameters'], $rparams);
 			if (!empty($rparams[$contactrelation['relation_type']]['relation'])) {
 				$data['relations'][$index]['relation']
 					= $rparams[$contactrelation['relation_type']]['relation'];
 			}
-			parse_str($contactrelation['category_parameters'], $cparams);
+			$cparams = [];
+			if ($contactrelation['category_parameters'])
+				parse_str($contactrelation['category_parameters'], $cparams);
 			if (!empty($cparams['type'])) {
 				if (empty($zz_setting['contacts_profile_path'][$cparams['type']])) continue;
 				$data['relations'][$index]['contacts'][$cc_id]['profile_path'] = $zz_setting['base'].sprintf(

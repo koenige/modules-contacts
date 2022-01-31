@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2015-2021 Gustaf Mossakowski
+ * @copyright Copyright © 2015-2022 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -284,6 +284,7 @@ $no = 60;
 $pos = 0;
 $new = [];
 foreach ($values['relations'] as $index => $relation) {
+	if (!$relation['parameters']) continue;
 	$pos++;
 	parse_str($relation['parameters'], $values['relations'][$index]['params']);
 	if (!empty($values['relations'][$index]['params']['association'])) {
