@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2021 Gustaf Mossakowski
+ * @copyright Copyright © 2021-2022 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -55,7 +55,7 @@ $zz['fields'][2]['type'] = 'display';
 $zz['fields'][2]['display_value'] = wrap_db_fetch($sql, '', 'single value');
 
 // 6 = login_rights
-if (!empty($zz['fields'][6]) AND wrap_get_setting('addlogin_rights')) {
+if (!empty($zz['fields'][6])) {
 	$zz['fields'][6]['type'] = 'hidden';
 	$zz['fields'][6]['value'] = wrap_get_setting('addlogin_rights');
 	$zz['fields'][6]['hide_in_form'] = true;
