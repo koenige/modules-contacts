@@ -5,7 +5,7 @@
 # https://www.zugzwang.org/modules/contacts
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2015, 2018 Gustaf Mossakowski
+# @copyright Copyright © 2015, 2018, 2022 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 <div class="contactverification">
@@ -50,5 +50,5 @@ confirmation is not necessary.</p>
 </fieldset>
 %%% condition endif %%%
 
-<p><a href="/">Back to homepage</a></p>
+<p><a href="%%% setting homepage_url %%%">Back to homepage</a></p>
 </div>
