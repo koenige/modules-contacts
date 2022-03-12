@@ -8,12 +8,12 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2019-2021 Gustaf Mossakowski
+ * @copyright Copyright © 2019-2022 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
 
-$zz['title'] = 'Relations of Contacts';
+$zz['title'] = 'Linked Contacts';
 $zz['table'] = '/*_PREFIX_*/contacts_contacts';
 
 $zz['fields'][1]['title'] = 'ID';

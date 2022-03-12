@@ -99,7 +99,7 @@ msgid "Publish on website?"
 msgstr ""
 
 #: zzbrick_tables/contacts-contacts.php
-msgid "Relations of Contacts"
+msgid "Linked Contacts"
 msgstr ""
 
 #: zzbrick_tables/contacts-contacts.php
