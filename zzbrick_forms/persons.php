@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2019-2021 Gustaf Mossakowski
+ * @copyright Copyright © 2019-2022 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -55,22 +55,22 @@ $zz['fields'][3]['separator_before'] = true;
 
 if (wrap_access('contacts_change_identifier')) {
 	// make it possible to change identifier
-	$zz['fields'][3]['read_options'] = 17;
+	$zz['fields'][3]['read_options'] = 27;
 	$zz['fields'][3]['separator'] = false;
 
-	$zz['fields'][17]['field_name'] = 'change_identifier';
-	$zz['fields'][17]['title'] = 'Change identifier?';
-	$zz['fields'][17]['explanation'] = 'To change the identifier. Important: this is the login username, please inform the person of the change.';
-	$zz['fields'][17]['type'] = 'option';
-	$zz['fields'][17]['type_detail'] = 'select';
-	$zz['fields'][17]['enum'] = ['yes', 'no'];
-	$zz['fields'][17]['options'] = [
+	$zz['fields'][27]['field_name'] = 'change_identifier';
+	$zz['fields'][27]['title'] = 'Change identifier?';
+	$zz['fields'][27]['explanation'] = 'To change the identifier. Important: this is the login username, please inform the person of the change.';
+	$zz['fields'][27]['type'] = 'option';
+	$zz['fields'][27]['type_detail'] = 'select';
+	$zz['fields'][27]['enum'] = ['yes', 'no'];
+	$zz['fields'][27]['options'] = [
 		'yes' => ['fields' => ['persons.first_name', 'persons.name_particle', 'persons.last_name']],
 		'no' => ['fields' => ['persons.first_name', 'persons.name_particle', 'persons.last_name', 'identifier']]
 	];
-	$zz['fields'][17]['default'] = 'no';
-	$zz['fields'][17]['field_sequence'] = 27;
-	$zz['fields'][17]['separator'] = true;
+	$zz['fields'][27]['default'] = 'no';
+	$zz['fields'][27]['field_sequence'] = 27;
+	$zz['fields'][27]['separator'] = true;
 }
 
 $zz['fields'][9] = zzform_include_table('persons');
