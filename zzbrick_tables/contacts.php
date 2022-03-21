@@ -93,7 +93,7 @@ if (!isset($values['contactdetails'])) {
 		$restrict_to = 'AND parameters LIKE "%%&'.$values['contactdetails_restrict_to'].'=1%%"';
 	else
 		$restrict_to = '';
-	$sql = 'SELECT category_id, category, parameters 
+	$sql = 'SELECT category_id, category, parameters
 		FROM categories
 		WHERE main_category_id = %d
 		%s
@@ -104,31 +104,34 @@ if (!isset($values['contactdetails'])) {
 
 $no = 30;
 foreach ($values['contactdetails'] as $category_id => $category) {
-	if (empty($category['parameters'])) {
-		$values['contactdetails'][$category_id]['parameters'] = [];
+	// parse parameters
+	$category['parameters'] = $category['parameters'] ?? [];
+	if ($category['parameters'] AND !is_array($category['parameters'])) {
+		parse_str($category['parameters'], $category['parameters']);
+	}
+
+	// group contactdetails?
+	$continue = false;
+	if (!empty($values['contactdetails_separate'])) $continue = true;
+	if (!empty($category['parameters']['separate'])) {
+		if (!is_array($category['parameters']['separate']) AND $category['parameters']['separate'].'' === '1') $continue = true;
+		if (!empty($values['contactdetails_restrict_to'])
+			AND !empty($category['parameters']['separate'][$values['contactdetails_restrict_to']])) $continue = true;
+	}
+	if ($continue) {
+		$values['contactdetails']['none-'.$category_id] = $category;
+		unset($values['contactdetails'][$category_id]);
 		continue;
 	}
-	if (!is_array($category['parameters'])) {
-		parse_str($category['parameters'], $parameters);
-		$values['contactdetails'][$category_id]['parameters'] = $parameters;
-	}
-	
-	// group contactdetails?
-	if (!empty($values['contactdetails_separate'])) continue;
-	if (!empty($parameters['separate'])) {
-		if (!is_array($parameters['separate']) AND $parameters['separate'].'' === '1') continue;
-		if (!empty($values['contactdetails_restrict_to'])
-			AND !empty($parameters['separate'][$values['contactdetails_restrict_to']]))
-			continue;
-	}
-	$key = $parameters['type'];
+
+	$key = $category['parameters']['type'];
 	if (!array_key_exists($key, $values['contactdetails'])) {
 		$values['contactdetails'][$key]['parameters'] = [];
-		$values['contactdetails'][$key]['type'] = $parameters['type'];
+		$values['contactdetails'][$key]['type'] = $key;
 	}
 	$values['contactdetails'][$key]['categories'][$category['category_id']] = $category;
 	$values['contactdetails'][$key]['category_id'] = $category['category_id'];
-	foreach ($parameters as $pkey => $pvalue) {
+	foreach ($category['parameters'] as $pkey => $pvalue) {
 		if (array_key_exists($pkey, $values['contactdetails'][$key]['parameters'])) {
 			if (is_numeric($pvalue))
 				$values['contactdetails'][$key]['parameters'][$pkey] += $pvalue;
@@ -138,7 +141,7 @@ foreach ($values['contactdetails'] as $category_id => $category) {
 			$values['contactdetails'][$key]['parameters'][$pkey] = $pvalue;
 		}
 	}
-	$values['contactdetails'][$key]['parameters'] += $parameters;
+	$values['contactdetails'][$key]['parameters'] += $category['parameters'];
 	unset($values['contactdetails'][$category_id]);
 }
 
