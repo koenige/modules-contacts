@@ -363,7 +363,8 @@ foreach ($values['relations'] as $index => $relation) {
 	$zz['fields'][$no]['fields'][4]['value'] = $relation['category_id'];
 	$zz['fields'][$no]['fields'][4]['hide_in_form'] = true;
 	// remarks
-	unset($zz['fields'][$no]['fields'][9]);
+	if (empty($relation['params']['remarks']))
+		unset($zz['fields'][$no]['fields'][9]);
 	// role
 	if (empty($relation['params']['role']))
 		unset($zz['fields'][$no]['fields'][11]);
