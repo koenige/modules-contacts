@@ -22,10 +22,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.8.12\n"
 
-#: config.inc.php
-msgid "Linked Contacts"
-msgstr "Verknüpfte Kontakte"
-
 #: zzbrick_forms/addlogin.php
 msgid "Add a new login"
 msgstr "Neuen Login hinzufügen"
@@ -164,6 +160,7 @@ msgstr "Enddatum"
 msgid "Parameters"
 msgstr "Parameter"
 
+#: config.inc.php
 #: zzbrick_tables/contacts-contacts.php
 msgid "Linked Contacts"
 msgstr "Verknüpfte Kontakte"
