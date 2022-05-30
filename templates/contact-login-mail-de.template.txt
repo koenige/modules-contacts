@@ -5,7 +5,7 @@
 # https://www.zugzwang.org/modules/contacts
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2019-2021 Gustaf Mossakowski
+# @copyright Copyright © 2019-2022 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 Subject: Zugang zur Website %%% setting project %%%
@@ -22,5 +22,5 @@ anmelden. Ein Passwort für den Zugang können Sie über diesen Link setzen:
 	%%% setting host_base %%%%%% setting login_url %%%?request=%%% item identifier %%%-%%% item addlogin_hash %%%
 
 Mit freundlichen Grüßen
-%%% item project %%% 
+%%% setting project %%% 
 %%% item sender %%% 
