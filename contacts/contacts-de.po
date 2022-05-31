@@ -160,8 +160,7 @@ msgstr "Enddatum"
 msgid "Parameters"
 msgstr "Parameter"
 
-#: config.inc.php
-#: zzbrick_tables/contacts-contacts.php
+#: config.inc.php zzbrick_tables/contacts-contacts.php
 msgid "Linked Contacts"
 msgstr "Verknüpfte Kontakte"
 
@@ -316,6 +315,10 @@ msgstr "divers"
 #: zzbrick_tables/persons.php
 msgid "Date of Birth"
 msgstr "Geburtsdatum"
+
+#: templates/contacts.template.txt
+msgid "Birth"
+msgstr "Geburt"
 
 #: zzbrick_tables/persons.php
 msgid "Date of Death"

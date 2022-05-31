@@ -312,6 +312,10 @@ msgstr ""
 msgid "Date of Birth"
 msgstr ""
 
+#: templates/contacts.template.txt
+msgid "Birth"
+msgstr ""
+
 #: zzbrick_tables/persons.php
 msgid "Date of Death"
 msgstr ""
