@@ -6,7 +6,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2018-2021 Gustaf Mossakowski
+ * @copyright Copyright © 2018-2022 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -43,3 +43,7 @@
 /* 2021-11-21-1 */	ALTER TABLE `contacts` ADD `country_id` int unsigned NULL AFTER `contact_category_id`, ADD `start_date` date NULL AFTER `country_id`, ADD `end_date` date NULL AFTER `start_date`;
 /* 2021-11-21-2 */	ALTER TABLE `contacts` ADD INDEX `country_id` (`country_id`);
 /* 2021-11-21-3 */	INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'countries', 'country_id', (SELECT DATABASE()), 'contacts', 'contact_id', 'country_id', 'no-delete');
+/* 2022-07-10-1 */	CREATE TABLE `awards` (`award_id` int unsigned NOT NULL AUTO_INCREMENT, `award_category_id` int unsigned NOT NULL, `contact_id` int unsigned NOT NULL, `contact_display_name` varchar(127) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL, `award_date` date DEFAULT NULL, `award_year` year NOT NULL, `award_year_to` year DEFAULT NULL, `remarks` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci, `laudation` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci, `published` enum('yes','no') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'yes', `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (`award_id`), KEY `contact_id` (`contact_id`), KEY `award_category_id` (`award_category_id`)) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/* 2022-07-10-2 */	INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'contacts', 'contact_id', (SELECT DATABASE()), 'awards', 'award_id', 'contact_id', 'no-delete');
+/* 2022-07-10-3 */	INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'categories', 'category_id', (SELECT DATABASE()), 'awards', 'award_id', 'award_category_id', 'no-delete');
+/* 2022-07-10-4 */	INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Awards', NULL, NULL, 'awards', 'alias=awards', NULL, NOW());

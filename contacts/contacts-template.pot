@@ -102,6 +102,38 @@ msgstr ""
 msgid "If there is more than one address:<br>Send letters to this address?"
 msgstr ""
 
+#: zzbrick_tables/awards.php
+msgid "Awards"
+msgstr ""
+
+#: zzbrick_tables/awards.php
+msgid "Date"
+msgstr ""
+
+#: zzbrick_tables/awards.php
+msgid "Date of Award"
+msgstr ""
+
+#: zzbrick_tables/awards.php
+msgid "Duration from"
+msgstr ""
+
+#: zzbrick_tables/awards.php
+msgid "Duration until"
+msgstr ""
+
+#: zzbrick_tables/awards.php
+msgid "Duration"
+msgstr ""
+
+#: zzbrick_tables/awards.php
+msgid "Laudation"
+msgstr ""
+
+#: zzbrick_tables/awards.php
+msgid "Published"
+msgstr ""
+
 #: zzbrick_tables/contacts.php
 msgid "Contacts"
 msgstr ""
@@ -114,6 +146,7 @@ msgstr ""
 msgid "Identifier"
 msgstr ""
 
+#: zzbrick_tables/awards.php
 #: zzbrick_tables/contacts.php
 msgid "Category"
 msgstr ""
@@ -123,6 +156,7 @@ msgid "Description"
 msgstr ""
 
 #: zzbrick_tables/contacts.php
+#: zzbrick_tables/awards.php
 msgid "Remarks"
 msgstr ""
 

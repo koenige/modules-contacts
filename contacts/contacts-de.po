@@ -108,6 +108,38 @@ msgstr ""
 "Falls es mehr als eine Adresse gibt:<br>Sollen Briefe hierhin gesendet "
 "werden?"
 
+#: zzbrick_tables/awards.php
+msgid "Awards"
+msgstr "Auszeichnungen"
+
+#: zzbrick_tables/awards.php
+msgid "Date"
+msgstr "Datum"
+
+#: zzbrick_tables/awards.php
+msgid "Date of Award"
+msgstr "Datum der Auszeichnung"
+
+#: zzbrick_tables/awards.php
+msgid "Duration from"
+msgstr "Dauer von"
+
+#: zzbrick_tables/awards.php
+msgid "Duration until"
+msgstr "Dauer bis"
+
+#: zzbrick_tables/awards.php
+msgid "Duration"
+msgstr "Dauer"
+
+#: zzbrick_tables/awards.php
+msgid "Laudation"
+msgstr "Laudatio"
+
+#: zzbrick_tables/awards.php
+msgid "Published"
+msgstr "Veröffentlicht"
+
 #: zzbrick_tables/contacts.php
 msgid "Contacts"
 msgstr "Kontakte"
@@ -120,7 +152,7 @@ msgstr "Kontakt"
 msgid "Identifier"
 msgstr "Kennung"
 
-#: zzbrick_tables/contacts.php
+#: zzbrick_tables/awards.php zzbrick_tables/contacts.php
 msgid "Category"
 msgstr "Kategorie"
 
@@ -128,7 +160,7 @@ msgstr "Kategorie"
 msgid "Description"
 msgstr "Beschreibung"
 
-#: zzbrick_tables/contacts.php
+#: zzbrick_tables/contacts.php zzbrick_tables/awards.php
 msgid "Remarks"
 msgstr "Anmerkungen"
 

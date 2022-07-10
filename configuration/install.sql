@@ -6,11 +6,11 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2018-2021 Gustaf Mossakowski
+ * @copyright Copyright © 2018-2022 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
-
+-- addresses --
 CREATE TABLE `addresses` (
   `address_id` int unsigned NOT NULL AUTO_INCREMENT,
   `contact_id` int unsigned NOT NULL,
@@ -39,6 +39,31 @@ INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `
 INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Work', NULL, (SELECT category_id FROM categories c WHERE path = 'addresses'), 'addresses/work', NULL, NULL, NOW());
 
 
+-- awards --
+CREATE TABLE `awards` (
+  `award_id` int unsigned NOT NULL AUTO_INCREMENT,
+  `award_category_id` int unsigned NOT NULL,
+  `contact_id` int unsigned NOT NULL,
+  `contact_display_name` varchar(127) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `award_date` date DEFAULT NULL,
+  `award_year` year NOT NULL,
+  `award_year_to` year DEFAULT NULL,
+  `remarks` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `laudation` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `published` enum('yes','no') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'yes',
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`award_id`),
+  KEY `contact_id` (`contact_id`),
+  KEY `award_category_id` (`award_category_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'contacts', 'contact_id', (SELECT DATABASE()), 'awards', 'award_id', 'contact_id', 'no-delete');
+INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'categories', 'category_id', (SELECT DATABASE()), 'awards', 'award_id', 'award_category_id', 'no-delete');
+
+INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Awards', NULL, NULL, 'awards', 'alias=awards', NULL, NOW());
+
+
+-- contactdetails --
 CREATE TABLE `contactdetails` (
   `contactdetail_id` int unsigned NOT NULL AUTO_INCREMENT,
   `contact_id` int unsigned NOT NULL,
@@ -61,6 +86,7 @@ INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `
 INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Fax', NULL, (SELECT category_id FROM categories c WHERE path = 'provider'), 'provider/fax', 'type=phone', NULL, NOW());
 
 
+-- contacts --
 CREATE TABLE `contacts` (
   `contact_id` int unsigned NOT NULL AUTO_INCREMENT,
   `contact` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -92,6 +118,7 @@ INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `
 INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Person', NULL, (SELECT category_id FROM categories c WHERE path = 'contact'), 'contact/person', NULL, NULL, NOW());
 
 
+-- contacts_contacts --
 CREATE TABLE `contacts_contacts` (
   `cc_id` int unsigned NOT NULL AUTO_INCREMENT,
   `contact_id` int unsigned NOT NULL,
@@ -115,6 +142,7 @@ INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`
 INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Relation', NULL, NULL, 'relation', NULL, NULL, NOW());
 
 
+-- contacts_identifiers --
 CREATE TABLE `contacts_identifiers` (
   `contact_identifier_id` int unsigned NOT NULL AUTO_INCREMENT,
   `contact_id` int unsigned NOT NULL,
@@ -133,6 +161,7 @@ INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`
 INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Identifiers', NULL, NULL, 'identifiers', NULL, NULL, NOW());
 
 
+-- contacts_media --
 CREATE TABLE `contacts_media` (
   `contact_medium_id` int unsigned NOT NULL AUTO_INCREMENT,
   `contact_id` int unsigned NOT NULL,
@@ -148,6 +177,7 @@ INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`
 INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'media', 'medium_id', (SELECT DATABASE()), 'contacts_media', 'contact_medium_id', 'medium_id', 'no-delete');
 
 
+-- contacts_verifications --
 CREATE TABLE `contacts_verifications` (
   `cv_id` int unsigned NOT NULL AUTO_INCREMENT,
   `contact_id` int unsigned NOT NULL,
@@ -168,6 +198,7 @@ CREATE TABLE `contacts_verifications` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
+-- persons --
 CREATE TABLE `persons` (
   `person_id` int unsigned NOT NULL AUTO_INCREMENT,
   `contact_id` int unsigned NOT NULL,
