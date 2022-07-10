@@ -95,6 +95,7 @@ $zz['fields'][12]['field_name'] = 'remarks';
 $zz['fields'][12]['type'] = 'memo';
 $zz['fields'][12]['hide_in_list'] = true;
 $zz['fields'][12]['explanation'] = 'Internal remarks';
+$zz['fields'][12]['rows'] = 3;
 
 $zz['fields'][99]['field_name'] = 'last_update';
 $zz['fields'][99]['type'] = 'timestamp';
@@ -112,7 +113,7 @@ $zz['sql'] = 'SELECT /*_PREFIX_*/awards.*
 ';
 $zz['sqlorder'] = ' ORDER BY category, award_year, contacts.identifier';
 
-$zz['filter'][1]['title'] = 'Category';
+$zz['filter'][1]['title'] = wrap_text('Category');
 $zz['filter'][1]['identifier'] = 'category';
 $zz['filter'][1]['sql'] = 'SELECT category_id, category
 	FROM /*_PREFIX_*/awards
