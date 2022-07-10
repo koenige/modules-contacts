@@ -125,7 +125,7 @@ $zz['conditions'][1]['scope'] = 'record';
 $zz['conditions'][1]['where'] = sprintf('contacts.contact_category_id = %d', wrap_category_id('contact/person'));
 
 $zz['conditions'][2]['scope'] = 'record';
-$zz['conditions'][2]['where'] = 'published = "no"';
+$zz['conditions'][2]['where'] = '/*_PREFIX_*/awards.published = "no"';
 
 $zz_conf['copy'] = true;
 $zz_conf['export'][] = 'CSV Excel';
