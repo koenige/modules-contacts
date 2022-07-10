@@ -140,6 +140,14 @@ msgstr "Laudatio"
 msgid "Published"
 msgstr "Veröffentlicht"
 
+#: zzbrick_tables/awards.php
+msgid "Name at time of award"
+msgstr "Name zum Zeitpunkt der Vergabe"
+
+#: zzbrick_tables/awards.php
+msgid "Display Name"
+msgstr "Anzeigename"
+
 #: zzbrick_tables/contacts.php
 msgid "Contacts"
 msgstr "Kontakte"

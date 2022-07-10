@@ -29,6 +29,8 @@ $zz['fields'][2]['display_field'] = 'category';
 $zz['fields'][2]['key_field_name'] = 'category_id';
 $zz['fields'][2]['show_hierarchy'] = 'main_category_id';
 $zz['fields'][2]['show_hierarchy_subtree'] = wrap_category_id('awards');
+$zz['fields'][2]['if'][2]['list_prefix'] = '<del>';
+$zz['fields'][2]['if'][2]['list_suffix'] = '</del>';
 
 $zz['fields'][3]['field_name'] = 'contact_id';
 $zz['fields'][3]['type'] = 'select';
@@ -42,7 +44,10 @@ $zz['fields'][3]['link'] = [
 	'function' => 'mf_contacts_profile_path',
 	'fields' => ['identifier', 'contact_parameters']
 ];
+$zz['fields'][3]['if'][2]['list_prefix'] = '<del>';
 
+
+$zz['fields'][5]['title'] = 'Display Name';
 $zz['fields'][5]['field_name'] = 'contact_display_name';
 $zz['fields'][5]['explanation'] = 'Name at time of award';
 $zz['fields'][5]['list_prefix'] = '<br><em>';
@@ -51,6 +56,7 @@ $zz['fields'][5]['function'] = 'mf_contacts_display_name';
 $zz['fields'][5]['fields'] = ['contact_display_name', 'contact_id'];
 $zz['fields'][5]['required'] = false;
 $zz['fields'][5]['if']['add']['hide_in_form'] = true;
+$zz['fields'][5]['if'][2]['list_suffix'] = '</del>';
 
 $zz['fields'][9] = []; // display a country
 
@@ -75,12 +81,14 @@ $zz['fields'][8]['prefix'] = '–';
 
 $zz['fields'][10]['field_name'] = 'laudation';
 $zz['fields'][10]['type'] = 'memo';
+$zz['fields'][10]['format'] = 'markdown';
 $zz['fields'][10]['hide_in_list'] = true;
 
 $zz['fields'][11]['field_name'] = 'published';
 $zz['fields'][11]['type'] = 'select';
 $zz['fields'][11]['enum'] = ['yes', 'no'];
 $zz['fields'][11]['default'] = 'yes';
+$zz['fields'][11]['hide_in_list'] = true;
 
 $zz['fields'][12]['field_name'] = 'remarks';
 $zz['fields'][12]['type'] = 'memo';
@@ -115,6 +123,9 @@ $zz['filter'][1]['where'] = 'award_category_id';
 
 $zz['conditions'][1]['scope'] = 'record';
 $zz['conditions'][1]['where'] = sprintf('contacts.contact_category_id = %d', wrap_category_id('contact/person'));
+
+$zz['conditions'][2]['scope'] = 'record';
+$zz['conditions'][2]['where'] = 'published = "no"';
 
 $zz_conf['copy'] = true;
 $zz_conf['export'][] = 'CSV Excel';

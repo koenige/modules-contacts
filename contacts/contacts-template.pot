@@ -134,6 +134,14 @@ msgstr ""
 msgid "Published"
 msgstr ""
 
+#: zzbrick_tables/awards.php
+msgid "Name at time of award"
+msgstr ""
+
+#: zzbrick_tables/awards.php
+msgid "Display Name"
+msgstr ""
+
 #: zzbrick_tables/contacts.php
 msgid "Contacts"
 msgstr ""
