@@ -64,6 +64,7 @@ $zz['fields'][6]['title_tab'] = 'Date';
 $zz['fields'][6]['title'] = 'Date of Award';
 $zz['fields'][6]['field_name'] = 'award_date';
 $zz['fields'][6]['type'] = 'date';
+$zz['fields'][6]['hide_in_list_if_empty'] = true;
 
 $zz['fields'][7]['title'] = 'Duration from';
 $zz['fields'][7]['title_tab'] = 'Duration';
@@ -93,6 +94,7 @@ $zz['fields'][11]['hide_in_list'] = true;
 $zz['fields'][12]['field_name'] = 'remarks';
 $zz['fields'][12]['type'] = 'memo';
 $zz['fields'][12]['hide_in_list'] = true;
+$zz['fields'][12]['explanation'] = 'Internal remarks';
 
 $zz['fields'][99]['field_name'] = 'last_update';
 $zz['fields'][99]['type'] = 'timestamp';

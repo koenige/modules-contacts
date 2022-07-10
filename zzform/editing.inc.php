@@ -33,7 +33,7 @@ function mf_contacts_edit_contact_name($fields) {
  * @return string
  */
 function mf_contacts_display_name($fields, $field_name) {
-	switch ($field) {
+	switch ($field_name) {
 	case 'contact_display_name':
 		if (!empty($fields['contact_id'])) {
 			$sql = 'SELECT contact FROM /*_PREFIX_*/contacts WHERE contact_id = %d';
