@@ -1,0 +1,13 @@
+# contacts module
+# HTML template for search
+#
+# Part of »Zugzwang Project«
+# https://www.zugzwang.org/modules/contacts
+#
+# @author Gustaf Mossakowski <gustaf@koenige.org>
+# @copyright Copyright © 2020, 2022 Gustaf Mossakowski
+#
+%%% loop contacts %%%
+<h3>%%% condition if website %%%<a href="%%% item website %%%">%%% condition endif %%%%%% item contact %%%%%% item website </a> %%%</h3>
+%%% item description markdown %%%
+%%% loop end %%%

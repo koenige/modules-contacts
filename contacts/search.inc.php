@@ -33,6 +33,5 @@ function mf_contacts_search($q) {
 		, implode(' AND ', $where)
 	);
 	$data['contacts'] = wrap_db_fetch($sql, 'contact_id');
-
 	return $data;
 }
