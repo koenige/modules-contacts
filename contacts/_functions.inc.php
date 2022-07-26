@@ -119,7 +119,7 @@ function mf_contacts_profile_path($values) {
 	if (!wrap_access('contacts_profile')) return false;
 	if (empty($values['contact_parameters'])) return false;
 	parse_str($values['contact_parameters'], $params);
-	if (empty($params['type'])) return '';
+	if (empty($params['type'])) $params['type'] = '*';
 	if (empty($zz_setting['contacts_profile_path'][$params['type']])) {
 		$success = wrap_setting_path(
 			'contacts_profile_path['.$params['type'].']'
