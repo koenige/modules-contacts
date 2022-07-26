@@ -131,9 +131,10 @@ function mod_contacts_contact($params, $settings) {
 		$type = substr($type, strrpos($type, '/') + 1);
 		if (empty($zz_setting['contacts_relations_path'][$type]))
 			$success = wrap_setting_path('contacts_relations_path['.$type.']', 'forms contacts-contacts', ['scope' => $type]);
-		$data['relations'][$index]['relations_path'] = $zz_setting['base'].sprintf(
-			$zz_setting['contacts_relations_path'][$type], $params[0]
-		);
+		if (!empty($zz_setting['contacts_relations_path'][$type]))
+			$data['relations'][$index]['relations_path'] = $zz_setting['base'].sprintf(
+				$zz_setting['contacts_relations_path'][$type], $params[0]
+			);
 	}
 	
 	// participations
