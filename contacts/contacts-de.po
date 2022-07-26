@@ -216,6 +216,10 @@ msgstr "Hauptkontakt"
 msgid "No."
 msgstr "Nr."
 
+#: zzbrick_tables/contacts-contacts.php
+msgid "Role"
+msgstr "Rolle"
+
 #: zzbrick_tables/contacts-identifiers.php
 msgid "Identifiers"
 msgstr "Kennungen"
