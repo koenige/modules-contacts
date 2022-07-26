@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2015-2016, 2018-2019 Gustaf Mossakowski
+ * @copyright Copyright © 2015-2016, 2018-2022 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -100,7 +100,6 @@ function mod_contacts_contactverification($params, $settings) {
 	$sql = sprintf($sql, $data['contact_id']);
 	$cv = wrap_db_fetch($sql);
 
-	require_once $zz_conf['dir'].'/zzform.php';
 	$zz_conf['user'] = $cv['identifier'];
 	$values = [];
 	$values['POST']['cv_id'] = $cv['cv_id'];
