@@ -39,6 +39,10 @@ $zz['fields'][2]['search'] = 'contacts.contact';
 $zz['fields'][2]['placeholder'] = true;
 $zz['fields'][2]['select_dont_force_single_value'] = true;
 $zz['fields'][2]['select_empty_no_add'] = true;
+$zz['fields'][2]['link'] = [
+	'area' => 'contacts_profile[*]',
+	'fields' => ['identifier']
+];
 
 $zz['fields'][4]['title'] = 'Relation';
 $zz['fields'][4]['field_name'] = 'relation_category_id';
@@ -73,10 +77,15 @@ $zz['fields'][3]['select_empty_no_add'] = true;
 $zz['fields'][3]['not_identical_with'] = 'contact_id';
 $zz['fields'][3]['if']['where']['hide_in_form'] = true;
 $zz['fields'][3]['if']['where']['hide_in_list'] = true;
+$zz['fields'][3]['link'] = [
+	'area' => 'contacts_profile[*]',
+	'fields' => ['main_identifier']
+];
 
 $zz['fields'][11]['field_name'] = 'role';
 $zz['fields'][11]['type'] = 'text';
 $zz['fields'][11]['size'] = 18;
+$zz['fields'][11]['hide_in_list_if_empty'] = true;
 
 $zz['fields'][9]['field_name'] = 'remarks';
 $zz['fields'][9]['type'] = 'memo';
@@ -108,6 +117,8 @@ $zz['fields'][99]['hide_in_list'] = true;
 $zz['sql'] = 'SELECT /*_PREFIX_*/contacts_contacts.*
 		, main_contacts.contact AS main_contact, /*_PREFIX_*/contacts.contact
 		, /*_PREFIX_*/categories.category
+		, /*_PREFIX_*/contacts.identifier
+		, main_contacts.identifier AS main_identifier
 	FROM /*_PREFIX_*/contacts_contacts
 	LEFT JOIN /*_PREFIX_*/contacts USING (contact_id)
 	LEFT JOIN /*_PREFIX_*/contacts main_contacts
