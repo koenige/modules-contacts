@@ -214,6 +214,10 @@ msgstr ""
 msgid "No."
 msgstr ""
 
+#: zzbrick_tables/contacts-contacts.php
+msgid "Role"
+msgstr ""
+
 #: zzbrick_tables/contacts-identifiers.php
 msgid "Identifiers"
 msgstr ""
