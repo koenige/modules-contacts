@@ -15,7 +15,6 @@
 
 function mod_contacts_contact($params, $settings) {
 	global $zz_setting;
-	if (count($params) !== 1) return false;
 	
 	if (isset($_GET['sendlogin']) AND isset($_POST['sendlogin'])) {
 		return brick_format('%%% make sendlogin '.implode(' ', $params).' %%%');
@@ -28,7 +27,7 @@ function mod_contacts_contact($params, $settings) {
 	    LEFT JOIN categories
 	    	ON contacts.contact_category_id = categories.category_id
 	    WHERE identifier = "%s"';
-	$sql = sprintf($sql, wrap_db_escape($params[0]));
+	$sql = sprintf($sql, wrap_db_escape(implode('/', $params)));
 	$data = wrap_db_fetch($sql);
 	if (!$data) return false;
 	if (!empty($settings['scope'])) {
@@ -190,6 +189,9 @@ function mod_contacts_contact($params, $settings) {
 			$data += $login;
 			$data['masquerade_link'] = wrap_path('default_masquerade', $data['contact_id']);
 		}
+	}
+	if (count($params) !== 1) {
+		$data['deep'] = str_repeat('../', count($params) -1);
 	}
 
 	if ($data['scope'] === 'person') {
