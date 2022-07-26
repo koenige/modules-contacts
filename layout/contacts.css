@@ -1,0 +1,29 @@
+/*
+ * contacts module
+ * CSS
+ *
+ * Part of »Zugzwang Project«
+ * https://www.zugzwang.org/modules/contacts
+ *
+ * @author Gustaf Mossakowski <gustaf@koenige.org>
+ * @copyright Copyright © 2022 Gustaf Mossakowski
+ * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
+ */
+
+
+/* contact */
+
+.contact h1 em	{ font-style: normal; font-weight: normal; }
+.contact table	{ border-collapse: collapse; margin: 1em 0; }
+.contact th		{ text-align: left; }
+.contact th, .contact td
+				{ padding: .25em .5em .25em 0; vertical-align: top; }
+.contact .remarks td
+				{ font-style: italic; }
+.contact tbody tr:nth-child(2n+1) td, .contact tbody tr:nth-child(2n+1) th
+				{ background: #F0F0F0; }
+.contact tbody tr:nth-child(2n) td, .contact tbody tr:nth-child(2n) th
+				{ background: #FFF; }
+.contact ul		{ margin: 0; padding: 0; list-style: none; }
+.contact li		{ margin: 0; padding: 0; }
+.contact p		{ margin: 0 0 .5em; }
