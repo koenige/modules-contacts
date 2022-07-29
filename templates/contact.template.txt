@@ -41,7 +41,7 @@
 %%% condition if addresses %%%
 <tr><th>%%% text Address %%%</th><td>
 %%% loop addresses %%%
-<p><em>%%% item category %%%: %%% condition if receive_mail %%%%%% text (used for mailing) %%%%%% condition endif %%%</em><br>%%% item address nl2br %%%<br>%%% item postcode %%% %%% item place %%%<br>%%% item country %%%</p>
+<p><em>%%% item category %%%: %%% condition if receive_mail %%%%%% text (for mailing) %%%%%% condition endif %%%</em><br>%%% item address nl2br %%%<br>%%% item postcode %%% %%% item place %%%<br>%%% item country %%%</p>
 %%% loop end %%%
 </td></tr>
 %%% condition endif %%%

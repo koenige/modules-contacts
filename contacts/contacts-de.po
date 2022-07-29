@@ -461,8 +461,8 @@ msgid "Send mail with access code"
 msgstr "Mail mit Zugangscode senden"
 
 #: templates/contact.template.txt
-msgid "(used for mailing)"
-msgstr "(wird für den Versand verwendet)"
+msgid "(for mailing)"
+msgstr "(für den Postversand)"
 
 #: templates/contact-verification.de.template.txt
 msgid "Registration"

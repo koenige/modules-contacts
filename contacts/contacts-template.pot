@@ -455,7 +455,7 @@ msgid "Send mail with access code"
 msgstr ""
 
 #: templates/contact.template.txt
-msgid "(used for mailing)"
+msgid "(for mailing)"
 msgstr ""
 
 #: templates/contact-verification.de.template.txt
