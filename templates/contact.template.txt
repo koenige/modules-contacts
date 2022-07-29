@@ -38,9 +38,13 @@
 %%% loop url %%%
 <tr><th>%%% item category %%%</th><td><a href="%%% item identification %%%">%%% item identification %%%</a>%%% item label " (%s)" %%%</td></tr>
 %%% loop end %%%
+%%% condition if addresses %%%
+<tr><th>%%% text Address %%%</th><td>
 %%% loop addresses %%%
-<tr><th>%%% text Address %%%</th><td><em>%%% item category %%%:</em><br>%%% item address nl2br %%%<br>%%% item postcode %%% %%% item place %%%<br>%%% item country %%%</td></tr>
+<p><em>%%% item category %%%: %%% condition if receive_mail %%%%%% text (used for mailing) %%%%%% condition endif %%%</em><br>%%% item address nl2br %%%<br>%%% item postcode %%% %%% item place %%%<br>%%% item country %%%</p>
 %%% loop end %%%
+</td></tr>
+%%% condition endif %%%
 %%% condition if description %%%
 <tr><th>%%% text Description %%%</th><td>%%% item description markdown %%%</td></tr>
 %%% condition endif %%%
