@@ -86,6 +86,7 @@ function mf_contacts_addresses($contact_ids) {
 			, latitude, longitude
 			, category_id, category
 			, contact_id
+			, IF(receive_mail = "yes", 1, NULL) AS receive_mail
 		FROM /*_PREFIX_*/addresses
 		LEFT JOIN /*_PREFIX_*/countries USING (country_id)
 		LEFT JOIN /*_PREFIX_*/categories
@@ -99,6 +100,8 @@ function mf_contacts_addresses($contact_ids) {
 	$data = [];
 	foreach ($addresses as $address_id => $address) {
 		$data[$address['contact_id']][$address['address_id']] = $address;
+		if (count($addresses) === 1)
+			$data[$address['contact_id']][$address['address_id']]['receive_mail'] = false;
 	}
 	if (is_array($contact_ids)) return $data;
 	$data = reset($data);
