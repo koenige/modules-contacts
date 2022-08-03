@@ -90,12 +90,7 @@ $zz['fields'][11]['hide_in_list_if_empty'] = true;
 $zz['fields'][9]['field_name'] = 'remarks';
 $zz['fields'][9]['type'] = 'memo';
 $zz['fields'][9]['hide_in_list'] = true;
-$zz['fields'][9]['hide_in_form'] = true;
 $zz['fields'][9]['rows'] = 2;
-$zz['fields'][9]['explanation'] = 'Internal remarks';
-if (wrap_access('contacts_remarks')) {
-	$zz['fields'][9]['hide_in_form'] = false;
-}
 
 $zz['fields'][10]['title_tab'] = 'WWW?';
 $zz['fields'][10]['field_name'] = 'published';
