@@ -306,7 +306,7 @@ foreach ($new as $pos => $association) {
 
 foreach ($values['relations'] as $index => $relation) {
 	$zz['fields'][$no] = zzform_include_table('contacts-contacts');
-	if (!empty($relation['association'])) {
+	if (!empty($relation['association']) OR !empty($relation['params']['reverse_relation'])) {
 		$contact_no = 2; // contact_id
 		$f_contact_no = 3; // main_contact_id
 		$zz['fields'][$no]['sql'] = $zz['fields'][$no]['sql_association'];
