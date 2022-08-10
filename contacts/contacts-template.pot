@@ -197,6 +197,10 @@ msgstr ""
 msgid "Parameters"
 msgstr ""
 
+#: zzbrick_tables/contacts.php
+msgid "Sort"
+msgstr ""
+
 #: config.inc.php
 #: zzbrick_tables/contacts-contacts.php
 msgid "Linked Contacts"

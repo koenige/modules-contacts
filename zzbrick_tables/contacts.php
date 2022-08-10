@@ -51,6 +51,12 @@ if (!wrap_get_setting('contacts_contact_short'))
 
 $zz['fields'][11] = []; // contact_abbr
 
+$zz['fields'][21]['title'] = 'Sort';
+$zz['fields'][21]['field_name'] = 'contact_sort';
+$zz['fields'][21]['hide_in_list'] = true;
+if (!wrap_get_setting('contacts_contact_sort'))
+	$zz['fields'][21]['hide_in_form'] = true;
+
 $zz['fields'][9] = []; // persons
 
 $zz['fields'][3]['field_name'] = 'identifier';

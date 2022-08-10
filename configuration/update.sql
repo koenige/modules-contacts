@@ -47,3 +47,4 @@
 /* 2022-07-10-2 */	INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'contacts', 'contact_id', (SELECT DATABASE()), 'awards', 'award_id', 'contact_id', 'no-delete');
 /* 2022-07-10-3 */	INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'categories', 'category_id', (SELECT DATABASE()), 'awards', 'award_id', 'award_category_id', 'no-delete');
 /* 2022-07-10-4 */	INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Awards', NULL, NULL, 'awards', 'alias=awards', NULL, NOW());
+/* 2022-08-10-1 */	ALTER TABLE `contacts` ADD `contact_sort` varchar(80) COLLATE 'utf8mb4_unicode_ci' NULL AFTER `contact_abbr`;

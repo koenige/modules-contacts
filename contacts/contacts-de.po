@@ -200,6 +200,10 @@ msgstr "Enddatum"
 msgid "Parameters"
 msgstr "Parameter"
 
+#: zzbrick_tables/contacts.php
+msgid "Sort"
+msgstr "Sortierung"
+
 #: config.inc.php zzbrick_tables/contacts-contacts.php
 msgid "Linked Contacts"
 msgstr "Verknüpfte Kontakte"
