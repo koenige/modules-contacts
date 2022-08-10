@@ -46,6 +46,8 @@ $zz['fields'][10]['title'] = 'Short';
 $zz['fields'][10]['field_name'] = 'contact_short';
 $zz['fields'][10]['class'] = 'hidden480';
 $zz['fields'][10]['hide_in_list_if_empty'] = true;
+if (!wrap_get_setting('contacts_contact_short'))
+	$zz['fields'][10]['hide_in_form'] = true;
 
 $zz['fields'][11] = []; // contact_abbr
 
@@ -244,10 +246,14 @@ $zz['fields'][12]['format'] = 'markdown';
 $zz['fields'][16]['field_name'] = 'start_date';
 $zz['fields'][16]['type'] = 'date';
 $zz['fields'][16]['hide_in_list'] = true;
+if (!wrap_get_setting('contacts_start_date'))
+	$zz['fields'][16]['hide_in_form'] = true;
 
 $zz['fields'][17]['field_name'] = 'end_date';
 $zz['fields'][17]['type'] = 'date';
 $zz['fields'][17]['hide_in_list'] = true;
+if (!wrap_get_setting('contacts_end_date'))
+	$zz['fields'][17]['hide_in_form'] = true;
 
 $zz['fields'][18]['field_name'] = 'country_id';
 $zz['fields'][18]['type'] = 'select';
@@ -259,6 +265,8 @@ $zz['fields'][18]['sql_character_set'][1] = 'latin1';
 $zz['fields'][18]['sql_character_set'][2] = 'latin1';
 $zz['fields'][18]['search'] = '/*_PREFIX_*/countries.country';
 $zz['fields'][18]['hide_in_list'] = true;
+if (!wrap_get_setting('contacts_country'))
+	$zz['fields'][18]['hide_in_form'] = true;
 
 $zz['fields'][13]['field_name'] = 'remarks';
 $zz['fields'][13]['type'] = 'memo';
@@ -398,6 +406,8 @@ $zz['fields'][14]['explanation'] = 'Publish on website?';
 $zz['fields'][15]['field_name'] = 'parameters';
 $zz['fields'][15]['type'] = 'parameter';
 $zz['fields'][15]['hide_in_list'] = true;
+if (!wrap_get_setting('contacts_parameters'))
+	$zz['fields'][15]['hide_in_form'] = true;
 
 $zz['fields'][97]['field_name'] = 'created';
 $zz['fields'][97]['type'] = 'hidden';
