@@ -22,6 +22,29 @@ $zz['fields'][1]['type'] = 'id';
 $zz['fields'][1]['geojson'] = 'id';
 
 $zz['fields'][98] = []; // image
+if (wrap_get_setting('contacts_media')) {
+	$zz['fields'][98] = zzform_include_table('contacts-media');
+	$zz['fields'][98]['title'] = 'Media';
+	$zz['fields'][98]['type'] = 'subtable';
+	$zz['fields'][98]['hide_in_list_if_empty'] = true;
+	$zz['fields'][98]['min_records'] = wrap_get_setting('contacts_media_min_records');
+	$zz['fields'][98]['max_records'] = wrap_get_setting('contacts_media_max_records');
+	$zz['fields'][98]['fields'][2]['type'] = 'foreign_key';
+	if (wrap_get_setting('contacts_media_max_records') === 1) {
+		$zz['fields'][98]['fields'][4]['hide_in_form'] = true;
+		$zz['fields'][98]['fields'][4]['type'] = 'hidden';
+		$zz['fields'][98]['fields'][4]['value'] = 1;
+	}
+	$zz['fields'][98]['fields'][3]['add_details'] = [
+		'area' => 'media_internal',
+		'fields' => ['contact_category_id'],
+		'target' => [0 => [
+			'ids' => 'categories',
+			'table' => 'media',
+			'identifier_field' => 'filename'
+		]]
+	];
+}
 
 $zz['fields'][2]['field_name'] = 'contact';
 $zz['fields'][2]['type'] = 'memo';
