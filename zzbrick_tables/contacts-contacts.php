@@ -104,10 +104,9 @@ $zz['fields'][10]['default'] = 'no';
 $zz['fields'][10]['def_val_ignore'] = true;
 $zz['fields'][10]['hide_in_list'] = true;
 $zz['fields'][10]['hide_in_form'] = true;
+$zz['fields'][10]['if']['revise']['hide_in_form'] = false;
 if (wrap_access('contacts_published')) {
 	$zz['fields'][10]['hide_in_form'] = false;
-} else {
-	$zz['fields'][10]['if']['revise']['hide_in_form'] = false;
 }
 
 $zz['fields'][99]['field_name'] = 'last_update';
