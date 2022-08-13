@@ -331,6 +331,13 @@ foreach ($values['relations'] as $index => $relation) {
 	if (!$relation['parameters']) continue;
 	$pos++;
 	parse_str($relation['parameters'], $values['relations'][$index]['params']);
+	if (isset($values['relations_restrict_to'])) {
+		$key = sprintf('%s_params', $values['relations_restrict_to']);
+		if (!empty($values['relations'][$index]['params'][$key]))
+			$values['relations'][$index]['params'] = array_merge(
+				$values['relations'][$index]['params'], $values['relations'][$index]['params'][$key]
+			);
+	}
 	if (!empty($values['relations'][$index]['params']['association'])) {
 		$new[$pos] = $values['relations'][$index];
 		$new[$pos]['params']['integrate_in_next'] = true;
