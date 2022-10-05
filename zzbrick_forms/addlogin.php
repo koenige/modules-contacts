@@ -28,7 +28,10 @@ $zz['explanation'] = '<h2>'.wrap_text('Set a Password').'</h2><p>'
 	.wrap_text('Please set a password for the login.').' '
 	.sprintf(wrap_text('The password must be at least %d characters long.'), $password_min_length).' '
 	.wrap_text('In the future, access is granted with the username below and the password you chose.')
-	.'</p>';
+	.'</p>'
+	.markdown(
+	'### '.wrap_text('Hints for secure passwords')
+	."\n\n".wrap_text('password-rules'));
 $zz['access'] = 'add_only';
 
 $zz['where']['contact_id'] = $brick['vars'][0];
