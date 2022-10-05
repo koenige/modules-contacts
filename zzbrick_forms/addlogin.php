@@ -20,13 +20,10 @@ if (!is_numeric($brick['vars'][0])) wrap_quit(403);
 $zz = zzform_include_table('logins');
 // remarks: logins script must work with contact_id
 
-$password_min_length = !empty($zz['fields'][3]['minlength'])
-	? $zz['fields'][3]['minlength'] : 8;
-
 $zz['title'] = 'Add a new login';
 $zz['explanation'] = '<h2>'.wrap_text('Set a Password').'</h2><p>'
 	.wrap_text('Please set a password for the login.').' '
-	.sprintf(wrap_text('The password must be at least %d characters long.'), $password_min_length).' '
+	.sprintf(wrap_text('The password must be at least <strong>%d characters</strong> long.'), wrap_get_setting('login_password_minlength')).' '
 	.wrap_text('In the future, access is granted with the username below and the password you chose.')
 	.'</p>'
 	.markdown(

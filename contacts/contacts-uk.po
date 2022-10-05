@@ -36,7 +36,7 @@ msgid "Please set a password for the login."
 msgstr ""
 
 #: zzbrick_forms/addlogin.php
-msgid "The password must be at least %d characters long."
+msgid "The password must be at least <strong>%d characters</strong> long."
 msgstr ""
 
 #: zzbrick_forms/addlogin.php
