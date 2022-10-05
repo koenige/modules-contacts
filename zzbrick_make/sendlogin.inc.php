@@ -8,13 +8,13 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2021 Gustaf Mossakowski
+ * @copyright Copyright © 2021-2022 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
 
-function mod_contacts_make_sendlogin($params) {
-	global $zz_setting;
+function mod_contacts_make_sendlogin($params, $settings) {
+	if (count($params) !== 1) return false;
 
 	$sql = 'SELECT contact_id, identification AS e_mail
 			, contact
@@ -28,9 +28,16 @@ function mod_contacts_make_sendlogin($params) {
 		FROM persons
 		LEFT JOIN contacts USING (contact_id)
 		LEFT JOIN contactdetails USING (contact_id)
-		WHERE contacts.identifier = "%s"
-		AND contactdetails.provider_category_id = %d';
-	$sql = sprintf($sql, wrap_db_escape($params[0]), wrap_category_id('provider/e-mail'));
+		WHERE %s
+		AND contactdetails.provider_category_id = %d
+		ORDER BY contactdetails.contactdetail_id
+		LIMIT 1';
+	$sql = sprintf($sql
+		, is_numeric($params[0])
+			? sprintf('contacts.contact_id = %d', $params[0])
+			: sprintf('contacts.identifier = "%s"', wrap_db_escape($params[0]))
+		, wrap_category_id('provider/e-mail')
+	);
 	$contact = wrap_db_fetch($sql);
 	if (!$contact) {
 		wrap_error('Could not find contact '.wrap_html_escape($params[0]), E_USER_ERROR);
@@ -41,7 +48,9 @@ function mod_contacts_make_sendlogin($params) {
 			FROM contacts
 			LEFT JOIN contactdetails USING (contact_id)
 			WHERE contact_id = %d
-			AND contactdetails.provider_category_id = %d';
+			AND contactdetails.provider_category_id = %d
+			ORDER BY contactdetails.contactdetail_id
+			LIMIT 1';
 		$sql = sprintf($sql, $_SESSION['user_id'], wrap_category_id('provider/e-mail'));
 		$sender = wrap_db_fetch($sql);
 		$contact['sender'] = $sender['contact'];
@@ -52,7 +61,9 @@ function mod_contacts_make_sendlogin($params) {
 	$mail['to']['name'] = $contact['contact'];
 	$mail['to']['e_mail'] = $contact['e_mail'];
 	$contact['addlogin_hash'] = wrap_set_hash($contact['contact_id'].'-'.$contact['identifier'], 'addlogin_key');
-	$template = 'contact-login-mail'; // @todo add informal possibility
+	$template = 'contact-login-mail';
+	if (!empty($settings['lang']))
+		$template .= '-'.$settings['lang']; // add -informal this way, too
 	$mail['message'] = wrap_template($template, $contact);
 	$success = wrap_mail($mail);
 	if (!$success) {
