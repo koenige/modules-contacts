@@ -56,11 +56,14 @@ function mf_contacts_contactdetails($contact_ids) {
 				$type = [];
 				$type['type'] = '';
 			}
-			if ($type['type'] === 'mail') {
+			switch ($type['type']) {
+			case 'mail':
 				$detail['mailto'] = wrap_mailto($detail['contact'], $detail['identification']);
-			}
-			if ($type['type'] === 'username' AND !empty($type['url'])) {
-				$detail['username_url'] = sprintf($type['url'], $detail['identification']);
+				break;
+			case 'username':
+				if (!empty($type['url']))
+					$detail['username_url'] = sprintf($type['url'], $detail['identification']);
+				break;
 			}
 			$data[$contact_id][$type['type']][] = $detail;
 			
