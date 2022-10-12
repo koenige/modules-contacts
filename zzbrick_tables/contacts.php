@@ -481,6 +481,16 @@ $zz['filter'][1]['type'] = 'list';
 $zz['filter'][1]['where'] = 'contact_category_id';
 $zz['filter'][1]['field_name'] = 'contact_category_id';
 
+$zz['filter'][2]['title'] = wrap_text('Alpha');
+$zz['filter'][2]['identifier'] = 'alpha';
+$zz['filter'][2]['type'] = 'list';
+$zz['filter'][2]['where'] = 'UPPER(SUBSTRING(contact, 1, 1))';
+$zz['filter'][2]['sql'] = 'SELECT DISTINCT 
+		UPPER(SUBSTRING(contact, 1, 1)), 
+		UPPER(SUBSTRING(contact, 1, 1))
+	FROM /*_PREFIX_*/contacts
+	ORDER BY UPPER(SUBSTRING(contact, 1, 1))';
+
 if (!empty($_GET['nolist'])) {
 	$zz['dynamic_referer'] = $zz['fields'][2]['link'];
 }
