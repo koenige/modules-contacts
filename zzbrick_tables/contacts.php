@@ -137,15 +137,18 @@ $no = 30;
 foreach ($values['contactdetails'] as $category_id => $category) {
 	// parse parameters
 	$category['parameters'] = $category['parameters'] ?? [];
-	if ($category['parameters'] AND !is_array($category['parameters'])) {
+	if ($category['parameters'] AND !is_array($category['parameters']))
 		parse_str($category['parameters'], $category['parameters']);
-	}
+	if (!empty($values['contactdetails_restrict_to'])
+		AND !empty($category['parameters']['if'][$values['contactdetails_restrict_to']]))
+		$category['parameters'] = array_merge($category['parameters'], $category['parameters']['if'][$values['contactdetails_restrict_to']]);
 
 	// group contactdetails?
 	$continue = false;
 	if (!empty($values['contactdetails_separate'])) $continue = true;
 	if (!empty($category['parameters']['separate'])) {
 		if (!is_array($category['parameters']['separate']) AND $category['parameters']['separate'].'' === '1') $continue = true;
+		// @deprecated, use if-notation instead
 		if (!empty($values['contactdetails_restrict_to'])
 			AND !empty($category['parameters']['separate'][$values['contactdetails_restrict_to']])) $continue = true;
 	}
@@ -195,6 +198,8 @@ foreach ($values['contactdetails'] as $category) {
 	$zz['fields'][$no]['class'] = 'contactdetails';
 	$zz['fields'][$no]['table_name'] = 'contactdetails_'.$category['category_id'];
 	$zz['fields'][$no]['title'] = $category['category'];
+	if (!empty($category['parameters']['title']))
+		$zz['fields'][$no]['title'] = $category['parameters']['title'];
 	$zz['fields'][$no]['type'] = 'subtable';
 	$zz['fields'][$no]['min_records'] = isset($category['parameters']['min_records']) ? $category['parameters']['min_records'] : 1;
 	$zz['fields'][$no]['max_records'] = !empty($category['parameters']['max_records'])
@@ -206,7 +211,7 @@ foreach ($values['contactdetails'] as $category) {
 	}
 	$parameters_to_fields = [
 		'explanation', 'parse_url', 'url', 'dont_check_username_online',
-		'validate'
+		'validate', 'title'
 	];
 	foreach ($parameters_to_fields as $parameter_to_field) {
 		if (empty($category['parameters'][$parameter_to_field])) continue;
