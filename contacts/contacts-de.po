@@ -44,6 +44,23 @@ msgstr ""
 "Entweder gibt es den Nutzernamen nicht auf unserer Website oder es besteht "
 "bereits ein Login für Sie."
 
+#: templates/linklogin.template.txt
+msgid ""
+"You are trying to login via a link. But somehow, the web "
+"address (URL) you clicked seems to be incorrect. Maybe some part is missing?"
+msgstr ""
+"Sie versuchen, sich über einen Link anzumelden. Aber "
+"irgendwie scheint die Webadresse (URL), auf die Sie geklickt haben, falsch "
+"zu sein. Vielleicht fehlt ein Teil?"
+
+#: templates/linklogin.template.txt
+msgid ""
+"Please also be aware that the link we sent to you has a limited validity. "
+"Maybe time’s up."
+msgstr ""
+"Bitte beachten Sie auch, dass der Link, den wir Ihnen gesendet haben, eine "
+"begrenzte Gültigkeit hat. Vielleicht ist die Zeit um."
+
 #: zzbrick_forms/addlogin.php
 msgid "Add a new login"
 msgstr "Neuen Login hinzufügen"

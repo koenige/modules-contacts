@@ -1,0 +1,16 @@
+# contacts module
+# Template for error messages if a login via link does not work
+#
+# Part of »Zugzwang Project«
+# https://www.zugzwang.org/modules/contacts
+#
+# @author Gustaf Mossakowski <gustaf@koenige.org>
+# @copyright Copyright © 2022 Gustaf Mossakowski
+# @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
+#
+#
+<div id="login">
+<p class="error">%%% text You are trying to login via a link. But somehow, the web address (URL) you clicked seems to be incorrect. Maybe some part is missing? %%%
+<br><br>%%% text Please also be aware that the link we sent to you has a limited validity. Maybe time’s up. %%%</p>
+<p><a href="./">%%% text Back to login page %%%</a></p>
+</div>

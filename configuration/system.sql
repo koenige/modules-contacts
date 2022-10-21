@@ -35,6 +35,6 @@ LEFT JOIN /*_PREFIX_*/contacts USING (contact_id)
 WHERE /*_PREFIX_*/contacts.identifier = '%s';
 
 -- auth_username_exists --
-SELECT contact_id AS user_id, identifier AS username
+SELECT contact_id AS user_id, identifier AS username, contact, contact_id
 FROM /*_PREFIX_*/contacts
 WHERE identifier = '%s';

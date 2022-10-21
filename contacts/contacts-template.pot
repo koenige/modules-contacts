@@ -38,6 +38,14 @@ msgid ""
 "exist on our website or there already exists a login for this username."
 msgstr ""
 
+#: templates/linklogin.template.txt
+msgid "You are trying to login via a link. But somehow, the web address (URL) you clicked seems to be incorrect. Maybe some part is missing?"
+msgstr ""
+
+#: templates/linklogin.template.txt
+msgid "Please also be aware that the link we sent to you has a limited validity. Maybe time’s up."
+msgstr ""
+
 #: zzbrick_forms/addlogin.php
 msgid "Add a new login"
 msgstr ""
