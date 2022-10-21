@@ -119,19 +119,7 @@ $zz['fields'][5]['fields'][2]['type'] = 'foreign_key';
 // @todo use category for columns
 $zz['fields'][5]['unless']['export_mode']['list_append_next'] = true;
 
-if (!isset($values['contactdetails'])) {
-	if (isset($values['contactdetails_restrict_to']))
-		$restrict_to = 'AND parameters LIKE "%%&'.$values['contactdetails_restrict_to'].'=1%%"';
-	else
-		$restrict_to = '';
-	$sql = 'SELECT category_id, category, parameters
-		FROM categories
-		WHERE main_category_id = %d
-		%s
-		ORDER BY sequence, path';
-	$sql = sprintf($sql, wrap_category_id('provider'), $restrict_to);
-	$values['contactdetails'] = wrap_db_fetch($sql, 'category_id');
-}
+$values['contactdetails'] = mf_contacts_restrict_categories($values, 'contactdetails', 'provider');
 
 $no = 30;
 foreach ($values['contactdetails'] as $category_id => $category) {
@@ -314,19 +302,7 @@ if (wrap_access('contacts_remarks')) {
 	$zz['fields'][13]['hide_in_form'] = false;
 }
 
-if (!isset($values['relations'])) {
-	if (isset($values['relations_restrict_to']))
-		$restrict_to = 'AND parameters LIKE "%%&'.$values['relations_restrict_to'].'=1%%"';
-	else
-		$restrict_to = '';
-	$sql = 'SELECT category_id, category, parameters 
-		FROM categories
-		WHERE main_category_id = %d
-		%s
-		ORDER BY sequence, path';
-	$sql = sprintf($sql, wrap_category_id('relation'), $restrict_to);
-	$values['relations'] = wrap_db_fetch($sql, 'category_id');
-}
+$values['relations'] = mf_contacts_restrict_categories($values, 'relations', 'relation');
 
 $no = 60;
 // associations?
