@@ -19,7 +19,7 @@ Sie können sich zukünftig mit dem Benutzernamen
 
 anmelden. Ein Passwort für den Zugang können Sie über diesen Link setzen:
 
-	%%% setting host_base %%%%%% setting login_url %%%?request=%%% item identifier %%%-%%% item addlogin_hash %%%
+	%%% setting host_base %%%%%% setting login_url %%%?add=%%% item identifier %%%-%%% item addlogin_hash %%%
 
 Mit freundlichen Grüßen
 %%% setting project %%% 

@@ -61,7 +61,7 @@ function mod_contacts_make_sendlogin($params, $settings) {
 	$mail['to']['name'] = $contact['contact'];
 	$mail['to']['e_mail'] = $contact['e_mail'];
 	$contact['addlogin_hash'] = wrap_set_hash($contact['contact_id'].'-'.$contact['identifier'], 'addlogin_key');
-	$template = 'contact-login-mail';
+	$template = 'addlogin-mail';
 	if (!empty($settings['lang']))
 		$template .= '-'.$settings['lang']; // add -informal this way, too
 	$mail['message'] = wrap_template($template, $contact);

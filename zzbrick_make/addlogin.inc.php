@@ -23,9 +23,9 @@ function mod_contacts_make_addlogin($params) {
 	global $zz_setting;
 
 	$zz_conf['url_self'] = $zz_setting['request_uri'];
-	unset($_GET['request']); // not needed anymore, remove because of zzform's request
+	unset($_GET['add']); // not needed anymore, remove because of zzform's add
 	$data = [];
-	$page['query_strings'] = ['request'];
+	$page['query_strings'] = ['add'];
 	if (count($params) < 2) {
 		$data['invalid_request'] = true;
 		$page['text'] = wrap_template('addlogin', $data);
@@ -73,6 +73,6 @@ function mod_contacts_make_addlogin($params) {
 	// addlogin must be a custom form script
 	$zz_conf['user'] = $user['username'];
 	$page = brick_format('%%% forms addlogin '.$user['user_id'].' %%%');
-	$page['query_strings'] = ['request'];
+	$page['query_strings'] = ['add'];
 	return $page;
 }
