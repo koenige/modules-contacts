@@ -105,15 +105,6 @@ function mf_contacts_addlogin_password($ops) {
 	}
 	if (!$login_id) return [];
 
-	// get user data
-	$sql = sprintf(wrap_sql_login(), $username);
-	$data = wrap_db_fetch($sql);
-	if (!$data) return false;
-
-	// register user data
-	$success = wrap_session_start();
-	$_SESSION['logged_in'] = true;
-	wrap_register($data['user_id'], $data);
-	session_write_close();
+	mf_contacts_login_user($username);
 	return [];
 }
