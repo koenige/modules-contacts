@@ -22,6 +22,28 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.8.12\n"
 
+#: templates/addlogin.template.txt
+msgid ""
+"You are trying to create a new login for you. But somehow, the web address "
+"(URL) you clicked seems to be incorrect. Maybe some part is missing?"
+msgstr ""
+"Sie versuchen, einen neuen Zugang für sich zu erstellen. Aber irgendwie "
+"scheint die Webadresse (URL), die Sie angeklickt haben, nicht korrekt zu "
+"sein. Vielleicht fehlt ein Teil?"
+
+#: templates/addlogin.template.txt
+msgid "Back to login page"
+msgstr "Zurück zur Login-Seite"
+
+#: templates/addlogin.template.txt
+msgid ""
+"Sorry, you cannot create a login for this username. Either the user does not "
+"exist on our website or there already exists a login for this username."
+msgstr ""
+"Entschuldigung, Sie können für diesen Nutzernamen keinen Login erstellen. "
+"Entweder gibt es den Nutzernamen nicht auf unserer Website oder es besteht "
+"bereits ein Login für Sie."
+
 #: zzbrick_forms/addlogin.php
 msgid "Add a new login"
 msgstr "Neuen Login hinzufügen"
