@@ -111,7 +111,10 @@ $contact_categories = wrap_db_fetch($zz['fields'][4]['sql'], 'category_id');
 if (count($contact_categories) === 1) $zz['fields'][4]['hide_in_list'] = true;
 $zz['fields'][4]['exclude_from_search'] = true;
 
-$values['addresses'] = mf_contacts_restrict_categories($values, 'addresses', 'address');
+if (!empty($values['addresses_restrict_to'])) {
+	// here, do not show address fields for every address type, only if restrict_to is set
+	$values['addresses'] = mf_contacts_restrict_categories($values, 'addresses', 'address');
+}
 if (isset($values['addresses'])) {
 	$no = 80;
 } else {
@@ -151,7 +154,8 @@ foreach ($values['addresses'] as $category_id => $category) {
 
 		$zz['fields'][$no]['sql'] .= sprintf(' WHERE address_category_id = %d', $category_id);
 	}
-	$category['parameters']['fields'] ?? [];
+	if (empty($category['parameters']['fields']))
+		$category['parameters']['fields'] = [];
 	foreach ($category['parameters']['fields'] as $field_name => $def) {
 		if ($field_name === 'country_id' AND !empty($def['default']))
 			$def['default'] = wrap_id('countries', $def['default']);
