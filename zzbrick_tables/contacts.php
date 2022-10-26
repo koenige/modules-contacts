@@ -404,12 +404,20 @@ foreach ($values['relations'] as $index => $relation) {
 		$zz['fields'][$no]['min_records'] = $relation['params']['min_records'];
 	if (isset($relation['params']['max_records']))
 		$zz['fields'][$no]['max_records'] = $relation['params']['max_records'];
-	$zz['fields'][$no]['fields'][$contact_no]['placeholder'] = $relation['category'];
+	if (!empty($relation['params']['placeholder']))
+		$zz['fields'][$no]['fields'][$contact_no]['placeholder'] = $relation['params']['placeholder'];
+	else
+		$zz['fields'][$no]['fields'][$contact_no]['placeholder'] = $relation['category'];
 	$zz['fields'][$no]['fields'][$f_contact_no]['type'] = 'foreign_key';
 	if (!empty($relation['params']['main_contact']['category'])) {
+		$categories = $relation['params']['main_contact']['category'];
+		if (!is_array($categories)) $categories = [$categories];
+		foreach ($categories as $index => $category) {
+			$categories[$index] = wrap_category_id('contact/'.$category);
+		}
 		$zz['fields'][$no]['fields'][$contact_no]['sql'] = wrap_edit_sql(
 			$zz['fields'][$no]['fields'][$contact_no]['sql'], 'WHERE',
-			sprintf('contact_category_id = %d', wrap_category_id('contact/'.$relation['params']['main_contact']['category']))
+			sprintf('contact_category_id IN (%s)', implode(',', $categories))
 		);
 	}
 	if (!empty($relation['params']['main_contact']['add_details'])) {
@@ -450,6 +458,8 @@ foreach ($values['relations'] as $index => $relation) {
 	$zz['fields'][$no]['fields'][10]['type'] = 'hidden';
 	$zz['fields'][$no]['fields'][10]['hide_in_form'] = true;
 	$zz['fields'][$no]['hide_in_list'] = true;
+	if (!empty($relation['params']['explanation']))
+		$zz['fields'][$no]['explanation'] = $relation['params']['explanation'];
 	
 	$no++;
 }
