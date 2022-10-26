@@ -25,7 +25,8 @@ function mod_contacts_make_addlogin($params) {
 	$zz_conf['url_self'] = $zz_setting['request_uri'];
 	unset($_GET['add']); // not needed anymore, remove because of zzform's add
 	$data = [];
-	$page['query_strings'] = ['add'];
+	$page['query_strings'][] = 'add';
+	$page['query_strings'][] = 'request'; // @deprecated
 	if (count($params) < 2) {
 		$data['invalid_request'] = true;
 		$page['text'] = wrap_template('addlogin', $data);
