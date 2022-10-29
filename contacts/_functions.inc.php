@@ -30,9 +30,10 @@ function mf_contacts_random_hash($fields) {
  * read all contactdetails for a contact from database
  *
  * @param mixed $contactdetails (int or array)
+ * @param string $restrict_to (optional, restrict to parameter=1)
  * @return array
  */
-function mf_contacts_contactdetails($contact_ids) {
+function mf_contacts_contactdetails($contact_ids, $restrict_to = false) {
 	if (!$contact_ids) return [];
 	$ids = !is_array($contact_ids) ? [$contact_ids] : $contact_ids;
 	$sql = 'SELECT contact_id, contactdetail_id, identification, contact
@@ -51,21 +52,25 @@ function mf_contacts_contactdetails($contact_ids) {
 	foreach ($details as $contact_id => $contactdetails) {
 		foreach ($contactdetails as $id => $detail) {
 			if ($detail['parameters'])
-				parse_str($detail['parameters'], $type);
+				parse_str($detail['parameters'], $parameters);
 			else {
-				$type = [];
-				$type['type'] = '';
+				$parameters = [];
+				$parameters['type'] = '';
 			}
-			switch ($type['type']) {
+			if ($restrict_to AND empty($parameters[$restrict_to])) continue;
+			if (!empty($parameters['if'][$restrict_to]['title'])) {
+				$detail['category'] = $parameters['if'][$restrict_to]['title'];
+			}
+			switch ($parameters['type']) {
 			case 'mail':
 				$detail['mailto'] = wrap_mailto($detail['contact'], $detail['identification']);
 				break;
 			case 'username':
-				if (!empty($type['url']))
-					$detail['username_url'] = sprintf($type['url'], $detail['identification']);
+				if (!empty($parameters['url']))
+					$detail['username_url'] = sprintf($parameters['url'], $detail['identification']);
 				break;
 			}
-			$data[$contact_id][$type['type']][] = $detail;
+			$data[$contact_id][$parameters['type']][] = $detail;
 			
 		}
 	}
@@ -79,9 +84,10 @@ function mf_contacts_contactdetails($contact_ids) {
  * read all addresses for a contact from database
  *
  * @param mixed $contactdetails (int or array)
+ * @param string $restrict_to (optional, restrict to parameter=1)
  * @return array
  */
-function mf_contacts_addresses($contact_ids) {
+function mf_contacts_addresses($contact_ids, $restrict_to = false) {
 	if (!$contact_ids) return [];
 	$ids = !is_array($contact_ids) ? [$contact_ids] : $contact_ids;
 	$sql = 'SELECT address_id, address, postcode, place
@@ -90,6 +96,7 @@ function mf_contacts_addresses($contact_ids) {
 			, category_id, category
 			, contact_id
 			, IF(receive_mail = "yes", 1, NULL) AS receive_mail
+			, parameters
 		FROM /*_PREFIX_*/addresses
 		LEFT JOIN /*_PREFIX_*/countries USING (country_id)
 		LEFT JOIN /*_PREFIX_*/categories
@@ -102,6 +109,14 @@ function mf_contacts_addresses($contact_ids) {
 	$addresses = wrap_translate($addresses, 'categories', 'category_id');
 	$data = [];
 	foreach ($addresses as $address_id => $address) {
+		if ($address['parameters'])
+			parse_str($address['parameters'], $parameters);
+		else
+			$parameters = [];
+		if ($restrict_to AND empty($parameters[$restrict_to])) continue;
+		if (!empty($parameters['if'][$restrict_to]['title'])) {
+			$detail['category'] = $parameters['if'][$restrict_to]['title'];
+		}
 		$data[$address['contact_id']][$address['address_id']] = $address;
 		if (count($addresses) === 1)
 			$data[$address['contact_id']][$address['address_id']]['receive_mail'] = false;
