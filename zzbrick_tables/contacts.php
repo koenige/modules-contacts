@@ -87,6 +87,7 @@ $zz['fields'][3]['type'] = 'identifier';
 $zz['fields'][3]['fields'] = ['contact_short', 'contact'];
 $zz['fields'][3]['conf_identifier']['exists'] = '-';
 $zz['fields'][3]['conf_identifier']['ignore_this_if']['contact'] = 'contact_short';
+$zz['fields'][3]['log_username'] = true;
 $zz['fields'][3]['hide_in_list'] = true;
 $zz['fields'][3]['geojson'] = 'identifier';
 $zz['fields'][3]['merge_ignore'] = true;
