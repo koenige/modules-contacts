@@ -14,7 +14,7 @@
 <script src="%%% setting behaviour_path %%%/leaflet%%% setting leaflet_dist_path %%%/leaflet.js"></script>
 <script src="%%% setting behaviour_path %%%/leaflet-markercluster%%% setting leaflet_dist_path %%%/leaflet.markercluster.js"></script>
 <script src="%%% item geojson %%%"></script>
-<script type="text/javascript">
+<script>
 
 	var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/%%% setting mapbox_user %%%/%%% setting mapbox_style %%%/tiles/512/{z}/{x}/{y}?access_token=%%% setting mapbox_access_token %%%', {
 		maxZoom: 18, tileSize: 512,  zoomOffset: -1,
