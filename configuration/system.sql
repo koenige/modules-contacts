@@ -11,6 +11,14 @@
  */
 
 
+-- auth_acces_token_contact --
+SELECT identifier AS username
+FROM /*_PREFIX_*/tokens
+LEFT JOIN /*_PREFIX_*/logins USING (login_id)
+LEFT JOIN /*_PREFIX_*/contacts USING (contact_id)
+WHERE access_token = "%s"
+AND access_token_expires > NOW()
+
 -- auth_login_contact --
 SELECT password, identifier AS username, contacts.contact_id AS user_id, logins.login_id
 FROM /*_PREFIX_*/logins logins
