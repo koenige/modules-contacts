@@ -128,7 +128,7 @@ CREATE TABLE `contacts_contacts` (
   `remarks` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `sequence` tinyint unsigned NOT NULL DEFAULT '1',
   `published` enum('yes','no') CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL DEFAULT 'no',
-  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`cc_id`),
   UNIQUE KEY `contact_id` (`contact_id`,`main_contact_id`),
   KEY `main_contact_id` (`main_contact_id`),
