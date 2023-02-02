@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2021 Gustaf Mossakowski
+ * @copyright Copyright © 2021, 2023 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -130,4 +130,53 @@ function mf_contacts_check_mixedcase($name) {
 	preg_match_all('/[A-Z]/', $name, $matches);
 	if (count($matches[0]) === 1) return false; // McSomething etc.
 	return true;
+}
+
+/**
+ * if a provider category only allows a certain number of records, move more records
+ * to a different provider category (e. g. mails to extra-mails or so)
+ * via parameters `move_more_records_to`, `max_records`
+ *
+ * @param array $ops
+ * @return array
+ */
+function mf_contacts_hook_check_contactdetails($ops) {
+	$record_count = [];
+	$change = [];
+	foreach ($ops['planned'] as $index => $table) {
+		if ($table['table'] !== 'contactdetails') continue;
+		$provider_category_id = $ops['record_new'][$index]['provider_category_id'];
+		if (!array_key_exists($provider_category_id, $record_count))
+			$record_count[$provider_category_id] = 1;
+		else
+			$record_count[$provider_category_id] ++;
+	}
+	$category_ids = [];
+	foreach ($record_count as $category_id => $count) {
+		if ($count === 1) continue;
+		$category_ids[] = $category_id;
+	}
+	if ($category_ids) {
+		$sql = 'SELECT category_id, parameters
+			FROM /*_PREFIX_*/categories
+			WHERE category_id IN (%s)';
+		$sql = sprintf($sql, implode(',', $category_ids));
+		$categories = wrap_db_fetch($sql, 'category_id');
+		foreach ($categories as $category_id => $category) {
+			if (!$category['parameters']) continue;
+			parse_str($category['parameters'], $parameters);
+			if (empty($parameters['move_more_records_to'])) continue;
+			if (empty($parameters['max_records'])) continue;
+			if ($record_count[$category_id] <= $parameters['max_records']) continue;
+			$shown_record_count = 0;
+			foreach ($ops['planned'] as $index => $table) {
+				if ($table['table'] !== 'contactdetails') continue;
+				if ($ops['record_new'][$index]['provider_category_id'].'' !== $category_id.'') continue;
+				$shown_record_count++;
+				if ($shown_record_count <= $parameters['max_records']) continue;
+				$change['record_replace'][$index]['provider_category_id'] = wrap_category_id($parameters['move_more_records_to']);
+			}
+		}
+	}
+	return $change;
 }
