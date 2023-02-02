@@ -154,6 +154,7 @@ function mf_contacts_hook_check_contactdetails($ops) {
 	$category_ids = [];
 	foreach ($record_count as $category_id => $count) {
 		if ($count === 1) continue;
+		if (!$category_id) continue; // deleted record, still there, but incomplete
 		$category_ids[] = $category_id;
 	}
 	if ($category_ids) {
