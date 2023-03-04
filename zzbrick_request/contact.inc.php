@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2021-2022 Gustaf Mossakowski
+ * @copyright Copyright © 2021-2023 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -174,12 +174,21 @@ function mod_contacts_contact($params, $settings) {
 		AND wrap_access('contacts_login')
 	) {
 		$data['logindata'] = true;
-		$sql = 'SELECT login_id, login_rights
-				, FROM_UNIXTIME(last_click) AS last_click
-				, IF(logged_in = "yes", IF((last_click + 60 * %d >= UNIX_TIMESTAMP()), 1, NULL), NULL) AS logged_in
-				, IF(active = "yes", 1, NULL) as active
-			FROM logins
-			WHERE contact_id = %d';
+		if (wrap_get_setting('login_with_login_rights')) {
+			$sql = 'SELECT login_id, login_rights
+					, FROM_UNIXTIME(last_click) AS last_click
+					, IF(logged_in = "yes", IF((last_click + 60 * %d >= UNIX_TIMESTAMP()), 1, NULL), NULL) AS logged_in
+					, IF(active = "yes", 1, NULL) as active
+				FROM logins
+				WHERE contact_id = %d';
+		} else {
+			$sql = 'SELECT login_id
+					, FROM_UNIXTIME(last_click) AS last_click
+					, IF(logged_in = "yes", IF((last_click + 60 * %d >= UNIX_TIMESTAMP()), 1, NULL), NULL) AS logged_in
+					, IF(active = "yes", 1, NULL) as active
+				FROM logins
+				WHERE contact_id = %d';
+		}
 		$sql = sprintf($sql
 			, $zz_setting['logout_inactive_after']
 			, $data['contact_id']
