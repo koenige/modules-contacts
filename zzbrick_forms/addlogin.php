@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2021-2022 Gustaf Mossakowski
+ * @copyright Copyright © 2021-2023 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -23,7 +23,7 @@ $zz = zzform_include_table('logins');
 $zz['title'] = 'Add a new login';
 $zz['explanation'] = '<h2>'.wrap_text('Set a Password').'</h2><p>'
 	.wrap_text('Please set a password for the login.').' '
-	.sprintf(wrap_text('The password must be at least <strong>%d characters</strong> long.'), wrap_get_setting('login_password_minlength')).' '
+	.sprintf(wrap_text('The password must be at least <strong>%d characters</strong> long.'), wrap_setting('login_password_minlength')).' '
 	.wrap_text('In the future, access is granted with the username below and the password you chose.')
 	.'</p>'
 	.markdown(
@@ -40,7 +40,7 @@ $zz['fields'][11]['hide_in_form'] = true;
 unset($zz['fields'][12]);
 
 // 2 = username
-if (wrap_get_setting('login_with_email')) {
+if (wrap_setting('login_with_email')) {
 	$sql = sprintf('SELECT identification
 		FROM contactdetails
 		WHERE contact_id = %d
@@ -57,7 +57,7 @@ $zz['fields'][2]['display_value'] = wrap_db_fetch($sql, '', 'single value');
 // 6 = login_rights
 if (!empty($zz['fields'][6])) {
 	$zz['fields'][6]['type'] = 'hidden';
-	$zz['fields'][6]['value'] = wrap_get_setting('addlogin_rights');
+	$zz['fields'][6]['value'] = wrap_setting('addlogin_rights');
 	$zz['fields'][6]['hide_in_form'] = true;
 }
 
@@ -87,7 +87,7 @@ $zz_conf['text'][$zz_setting['lang']]['Add record'] = wrap_text('Save password')
 $zz_conf['no_timeframe'] = true;
 
 $zz_conf['redirect']['successful_insert'] = isset($brick['local_settings']['link'])
-	? $brick['local_settings']['link'] : $zz_setting['login_entryurl'];
+	? $brick['local_settings']['link'] : wrap_domain_path('login_entry');
 
 
 /**
