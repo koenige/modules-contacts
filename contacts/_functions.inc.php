@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2015, 2018, 2021-2022 Gustaf Mossakowski
+ * @copyright Copyright © 2015, 2018, 2021-2023 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -136,12 +136,11 @@ function mf_contacts_addresses($contact_ids, $restrict_to = false) {
  * @return string
  */
 function mf_contacts_profile_path($values) {
-	global $zz_setting;
 	if (!wrap_access('contacts_profile')) return false;
 	if (empty($values['contact_parameters'])) return false;
 	parse_str($values['contact_parameters'], $params);
 	if (empty($params['type'])) $params['type'] = '*';
-	if (empty($zz_setting['contacts_profile_path'][$params['type']])) {
+	if (!wrap_setting('contacts_profile_path['.$params['type'].']')) {
 		$success = wrap_setting_path(
 			'contacts_profile_path['.$params['type'].']'
 			, 'request contact'
@@ -149,5 +148,5 @@ function mf_contacts_profile_path($values) {
 		);
 		if (!$success) return false;
 	}
-	return sprintf($zz_setting['base'].$zz_setting['contacts_profile_path'][$params['type']], reset($values));
+	return sprintf(wrap_setting('base').wrap_setting('contacts_profile_path['.$params['type'].']'), reset($values));
 }

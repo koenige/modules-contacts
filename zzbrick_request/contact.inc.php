@@ -14,8 +14,6 @@
 
 
 function mod_contacts_contact($params, $settings) {
-	global $zz_setting;
-	
 	if (isset($_GET['sendlogin']) AND isset($_POST['sendlogin'])) {
 		return brick_format('%%% make sendlogin '.implode(' ', $params).' %%%');
 	}
@@ -114,9 +112,9 @@ function mod_contacts_contact($params, $settings) {
 			if ($contactrelation['category_parameters'])
 				parse_str($contactrelation['category_parameters'], $cparams);
 			if (!empty($cparams['type'])) {
-				if (empty($zz_setting['contacts_profile_path'][$cparams['type']])) continue;
-				$data['relations'][$index]['contacts'][$cc_id]['profile_path'] = $zz_setting['base'].sprintf(
-					$zz_setting['contacts_profile_path'][$cparams['type']], $contactrelation['identifier']
+				if (!wrap_setting('contacts_profile_path['.$cparams['type'].']')) continue;
+				$data['relations'][$index]['contacts'][$cc_id]['profile_path'] = wrap_setting('base').sprintf(
+					wrap_setting('contacts_profile_path['.$cparams['type'].']'), $contactrelation['identifier']
 				);
 			}
 			if (!$relation) {
@@ -128,17 +126,17 @@ function mod_contacts_contact($params, $settings) {
 		$type = !empty($relation['relation_parameters']['alias'])
 			? $relation['relation_parameters']['alias'] : $relation['relation_path'];
 		$type = substr($type, strrpos($type, '/') + 1);
-		if (empty($zz_setting['contacts_relations_path'][$type]))
+		if (!wrap_setting('contacts_relations_path['.$type.']'))
 			$success = wrap_setting_path('contacts_relations_path['.$type.']', 'forms contacts-contacts', ['scope' => $type]);
-		if (!empty($zz_setting['contacts_relations_path'][$type]))
-			$data['relations'][$index]['relations_path'] = $zz_setting['base'].sprintf(
-				$zz_setting['contacts_relations_path'][$type], $params[0]
+		if (wrap_setting('contacts_relations_path['.$type.']'))
+			$data['relations'][$index]['relations_path'] = wrap_setting('base').sprintf(
+				wrap_setting('contacts_relations_path['.$type.']'), $params[0]
 			);
 	}
 	
 	// participations
 	// usergroups
-	if (in_array('activities', $zz_setting['modules'])) {
+	if (in_array('activities', wrap_setting('modules'))) {
 		$sql = 'SELECT participation_id
 				, usergroup_id, usergroup, identifier
 				, date_begin, date_end, remarks, role
@@ -170,11 +168,11 @@ function mod_contacts_contact($params, $settings) {
 
 	// logins
 	if ($data['scope'] === 'person'
-		AND wrap_get_setting('login_with_contact_id')
+		AND wrap_setting('login_with_contact_id')
 		AND wrap_access('contacts_login')
 	) {
 		$data['logindata'] = true;
-		if (wrap_get_setting('login_with_login_rights')) {
+		if (wrap_setting('login_with_login_rights')) {
 			$sql = 'SELECT login_id, login_rights
 					, FROM_UNIXTIME(last_click) AS last_click
 					, IF(logged_in = "yes", IF((last_click + 60 * %d >= UNIX_TIMESTAMP()), 1, NULL), NULL) AS logged_in
@@ -190,7 +188,7 @@ function mod_contacts_contact($params, $settings) {
 				WHERE contact_id = %d';
 		}
 		$sql = sprintf($sql
-			, $zz_setting['logout_inactive_after']
+			, wrap_setting('logout_inactive_after')
 			, $data['contact_id']
 		);
 		$login = wrap_db_fetch($sql);

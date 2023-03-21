@@ -22,15 +22,15 @@ $zz['fields'][1]['type'] = 'id';
 $zz['fields'][1]['geojson'] = 'id';
 
 $zz['fields'][98] = []; // image
-if (wrap_get_setting('contacts_media')) {
+if (wrap_setting('contacts_media')) {
 	$zz['fields'][98] = zzform_include_table('contacts-media');
 	$zz['fields'][98]['title'] = 'Media';
 	$zz['fields'][98]['type'] = 'subtable';
 	$zz['fields'][98]['hide_in_list_if_empty'] = true;
-	$zz['fields'][98]['min_records'] = wrap_get_setting('contacts_media_min_records');
-	$zz['fields'][98]['max_records'] = wrap_get_setting('contacts_media_max_records');
+	$zz['fields'][98]['min_records'] = wrap_setting('contacts_media_min_records');
+	$zz['fields'][98]['max_records'] = wrap_setting('contacts_media_max_records');
 	$zz['fields'][98]['fields'][2]['type'] = 'foreign_key';
-	if (wrap_get_setting('contacts_media_max_records') === 1) {
+	if (wrap_setting('contacts_media_max_records') === 1) {
 		$zz['fields'][98]['fields'][4]['hide_in_form'] = true;
 		$zz['fields'][98]['fields'][4]['type'] = 'hidden';
 		$zz['fields'][98]['fields'][4]['value'] = 1;
@@ -69,7 +69,7 @@ $zz['fields'][10]['title'] = 'Short';
 $zz['fields'][10]['field_name'] = 'contact_short';
 $zz['fields'][10]['class'] = 'hidden480';
 $zz['fields'][10]['hide_in_list_if_empty'] = true;
-if (!wrap_get_setting('contacts_contact_short'))
+if (!wrap_setting('contacts_contact_short'))
 	$zz['fields'][10]['hide_in_form'] = true;
 
 $zz['fields'][11] = []; // contact_abbr
@@ -77,7 +77,7 @@ $zz['fields'][11] = []; // contact_abbr
 $zz['fields'][21]['title'] = 'Sort';
 $zz['fields'][21]['field_name'] = 'contact_sort';
 $zz['fields'][21]['hide_in_list'] = true;
-if (!wrap_get_setting('contacts_contact_sort'))
+if (!wrap_setting('contacts_contact_sort'))
 	$zz['fields'][21]['hide_in_form'] = true;
 
 $zz['fields'][9] = []; // persons
@@ -278,7 +278,7 @@ foreach ($values['contactdetails'] as $category) {
 	$zz['fields'][$no]['fields'][4]['for_action_ignore'] = true;
 	$zz['fields'][$no]['fields'][5]['hide_in_form']
 		= isset($category['parameters']['label']) ? !$category['parameters']['label']
-		: (!empty($zz_setting['contacts_details_with_label']) ? false : true);
+		: (wrap_setting('contacts_details_with_label') ? false : true);
 	$zz['fields'][$no]['form_display'] = 'lines';
 	$zz['fields'][$no]['subselect']['sql'] = sprintf('SELECT category, identification, contact_id
 		FROM /*_PREFIX_*/contactdetails
@@ -320,13 +320,13 @@ $zz['fields'][12]['format'] = 'markdown';
 $zz['fields'][16]['field_name'] = 'start_date';
 $zz['fields'][16]['type'] = 'date';
 $zz['fields'][16]['hide_in_list'] = true;
-if (!wrap_get_setting('contacts_start_date'))
+if (!wrap_setting('contacts_start_date'))
 	$zz['fields'][16]['hide_in_form'] = true;
 
 $zz['fields'][17]['field_name'] = 'end_date';
 $zz['fields'][17]['type'] = 'date';
 $zz['fields'][17]['hide_in_list'] = true;
-if (!wrap_get_setting('contacts_end_date'))
+if (!wrap_setting('contacts_end_date'))
 	$zz['fields'][17]['hide_in_form'] = true;
 
 $zz['fields'][18]['field_name'] = 'country_id';
@@ -339,7 +339,7 @@ $zz['fields'][18]['sql_character_set'][1] = 'latin1';
 $zz['fields'][18]['sql_character_set'][2] = 'latin1';
 $zz['fields'][18]['search'] = '/*_PREFIX_*/countries.country';
 $zz['fields'][18]['hide_in_list'] = true;
-if (!wrap_get_setting('contacts_country'))
+if (!wrap_setting('contacts_country'))
 	$zz['fields'][18]['hide_in_form'] = true;
 
 $zz['fields'][13]['field_name'] = 'remarks';
@@ -423,10 +423,10 @@ foreach ($values['relations'] as $index => $relation) {
 	}
 	if (!empty($relation['params']['main_contact']['add_details'])) {
 		$zz['fields'][$no]['fields'][$contact_no]['add_details']
-			= $zz_setting['base'].$relation['params']['main_contact']['add_details'];
+			= wrap_setting('base').$relation['params']['main_contact']['add_details'];
 		// no recursive linking on forms that link to add_details on themselves
 		// this is not possible to edit
-		$my_url = parse_url($zz_setting['request_uri']);
+		$my_url = parse_url(wrap_setting('request_uri'));
 		if ($zz['fields'][$no]['fields'][$contact_no]['add_details'] === $my_url['path']) {
 			$zz['fields'][$no]['hide_in_form'] = true;
 		}
@@ -465,7 +465,7 @@ foreach ($values['relations'] as $index => $relation) {
 	$no++;
 }
 
-if (wrap_get_setting('contacts_identifiers')) {
+if (wrap_setting('contacts_identifiers')) {
 	$zz['fields'][19] = zzform_include_table('contacts-identifiers');
 	$zz['fields'][19]['type'] = 'subtable';
 	$zz['fields'][19]['fields'][2]['type'] = 'foreign_key';
@@ -486,7 +486,7 @@ $zz['fields'][14]['explanation'] = 'Publish on website?';
 $zz['fields'][15]['field_name'] = 'parameters';
 $zz['fields'][15]['type'] = 'parameter';
 $zz['fields'][15]['hide_in_list'] = true;
-if (!wrap_get_setting('contacts_parameters'))
+if (!wrap_setting('contacts_parameters'))
 	$zz['fields'][15]['hide_in_form'] = true;
 
 $zz['fields'][97]['field_name'] = 'created';

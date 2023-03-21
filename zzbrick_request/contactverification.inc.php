@@ -8,25 +8,24 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2015-2016, 2018-2022 Gustaf Mossakowski
+ * @copyright Copyright © 2015-2016, 2018-2023 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
 
 function mod_contacts_contactverification($params, $settings) {
 	global $zz_conf;
-	global $zz_setting;
 	global $zz_page;
 
-	$zz_setting['cache'] = false;
-	$zz_setting['extra_http_headers'][] = 'X-Frame-Options: Deny';
-	$zz_setting['extra_http_headers'][] = "Content-Security-Policy: frame-ancestors 'self'";
+	wrap_setting('cache', false);
+	wrap_setting_add('extra_http_headers', 'X-Frame-Options: Deny');
+	wrap_setting_add('extra_http_headers', "Content-Security-Policy: frame-ancestors 'self'");
 
 	$tpl = 'contact-verification';
 
 	$form = [];
 	$form['reminder'] = false;
-	$form['own_e_mail'] = !empty($settings['e_mail']) ? $settings['e_mail'] : wrap_get_setting('own_e_mail');
+	$form['own_e_mail'] = !empty($settings['e_mail']) ? $settings['e_mail'] : wrap_setting('own_e_mail');
 	$form['category'] = !empty($settings['category']) ? $settings['category'] : 'Registration';
 	if (!empty($settings['path'])) {
 		$form['action'] = $settings['path'];
@@ -106,7 +105,7 @@ function mod_contacts_contactverification($params, $settings) {
 	if ($action === 'confirm') {
 		$values['action'] = 'update';
 		$values['POST']['verification_date'] = date('Y-m-d H:i:s');
-		$values['POST']['verification_ip'] = $zz_setting['remote_ip'];
+		$values['POST']['verification_ip'] = wrap_setting('remote_ip');
 		$values['POST']['status'] = 'confirmed per link';
 	} else {
 		$values['action'] = 'delete';

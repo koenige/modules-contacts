@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2015, 2017-2019, 2021 Gustaf Mossakowski
+ * @copyright Copyright © 2015, 2017-2019, 2021, 2023 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -40,7 +40,7 @@ $zz['fields'][5]['type'] = 'text';
 $zz['fields'][5]['hide_in_list'] = true;
 $zz['fields'][5]['hide_in_form'] = true;
 $zz['fields'][5]['size'] = 6;
-if (!empty($zz_setting['contacts_details_with_label']))
+if (wrap_setting('contacts_details_with_label'))
 	$zz['fields'][5]['hide_in_form'] = false;
 
 $zz['fields'][4]['title'] = 'Type';

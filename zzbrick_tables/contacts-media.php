@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2014-2015, 2017-2018, 2021-2022 Gustaf Mossakowski
+ * @copyright Copyright © 2014-2015, 2017-2018, 2021-2023 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -38,12 +38,12 @@ $zz['fields'][5]['field_name'] = 'image';
 $zz['fields'][5]['type'] = 'image';
 $zz['fields'][5]['class'] = 'preview';
 $zz['fields'][5]['path'] = [
-	'root' => $zz_setting['media_folder'], 
-	'webroot' => $zz_setting['files_path'],
+	'root' => wrap_setting('media_folder'), 
+	'webroot' => wrap_setting('files_path'),
 	'string1' => '/',
 	'field1' => 'filename',
 	'string2' => '.',
-	'string3' => wrap_get_setting('media_preview_size'),
+	'string3' => wrap_setting('media_preview_size'),
 	'string4' => '.',
 	'extension' => 'thumb_extension',
 	'webstring1' => '?v=',
@@ -81,9 +81,9 @@ $zz['subselect']['sql'] = 'SELECT contact_id, filename, t_mime.extension, versio
 	WHERE o_mime.mime_content_type = "image"
 ';
 $zz['subselect']['concat_fields'] = '';
-$zz['subselect']['field_suffix'][0] = '.'.wrap_get_setting('media_preview_size').'.';
+$zz['subselect']['field_suffix'][0] = '.'.wrap_setting('media_preview_size').'.';
 $zz['subselect']['field_suffix'][1] = '?v=';
-$zz['subselect']['prefix'] = '<img src="'.$zz_setting['files_path'].'/';
+$zz['subselect']['prefix'] = '<img src="'.wrap_setting('files_path').'/';
 $zz['subselect']['suffix'] = '">';
 $zz['subselect']['dont_mark_search_string'] = true;
 

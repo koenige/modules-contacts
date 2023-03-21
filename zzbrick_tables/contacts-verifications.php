@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2015, 2018-2021 Gustaf Mossakowski
+ * @copyright Copyright © 2015, 2018-2021, 2023 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -52,7 +52,7 @@ $zz_sub['fields'][5]['title'] = 'Entry IP';
 $zz_sub['fields'][5]['field_name'] = 'entry_ip';
 $zz_sub['fields'][5]['type'] = 'write_once';
 $zz_sub['fields'][5]['type_detail'] = 'ip';
-$zz_sub['fields'][5]['default'] = $zz_setting['remote_ip'];
+$zz_sub['fields'][5]['default'] = wrap_setting('remote_ip');
 $zz_sub['fields'][5]['unless']['export_mode']['list_prefix'] = '<br><small style="color: #999;">';
 $zz_sub['fields'][5]['unless']['export_mode']['list_suffix'] = '</small>';
 $zz_sub['fields'][5]['unless']['export_mode']['list_append_next'] = true;
@@ -92,7 +92,7 @@ $zz_sub['fields'][10]['default'] = 'unverified';
 $zz_sub['fields'][11]['field_name'] = 'language_id';
 $zz_sub['fields'][11]['type'] = 'write_once';
 $zz_sub['fields'][11]['type_detail'] = 'select';
-$zz_sub['fields'][11]['default'] = wrap_language_id($zz_setting['lang']);
+$zz_sub['fields'][11]['default'] = wrap_language_id(wrap_setting('lang'));
 $zz_sub['fields'][11]['hide_in_list'] = true;
 $zz_sub['fields'][11]['sql'] = 'SELECT language_id, language_en
 	FROM /*_PREFIX_*/languages

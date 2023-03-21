@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2022 Gustaf Mossakowski
+ * @copyright Copyright © 2022-2023 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -20,9 +20,8 @@
  */
 function mod_contacts_make_addlogin($params) {
 	global $zz_conf;
-	global $zz_setting;
 
-	$zz_conf['url_self'] = $zz_setting['request_uri'];
+	$zz_conf['url_self'] = wrap_setting('request_uri');
 	unset($_GET['add']); // not needed anymore, remove because of zzform's add
 	$data = [];
 	$page['query_strings'][] = 'add';

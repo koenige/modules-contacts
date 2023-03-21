@@ -82,8 +82,8 @@ if (!empty($brick['local_settings']['query_strings']))
 
 $zz['hooks']['after_insert'] = 'mf_contacts_addlogin_password';
 
-$zz_conf['text'][$zz_setting['lang']]['Add a record'] = ' ';
-$zz_conf['text'][$zz_setting['lang']]['Add record'] = wrap_text('Save password');
+$zz_conf['text'][wrap_setting('lang')]['Add a record'] = ' ';
+$zz_conf['text'][wrap_setting('lang')]['Add record'] = wrap_text('Save password');
 $zz_conf['no_timeframe'] = true;
 
 $zz_conf['redirect']['successful_insert'] = isset($brick['local_settings']['link'])
