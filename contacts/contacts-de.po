@@ -5,7 +5,7 @@
 # https://www.zugzwang.org/modules/contacts
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2015-2016, 2018-2022 Gustaf Mossakowski
+# @copyright Copyright © 2015-2016, 2018-2023 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 msgid ""
@@ -46,12 +46,12 @@ msgstr ""
 
 #: templates/linklogin.template.txt
 msgid ""
-"You are trying to login via a link. But somehow, the web "
-"address (URL) you clicked seems to be incorrect. Maybe some part is missing?"
+"You are trying to login via a link. But somehow, the web address (URL) you "
+"clicked seems to be incorrect. Maybe some part is missing?"
 msgstr ""
-"Sie versuchen, sich über einen Link anzumelden. Aber "
-"irgendwie scheint die Webadresse (URL), auf die Sie geklickt haben, falsch "
-"zu sein. Vielleicht fehlt ein Teil?"
+"Sie versuchen, sich über einen Link anzumelden. Aber irgendwie scheint die "
+"Webadresse (URL), auf die Sie geklickt haben, falsch zu sein. Vielleicht "
+"fehlt ein Teil?"
 
 #: templates/linklogin.template.txt
 msgid ""
@@ -242,6 +242,10 @@ msgstr "Parameter"
 #: zzbrick_tables/contacts.php
 msgid "Sort"
 msgstr "Sortierung"
+
+#: zzbrick_tables/contacts-categories.php
+msgid "Categories per Contact"
+msgstr "Kategorien pro Kontakt"
 
 #: config.inc.php zzbrick_tables/contacts-contacts.php
 msgid "Linked Contacts"

@@ -354,6 +354,11 @@ if (wrap_access('contacts_remarks')) {
 	$zz['fields'][13]['hide_in_form'] = false;
 }
 
+// contacts_categories
+// reserved nos: 30-39
+wrap_include_files('zzbrick_tables/_subtable_categories', 'default');
+mf_default_categories_subtable($zz, 'contacts', 'contact-properties', 50);
+
 $values['relations'] = mf_contacts_restrict_categories($values, 'relations', 'relation');
 
 $no = 60;
