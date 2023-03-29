@@ -317,6 +317,11 @@ $zz['fields'][12]['type'] = 'memo';
 $zz['fields'][12]['hide_in_list'] = true;
 $zz['fields'][12]['format'] = 'markdown';
 
+// contacts_categories
+// reserved nos: 30-39
+wrap_include_files('zzbrick_tables/_subtable_categories', 'default');
+mf_default_categories_subtable($zz, 'contacts', 'contact-properties', 50);
+
 $zz['fields'][16]['field_name'] = 'start_date';
 $zz['fields'][16]['type'] = 'date';
 $zz['fields'][16]['hide_in_list'] = true;
@@ -353,11 +358,6 @@ $zz['fields'][13]['explanation'] = 'Internal remarks';
 if (wrap_access('contacts_remarks')) {
 	$zz['fields'][13]['hide_in_form'] = false;
 }
-
-// contacts_categories
-// reserved nos: 30-39
-wrap_include_files('zzbrick_tables/_subtable_categories', 'default');
-mf_default_categories_subtable($zz, 'contacts', 'contact-properties', 50);
 
 $values['relations'] = mf_contacts_restrict_categories($values, 'relations', 'relation');
 
