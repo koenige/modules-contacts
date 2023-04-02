@@ -14,7 +14,6 @@
 
 
 function mod_contacts_contactverification($params, $settings) {
-	global $zz_conf;
 	global $zz_page;
 
 	wrap_setting('cache', false);
@@ -99,7 +98,7 @@ function mod_contacts_contactverification($params, $settings) {
 	$sql = sprintf($sql, $data['contact_id']);
 	$cv = wrap_db_fetch($sql);
 
-	$zz_conf['user'] = $cv['identifier'];
+	wrap_setting('log_username', $cv['identifier']);
 	$values = [];
 	$values['POST']['cv_id'] = $cv['cv_id'];
 	if ($action === 'confirm') {

@@ -71,7 +71,7 @@ function mod_contacts_make_addlogin($params) {
 
 	// everything is correct, let user add a login
 	// addlogin must be a custom form script
-	$zz_conf['user'] = $user['username'];
+	wrap_setting('log_username', $user['username']);
 	$page = brick_format('%%% forms addlogin '.$user['user_id'].' %%%');
 	$page['query_strings'] = ['add'];
 	return $page;
