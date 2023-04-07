@@ -38,7 +38,7 @@ function mod_contacts_make_addlogin($params) {
 	}
 
 	// check if login exists
-	$sql = sprintf(wrap_sql('login_exists'), $params[0]);
+	$sql = sprintf(wrap_sql_query('auth_login_exists'), $params[0]);
 	$existing = wrap_db_fetch($sql, '', 'single value');
 	if ($existing) {
 		$data['missing_user_or_login_exists'] = true;
@@ -48,7 +48,7 @@ function mod_contacts_make_addlogin($params) {
 	}
 	
 	// check if username exists
-	$sql = sprintf(wrap_sql('username_exists'), $params[0]);
+	$sql = sprintf(wrap_sql_query('auth_username_exists'), $params[0]);
 	$user = wrap_db_fetch($sql);
 	if (!$user) {
 		wrap_error(sprintf('Could not create login, user does not exist: %s', $params[0]), E_USER_NOTICE);
