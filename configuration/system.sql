@@ -6,12 +6,12 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2020-2022 Gustaf Mossakowski
+ * @copyright Copyright © 2020-2023 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
 
--- auth_acces_token_contact --
+-- auth_access_token_contact --
 SELECT identifier AS username
 FROM /*_PREFIX_*/tokens
 LEFT JOIN /*_PREFIX_*/logins USING (login_id)
