@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2019-2022 Gustaf Mossakowski
+ * @copyright Copyright © 2019-2023 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -16,7 +16,7 @@
 $values['contactdetails_restrict_to'] = 'persons';
 $values['relations_restrict_to'] = 'persons';
 
-$zz = zzform_include_table('contacts', $values);
+$zz = zzform_include('contacts', $values);
 $zz['title'] = 'Persons';
 
 // unwanted fields
@@ -73,7 +73,7 @@ if (wrap_access('contacts_change_identifier')) {
 	$zz['fields'][27]['separator'] = true;
 }
 
-$zz['fields'][9] = zzform_include_table('persons');
+$zz['fields'][9] = zzform_include('persons');
 $zz['fields'][9]['add_details_destination'] = true;
 $zz['fields'][9]['title'] = 'Person';
 $zz['fields'][9]['dont_show_missing'] = true;

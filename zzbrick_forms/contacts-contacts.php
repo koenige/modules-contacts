@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2021 Gustaf Mossakowski
+ * @copyright Copyright © 2021, 2023 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -36,7 +36,7 @@ if (!empty($brick['local_settings']['scope'])) {
 	$category = [];
 }
 
-$zz = zzform_include_table('contacts-contacts');
+$zz = zzform_include('contacts-contacts');
 $zz['where']['main_contact_id'] = $contact['contact_id'];
 if ($category)
 	$zz['where']['relation_category_id'] = $category['category_id'];

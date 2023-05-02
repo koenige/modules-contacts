@@ -8,14 +8,14 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2020-2021 Gustaf Mossakowski
+ * @copyright Copyright © 2020-2021, 2023 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
 
 $values['contactdetails_restrict_to'] = 'places';
 $values['relations_restrict_to'] = 'places';
-$zz = zzform_include_table('contacts', $values);
+$zz = zzform_include('contacts', $values);
 
 $zz['title'] = 'Places';
 

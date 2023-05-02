@@ -23,7 +23,7 @@ $zz['fields'][1]['geojson'] = 'id';
 
 $zz['fields'][98] = []; // image
 if (wrap_setting('contacts_media')) {
-	$zz['fields'][98] = zzform_include_table('contacts-media');
+	$zz['fields'][98] = zzform_include('contacts-media');
 	$zz['fields'][98]['title'] = 'Media';
 	$zz['fields'][98]['type'] = 'subtable';
 	$zz['fields'][98]['hide_in_list_if_empty'] = true;
@@ -136,7 +136,7 @@ foreach ($values['addresses'] as $category_id => $category) {
 	else
 		$category['parameters'] = [];
 
-	$zz['fields'][$no] = zzform_include_table('addresses');
+	$zz['fields'][$no] = zzform_include('addresses');
 	$zz['fields'][$no]['table_name'] = 'address_'.$category_id;
 	$zz['fields'][$no]['title'] = $category['category'];
 	$zz['fields'][$no]['type'] = 'subtable';
@@ -234,7 +234,7 @@ foreach ($values['contactdetails'] as $category) {
 		}
 	}
 
-	$zz['fields'][$no] = zzform_include_table('contactdetails');
+	$zz['fields'][$no] = zzform_include('contactdetails');
 	$zz['fields'][$no]['class'] = 'contactdetails';
 	$zz['fields'][$no]['table_name'] = 'contactdetails_'.$category['category_id'];
 	$zz['fields'][$no]['title'] = $category['category'];
@@ -387,7 +387,7 @@ foreach ($new as $pos => $association) {
 }
 
 foreach ($values['relations'] as $index => $relation) {
-	$zz['fields'][$no] = zzform_include_table('contacts-contacts');
+	$zz['fields'][$no] = zzform_include('contacts-contacts');
 	if (!empty($relation['association']) OR !empty($relation['params']['reverse_relation'])) {
 		$contact_no = 2; // contact_id
 		$f_contact_no = 3; // main_contact_id
@@ -471,7 +471,7 @@ foreach ($values['relations'] as $index => $relation) {
 }
 
 if (wrap_setting('contacts_identifiers')) {
-	$zz['fields'][19] = zzform_include_table('contacts-identifiers');
+	$zz['fields'][19] = zzform_include('contacts-identifiers');
 	$zz['fields'][19]['type'] = 'subtable';
 	$zz['fields'][19]['fields'][2]['type'] = 'foreign_key';
 	$zz['fields'][19]['sql'] .= $zz['fields'][19]['sqlorder'];

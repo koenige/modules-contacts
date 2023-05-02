@@ -17,7 +17,7 @@
 if (count($brick['vars']) !== 1) wrap_quit(403);
 if (!is_numeric($brick['vars'][0])) wrap_quit(403);
 
-$zz = zzform_include_table('logins');
+$zz = zzform_include('logins');
 // remarks: logins script must work with contact_id
 
 $zz['title'] = 'Add a new login';
