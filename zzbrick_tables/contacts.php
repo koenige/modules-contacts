@@ -61,9 +61,10 @@ $zz['fields'][9] = []; // persons
 
 $zz['fields'][3]['field_name'] = 'identifier';
 $zz['fields'][3]['type'] = 'identifier';
-$zz['fields'][3]['fields'] = ['contact_short', 'contact'];
+$zz['fields'][3]['fields'] = ['contact_short', 'contact', 'contact_category_id[parameters]'];
 $zz['fields'][3]['conf_identifier']['exists'] = '-';
 $zz['fields'][3]['conf_identifier']['ignore_this_if']['contact'] = 'contact_short';
+$zz['fields'][3]['conf_identifier']['parameters'] = 'contact_category_id[parameters]';
 $zz['fields'][3]['log_username'] = true;
 $zz['fields'][3]['hide_in_list'] = true;
 $zz['fields'][3]['geojson'] = 'identifier';
@@ -74,12 +75,13 @@ $zz['fields'][3]['character_set'] = 'latin1';
 $zz['fields'][4]['title'] = 'Category';
 $zz['fields'][4]['field_name'] = 'contact_category_id';
 $zz['fields'][4]['type'] = 'select';
-$zz['fields'][4]['sql'] = sprintf('SELECT category_id, category
+$zz['fields'][4]['sql'] = sprintf('SELECT category_id, category, parameters
 	FROM /*_PREFIX_*/categories
 	WHERE main_category_id = %d
 	ORDER BY sequence, category',
 	wrap_category_id('contact')
 );
+$zz['fields'][4]['sql_ignore'][] = 'parameters';
 $zz['fields'][4]['key_field_name'] = 'category_id';
 $zz['fields'][4]['if']['where']['hide_in_form'] = true;
 $zz['fields'][4]['if']['where']['hide_in_list'] = true;
