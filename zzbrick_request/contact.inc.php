@@ -137,6 +137,7 @@ function mod_contacts_contact($params, $settings) {
 	// participations
 	// usergroups
 	if (in_array('activities', wrap_setting('modules'))) {
+		wrap_package_activate('activities');
 		$sql = 'SELECT participation_id
 				, usergroup_id, usergroup, identifier
 				, date_begin, date_end, remarks, role
