@@ -14,7 +14,7 @@
 
 
 $values['relations_restrict_to'] = 'organisers';
-$zz = zzform_include('contacts', $values);
+$zz = zzform_include('contacts', $values, 'forms');
 $zz['title'] = 'Organisers';
 
 $zz['sql'] .= 'WHERE categories.parameters LIKE "%&event_organiser=1%"';

@@ -305,6 +305,11 @@ foreach ($values['contactdetails'] as $category) {
 
 $zz['fields'][7] = []; // contacts_verifications
 
+// contacts_categories
+// reserved nos: 30-39
+wrap_include_files('zzbrick_tables/_subtable_categories', 'default');
+mf_default_categories_subtable($zz, 'contacts', 'contact-properties', 50);
+
 $zz['fields'][8]['field_name'] = 'latlon';
 $zz['fields'][8]['type'] = 'display';
 $zz['fields'][8]['exclude_from_search'] = true;

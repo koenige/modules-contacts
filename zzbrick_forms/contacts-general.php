@@ -16,7 +16,7 @@
 $values = [];
 $values['relations_restrict_to'] = 'contacts';
 
-$zz = zzform_include('contacts', $values);
+$zz = zzform_include('contacts', $values, 'forms');
 $zz['title'] = 'Contacts (without persons)';
 
 $zz['sql'] .= 'WHERE categories.parameters LIKE "%&contacts_general=1%"';

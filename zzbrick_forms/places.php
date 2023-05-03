@@ -15,7 +15,7 @@
 
 $values['contactdetails_restrict_to'] = 'places';
 $values['relations_restrict_to'] = 'places';
-$zz = zzform_include('contacts', $values);
+$zz = zzform_include('contacts', $values, 'forms');
 
 $zz['title'] = 'Places';
 

@@ -16,7 +16,7 @@
 $values['contactdetails_restrict_to'] = 'persons';
 $values['relations_restrict_to'] = 'persons';
 
-$zz = zzform_include('contacts', $values);
+$zz = zzform_include('contacts', $values, 'forms');
 $zz['title'] = 'Persons';
 
 // unwanted fields
