@@ -54,6 +54,20 @@ $zz['fields'][4]['sql'] = sprintf('SELECT category_id, category
 $zz['fields'][4]['display_field'] = 'category';
 $zz['fields'][4]['character_set'] = 'utf8';
 
+if (in_array('activities', wrap_setting('modules'))) {
+	$zz['fields'][6]['field_name'] = 'formfield_id';
+	$zz['fields'][6]['type'] = 'select';
+	$zz['fields'][6]['sql'] = 'SELECT formfield_id
+			, CONCAT(event, " ", formfields.sequence)
+		FROM formfields
+		LEFT JOIN forms USING (form_id)
+		LEFT JOIN events USING (event_id)
+		ORDER BY identifier, formfields.sequence';
+	$zz['fields'][6]['exclude_from_search'] = true;
+	$zz['fields'][6]['hide_in_list'] = true;
+	$zz['fields'][6]['hide_in_form'] = true;
+}
+
 $zz['fields'][20]['field_name'] = 'last_update';
 $zz['fields'][20]['type'] = 'timestamp';
 $zz['fields'][20]['hide_in_list'] = true;
