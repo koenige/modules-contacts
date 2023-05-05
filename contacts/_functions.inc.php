@@ -52,25 +52,23 @@ function mf_contacts_contactdetails($contact_ids, $restrict_to = false) {
 	foreach ($details as $contact_id => $contactdetails) {
 		foreach ($contactdetails as $id => $detail) {
 			if ($detail['parameters'])
-				parse_str($detail['parameters'], $parameters);
-			else {
-				$parameters = [];
-				$parameters['type'] = '';
+				parse_str($detail['parameters'], $detail['parameters']);
+			else
+				$detail['parameters'] = ['type' => ''];
+			if ($restrict_to AND empty($detail['parameters'][$restrict_to])) continue;
+			if (!empty($detail['parameters']['if'][$restrict_to]['title'])) {
+				$detail['category'] = $detail['parameters']['if'][$restrict_to]['title'];
 			}
-			if ($restrict_to AND empty($parameters[$restrict_to])) continue;
-			if (!empty($parameters['if'][$restrict_to]['title'])) {
-				$detail['category'] = $parameters['if'][$restrict_to]['title'];
-			}
-			switch ($parameters['type']) {
+			switch ($detail['parameters']['type']) {
 			case 'mail':
 				$detail['mailto'] = wrap_mailto($detail['contact'], $detail['identification']);
 				break;
 			case 'username':
-				if (!empty($parameters['url']))
-					$detail['username_url'] = sprintf($parameters['url'], $detail['identification']);
+				if (!empty($detail['parameters']['url']))
+					$detail['username_url'] = sprintf($detail['parameters']['url'], $detail['identification']);
 				break;
 			}
-			$data[$contact_id][$parameters['type']][] = $detail;
+			$data[$contact_id][$detail['parameters']['type']][] = $detail;
 			
 		}
 	}
@@ -110,12 +108,12 @@ function mf_contacts_addresses($contact_ids, $restrict_to = false) {
 	$data = [];
 	foreach ($addresses as $address_id => $address) {
 		if ($address['parameters'])
-			parse_str($address['parameters'], $parameters);
+			parse_str($address['parameters'], $address['parameters']);
 		else
-			$parameters = [];
-		if ($restrict_to AND empty($parameters[$restrict_to])) continue;
-		if (!empty($parameters['if'][$restrict_to]['title'])) {
-			$detail['category'] = $parameters['if'][$restrict_to]['title'];
+			$address['parameters'] = [];
+		if ($restrict_to AND empty($address['parameters'][$restrict_to])) continue;
+		if (!empty($address['parameters']['if'][$restrict_to]['title'])) {
+			$detail['category'] = $address['parameters']['if'][$restrict_to]['title'];
 		}
 		$data[$address['contact_id']][$address['address_id']] = $address;
 		if (count($addresses) === 1)
