@@ -60,8 +60,7 @@ function mod_contacts_make_addlogin($params) {
 	// check if hash is correct
 	// set addlogin_key 
 	// set addlogin_key_validity_in_minutes
-	$access = wrap_check_hash($user['user_id'].'-'.$user['username'], 
-	$params[1], '', 'addlogin_key');
+	$access = wrap_check_hash($user['user_id'].'-'.$user['username'], $params[1], '', 'addlogin_key');
 	if (!$access) {
 		$data['invalid_request'] = true;
 		wrap_error(sprintf('Could not create login, hash is invalid: %s %s', $params[0], $params[1]), E_USER_NOTICE);
