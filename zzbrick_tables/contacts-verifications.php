@@ -59,10 +59,10 @@ $zz_sub['fields'][5]['unless']['export_mode']['list_append_next'] = true;
 
 $zz_sub['fields'][9]['title'] = 'Hash';
 $zz_sub['fields'][9]['field_name'] = 'verification_hash';
-$zz_sub['fields'][9]['type'] = 'hidden';
+$zz_sub['fields'][9]['type'] = 'identifier';
 $zz_sub['fields'][9]['class'] = 'hidden';
 $zz_sub['fields'][9]['hide_in_list'] = true;
-$zz_sub['fields'][9]['function'] = 'mf_contacts_random_hash';
+$zz_sub['fields'][9]['conf_identifier']['random_hash'] = 8;
 $zz_sub['fields'][9]['fields'] = ['verification_hash'];
 
 $zz_sub['fields'][7]['title'] = 'Verification Date';

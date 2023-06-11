@@ -13,19 +13,6 @@
  */
 
 
-function mf_contacts_random_hash($fields) {
-	if (!empty($fields['verification_hash'])) return $fields['verification_hash'];
-	$duplicate = true;
-	while ($duplicate) {
-		$hash = wrap_random_hash(8);
-		$sql = 'SELECT contact_id FROM /*_PREFIX_*/contacts_verifications
-			WHERE verification_hash = "%s"';
-		$sql = sprintf($sql, $hash);
-		$duplicate = wrap_db_fetch($sql, '', 'single value');
-	}
-	return $hash;
-}
-
 /**
  * read all contactdetails for a contact from database
  *
