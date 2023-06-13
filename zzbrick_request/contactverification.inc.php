@@ -14,8 +14,6 @@
 
 
 function mod_contacts_contactverification($params, $settings) {
-	global $zz_page;
-
 	wrap_setting('cache', false);
 	wrap_setting_add('extra_http_headers', 'X-Frame-Options: Deny');
 	wrap_setting_add('extra_http_headers', "Content-Security-Policy: frame-ancestors 'self'");
@@ -24,8 +22,8 @@ function mod_contacts_contactverification($params, $settings) {
 
 	$form = [];
 	$form['reminder'] = false;
-	$form['own_e_mail'] = !empty($settings['e_mail']) ? $settings['e_mail'] : wrap_setting('own_e_mail');
-	$form['category'] = !empty($settings['category']) ? $settings['category'] : 'Registration';
+	$form['own_e_mail'] = $settings['e_mail'] ?? wrap_setting('own_e_mail');
+	$form['category'] = $settings['category'] ?? 'Registration';
 	if (!empty($settings['path'])) {
 		$form['action'] = $settings['path'];
 	} else {
