@@ -21,6 +21,7 @@ function mod_contacts_contact($params, $settings) {
 	$sql = 'SELECT contact_id, contact, contact_short, contact_abbr,
 			identifier, contacts.description, remarks
 			, SUBSTRING_INDEX(path, "/", -1) AS scope
+			, categories.parameters
 	    FROM contacts
 	    LEFT JOIN categories
 	    	ON contacts.contact_category_id = categories.category_id
@@ -28,6 +29,7 @@ function mod_contacts_contact($params, $settings) {
 	$sql = sprintf($sql, wrap_db_escape(implode('/', $params)));
 	$data = wrap_db_fetch($sql);
 	if (!$data) return false;
+	wrap_module_parameters('contacts', $data['parameters']);
 	if (!empty($settings['scope'])) {
 		if ($settings['scope'] !== $data['scope']) return false;
 		switch ($settings['scope']) {
