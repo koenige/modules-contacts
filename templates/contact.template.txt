@@ -5,7 +5,7 @@
 # https://www.zugzwang.org/modules/contacts
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2021-2022 Gustaf Mossakowski
+# @copyright Copyright © 2021-2023 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 <div class="contact">
@@ -23,12 +23,14 @@
 
 <table>
 <tbody>
+%%% block contact_1 %%%
 %%% condition if date_of_birth %%%
 <tr><th>%%% text Birth %%%</th><td>%%% item date_of_birth wrap_date "*&nbsp;%s" %%% %%% item date_of_death wrap_date "†&nbsp;%s" %%% %%% condition if male %%%♂%%% condition elseif female %%%♀%%% condition elseif diverse %%%⚪︎%%% condition endif %%% %%% text "(Age: %d)" age %%%</td></tr>
 %%% condition endif %%%
 %%% condition if country %%%
 <tr><th>%%% text Nationality %%%</th><td>%%% item country %%%</td></tr>
 %%% condition endif %%%
+%%% block contact_2 %%%
 %%% loop mail %%%
 <tr><th>%%% item category %%%</th><td>%%% item mailto %%%%%% item label " (%s)" %%%</td></tr>
 %%% loop end %%%
@@ -38,6 +40,7 @@
 %%% loop url %%%
 <tr><th>%%% item category %%%</th><td><a href="%%% item identification %%%">%%% item identification %%%</a>%%% item label " (%s)" %%%</td></tr>
 %%% loop end %%%
+%%% block contact_3 %%%
 %%% condition if addresses %%%
 <tr><th>%%% text Address %%%</th><td>
 %%% loop addresses %%%
@@ -45,9 +48,11 @@
 %%% loop end %%%
 </td></tr>
 %%% condition endif %%%
+%%% block contact_4 %%%
 %%% condition if description %%%
 <tr><th>%%% text Description %%%</th><td>%%% item description markdown %%%</td></tr>
 %%% condition endif %%%
+%%% block contact_5 %%%
 %%% loop relations %%%
 <tr><th>%%% item relation %%%
 %%% condition if relations_path %%%
@@ -61,19 +66,7 @@
 </ul>
 </td></tr>
 %%% loop end %%%
-%%% condition if participations %%%
-<tr><th>%%% text Usergroups %%%
-%%% condition if participation_contact_path %%%
-<p class="edit"><small><a href="%%% item participation_contact_path %%%">%%% text Edit %%%</a></small></p>
-%%% condition endif %%%</th>
-<td>
-<ul>
-%%% loop participations %%%
-<li>%%% item profile_path "<a href='%s'>" %%%%%% item usergroup %%%%%% item profile_path "</a>" %%% %%% item role %%% %%% condition if date_begin %%%%%% condition unless date_end %%%%%% text since %%% %%% condition endif %%%%%% condition endif %%%%%% item date_begin wrap_date %%%%%% condition if date_end %%%–%%% condition endif %%%%%% item date_end wrap_date %%% %%% item remarks "<em>%s</em>" %%%</li>
-%%% loop end %%%
-</ul>
-</td></tr>
-%%% condition endif %%%
+%%% block contact_6 %%%
 %%% condition if logindata %%%
 <tr class="online_state"><th>%%% text Online? %%%</th>
 <td>%%% condition if login_id %%%
@@ -100,9 +93,11 @@
 %%% condition endif %%%
 </td></tr>
 %%% condition endif %%% 
+%%% block contact_7 %%%
 %%% condition if remarks %%%
 <tr class="remarks"><th>%%% text Remarks %%%</th><td>%%% item remarks markdown %%%</td></tr>
 %%% condition endif %%%
+%%% block contact_8 %%%
 </tbody>
 </table>
 

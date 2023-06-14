@@ -135,32 +135,9 @@ function mod_contacts_contact($params, $settings) {
 				wrap_setting('contacts_relations_path['.$type.']'), $params[0]
 			);
 	}
-	
-	// participations
-	// usergroups
-	if (in_array('activities', wrap_setting('modules'))) {
-		wrap_package_activate('activities');
-		$sql = 'SELECT participation_id
-				, usergroup_id, usergroup, identifier
-				, date_begin, date_end, remarks, role
-			FROM participations
-			LEFT JOIN usergroups USING (usergroup_id)
-			LEFT JOIN categories
-				ON participations.status_category_id = categories.category_id
-			WHERE contact_id = %d';
-		$sql = sprintf($sql, $data['contact_id']);
-		$data['participations'] = wrap_db_fetch($sql, 'participation_id');
-		foreach ($data['participations'] as $participation_id => $participation) {
-			$data['participations'][$participation_id]['profile_path']
-				= mf_activities_group_path(['identifier' => $participation['identifier']]);
-		}
-		$data['participation_contact_path']
-			= mf_activities_contact_path([
-				'identifier' => $data['identifier']
-				, 'category_parameters' => 'type='.$data['scope']
-			]);
-	}
 
+	$data = mod_contacts_contact_packages($data);
+	
 	// duplicates?
 	$sql = 'SELECT contact_id, identifier
 		FROM contacts
@@ -215,6 +192,43 @@ function mod_contacts_contact($params, $settings) {
 	if (isset($_GET['sendlogin'])) $data['sendlogin'] = true;
 	$page['breadcrumbs'][] = $data['contact'];
 	$page['dont_show_h1'] = true;
-	$page['text'] = wrap_template('contact', $data);
+	$template = mod_contacts_contact_template($data);
+	$page['text'] = wrap_template($template, $data);
 	return $page;
+}
+
+/**
+ * get further contact data from modules
+ *
+ * @param array $data
+ * @return array
+ */
+function mod_contacts_contact_packages($data) {
+	$files = wrap_include_files('contact');
+	foreach (array_keys($files) as $package) {
+		wrap_package_activate($package);
+		$function = sprintf('mf_%s_contact', $package);
+		if (!function_exists($function)) continue;
+		$data = $function($data);
+	}
+	return $data;
+}
+
+/**
+ * add template blocks from modules
+ *
+ * @param array $data
+ * @return string
+ */
+function mod_contacts_contact_template($data) {
+	$tpl = '';
+	foreach ($data['templates'] as $block => $templates) {
+		$tpl = '%%% block definition '.$block.' %%%'."\n";
+		foreach ($templates as $template) {
+			$tpl .= wrap_template($template, [], 'error');
+		}
+		$tpl .= '%%% block definition end %%%'."\n\n";
+	}
+	$tpl .= wrap_template('contact', [], 'error');
+	return $tpl;
 }
