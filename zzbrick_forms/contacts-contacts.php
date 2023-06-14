@@ -13,14 +13,7 @@
  */
 
 
-if (count($brick['vars']) !== 1) wrap_quit(404);
-
-$sql = 'SELECT contact_id, contact
-	FROM contacts
-	WHERE identifier = "%s"';
-$sql = sprintf($sql, wrap_db_escape($brick['vars'][0]));
-$contact = wrap_db_fetch($sql);
-if (!$contact) wrap_quit(404);
+if (empty($brick['data']['contact_id'])) wrap_quit(404);
 
 if (!empty($brick['local_settings']['scope'])) {
 	$sql = 'SELECT category_id, category, parameters
@@ -37,17 +30,20 @@ if (!empty($brick['local_settings']['scope'])) {
 }
 
 $zz = zzform_include('contacts-contacts');
-$zz['where']['main_contact_id'] = $contact['contact_id'];
+$zz['where']['main_contact_id'] = $brick['data']['contact_id'];
 if ($category)
 	$zz['where']['relation_category_id'] = $category['category_id'];
 
 if (!$category)
-	$zz['title'] = $contact['contact'];
-else
+	$zz['title'] = $brick['data']['contact'];
+else {
 	$zz['title'] = sprintf('<a href="../">%s</a>:<br>%s'
-		, $contact['contact']
-		, !empty($category['parameters']['parents']['relation']) ? $category['parameters']['parents']['relation'] : $category['category']
+		, $brick['data']['contact']
+		, $category['parameters']['parents']['relation'] ?? $category['category']
 	);
+	$zz['page']['breadcrumbs'][]['title'] = $category['parameters']['parents']['relation'] ?? $category['category'];
+	$zz['page']['dont_show_title_as_breadcrumb'] = true;
+}
 
 if (!empty($category['parameters']['contact']['add_details'])) {
 	$zz['fields'][2]['add_details'] = $category['parameters']['contact']['add_details'];
