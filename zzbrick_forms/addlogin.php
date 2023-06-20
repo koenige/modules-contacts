@@ -74,6 +74,10 @@ $zz['fields'][9]['value'] = 'no';
 // 13 = generate random password
 unset($zz['fields'][13]);
 
+// 20 = login_category_id
+if (!empty($zz['fields'][20]))
+	$zz['fields'][20]['hide_in_form'] = true;
+
 // keep URL from confirmation script
 if (!empty($brick['local_settings']['url_self']))
 	$zz_conf['url_self'] = $brick['local_settings']['url_self'];
