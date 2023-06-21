@@ -33,7 +33,7 @@ function mod_contacts_contactverification($params, $settings) {
 
 	$possible_actions = ['confirm', 'delete'];
 	$page['query_strings'] = ['code', 'action', 'confirm', 'delete'];
-	$page['breadcrumbs'][] = wrap_text(sprintf('Confirm %s', $form['category']));
+	$page['breadcrumbs'][]['title'] = wrap_text(sprintf('Confirm %s', $form['category']));
 
 	// What to do?
 	if (!empty($_GET['code']) && !empty($_GET['action'])
