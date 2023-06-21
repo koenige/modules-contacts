@@ -205,6 +205,10 @@ function mod_contacts_contact($params, $settings) {
  */
 function mod_contacts_contact_packages($data) {
 	$files = wrap_include_files('contact');
+	if (!$files) {
+		$data['templates'] = [];
+		return $data;
+	}
 	foreach (array_keys($files) as $package) {
 		wrap_package_activate($package);
 		$function = sprintf('mf_%s_contact', $package);
