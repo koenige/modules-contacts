@@ -22,6 +22,7 @@ function mod_contacts_contact($params, $settings) {
 			identifier, contacts.description, remarks
 			, SUBSTRING_INDEX(path, "/", -1) AS scope
 			, categories.parameters
+			, 1 AS alive
 	    FROM contacts
 	    LEFT JOIN categories
 	    	ON contacts.contact_category_id = categories.category_id
@@ -44,12 +45,13 @@ function mod_contacts_contact($params, $settings) {
 						), CURDATE())),
 						YEAR(IFNULL(date_of_death, CURDATE())) - YEAR(date_of_birth)
 					) AS age
+					, IF(ISNULL(date_of_death), 1, NULL) AS alive
 				FROM persons
 				LEFT JOIN countries
 					ON persons.nationality_country_id = countries.country_id
 				WHERE contact_id = %d';
 			$sql = sprintf($sql, $data['contact_id']);
-			$data += wrap_db_fetch($sql);
+			$data = array_merge($data, wrap_db_fetch($sql));
 			if (!empty($data['sex'])) $data[$data['sex']] = true;
 			$data = wrap_translate($data, 'countries', 'country_id');
 			break;
