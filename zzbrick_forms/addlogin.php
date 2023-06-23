@@ -23,7 +23,7 @@ $zz = zzform_include('logins');
 $zz['title'] = 'Add a new login';
 $zz['explanation'] = '<h2>'.wrap_text('Set a Password').'</h2><p>'
 	.wrap_text('Please set a password for the login.').' '
-	.sprintf(wrap_text('The password must be at least <strong>%d characters</strong> long.'), wrap_setting('login_password_minlength')).' '
+	.wrap_text('The password must be at least <strong>%d characters</strong> long.', ['values' => wrap_setting('login_password_minlength')]).' '
 	.wrap_text('In the future, access is granted with the username below and the password you chose.')
 	.'</p>'
 	.markdown(
@@ -85,10 +85,10 @@ if (!empty($brick['local_settings']['query_strings']))
 	$zz['page']['query_strings'] = $brick['local_settings']['query_strings'];
 
 $zz['hooks']['after_insert'] = 'mf_contacts_addlogin_password';
-
-$zz_conf['text'][wrap_setting('lang')]['Add a record'] = ' ';
-$zz_conf['text'][wrap_setting('lang')]['Add record'] = wrap_text('Save password');
 $zz['record']['no_timeframe'] = true;
+
+wrap_text_set('Add a record', ' ');
+wrap_text_set('Add record', 'Save password');
 
 $zz_conf['redirect']['successful_insert'] = isset($brick['local_settings']['link'])
 	? $brick['local_settings']['link'] : wrap_domain_path('login_entry');
