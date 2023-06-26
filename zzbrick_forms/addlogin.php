@@ -90,8 +90,7 @@ $zz['record']['no_timeframe'] = true;
 wrap_text_set('Add a record', ' ');
 wrap_text_set('Add record', 'Save password');
 
-$zz_conf['redirect']['successful_insert'] = isset($brick['local_settings']['link'])
-	? $brick['local_settings']['link'] : wrap_domain_path('login_entry');
+$zz['record']['redirect']['successful_insert'] = $brick['local_settings']['link'] ?? wrap_domain_path('login_entry');
 
 
 /**
