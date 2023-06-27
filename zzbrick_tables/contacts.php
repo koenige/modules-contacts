@@ -270,7 +270,7 @@ if (!empty($_GET['nolist']) AND empty($_GET['referer']))
 $zz['hooks']['before_insert'][] = 'mf_contacts_hook_check_contactdetails';
 $zz['hooks']['before_update'][] = 'mf_contacts_hook_check_contactdetails';
 
-$zz_conf['export'][] = 'CSV Excel';
+$zz['export'][] = 'CSV Excel';
 
 $zz['record']['redirect_to_referer_zero_records'] = true;
 

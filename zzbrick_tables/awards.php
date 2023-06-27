@@ -8,7 +8,7 @@
  * Part of »Zugzwang Project«
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2016-2017, 2019-2022 Gustaf Mossakowski
+ * @copyright Copyright © 2016-2017, 2019-2023 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -131,5 +131,5 @@ $zz['conditions'][2]['scope'] = 'record';
 $zz['conditions'][2]['where'] = '/*_PREFIX_*/awards.published = "no"';
 
 $zz_conf['copy'] = true;
-$zz_conf['export'][] = 'CSV Excel';
+$zz['export'][] = 'CSV Excel';
 
