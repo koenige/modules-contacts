@@ -130,6 +130,6 @@ $zz['conditions'][1]['where'] = sprintf('contacts.contact_category_id = %d', wra
 $zz['conditions'][2]['scope'] = 'record';
 $zz['conditions'][2]['where'] = '/*_PREFIX_*/awards.published = "no"';
 
-$zz_conf['copy'] = true;
+$zz['record']['copy'] = true;
 $zz['export'][] = 'CSV Excel';
 
