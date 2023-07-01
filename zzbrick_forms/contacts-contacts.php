@@ -58,4 +58,4 @@ $zz['fields'][6]['type'] = 'sequence';
 
 $zz['fields'][11]['size'] = 32;
 
-$zz_conf['referer'] = '../';
+$zz['page']['referer'] = '../';

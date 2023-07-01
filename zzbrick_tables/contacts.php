@@ -265,7 +265,7 @@ $zz['filter'][2]['sql'] = 'SELECT DISTINCT
 	ORDER BY UPPER(SUBSTRING(contact, 1, 1))';
 
 if (!empty($_GET['nolist']) AND empty($_GET['referer']))
-	$zz['dynamic_referer'] = $zz['fields'][2]['link'];
+	$zz['page']['dynamic_referer'] = $zz['fields'][2]['link'];
 
 $zz['hooks']['before_insert'][] = 'mf_contacts_hook_check_contactdetails';
 $zz['hooks']['before_update'][] = 'mf_contacts_hook_check_contactdetails';
