@@ -224,6 +224,5 @@ $zz['filter'][1]['selection']['no'] = wrap_text('no');
 
 wrap_setting('zzform_search', 'both');
 
-if (wrap_access('contacts_merge')) {
-	$zz_conf['merge'] = true;
-}
+if (wrap_access('contacts_merge'))
+	$zz['list']['merge'] = true;

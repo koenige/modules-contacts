@@ -275,4 +275,4 @@ $zz['export'][] = 'CSV Excel';
 $zz['record']['redirect_to_referer_zero_records'] = true;
 
 if (wrap_access('contacts_merge'))
-	$zz_conf['merge'] = true;
+	$zz['list']['merge'] = true;
