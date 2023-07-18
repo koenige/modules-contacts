@@ -47,6 +47,7 @@ if (wrap_setting('contacts_media')) {
 // addresses
 //
 
+$separator = false;
 if (!empty($values['addresses_restrict_to'])) {
 	// here, do not show address fields for every address type, only if restrict_to is set
 	$values['addresses'] = mf_contacts_restrict_categories($values, 'addresses', 'address');
@@ -72,6 +73,10 @@ foreach ($values['addresses'] as $category_id => $category) {
 		$category['parameters'] = [];
 
 	$zz['fields'][$no] = zzform_include('addresses');
+	if (!$separator) {
+		$zz['fields'][$no]['separator_before'] = true;
+		$separator = true;
+	}
 	$zz['fields'][$no]['table_name'] = 'address_'.$category_id;
 	$zz['fields'][$no]['title'] = $category['category'];
 	$zz['fields'][$no]['type'] = 'subtable';
@@ -168,12 +173,17 @@ foreach ($values['contactdetails'] as $category) {
 			$category['category'] = reset($category['categories']);
 			$category['category'] = $category['category']['category'];
 		} else {
-			$category['category'] = ucfirst($category['parameters']['type']);
+			$category['category'] = $category['parameters']['type'];
+			$category['category'] = $category['category'] === 'url' ? strtoupper($category['category']) : ucfirst($category['category']);
 			$category['category'] = wrap_text($category['category']);
 		}
 	}
 
 	$zz['fields'][$no] = zzform_include('contactdetails');
+	if (!$separator) {
+		$zz['fields'][$no]['separator_before'] = true;
+		$separator = true;
+	}
 	$zz['fields'][$no]['title_tab'] = 'Contact Details';
 	$zz['fields'][$no]['class'] = 'contactdetails';
 	$zz['fields'][$no]['table_name'] = 'contactdetails_'.$category['category_id'];
@@ -243,6 +253,9 @@ foreach ($values['contactdetails'] as $category) {
 	}
 	$no++;
 }
+
+// separator below contact details
+$zz['fields'][$no - 1]['separator'] = true;
 
 //
 // contacts_categories
