@@ -190,17 +190,6 @@ $zz['fields'][18]['hide_in_list'] = true;
 if (!wrap_setting('contacts_country'))
 	$zz['fields'][18]['hide_in_form'] = true;
 
-$zz['fields'][13]['field_name'] = 'remarks';
-$zz['fields'][13]['type'] = 'memo';
-$zz['fields'][13]['format'] = 'markdown';
-$zz['fields'][13]['merge_append'] = true;
-$zz['fields'][13]['rows'] = 3;
-$zz['fields'][13]['hide_in_list'] = true;
-$zz['fields'][13]['hide_in_form'] = true;
-$zz['fields'][13]['explanation'] = 'Internal remarks';
-if (wrap_access('contacts_remarks'))
-	$zz['fields'][13]['hide_in_form'] = false;
-
 // relations via contacts-contacts
 $zz['fields'][60] = [];
 $zz['fields'][61] = [];
@@ -215,6 +204,18 @@ $zz['fields'][69] = [];
 
 // contacts_identifiers
 $zz['fields'][19] = [];
+
+$zz['fields'][13]['field_name'] = 'remarks';
+$zz['fields'][13]['type'] = 'memo';
+$zz['fields'][13]['format'] = 'markdown';
+$zz['fields'][13]['merge_append'] = true;
+$zz['fields'][13]['rows'] = 3;
+$zz['fields'][13]['hide_in_list'] = true;
+$zz['fields'][13]['hide_in_form'] = true;
+$zz['fields'][13]['explanation'] = 'Internal remarks';
+$zz['fields'][13]['separator_before'] = true;
+if (wrap_access('contacts_remarks'))
+	$zz['fields'][13]['hide_in_form'] = false;
 
 $zz['fields'][14]['title_tab'] = 'Pub.';
 $zz['fields'][14]['field_name'] = 'published';
