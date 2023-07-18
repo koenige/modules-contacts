@@ -174,6 +174,7 @@ $zz['unless']['export_mode']['subselect']['field_suffix'][2] = '<br>';
 $zz['if']['export_mode']['subselect']['field_suffix'][2] = "\r";
 $zz['export_no_html'] = true;
 $zz['if']['export_mode']['subselect']['concat_rows'] = "\r\r";
+$zz['unless']['export_mode']['subselect']['suffix'] = "<br>";
 
 $zz['sql'] = 'SELECT /*_PREFIX_*/addresses.*
 		, /*_PREFIX_*/categories.category AS address_type
