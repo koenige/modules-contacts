@@ -206,6 +206,10 @@ msgid "Name, short"
 msgstr ""
 
 #: zzbrick_tables/contacts.php
+msgid "Name, abbr."
+msgstr ""
+
+#: zzbrick_tables/contacts.php
 msgid "Short"
 msgstr ""
 
