@@ -51,7 +51,12 @@ $zz['fields'][10]['hide_in_list_if_empty'] = true;
 if (!wrap_setting('contacts_contact_short'))
 	$zz['fields'][10]['hide_in_form'] = true;
 
-$zz['fields'][11] = []; // contact_abbr
+$zz['fields'][11]['title'] = 'Name, abbr.';
+$zz['fields'][11]['field_name'] = 'contact_abbr';
+$zz['fields'][11]['type'] = 'text';
+$zz['fields'][11]['hide_in_list'] = true;
+if (!wrap_setting('contacts_contact_abbr'))
+	$zz['fields'][11]['hide_in_form'] = true;
 
 $zz['fields'][21]['title'] = 'Sort';
 $zz['fields'][21]['field_name'] = 'contact_sort';
