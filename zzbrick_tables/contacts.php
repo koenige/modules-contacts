@@ -35,6 +35,8 @@ $zz['fields'][2]['kml'] = 'title';
 $zz['fields'][2]['geojson'] = 'title';
 $zz['fields'][2]['export_no_html'] = true;
 $zz['fields'][2]['unless']['export_mode']['list_format'] = 'nl2br';
+$zz['fields'][2]['unless']['export_mode']['list_suffix'] = '<br>';
+$zz['fields'][2]['unless']['export_mode']['list_append_next'] = true;
 $zz['fields'][2]['merge_equal'] = true;
 $zz['fields'][2]['add_details_destination'] = true;
 $zz['fields'][2]['link'] = [
@@ -47,7 +49,7 @@ $zz['fields'][10]['title_tab'] = 'Short';
 $zz['fields'][10]['title'] = 'Name, short';
 $zz['fields'][10]['field_name'] = 'contact_short';
 $zz['fields'][10]['class'] = 'hidden480';
-$zz['fields'][10]['hide_in_list_if_empty'] = true;
+$zz['fields'][10]['hide_in_list'] = true;
 if (!wrap_setting('contacts_contact_short'))
 	$zz['fields'][10]['hide_in_form'] = true;
 
