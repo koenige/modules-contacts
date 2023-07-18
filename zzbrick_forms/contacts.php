@@ -270,6 +270,7 @@ mf_default_categories_subtable($zz, 'contacts', 'contact-properties', 50);
 
 $values['relations'] = mf_contacts_restrict_categories($values, 'relations', 'relation');
 
+$separator = false;
 $no = 60;
 // associations?
 $pos = 0;
@@ -297,6 +298,10 @@ foreach ($new as $pos => $association) {
 
 foreach ($values['relations'] as $index => $relation) {
 	$zz['fields'][$no] = zzform_include('contacts-contacts');
+	if (!$separator) {
+		$zz['fields'][$no]['separator_before'] = true;
+		$separator = true;
+	}
 	if (!empty($relation['association']) OR !empty($relation['params']['reverse_relation'])) {
 		$contact_no = 2; // contact_id
 		$f_contact_no = 3; // main_contact_id
@@ -362,6 +367,7 @@ foreach ($values['relations'] as $index => $relation) {
 	$zz['fields'][$no]['fields'][4]['value'] = $relation['category_id'];
 	$zz['fields'][$no]['fields'][4]['hide_in_form'] = true;
 	// remarks
+	$zz['fields'][$no]['fields'][9]['placeholder'] = 'Remarks';
 	if (empty($relation['params']['remarks']))
 		unset($zz['fields'][$no]['fields'][9]);
 	// role
