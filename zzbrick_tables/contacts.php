@@ -23,6 +23,7 @@ $zz['fields'][1]['geojson'] = 'id';
 
 $zz['fields'][98] = []; // image
 
+$zz['fields'][2]['title'] = 'Name';
 $zz['fields'][2]['field_name'] = 'contact';
 $zz['fields'][2]['type'] = 'memo';
 $zz['fields'][2]['typo_cleanup'] = true;
@@ -42,7 +43,8 @@ $zz['fields'][2]['link'] = [
 ];
 $zz['fields'][2]['link_record'] = true;
 
-$zz['fields'][10]['title'] = 'Short';
+$zz['fields'][10]['title_tab'] = 'Short';
+$zz['fields'][10]['title'] = 'Name, short';
 $zz['fields'][10]['field_name'] = 'contact_short';
 $zz['fields'][10]['class'] = 'hidden480';
 $zz['fields'][10]['hide_in_list_if_empty'] = true;
@@ -153,15 +155,20 @@ $zz['fields'][57] = [];
 $zz['fields'][58] = [];
 $zz['fields'][59] = [];
 
+$zz['fields'][16]['title'] = 'Start';
+$zz['fields'][16]['title_append'] = 'Period';
 $zz['fields'][16]['field_name'] = 'start_date';
 $zz['fields'][16]['type'] = 'date';
 $zz['fields'][16]['hide_in_list'] = true;
+$zz['fields'][16]['append_next'] = true;
 if (!wrap_setting('contacts_start_date'))
 	$zz['fields'][16]['hide_in_form'] = true;
 
+$zz['fields'][17]['title'] = 'End';
 $zz['fields'][17]['field_name'] = 'end_date';
 $zz['fields'][17]['type'] = 'date';
 $zz['fields'][17]['hide_in_list'] = true;
+$zz['fields'][17]['prefix'] = '– ';
 if (!wrap_setting('contacts_end_date'))
 	$zz['fields'][17]['hide_in_form'] = true;
 

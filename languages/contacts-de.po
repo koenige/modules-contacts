@@ -216,6 +216,14 @@ msgid "Internal remarks"
 msgstr "Interne Anmerkungen"
 
 #: zzbrick_tables/contacts.php
+msgid "Name"
+msgstr "Name"
+
+#: zzbrick_tables/contacts.php
+msgid "Name, short"
+msgstr "Name, kurz"
+
+#: zzbrick_tables/contacts.php
 msgid "Short"
 msgstr "Kurz"
 
