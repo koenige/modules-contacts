@@ -113,7 +113,7 @@ while ($no) {
 }
 
 // addresses
-$zz['fields'][5]['separator_before'] = true;
+$zz['fields'][5]['separator_before'] = false; // set in forms/contacts
 $zz['fields'][5]['field_sequence'] = 50;
 $zz['fields'][5]['fields'][7]['hide_in_form'] = true; // lat
 $zz['fields'][5]['fields'][8]['hide_in_form'] = true; // lon
