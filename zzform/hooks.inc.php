@@ -145,6 +145,7 @@ function mf_contacts_hook_check_contactdetails($ops) {
 	$change = [];
 	foreach ($ops['planned'] as $index => $table) {
 		if ($table['table'] !== 'contactdetails') continue;
+		if (empty($ops['record_new'][$index])) continue; // deleted
 		$provider_category_id = $ops['record_new'][$index]['provider_category_id'];
 		if (!array_key_exists($provider_category_id, $record_count))
 			$record_count[$provider_category_id] = 1;
