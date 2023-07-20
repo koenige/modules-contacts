@@ -24,12 +24,7 @@ function mod_contacts_contactverification($params, $settings) {
 	$form['reminder'] = false;
 	$form['own_e_mail'] = $settings['e_mail'] ?? wrap_setting('own_e_mail');
 	$form['category'] = $settings['category'] ?? 'Registration';
-	if (!empty($settings['path'])) {
-		$form['action'] = $settings['path'];
-	} else {
-		$url = parse_url($_SERVER['REQUEST_URI']);
-		$form['action'] = $url['path'];
-	}
+	$form['action'] = $settings['path'] ?? parse_url(wrap_setting('request_uri'), PHP_URL_PATH);
 
 	$possible_actions = ['confirm', 'delete'];
 	$page['query_strings'] = ['code', 'action', 'confirm', 'delete'];
