@@ -158,7 +158,7 @@ $zz['fields'][99]['field_sequence'] = 99;
 // for search!
 $zz['fields'][90]['field_name'] = 'person';
 $zz['fields'][90]['type'] = 'display';
-$zz['fields'][90]['search'] = 'CONCAT(first_name, " ", IFNULL(CONCAT(name_particle, " "), ""), last_name)';
+$zz['fields'][90]['search'] = 'contact';
 $zz['fields'][90]['character_set'] = 'utf8';
 $zz['fields'][90]['hide_in_form'] = true;
 $zz['fields'][90]['hide_in_list'] = true;

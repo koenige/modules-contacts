@@ -255,7 +255,8 @@ foreach ($values['contactdetails'] as $category) {
 }
 
 // separator below contact details
-$zz['fields'][$no - 1]['separator'] = true;
+if (!empty($zz['fields'][$no - 1]))
+	$zz['fields'][$no - 1]['separator'] = true;
 
 //
 // contacts_categories
@@ -396,3 +397,4 @@ if (wrap_setting('contacts_identifiers')) {
 	$zz['fields'][19]['fields'][4]['for_action_ignore'] = true;
 	$zz['fields'][19]['form_display'] = 'lines';
 }
+
