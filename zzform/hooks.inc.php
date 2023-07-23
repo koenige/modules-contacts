@@ -124,8 +124,9 @@ function mf_contacts_check_names($ops) {
 function mf_contacts_check_mixedcase($name) {
 	// this is not a complete test, just against spammers who use ASCII characters only
 	$name = trim($name);
+	if (mb_strlen($name) === 1) return false;
 	if (!preg_match('/^[a-zA-Z]+$/', $name)) return false;
-	$name = substr($name, 1);
+	$name = mb_substr($name, 1);
 	if (ctype_lower($name)) return false;
 	preg_match_all('/[A-Z]/', $name, $matches);
 	if (count($matches[0]) === 1) return false; // McSomething etc.
