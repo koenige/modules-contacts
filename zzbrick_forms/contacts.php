@@ -249,7 +249,6 @@ foreach ($values['contactdetails'] as $category) {
 		$zz['fields'][$no]['field_sequence'] = $category['field_sequence'];
 	if ($no - 29 < count($values['contactdetails'])) {
 		$zz['fields'][$no]['unless']['export_mode']['list_append_next'] = true;
-		$zz['fields'][$no]['unless']['export_mode']['list_suffix'] = '<br>';
 	}
 	$no++;
 }
