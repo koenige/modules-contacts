@@ -48,6 +48,11 @@ function mod_contacts_contactverification($params, $settings) {
 		$form['reminder'] = true;
 	} else {
 		$form['code'] = false;
+	}
+	if ($form['code'] AND !preg_match('/^[A-Za-z0-9]+$/', $form['code']))
+		$form['code'] = false;
+
+	if (!$form['code']) {
 		$form['form'] = true;
 		$page['text'] = wrap_template($tpl, $form);
 		return $page;
