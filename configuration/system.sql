@@ -21,6 +21,7 @@ AND access_token_expires > NOW()
 
 -- auth_login_contact --
 SELECT password, identifier AS username, contacts.contact_id AS user_id, logins.login_id
+, contact
 FROM /*_PREFIX_*/logins logins
 LEFT JOIN /*_PREFIX_*/contacts contacts USING (contact_id)
 WHERE active = 'yes' AND identifier = _latin1'%s';
