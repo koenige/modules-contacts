@@ -23,9 +23,14 @@ $zz['sql'] .= 'WHERE categories.parameters LIKE "%&contacts_general=1%"';
 
 $zz['fields'][4]['sql'] .= ' AND categories.parameters LIKE "%&contacts_general=1%"';
 
-$zz['filter'][1]['sql'] = 'SELECT category_id, category
-	FROM /*_PREFIX_*/contacts
-	LEFT JOIN /*_PREFIX_*/categories
-		ON /*_PREFIX_*/contacts.contact_category_id = /*_PREFIX_*/categories.category_id
-	WHERE categories.parameters LIKE "%&contacts_general=1%"
-	ORDER BY category';
+$zz['filter'][1]['sql'] = wrap_edit_sql($zz['filter'][1]['sql'],
+	'WHERE', 'categories.parameters LIKE "%&contacts_general=1%"'
+);
+
+$zz['filter'][2]['sql'] = wrap_edit_sql($zz['filter'][2]['sql'],
+	'JOIN', 'LEFT JOIN /*_PREFIX_*/categories
+		ON /*_PREFIX_*/contacts.contact_category_id = /*_PREFIX_*/categories.category_id'
+);
+$zz['filter'][2]['sql'] = wrap_edit_sql($zz['filter'][2]['sql'],
+	'WHERE', 'categories.parameters LIKE "%&contacts_general=1%"'
+);
