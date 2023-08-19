@@ -42,8 +42,8 @@ $zz['fields'][2]['field_sequence'] = 2;
 // identifier
 $zz['fields'][3]['export'] = false;
 $zz['fields'][3]['unique'] = true;
-$zz['fields'][3]['conf_identifier']['concat'] = '.';
-$zz['fields'][3]['conf_identifier']['exists'] = '.';
+$zz['fields'][3]['identifier']['concat'] = '.';
+$zz['fields'][3]['identifier']['exists'] = '.';
 $zz['fields'][3]['fields'] = [
 	'persons.first_name', 'persons.name_particle', 'persons.last_name',
 	'identifier'
