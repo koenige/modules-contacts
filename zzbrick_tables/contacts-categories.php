@@ -29,6 +29,11 @@ $zz['fields'][2]['sql'] = 'SELECT contact_id, contact, identifier
 $zz['fields'][2]['display_field'] = 'contact';
 $zz['fields'][2]['search'] = 'contacts.contact';
 
+$zz['fields'][6]['title_tab'] = 'Seq.';
+$zz['fields'][6]['field_name'] = 'sequence';
+$zz['fields'][6]['type'] = 'number';
+$zz['fields'][6]['hide_in_list_if_empty'] = true;
+
 $zz['fields'][3]['field_name'] = 'category_id';
 $zz['fields'][3]['type'] = 'select';
 $zz['fields'][3]['sql'] = 'SELECT category_id, category, main_category_id
@@ -42,6 +47,18 @@ $zz['fields'][3]['hide_in_list'] = true;
 
 $zz['fields'][4]['field_name'] = 'property';
 
+$zz['fields'][5]['field_name'] = 'type_category_id';
+$zz['fields'][5]['type'] = 'hidden';
+$zz['fields'][5]['type_detail'] = 'select';
+$zz['fields'][5]['value'] = wrap_category_id('contact-properties');
+$zz['fields'][5]['hide_in_form'] = true;
+$zz['fields'][5]['hide_in_list'] = true;
+$zz['fields'][5]['exclude_from_search'] = true;
+
+$zz['fields'][99]['field_name'] = 'last_update';
+$zz['fields'][99]['type'] = 'timestamp';
+$zz['fields'][99]['hide_in_list'] = true;
+
 
 $zz['sql'] = 'SELECT contacts_categories.*
 		, contacts.contact, category
@@ -49,7 +66,7 @@ $zz['sql'] = 'SELECT contacts_categories.*
 	LEFT JOIN contacts USING (contact_id)
 	LEFT JOIN categories USING (category_id)
 ';
-$zz['sqlorder'] = ' ORDER BY identifier, contact, path';
+$zz['sqlorder'] = ' ORDER BY identifier, contact, path, contacts_categories.sequence';
 
 $zz['subselect']['sql'] = 'SELECT contact_id, contact_category_id
 		, category_id, category, property

@@ -123,13 +123,17 @@ CREATE TABLE `contacts_categories` (
   `contact_category_id` int unsigned NOT NULL AUTO_INCREMENT,
   `contact_id` int unsigned NOT NULL,
   `category_id` int unsigned NOT NULL,
-  `property` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `property` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `type_category_id` int unsigned NOT NULL,
+  `sequence` tinyint unsigned DEFAULT NULL,
+  `last_update` timestamp NOT NULL,
   PRIMARY KEY (`contact_category_id`),
   UNIQUE KEY `ort_id_kategorie_id` (`contact_id`,`category_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'contacts', 'contact_id', (SELECT DATABASE()), 'contacts_categories', 'contact_category_id', 'contact_id', 'delete');
 INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'categories', 'category_id', (SELECT DATABASE()), 'contacts_categories', 'contact_category_id', 'category_id', 'no-delete');
+INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'categories', 'category_id', (SELECT DATABASE()), 'contacts_categories', 'contact_category_id', 'type_category_id', 'no-delete');
 
 INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Contact Properties', NULL, NULL, 'contact-properties', "&alias=contact-properties", NULL, NOW());
 
