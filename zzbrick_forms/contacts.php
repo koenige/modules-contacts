@@ -13,7 +13,26 @@
  */
 
 
-$zz = zzform_include('contacts', $values ?? []);
+$values = $values ?? [];
+$zz = zzform_include('contacts', $values);
+
+// restrictions because of contact category?
+if (!empty($_GET['where']['contact_category_id']) OR !empty($values['contact_category_id'])) {
+	$category_id = $_GET['where']['contact_category_id'] ?? $values['contact_category_id'];
+	$sql = 'SELECT parameters FROM categories
+	    WHERE category_id = %d';
+	$sql = sprintf($sql, $category_id);
+	$parameters = wrap_db_fetch($sql, '', 'single value');
+	if ($parameters) {
+		parse_str($parameters, $parameters);
+		if (!empty($parameters['values']))
+			foreach ($parameters['values'] as $key => $value) {
+				if ($value === '[]') $value = [];
+				$values[$key] = $value;
+			} 
+	}
+}
+
 
 //
 // contacts-media
