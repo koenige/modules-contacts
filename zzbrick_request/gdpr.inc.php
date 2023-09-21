@@ -159,7 +159,7 @@ function mod_contacts_gdpr_sql_replace_field($sql, $record) {
  * @return array
  */
 function mod_contacts_gdpr_sql_replace_callback($data) {
-	static $record;
+	static $record = [];
 
 	// a) set data
 	if (empty($data[0])) $record = $data;
