@@ -287,7 +287,7 @@ mf_default_categories_subtable($zz, 'contacts', 'contact-properties', 50);
 // contacts-contacts
 //
 
-$values['relations'] = mf_contacts_restrict_categories($values, 'relations', 'relation');
+mf_default_restrict_categories($values, 'relations', 'relation');
 
 $separator = false;
 $no = 60;
@@ -297,23 +297,21 @@ $new = [];
 foreach ($values['relations'] as $index => $relation) {
 	if (!$relation['parameters']) continue;
 	$pos++;
-	parse_str($relation['parameters'], $values['relations'][$index]['params']);
 	if (isset($values['relations_restrict_to'])) {
 		$key = sprintf('%s_params', $values['relations_restrict_to']);
-		if (!empty($values['relations'][$index]['params'][$key]))
-			$values['relations'][$index]['params'] = array_merge(
-				$values['relations'][$index]['params'], $values['relations'][$index]['params'][$key]
+		if (!empty($relation['parameters'][$key]))
+			$values['relations'][$index]['parameters'] = array_merge(
+				$values['relations'][$index]['parameters'], $values['relations'][$index]['parameters'][$key]
 			);
 	}
-	if (!empty($values['relations'][$index]['params']['association'])) {
+	if (!empty($values['relations'][$index]['parameters']['association'])) {
 		$new[$pos] = $values['relations'][$index];
-		$new[$pos]['params']['integrate_in_next'] = true;
+		$new[$pos]['parameters']['integrate_in_next'] = true;
 		$new[$pos]['association'] = true;
 	}
 }
-foreach ($new as $pos => $association) {
+foreach ($new as $pos => $association)
 	array_splice($values['relations'], $pos -1, 0, [$association]);
-}
 
 foreach ($values['relations'] as $index => $relation) {
 	$zz['fields'][$no] = zzform_include('contacts-contacts');
@@ -321,7 +319,7 @@ foreach ($values['relations'] as $index => $relation) {
 		$zz['fields'][$no]['separator_before'] = true;
 		$separator = true;
 	}
-	if (!empty($relation['association']) OR !empty($relation['params']['reverse_relation'])) {
+	if (!empty($relation['association']) OR !empty($relation['parameters']['reverse_relation'])) {
 		$contact_no = 2; // contact_id
 		$f_contact_no = 3; // main_contact_id
 		$zz['fields'][$no]['sql'] = $zz['fields'][$no]['sql_association'];
@@ -335,21 +333,21 @@ foreach ($values['relations'] as $index => $relation) {
 	$zz['fields'][$no]['title'] = $relation['category'];
 	$zz['fields'][$no]['sql'] .= sprintf(' WHERE relation_category_id = %d', $relation['category_id']);
 	$zz['fields'][$no]['sql'] .= ' ORDER BY sequence, contact';
-	if (isset($relation['params']['show_title']))
-		$zz['fields'][$no]['show_title'] = $relation['params']['show_title'];
-	if (isset($relation['params']['integrate_in_next']))
-		$zz['fields'][$no]['integrate_in_next'] = $relation['params']['integrate_in_next'];
-	if (isset($relation['params']['min_records']))
-		$zz['fields'][$no]['min_records'] = $relation['params']['min_records'];
-	if (isset($relation['params']['max_records']))
-		$zz['fields'][$no]['max_records'] = $relation['params']['max_records'];
-	if (!empty($relation['params']['placeholder']))
-		$zz['fields'][$no]['fields'][$contact_no]['placeholder'] = $relation['params']['placeholder'];
+	if (isset($relation['parameters']['show_title']))
+		$zz['fields'][$no]['show_title'] = $relation['parameters']['show_title'];
+	if (isset($relation['parameters']['integrate_in_next']))
+		$zz['fields'][$no]['integrate_in_next'] = $relation['parameters']['integrate_in_next'];
+	if (isset($relation['parameters']['min_records']))
+		$zz['fields'][$no]['min_records'] = $relation['parameters']['min_records'];
+	if (isset($relation['parameters']['max_records']))
+		$zz['fields'][$no]['max_records'] = $relation['parameters']['max_records'];
+	if (!empty($relation['parameters']['placeholder']))
+		$zz['fields'][$no]['fields'][$contact_no]['placeholder'] = $relation['parameters']['placeholder'];
 	else
 		$zz['fields'][$no]['fields'][$contact_no]['placeholder'] = $relation['category'];
 	$zz['fields'][$no]['fields'][$f_contact_no]['type'] = 'foreign_key';
-	if (!empty($relation['params']['main_contact']['category'])) {
-		$categories = $relation['params']['main_contact']['category'];
+	if (!empty($relation['parameters']['main_contact']['category'])) {
+		$categories = $relation['parameters']['main_contact']['category'];
 		if (!is_array($categories)) $categories = [$categories];
 		foreach ($categories as $index => $category) {
 			$categories[$index] = wrap_category_id('contact/'.$category);
@@ -359,22 +357,22 @@ foreach ($values['relations'] as $index => $relation) {
 			sprintf('contact_category_id IN (%s)', implode(',', $categories))
 		);
 	}
-	if (!empty($relation['params']['main_contact']['add_details'])) {
+	if (!empty($relation['parameters']['main_contact']['add_details'])) {
 		$zz['fields'][$no]['fields'][$contact_no]['add_details']
-			= wrap_setting('base').$relation['params']['main_contact']['add_details'];
+			= wrap_setting('base').$relation['parameters']['main_contact']['add_details'];
 		// no recursive linking on forms that link to add_details on themselves
 		// this is not possible to edit
 		if ($zz['fields'][$no]['fields'][$contact_no]['add_details'] === parse_url(wrap_setting('request_uri'), PHP_URL_PATH))
 			$zz['fields'][$no]['hide_in_form'] = true;
 	}
 	$zz['fields'][$no]['fields'][6]['placeholder'] = 'No.';
-	if (isset($relation['params']['sequence'])) {
-		if ($relation['params']['sequence'] === 'hidden') {
+	if (isset($relation['parameters']['sequence'])) {
+		if ($relation['parameters']['sequence'] === 'hidden') {
 			$zz['fields'][$no]['fields'][6]['type'] = 'hidden';
 			$zz['fields'][$no]['fields'][6]['class'] = 'hidden';
-		} elseif ($relation['params']['sequence'] === 'sequence') {
+		} elseif ($relation['parameters']['sequence'] === 'sequence') {
 			$zz['fields'][$no]['fields'][6]['type'] = 'sequence';
-		} elseif (!$relation['params']['sequence']) {
+		} elseif (!$relation['parameters']['sequence']) {
 			$zz['fields'][$no]['fields'][6]['hide_in_form'] = true;
 		}
 	}
@@ -385,10 +383,10 @@ foreach ($values['relations'] as $index => $relation) {
 	$zz['fields'][$no]['fields'][4]['hide_in_form'] = true;
 	// remarks
 	$zz['fields'][$no]['fields'][9]['placeholder'] = 'Remarks';
-	if (empty($relation['params']['remarks']))
+	if (empty($relation['parameters']['remarks']))
 		unset($zz['fields'][$no]['fields'][9]);
 	// role
-	if (empty($relation['params']['role']))
+	if (empty($relation['parameters']['role']))
 		unset($zz['fields'][$no]['fields'][11]);
 	else
 		$zz['fields'][$no]['fields'][11]['placeholder'] = true;
@@ -396,8 +394,8 @@ foreach ($values['relations'] as $index => $relation) {
 	$zz['fields'][$no]['fields'][10]['type'] = 'hidden';
 	$zz['fields'][$no]['fields'][10]['hide_in_form'] = true;
 	$zz['fields'][$no]['hide_in_list'] = true;
-	if (!empty($relation['params']['explanation']))
-		$zz['fields'][$no]['explanation'] = $relation['params']['explanation'];
+	if (!empty($relation['parameters']['explanation']))
+		$zz['fields'][$no]['explanation'] = $relation['parameters']['explanation'];
 	
 	$no++;
 }
@@ -414,5 +412,6 @@ if (wrap_setting('contacts_identifiers')) {
 	$zz['fields'][19]['fields'][4]['exclude_from_search'] = true;
 	$zz['fields'][19]['fields'][4]['for_action_ignore'] = true;
 	$zz['fields'][19]['form_display'] = 'lines';
+	$zz['fields'][19]['hide_in_list'] = true;
 }
 
