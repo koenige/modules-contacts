@@ -24,7 +24,7 @@ $zz['fields'][2]['title'] = 'Place';
 
 // category
 $zz['fields'][4]['hide_in_list'] = true;
-$zz['fields'][4]['sql'] .= ' AND categories.parameters LIKE "%&event_place=1%"';
+$zz['fields'][4]['sql'] .= ' AND categories.parameters LIKE "%&events_location=1%"';
 
 // addresses
 $zz['fields'][5]['min_records'] = 1;
@@ -51,11 +51,11 @@ $zz['fields'][14]['hide_in_form'] = true;
 // parameters
 unset($zz['fields'][15]);
 
-$zz['sql'] .= 'WHERE categories.parameters LIKE "%&event_place=1%"';
+$zz['sql'] .= 'WHERE categories.parameters LIKE "%&events_location=1%"';
 
 $zz['filter'][1]['sql'] = 'SELECT category_id, category
 	FROM /*_PREFIX_*/contacts
 	LEFT JOIN /*_PREFIX_*/categories
 		ON /*_PREFIX_*/contacts.contact_category_id = /*_PREFIX_*/categories.category_id
-	WHERE categories.parameters LIKE "%&event_place=1%"
+	WHERE categories.parameters LIKE "%&events_location=1%"
 	ORDER BY category';
