@@ -58,7 +58,8 @@ function mf_contacts_contacts_subtable(&$zz, $table, $def, $no) {
 	if (!empty($zz['fields'][$no]['subselect'])) {
 		$zz['fields'][$no]['unless']['export_mode']['subselect']['prefix'] = '<br><em>'.wrap_text($def['category']).'</em>: ';
 		$zz['fields'][$no]['unless']['export_mode']['subselect']['suffix'] = '';
-		$zz['fields'][$no]['unless']['export_mode']['list_append_next'] = true;
+		if (empty($def['last_category']))
+			$zz['fields'][$no]['unless']['export_mode']['list_append_next'] = true;
 		$zz['fields'][$no]['subselect']['sql'] .= sprintf(' WHERE role_category_id = %d', $def['category_id']);
 	}
 	$zz['fields'][$no]['hide_in_list'] = $def['parameters']['hide_in_list'] ?? false;
