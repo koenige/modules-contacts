@@ -29,12 +29,12 @@
 function mf_contacts_contacts_subtable(&$zz, $table, $def, $no) {
 	$zz['fields'][$no] = zzform_include($table.'-contacts');
 	$zz['fields'][$no]['title'] = $def['category'];
-	$zz['fields'][$no]['table_name'] = $zz['fields'][$no]['table'].'_'.$def['category_id'];
+	$zz['fields'][$no]['table_name'] = str_replace('/*_PREFIX_*/', '', $zz['fields'][$no]['table']).'_'.$def['category_id'];
 	$zz['fields'][$no]['type'] = 'subtable';
 	$zz['fields'][$no]['min_records'] = $def['parameters']['min_records'] ?? 1;
 	$zz['fields'][$no]['max_records'] = $def['parameters']['max_records'] ?? 20;
 	$zz['fields'][$no]['sql'] .= sprintf(' WHERE role_category_id = %d
-		ORDER BY sequence, contact', $def['category_id']);
+		ORDER BY sequence, /*_PREFIX_*/contacts.identifier', $def['category_id']);
 	$zz['fields'][$no]['form_display'] = 'lines';
 	$zz['fields'][$no]['fields'][2]['type'] = 'foreign_key';
 	$zz['fields'][$no]['fields'][3]['show_title'] = false;
@@ -42,8 +42,8 @@ function mf_contacts_contacts_subtable(&$zz, $table, $def, $no) {
 		FROM contacts
 		LEFT JOIN categories
 			ON contacts.contact_category_id = categories.category_id
-		WHERE categories.parameters LIKE "%%&event_%s=1%%"
-		ORDER BY contact', $def['path']);
+		WHERE categories.parameters LIKE "%%&%s_%s=1%%"
+		ORDER BY identifier', $table, $def['path']);
 	$zz['fields'][$no]['fields'][3]['add_details'] = $def['parameters']['add_details'] ?? false;
 	$zz['fields'][$no]['fields'][3]['select_dont_force_single_value'] = true;
 	$zz['fields'][$no]['fields'][4]['type'] = 'hidden';
@@ -55,8 +55,11 @@ function mf_contacts_contacts_subtable(&$zz, $table, $def, $no) {
 		$zz['fields'][$no]['fields'][6]['placeholder'] = true;
 	}
 	$zz['fields'][$no]['class'] = 'hidden480';
-	$zz['fields'][$no]['unless']['export_mode']['subselect']['prefix'] = '<br><em>'.wrap_text($def['category']).'</em>: ';
-	$zz['fields'][$no]['unless']['export_mode']['subselect']['suffix'] = '';
-	$zz['fields'][$no]['unless']['export_mode']['list_append_next'] = true;
-	$zz['fields'][$no]['subselect']['sql'] .= sprintf(' WHERE role_category_id = %d', $def['category_id']);
+	if (!empty($zz['fields'][$no]['subselect'])) {
+		$zz['fields'][$no]['unless']['export_mode']['subselect']['prefix'] = '<br><em>'.wrap_text($def['category']).'</em>: ';
+		$zz['fields'][$no]['unless']['export_mode']['subselect']['suffix'] = '';
+		$zz['fields'][$no]['unless']['export_mode']['list_append_next'] = true;
+		$zz['fields'][$no]['subselect']['sql'] .= sprintf(' WHERE role_category_id = %d', $def['category_id']);
+	}
+	$zz['fields'][$no]['hide_in_list'] = $def['parameters']['hide_in_list'] ?? false;
 }
