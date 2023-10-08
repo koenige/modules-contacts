@@ -280,14 +280,13 @@ if (!empty($zz['fields'][$no - 1]))
 // contacts_categories
 //
 
-wrap_include_files('zzbrick_tables/_subtable_categories', 'default');
 mf_default_categories_subtable($zz, 'contacts', 'contact-properties', 50);
 
 //
 // contacts-contacts
 //
 
-mf_default_restrict_categories($values, 'relations', 'relation');
+mf_default_categories_restrict($values, 'relations', 'relation');
 
 $separator = false;
 $no = 60;
