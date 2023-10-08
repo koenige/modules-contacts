@@ -67,17 +67,15 @@ if (wrap_setting('contacts_media')) {
 //
 
 $separator = false;
-if (!empty($values['addresses_restrict_to'])) {
-	// here, do not show address fields for every address type, only if restrict_to is set
-	$values['addresses'] = mf_contacts_restrict_categories($values, 'addresses', 'address');
-}
+if (!empty($values['addresses_restrict_to']))
+	mf_default_categories_restrict($values, 'addresses', 'address');
 if (isset($values['addresses'])) {
 	$no = 80;
 } else {
 	$values['addresses'][] = [
 		'category_id' => 0,
 		'category' => 'Address',
-		'parameters' => ''
+		'parameters' => []
 	];
 	$no = 5; // @deprecated for backwards compatibility, keep no. 5 for single table
 }
@@ -86,11 +84,6 @@ $subtable_params = [
 	, 'explanation'
 ];
 foreach ($values['addresses'] as $category_id => $category) {
-	if ($category['parameters'])
-		parse_str($category['parameters'], $category['parameters']);
-	else
-		$category['parameters'] = [];
-
 	$zz['fields'][$no] = zzform_include('addresses');
 	if (!$separator) {
 		$zz['fields'][$no]['separator_before'] = true;
@@ -134,14 +127,11 @@ foreach ($values['addresses'] as $category_id => $category) {
 // contactdetails
 //
 
-$values['contactdetails'] = mf_contacts_restrict_categories($values, 'contactdetails', 'provider');
+mf_default_categories_restrict($values, 'contactdetails', 'provider');
 
 $no = 30;
 foreach ($values['contactdetails'] as $category_id => $category) {
 	// parse parameters
-	$category['parameters'] = $category['parameters'] ?? [];
-	if ($category['parameters'] AND !is_array($category['parameters']))
-		parse_str($category['parameters'], $category['parameters']);
 	if (!empty($values['contactdetails_restrict_to'])
 		AND !empty($category['parameters']['if'][$values['contactdetails_restrict_to']]))
 		$category['parameters'] = array_merge($category['parameters'], $category['parameters']['if'][$values['contactdetails_restrict_to']]);

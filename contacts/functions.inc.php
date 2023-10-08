@@ -32,29 +32,3 @@ function mf_contacts_login_user($username) {
 	session_write_close();
 	return true;
 }
-
-/**
- * get a list of categories to include subtable depending on these categories
- *
- * @param array $values
- * @param string $type
- * @param string $category_path
- * @return array
- */
-function mf_contacts_restrict_categories($values, $type, $category_path) {
-	if (isset($values[$type])) return $values[$type];
-	if (isset($values[$type.'_restrict_to']))
-		$restrict_to = 'AND parameters LIKE "%%&'.$values[$type.'_restrict_to'].'=1%%"';
-	else
-		$restrict_to = '';
-	$sql = 'SELECT category_id, category, parameters
-		FROM categories
-		WHERE main_category_id = %d
-		%s
-		ORDER BY sequence, path';
-	$sql = sprintf($sql
-		, wrap_category_id($category_path)
-		, $restrict_to
-	);
-	return wrap_db_fetch($sql, 'category_id');
-}
