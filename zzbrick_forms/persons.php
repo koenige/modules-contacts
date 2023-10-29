@@ -222,7 +222,7 @@ $zz['filter'][1]['where'] = 'published';
 $zz['filter'][1]['selection']['yes'] = wrap_text('yes');
 $zz['filter'][1]['selection']['no'] = wrap_text('no');
 
-wrap_setting('zzform_search', 'both');
+$zz['setting']['zzform_search'] = 'both';
 
 if (wrap_access('contacts_merge'))
 	$zz['list']['merge'] = true;
