@@ -101,7 +101,7 @@
 </tbody>
 </table>
 
-<p class="edit"><a href="%%% item deep %%%../?edit=%%% item contact_id %%%&amp;nolist&referer=%%% page url_path %%%">%%% text Edit record %%%</a>
+<p class="edit"><a href="%%% item deep %%%../?edit=%%% item contact_id %%%&amp;nolist">%%% text Edit record %%%</a>
 %%% condition unless setting contacts_no_delete %%%
 %%% condition unless parents | children | associations %%% | <a href="%%% item deep %%%../?delete=%%% item contact_id %%%">%%% text Delete record %%%</a>
 %%% condition endif %%%
