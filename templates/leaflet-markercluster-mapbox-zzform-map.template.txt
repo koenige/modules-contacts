@@ -34,7 +34,7 @@
 			var popupText = '<div class="popup"><h2><a href="%%% page url_self %%%?show=' + feature.id + '">' + feature.properties.title + '</a></h2>';
 			if (feature.properties.description)
 				popupText += feature.properties.description;
-			popupText += "<p class='more'><a href='%%% page url_self %%%?show=" + feature.id + "'>%%% text Further information %%%</a></p>";
+			popupText += "<p class='more'><a href='%%% page url_self %%%?show=" + feature.id + "'>%%% text Further Information %%%</a></p>";
 			popupText += '</div>';
 			layer.bindPopup(popupText);
 		}

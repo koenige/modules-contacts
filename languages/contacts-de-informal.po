@@ -415,7 +415,7 @@ msgid "Registration"
 msgstr ""
 
 #: templates/leaflet-markercluster-mapbox-zzform-map.template.txt
-msgid "Further information"
+msgid "Further Information"
 msgstr ""
 
 msgid "and"
