@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2021-2023 Gustaf Mossakowski
+ * @copyright Copyright © 2021-2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -30,6 +30,12 @@ function mod_contacts_contact($params, $settings) {
 	$sql = sprintf($sql, wrap_db_escape(implode('/', $params)));
 	$data = wrap_db_fetch($sql);
 	if (!$data) return false;
+
+	// is there a more specific profile page?
+	$path = wrap_path('contacts_profile['.$data['scope'].']', $data['identifier']);
+	if ($path AND $path !== wrap_setting('request_uri'))
+		wrap_redirect($path);
+	
 	wrap_module_parameters('contacts', $data['parameters']);
 	if (!empty($settings['scope'])) {
 		if ($settings['scope'] !== $data['scope']) return false;
