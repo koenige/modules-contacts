@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2015-2023 Gustaf Mossakowski
+ * @copyright Copyright © 2015-2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -281,7 +281,7 @@ $zz['filter'][2]['sql'] = 'SELECT DISTINCT
 	FROM /*_PREFIX_*/contacts
 	ORDER BY UPPER(SUBSTRING(contact, 1, 1))';
 
-if (!empty($_GET['nolist']) AND empty($_GET['referer']))
+if (isset($_GET['nolist']) AND empty($_GET['referer']))
 	$zz['page']['dynamic_referer'] = $zz['fields'][2]['link'];
 
 $zz['hooks']['before_insert'][] = 'mf_contacts_hook_check_contactdetails';
