@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2023 Gustaf Mossakowski
+ * @copyright Copyright © 2023-2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -252,6 +252,7 @@ foreach ($values['contactdetails'] as $category) {
 	$zz['fields'][$no]['subselect']['concat_fields'] = ' ';
 	$zz['fields'][$no]['unless']['export_mode']['subselect']['field_prefix'][0] = '<em>';
 	$zz['fields'][$no]['unless']['export_mode']['subselect']['field_suffix'][0] = ':</em>';
+	$zz['fields'][$no]['unless']['export_mode']['subselect']['field_suffix'][1] = '<br>';
 	$zz['fields'][$no]['if']['export_mode']['subselect']['concat_rows'] = "\r";
 	$zz['fields'][$no]['export_no_html'] = true;
 	if (!empty($category['field_sequence']))
