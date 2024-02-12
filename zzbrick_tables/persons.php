@@ -93,7 +93,18 @@ $zz['fields'][8]['enum_title'] = [wrap_text('female'), wrap_text('male'), wrap_t
 $zz['fields'][8]['hide_novalue'] = false;
 $zz['fields'][8]['hide_in_list'] = true;
 $zz['fields'][8]['field_sequence'] = 20;
+if (wrap_setting('contacts_persons_show_sex_in_list')) {
+	$zz['fields'][8]['title_tab'] = wrap_text('S.', ['context' => 'persons.sex']);
+	$zz['fields'][8]['hide_in_list'] = false;
+	$zz['fields'][8]['unless']['export_mode']['enum_abbr'] = $zz['fields'][8]['enum_title'];
+	$zz['fields'][8]['unless']['export_mode']['enum_title'] = [
+		wrap_text('F', ['context' => 'persons.sex']),
+		wrap_text('M', ['context' => 'persons.sex']),
+		wrap_text('D', ['context' => 'persons.sex'])
+	];
+}
 
+$zz['fields'][9]['title_tab'] = 'Birth';
 $zz['fields'][9]['title'] = 'Date of Birth';
 $zz['fields'][9]['field_name'] = 'date_of_birth';
 $zz['fields'][9]['type'] = 'date';

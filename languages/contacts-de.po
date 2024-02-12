@@ -5,7 +5,7 @@
 # https://www.zugzwang.org/modules/contacts
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2015-2016, 2018-2023 Gustaf Mossakowski
+# @copyright Copyright © 2015-2016, 2018-2024 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 msgid ""
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: templates/addlogin.template.txt
 msgid ""
@@ -419,6 +419,29 @@ msgstr "divers"
 msgid "Date of Birth"
 msgstr "Geburtsdatum"
 
+# One-letter-abbreviation for sex
+#: zzbrick_tables/persons.php
+msgctxt "persons.sex"
+msgid "S."
+msgstr "G."
+
+#: zzbrick_tables/persons.php
+msgctxt "persons.sex"
+msgid "F"
+msgstr "W"
+
+# One-letter-abbreviation for male
+#: zzbrick_tables/persons.php
+msgctxt "persons.sex"
+msgid "M"
+msgstr "M"
+
+# One-letter-abbreviation for diverse
+#: zzbrick_tables/persons.php
+msgctxt "persons.sex"
+msgid "D"
+msgstr "D"
+
 #: templates/contacts.template.txt
 msgid "Birth"
 msgstr "Geburt"
@@ -461,7 +484,7 @@ msgstr "Registrierung bestätigen"
 
 #: templates/contact.template.txt
 msgid " (born %s)"
-msgstr "(geb. %s)"
+msgstr " (geb. %s)"
 
 #: templates/contact.template.txt
 msgid "(Age: %d)"
