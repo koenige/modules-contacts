@@ -239,21 +239,14 @@ foreach ($values['contactdetails'] as $category) {
 		= isset($category['parameters']['label']) ? !$category['parameters']['label']
 		: (wrap_setting('contacts_details_with_label') ? false : true);
 	$zz['fields'][$no]['form_display'] = 'lines';
-	$zz['fields'][$no]['subselect']['sql'] = sprintf('SELECT category, identification, contact_id
-		FROM /*_PREFIX_*/contactdetails
-		LEFT JOIN /*_PREFIX_*/categories
-			ON /*_PREFIX_*/contactdetails.provider_category_id = /*_PREFIX_*/categories.category_id
-		WHERE /*_PREFIX_*/contactdetails.provider_category_id IN (%s)', implode(',', array_keys($category['categories'])));
-	$zz['fields'][$no]['if']['export_mode']['subselect']['sql'] = sprintf('SELECT identification, contact_id
-		FROM /*_PREFIX_*/contactdetails
-		LEFT JOIN /*_PREFIX_*/categories
-			ON /*_PREFIX_*/contactdetails.provider_category_id = /*_PREFIX_*/categories.category_id
-		WHERE /*_PREFIX_*/contactdetails.provider_category_id IN (%s)', implode(',', array_keys($category['categories'])));
-	$zz['fields'][$no]['subselect']['concat_fields'] = ' ';
-	$zz['fields'][$no]['unless']['export_mode']['subselect']['field_prefix'][0] = '<em>';
-	$zz['fields'][$no]['unless']['export_mode']['subselect']['field_suffix'][0] = ':</em>';
-	$zz['fields'][$no]['unless']['export_mode']['subselect']['field_suffix'][1] = '<br>';
-	$zz['fields'][$no]['if']['export_mode']['subselect']['concat_rows'] = "\r";
+	$zz['fields'][$no]['subselect']['sql'] = wrap_edit_sql(
+		$zz['fields'][$no]['subselect']['sql'], 'WHERE',
+		sprintf('/*_PREFIX_*/contactdetails.provider_category_id IN (%s)', implode(',', array_keys($category['categories'])))
+	);
+	$zz['fields'][$no]['if']['export_mode']['subselect']['sql'] = wrap_edit_sql(
+		$zz['fields'][$no]['if']['export_mode']['subselect']['sql'], 'WHERE',
+		sprintf('/*_PREFIX_*/contactdetails.provider_category_id IN (%s)', implode(',', array_keys($category['categories'])))
+	);
 	$zz['fields'][$no]['export_no_html'] = true;
 	if (!empty($category['field_sequence']))
 		$zz['fields'][$no]['field_sequence'] = $category['field_sequence'];

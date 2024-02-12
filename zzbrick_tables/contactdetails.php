@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2015, 2017-2019, 2021, 2023 Gustaf Mossakowski
+ * @copyright Copyright © 2015, 2017-2019, 2021, 2023-2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -83,3 +83,18 @@ $zz['sqlorder'] = ' ORDER BY identifier, path, identification';
 
 $zz['unique'][] = ['contact_id', 'identification', 'provider_category_id'];
 
+
+$zz['subselect']['sql'] = 'SELECT category, identification, contact_id
+	FROM /*_PREFIX_*/contactdetails
+	LEFT JOIN /*_PREFIX_*/categories
+		ON /*_PREFIX_*/contactdetails.provider_category_id = /*_PREFIX_*/categories.category_id';
+$zz['if']['export_mode']['subselect']['sql'] = 'SELECT identification, contact_id
+	FROM /*_PREFIX_*/contactdetails
+	LEFT JOIN /*_PREFIX_*/categories
+		ON /*_PREFIX_*/contactdetails.provider_category_id = /*_PREFIX_*/categories.category_id';
+$zz['subselect']['concat_fields'] = ' ';
+$zz['unless']['export_mode']['subselect']['field_prefix'][0] = '<em>';
+$zz['unless']['export_mode']['subselect']['field_suffix'][0] = ':</em>';
+$zz['unless']['export_mode']['subselect']['field_suffix'][1] = '<br>';
+$zz['unless']['export_mode']['subselect']['prefix'] = '';
+$zz['unless']['export_mode']['subselect']['suffix'] = '';
