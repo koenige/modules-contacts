@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2011-2015, 2020-2021 Gustaf Mossakowski
+ * @copyright Copyright © 2011-2015, 2020-2021, 2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -16,6 +16,7 @@
 $zz['title'] = 'Persons';
 $zz['table'] = '/*_PREFIX_*/persons';
 
+$zz['fields'][1]['title'] = 'ID';
 $zz['fields'][1]['field_name'] = 'person_id';
 $zz['fields'][1]['type'] = 'id';
 $zz['fields'][1]['import_id_value'] = true;
@@ -50,6 +51,7 @@ $zz['fields'][4]['link'] = [
 	'fields' => ['identifier', 'contact_parameters']
 ];
 $zz['fields'][4]['add_details_destination'] = true;
+$zz['fields'][4]['mark_scope'] = ['first_name', 'name_particle', 'last_name'];
 $zz['fields'][4]['unless']['export_mode']['display_field'] = 'contact';
 $zz['fields'][4]['validate']['forbidden_strings'] = ['://'];
 
@@ -58,6 +60,7 @@ $zz['fields'][5]['field_name'] = 'name_particle';
 $zz['fields'][5]['replace_values'] = ['-' => ''];
 $zz['fields'][5]['merge_equal'] = true;
 $zz['fields'][5]['hide_in_list'] = true;
+$zz['fields'][5]['hide_in_list_if_empty'] = true;
 $zz['fields'][5]['field_sequence'] = 16;
 $zz['fields'][5]['explanation'] = 'e. g. nobiliary particle';
 
