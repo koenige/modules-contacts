@@ -248,6 +248,14 @@ msgid "End date"
 msgstr "Enddatum"
 
 #: zzbrick_tables/contacts.php
+msgid "Founding date"
+msgstr "Gründungsdatum"
+
+#: zzbrick_tables/contacts.php
+msgid "Dissolution date"
+msgstr "Auflösungsdatum"
+
+#: zzbrick_tables/contacts.php
 msgid "Parameters"
 msgstr "Parameter"
 

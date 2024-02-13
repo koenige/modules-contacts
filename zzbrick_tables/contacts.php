@@ -170,6 +170,7 @@ $zz['fields'][16]['field_name'] = 'start_date';
 $zz['fields'][16]['type'] = 'date';
 $zz['fields'][16]['hide_in_list'] = true;
 $zz['fields'][16]['append_next'] = true;
+$zz['fields'][16]['placeholder'] = 'Founding date';
 if (!wrap_setting('contacts_start_date'))
 	$zz['fields'][16]['hide_in_form'] = true;
 
@@ -178,6 +179,7 @@ $zz['fields'][17]['field_name'] = 'end_date';
 $zz['fields'][17]['type'] = 'date';
 $zz['fields'][17]['hide_in_list'] = true;
 $zz['fields'][17]['prefix'] = '– ';
+$zz['fields'][17]['placeholder'] = 'Dissolution date';
 if (!wrap_setting('contacts_end_date'))
 	$zz['fields'][17]['hide_in_form'] = true;
 
