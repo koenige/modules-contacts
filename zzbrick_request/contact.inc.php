@@ -23,6 +23,14 @@ function mod_contacts_contact($params, $settings) {
 			, SUBSTRING_INDEX(path, "/", -1) AS scope
 			, categories.parameters
 			, 1 AS alive
+			, start_date, end_date
+			, IFNULL(
+				TIMESTAMPDIFF(YEAR, start_date, IFNULL(CAST(IF(
+					SUBSTRING(end_date, -6) = "-00-00",
+					CONCAT(YEAR(end_date), "-01-01"), end_date) AS DATE
+				), CURDATE())),
+				YEAR(IFNULL(end_date, CURDATE())) - YEAR(start_date)
+			) AS age
 	    FROM contacts
 	    LEFT JOIN categories
 	    	ON contacts.contact_category_id = categories.category_id
@@ -145,6 +153,17 @@ function mod_contacts_contact($params, $settings) {
 	}
 
 	$data = mod_contacts_contact_packages($data);
+	
+	// contacts_identifiers
+	$sql = 'SELECT contact_identifier_id, identifier, IF(current = "yes", 1, NULL) AS current
+			, category
+		FROM contacts_identifiers
+		LEFT JOIN categories
+			ON contacts_identifiers.identifier_category_id = categories.category_id
+		WHERE contact_id = %d
+		ORDER BY categories.sequence, categories.path, contacts_identifiers.identifier';
+	$sql = sprintf($sql, $data['contact_id']);
+	$data['identifiers'] = wrap_db_fetch($sql, 'contact_identifier_id');
 	
 	// duplicates?
 	$sql = 'SELECT contact_id, identifier

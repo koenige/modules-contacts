@@ -534,6 +534,34 @@ msgstr ""
 msgid "(for mailing)"
 msgstr ""
 
+#: templates/contact.template.txt
+msgid "Foundation:"
+msgstr ""
+
+#: templates/contact.template.txt
+msgid "Dissolution:"
+msgstr ""
+
+#: templates/contact.template.txt
+msgid "(%d year)"
+msgid_plural "(%d years)"
+msgstr[] ""
+msgstr[] ""
+
+#: templates/contact.template.txt
+msgid "(%d year ago)"
+msgid_plural "(%d years ago)"
+msgstr[] ""
+msgstr[] ""
+
+#: templates/contact.template.txt
+msgid "(current)"
+msgstr ""
+
+#: templates/contact.template.txt
+msgid "(outdated)"
+msgstr ""
+
 #: templates/contact-verification.de.template.txt
 msgid "Registration"
 msgstr ""

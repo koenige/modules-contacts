@@ -5,7 +5,7 @@
 # https://www.zugzwang.org/modules/contacts
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2021-2023 Gustaf Mossakowski
+# @copyright Copyright © 2021-2024 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 <div class="contact">
@@ -21,9 +21,18 @@
 %%% item contact_short %%%
 %%% item contact_abbr %%%
 
+%%% condition if description %%%
+%%% item description markdown %%%
+%%% condition endif %%%
+
 <table>
 <tbody>
 %%% block contact_1 %%%
+%%% condition if start_date | end_date %%%
+<tr><th>%%% text Period %%%</th><td>
+	%%% condition if start_date %%%%%% text Foundation: %%% %%% item start_date wrap_date %%%%%% condition endif %%% 
+	%%% condition if end_date %%%%%% text Dissolution: %%%%%% item end_date wrap_date %%%%%% condition if age %%%<em>%%% text "(%d years)" age %%%</em>%%% condition endif %%%%%% condition else %%%%%% condition if age %%%<em>%%% text "(%d years ago)" age %%%</em>%%% condition endif %%%%%% condition endif %%%</td></tr>
+%%% condition endif %%%
 %%% condition if date_of_birth %%%
 <tr><th>%%% text Birth %%%</th><td>%%% item date_of_birth wrap_date "*&nbsp;%s" %%% %%% item date_of_death wrap_date "†&nbsp;%s" %%% %%% condition if male %%%♂%%% condition elseif female %%%♀%%% condition elseif diverse %%%⚪︎%%% condition endif %%% %%% text "(Age: %d)" age %%%</td></tr>
 %%% condition endif %%%
@@ -40,6 +49,9 @@
 %%% loop url %%%
 <tr><th>%%% item category %%%</th><td><a href="%%% item identification %%%">%%% item identification %%%</a>%%% item label " (%s)" %%%</td></tr>
 %%% loop end %%%
+%%% loop username %%%
+<tr><th>%%% item category %%%</th><td><a href="%%% item username_url %%%" target="_blank" itemprop="url">@%%% item identification %%%</a>%%% item label " (%s)" %%%</td></tr>
+%%% loop end %%%
 %%% block contact_3 %%%
 %%% condition if addresses %%%
 <tr><th>%%% text Address %%%</th><td>
@@ -49,10 +61,6 @@
 </td></tr>
 %%% condition endif %%%
 %%% block contact_4 %%%
-%%% condition if description %%%
-<tr><th>%%% text Description %%%</th><td>%%% item description markdown %%%</td></tr>
-%%% condition endif %%%
-%%% block contact_5 %%%
 %%% loop relations %%%
 <tr><th>%%% item relation %%%
 %%% condition if relations_path %%%
@@ -66,6 +74,19 @@
 </ul>
 </td></tr>
 %%% loop end %%%
+%%% block contact_5 %%%
+%%% condition if identifiers %%%
+<tr>
+<th>%%% text Identifiers %%%</th>
+<td>
+<ul>
+%%% loop identifiers %%%
+<li>%%% item category %%%: %%% item identifier %%% %%% condition if current %%%<em>%%% text (current) %%%</em>%%% condition else %%%<em>%%% text (outdated) %%%</em>%%% condition endif %%%</li>
+%%% loop end %%%
+</ul>
+</td>
+</tr>
+%%% condition endif %%%
 %%% block contact_6 %%%
 %%% condition if logindata %%%
 <tr class="online_state"><th>%%% text Online? %%%</th>
