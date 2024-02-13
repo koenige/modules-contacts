@@ -562,6 +562,14 @@ msgstr ""
 msgid "(outdated)"
 msgstr ""
 
+#: templates/contact.template.txt
+msgid "Short form:"
+msgstr ""
+
+#: templates/contact.template.txt
+msgid "Abbreviation:"
+msgstr ""
+
 #: templates/contact-verification.de.template.txt
 msgid "Registration"
 msgstr ""

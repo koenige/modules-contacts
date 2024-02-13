@@ -16,10 +16,19 @@
 %%% condition endif %%%
 %%% condition else %%%
 <h1>%%% item contact nl2br %%%</h1>
+<h2>%%% item category %%%</h2>
 %%% condition endif %%%
 
-%%% item contact_short %%%
-%%% item contact_abbr %%%
+%%% condition if contact_short | contact_abbr %%%
+<p class="contact_short">%%% condition if contact_short %%%
+<em>%%% text Short form: %%%</em> %%% item contact_short %%%
+%%% condition endif %%%
+%%% condition if contact_short & contact_abbr %%%, %%% condition endif %%%
+%%% condition if contact_abbr %%%
+<em>%%% text Abbreviation: %%%</em> %%% item contact_abbr %%%
+%%% condition endif %%%
+</p>
+%%% condition endif %%%
 
 %%% condition if description %%%
 %%% item description markdown %%%
@@ -31,13 +40,13 @@
 %%% condition if start_date | end_date %%%
 <tr><th>%%% text Period %%%</th><td>
 	%%% condition if start_date %%%%%% text Foundation: %%% %%% item start_date wrap_date %%%%%% condition endif %%% 
-	%%% condition if end_date %%%%%% text Dissolution: %%%%%% item end_date wrap_date %%%%%% condition if age %%%<em>%%% text "(%d years)" age %%%</em>%%% condition endif %%%%%% condition else %%%%%% condition if age %%%<em>%%% text "(%d years ago)" age %%%</em>%%% condition endif %%%%%% condition endif %%%</td></tr>
+	%%% condition if end_date %%%%%% text Dissolution: %%% %%% item end_date wrap_date %%%%%% condition if age %%%<em>%%% text "(%d years)" age %%%</em>%%% condition endif %%%%%% condition else %%%%%% condition if age %%%<em>%%% text "(%d years ago)" age %%%</em>%%% condition endif %%%%%% condition endif %%%</td></tr>
 %%% condition endif %%%
 %%% condition if date_of_birth %%%
 <tr><th>%%% text Birth %%%</th><td>%%% item date_of_birth wrap_date "*&nbsp;%s" %%% %%% item date_of_death wrap_date "†&nbsp;%s" %%% %%% condition if male %%%♂%%% condition elseif female %%%♀%%% condition elseif diverse %%%⚪︎%%% condition endif %%% %%% text "(Age: %d)" age %%%</td></tr>
 %%% condition endif %%%
 %%% condition if country %%%
-<tr><th>%%% text Nationality %%%</th><td>%%% item country %%%</td></tr>
+<tr><th>%%% condition if person %%%%%% text Nationality %%%%%% condition else %%%%%% text Country %%%%%% condition endif %%%</th><td>%%% item country %%%</td></tr>
 %%% condition endif %%%
 %%% block contact_2 %%%
 %%% loop mail %%%
@@ -69,7 +78,7 @@
 </th><td>
 <ul>
 %%% loop contacts %%%
-<li>%%% item profile_path "<a href='%s'>" %%%%%% item contact %%%%%% item profile_path </a> %%%%%% item dead " †" %%%  %%% item role %%%</li>
+<li>%%% item profile_path "<a href='%s'>" %%%%%% item contact %%%%%% item profile_path </a> %%%%%% item dead " †" %%% %%% item role %%% %%% item remarks %%%</li>
 %%% loop end %%%
 </ul>
 </td></tr>

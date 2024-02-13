@@ -19,7 +19,7 @@ function mod_contacts_contact($params, $settings) {
 	}
 
 	$sql = 'SELECT contact_id, contact, contact_short, contact_abbr,
-			identifier, contacts.description, remarks
+			contacts.identifier, contacts.description, remarks
 			, SUBSTRING_INDEX(path, "/", -1) AS scope
 			, categories.parameters
 			, 1 AS alive
@@ -31,13 +31,17 @@ function mod_contacts_contact($params, $settings) {
 				), CURDATE())),
 				YEAR(IFNULL(end_date, CURDATE())) - YEAR(start_date)
 			) AS age
+			, category
+			, country_id, country
 	    FROM contacts
+	    LEFT JOIN countries USING (country_id)
 	    LEFT JOIN categories
 	    	ON contacts.contact_category_id = categories.category_id
-	    WHERE identifier = "%s"';
+	    WHERE contacts.identifier = "%s"';
 	$sql = sprintf($sql, wrap_db_escape(implode('/', $params)));
 	$data = wrap_db_fetch($sql);
 	if (!$data) return false;
+	$data[$data['scope']] = true;
 
 	// is there a more specific profile page?
 	$path = wrap_path('contacts_profile['.$data['scope'].']', $data['identifier']);
@@ -129,11 +133,16 @@ function mod_contacts_contact($params, $settings) {
 			$cparams = [];
 			if ($contactrelation['category_parameters'])
 				parse_str($contactrelation['category_parameters'], $cparams);
-			if (!empty($cparams['type'])) {
-				if (!wrap_setting('contacts_profile_path['.$cparams['type'].']')) continue;
+			if (!empty($cparams['type']) AND wrap_setting('contacts_profile_path['.$cparams['type'].']')) {
 				$data['relations'][$index]['contacts'][$cc_id]['profile_path'] = wrap_setting('base').sprintf(
 					wrap_setting('contacts_profile_path['.$cparams['type'].']'), $contactrelation['identifier']
 				);
+			} elseif (wrap_setting('contacts_profile_path[*]')) {
+				$data['relations'][$index]['contacts'][$cc_id]['profile_path'] = wrap_setting('base').sprintf(
+					wrap_setting('contacts_profile_path[*]'), $contactrelation['identifier']
+				);
+			} else {
+				continue;
 			}
 			if (!$relation) {
 				$relation = $contactrelation;
