@@ -191,8 +191,16 @@ $zz['fields'][18]['sql_character_set'][1] = 'latin1';
 $zz['fields'][18]['sql_character_set'][2] = 'latin1';
 $zz['fields'][18]['search'] = '/*_PREFIX_*/countries.country';
 $zz['fields'][18]['hide_in_list'] = true;
+$zz['fields'][18]['hide_in_list_if_empty'] = true;
+$zz['fields'][18]['display_field'] = 'country_code';
 if (!wrap_setting('contacts_country'))
 	$zz['fields'][18]['hide_in_form'] = true;
+if (wrap_setting('contacts_country_hierarchical')) {
+	$zz['fields'][18]['sql'] = 'SELECT country_id, country_code, country, main_country_id
+		FROM /*_PREFIX_*/countries
+		ORDER BY country_code3, country';
+	$zz['fields'][18]['show_hierarchy'] = 'main_country_id';
+}
 
 // relations via contacts-contacts
 $zz['fields'][60] = [];
@@ -257,6 +265,7 @@ $zz['sql'] = 'SELECT /*_PREFIX_*/contacts.*, category
 			WHERE /*_PREFIX_*/addresses.contact_id = /*_PREFIX_*/contacts.contact_id
 			LIMIT 1) AS latlon
 		, /*_PREFIX_*/categories.parameters AS contact_parameters
+		, /*_PREFIX_*/countries.country_code
 	FROM /*_PREFIX_*/contacts
 	LEFT JOIN /*_PREFIX_*/countries USING (country_id)
 	LEFT JOIN /*_PREFIX_*/contacts_verifications USING (contact_id)

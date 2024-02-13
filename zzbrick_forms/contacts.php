@@ -34,6 +34,12 @@ if (!empty($_GET['where']['contact_category_id']) OR !empty($values['contact_cat
 }
 
 
+// country_id
+
+if (wrap_setting('contacts_country_list'))
+	$zz['fields'][18]['hide_in_list'] = false;
+
+
 //
 // contacts-media
 //
