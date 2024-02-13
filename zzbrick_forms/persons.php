@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2019-2023 Gustaf Mossakowski
+ * @copyright Copyright © 2019-2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -215,12 +215,14 @@ $zz['where']['contact_category_id'] = wrap_category_id('contact/person');
 
 unset($zz['filter'][1]); // contact_category
 
-$zz['filter'][1]['title'] = wrap_text('Published');
-$zz['filter'][1]['identifier'] = 'published';
-$zz['filter'][1]['type'] = 'list';
-$zz['filter'][1]['where'] = 'published';
-$zz['filter'][1]['selection']['yes'] = wrap_text('yes');
-$zz['filter'][1]['selection']['no'] = wrap_text('no');
+if (wrap_setting('contacts_published')) {
+	$zz['filter'][1]['title'] = wrap_text('Published');
+	$zz['filter'][1]['identifier'] = 'published';
+	$zz['filter'][1]['type'] = 'list';
+	$zz['filter'][1]['where'] = 'published';
+	$zz['filter'][1]['selection']['yes'] = wrap_text('yes');
+	$zz['filter'][1]['selection']['no'] = wrap_text('no');
+}
 
 $zz['setting']['zzform_search'] = 'both';
 

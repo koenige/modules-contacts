@@ -228,6 +228,11 @@ $zz['fields'][14]['enum'] = ['yes', 'no'];
 $zz['fields'][14]['default'] = 'yes';
 $zz['fields'][14]['class'] = 'hidden480';
 $zz['fields'][14]['explanation'] = 'Publish on website?';
+if (!wrap_setting('contacts_published')) {
+	$zz['fields'][14]['default'] = 'no';
+	$zz['fields'][14]['hide_in_form'] = true;
+	$zz['fields'][14]['hide_in_list'] = true;
+}
 
 $zz['fields'][15]['field_name'] = 'parameters';
 $zz['fields'][15]['type'] = 'parameter';
