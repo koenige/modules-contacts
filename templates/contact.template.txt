@@ -96,6 +96,19 @@
 </td>
 </tr>
 %%% condition endif %%%
+%%% condition if profiles %%%
+<tr>
+<th>%%% text Profiles %%%</th>
+<td>
+<ul>
+%%% loop profiles %%%
+<li><a href="%%% item url %%%" target="_blank" itemprop="url">%%% condition if title %%%%%% item title %%%%%% condition else %%%%%% item url %%%%%% condition endif %%%</a></li>
+%%% loop end %%%
+</ul>
+</td>
+</tr>
+%%% condition endif %%%
+
 %%% block contact_6 %%%
 %%% condition if logindata %%%
 <tr class="online_state"><th>%%% text Online? %%%</th>

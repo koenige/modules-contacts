@@ -31,7 +31,7 @@ function mod_contacts_contact($params, $settings) {
 				), CURDATE())),
 				YEAR(IFNULL(end_date, CURDATE())) - YEAR(start_date)
 			) AS age
-			, category
+			, category_id, category
 			, country_id, country
 	    FROM contacts
 	    LEFT JOIN countries USING (country_id)
@@ -165,7 +165,7 @@ function mod_contacts_contact($params, $settings) {
 	
 	// contacts_identifiers
 	$sql = 'SELECT contact_identifier_id, identifier, IF(current = "yes", 1, NULL) AS current
-			, category
+			, category_id, category
 		FROM contacts_identifiers
 		LEFT JOIN categories
 			ON contacts_identifiers.identifier_category_id = categories.category_id
@@ -216,6 +216,9 @@ function mod_contacts_contact($params, $settings) {
 	if (count($params) !== 1) {
 		$data['deep'] = str_repeat('../', count($params) -1);
 	}
+	
+	// profiles
+	$data['profiles'] = wrap_profiles($data);
 
 	if ($data['scope'] === 'person') {
 		$page['title'] = trim((!empty($data['title_prefix']) ? $data['title_prefix'].' ' : '')

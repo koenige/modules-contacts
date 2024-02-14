@@ -590,6 +590,10 @@ msgstr "Kurzform:"
 msgid "Abbreviation:"
 msgstr "Abkürzung:"
 
+#: templates/contact.template.txt
+msgid "Profiles"
+msgstr "Profile"
+
 #: templates/contact-verification.de.template.txt
 msgid "Registration"
 msgstr "Registrierung"
