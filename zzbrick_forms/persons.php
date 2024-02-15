@@ -46,10 +46,10 @@ $zz['fields'][3]['identifier']['concat'] = '.';
 $zz['fields'][3]['identifier']['exists'] = '.';
 $zz['fields'][3]['fields'] = [
 	'persons.first_name', 'persons.name_particle', 'persons.last_name',
-	'identifier'
+	'contact_category_id[parameters]', 'identifier'
 ];
 $zz['fields'][3]['merge_ignore'] = true;
-$zz['fields'][3]['field_sequence'] = 26;
+$zz['fields'][3]['field_sequence'] = 65;
 $zz['fields'][3]['separator'] = true;
 $zz['fields'][3]['separator_before'] = true;
 
@@ -65,15 +65,27 @@ if (wrap_access('contacts_change_identifier')) {
 	$zz['fields'][27]['type_detail'] = 'select';
 	$zz['fields'][27]['enum'] = ['yes', 'no'];
 	$zz['fields'][27]['options'] = [
-		'yes' => ['fields' => ['persons.first_name', 'persons.name_particle', 'persons.last_name']],
-		'no' => ['fields' => ['persons.first_name', 'persons.name_particle', 'persons.last_name', 'identifier']]
+		'yes' => ['fields' => ['persons.first_name', 'persons.name_particle', 'persons.last_name', 'contact_category_id[parameters]']],
+		'no' => ['fields' => ['persons.first_name', 'persons.name_particle', 'persons.last_name', 'contact_category_id[parameters]', 'identifier']]
 	];
 	$zz['fields'][27]['default'] = 'no';
-	$zz['fields'][27]['field_sequence'] = 27;
+	$zz['fields'][27]['field_sequence'] = 66;
 	$zz['fields'][27]['separator'] = true;
 }
 
-$zz['fields'][9] = zzform_include('persons');
+// contacts_identifiers
+if (!empty($zz['fields'][19])) {
+	$zz['fields'][19]['field_sequence'] = 67;
+	$zz['fields'][19]['fields'][4]['sql'] = wrap_edit_sql(
+		$zz['fields'][19]['fields'][4]['sql'],
+		'WHERE', 'parameters LIKE "%&person=1%"'
+	);
+	$zz['fields'][3]['separator'] = false;
+	if (!empty($zz['fields'][27]))
+		$zz['fields'][27]['separator'] = false;
+}
+
+$zz['fields'][9] = zzform_include('persons', $values);
 $zz['fields'][9]['add_details_destination'] = true;
 $zz['fields'][9]['title'] = 'Person';
 $zz['fields'][9]['dont_show_missing'] = true;
@@ -103,10 +115,7 @@ $zz['fields'][8]['field_sequence'] = 29;
 // contactdetails
 $no = 30;
 while ($no) {
-	if (empty($zz['fields'][$no])) {
-		$no = false;
-		continue;
-	}
+	if (empty($zz['fields'][$no])) break;
 	$zz['fields'][12]['separator_before'] = true;
 	$zz['fields'][$no]['field_sequence'] = $no;
 	$no++;
@@ -122,17 +131,17 @@ $zz['fields'][5]['max_records'] = 10;
 $zz['fields'][5]['hide_in_list'] = true;
 $zz['fields'][5]['separator'] = true;
 
-if (!empty($zz['fields'][19]))
-	$zz['fields'][19]['field_sequence'] = 50;
-
 // description
 $zz['fields'][12]['field_sequence'] = 71;
 $zz['fields'][12]['title'] = 'About me';
 $zz['fields'][12]['explanation'] = 'A few lines about the person.';
+unset($zz['fields'][12]['separator_before']);
 
 // remarks
-if (!empty($zz['fields'][13]))
+if (!empty($zz['fields'][13])) {
 	$zz['fields'][13]['field_sequence'] = 72;
+	unset($zz['fields'][13]['separator_before']);
+}
 
 // published
 $zz['fields'][14]['field_sequence'] = 73;
@@ -140,10 +149,7 @@ $zz['fields'][14]['field_sequence'] = 73;
 // contacts-contacts, starting at 60
 $no = 60;
 while ($no) {
-	if (empty($zz['fields'][$no])) {
-		$no = false;
-		continue;
-	}
+	if (empty($zz['fields'][$no])) break;
 	$zz['fields'][12]['separator_before'] = true;
 	$zz['fields'][$no]['field_sequence'] = $no;
 	$no++;
@@ -203,10 +209,11 @@ $zz['sql'] = 'SELECT /*_PREFIX_*/contacts.*, category
 			LIMIT 1) AS latlon
 		, /*_PREFIX_*/categories.parameters AS contact_parameters
 	FROM /*_PREFIX_*/contacts
-	LEFT JOIN /*_PREFIX_*/countries USING (country_id)
 	LEFT JOIN /*_PREFIX_*/persons USING (contact_id)
 	LEFT JOIN /*_PREFIX_*/categories
 		ON /*_PREFIX_*/contacts.contact_category_id = /*_PREFIX_*/categories.category_id
+	LEFT JOIN /*_PREFIX_*/countries
+		ON /*_PREFIX_*/persons.nationality_country_id = /*_PREFIX_*/countries.country_id
 	WHERE NOT ISNULL(person_id)
 ';
 $zz['sqlorder'] = ' ORDER BY last_name, first_name ASC, identifier';
@@ -224,7 +231,13 @@ if (wrap_setting('contacts_published')) {
 	$zz['filter'][1]['selection']['no'] = wrap_text('no');
 }
 
+$zz['filter'][2]['sql'] = wrap_edit_sql($zz['filter'][2]['sql'], 'WHERE', sprintf('contact_category_id = %d', wrap_category_id('contact/person')));
+
+if (isset($_GET['nolist']))
+	$zz['page']['dynamic_referer'] = $zz['fields'][2]['link'];
+
 $zz['setting']['zzform_search'] = 'both';
+$zz['setting']['zzform_limit'] = 32;
 
 if (wrap_access('contacts_merge'))
 	$zz['list']['merge'] = true;
