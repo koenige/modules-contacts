@@ -82,6 +82,14 @@ msgstr ""
 msgid "Places"
 msgstr ""
 
+#: zzbrick_forms/places.php
+msgid "Venues"
+msgstr ""
+
+#: zzbrick_forms/places.php
+msgid "Venue"
+msgstr ""
+
 #: zzbrick_tables/addresses.php
 msgid "Addresses"
 msgstr ""
@@ -124,6 +132,10 @@ msgstr ""
 
 #: zzbrick_tables/addresses.php
 msgid "If there is more than one address:<br>Send letters to this address?"
+msgstr ""
+
+#: zzbrick_tables/addresses.php
+msgid "Is determined automatically, if possible"
 msgstr ""
 
 #: zzbrick_tables/awards.php

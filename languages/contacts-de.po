@@ -101,6 +101,14 @@ msgstr "Organisatoren"
 msgid "Places"
 msgstr "Orte"
 
+#: zzbrick_forms/places.php
+msgid "Venues"
+msgstr "Veranstaltungsorte"
+
+#: zzbrick_forms/places.php
+msgid "Venue"
+msgstr "Veranstaltungsort"
+
 #: zzbrick_tables/addresses.php
 msgid "Addresses"
 msgstr "Adressen"
@@ -146,6 +154,10 @@ msgid "If there is more than one address:<br>Send letters to this address?"
 msgstr ""
 "Falls es mehr als eine Adresse gibt:<br>Sollen Briefe hierhin gesendet "
 "werden?"
+
+#: zzbrick_tables/addresses.php
+msgid "Is determined automatically, if possible"
+msgstr "Wird nach Möglichkeit automatisch ermittelt"
 
 #: zzbrick_tables/awards.php
 msgid "Awards"
