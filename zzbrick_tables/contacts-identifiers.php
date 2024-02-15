@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2013-2014, 2017-2021 Gustaf Mossakowski
+ * @copyright Copyright © 2013-2014, 2017-2021, 2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -51,6 +51,8 @@ $zz['fields'][20]['hide_in_list'] = true;
 
 $zz['unique'][] = ['identifier', 'identifier_category_id'];
 
+$zz['access'] = wrap_access('contacts_identifiers') ? '' : 'show';
+
 
 $zz['sql'] = 'SELECT contacts_identifiers.*
 		, contact, category
@@ -60,3 +62,11 @@ $zz['sql'] = 'SELECT contacts_identifiers.*
 		ON categories.category_id = contacts_identifiers.identifier_category_id
 ';
 $zz['sqlorder'] = ' ORDER BY contact ASC, category, ISNULL(current), identifier';
+
+
+$zz['subselect']['sql'] = 'SELECT contact_id, category_short
+		, contacts_identifiers.identifier
+	FROM contacts_identifiers
+	LEFT JOIN categories
+		ON categories.category_id = contacts_identifiers.identifier_category_id
+	WHERE current = "yes"';
