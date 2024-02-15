@@ -40,7 +40,8 @@
 %%% condition if start_date | end_date %%%
 <tr><th>%%% text Period %%%</th><td>
 	%%% condition if start_date %%%%%% text Foundation: %%% %%% item start_date wrap_date %%%%%% condition endif %%% 
-	%%% condition if end_date %%%%%% text Dissolution: %%% %%% item end_date wrap_date %%%%%% condition if age %%%<em>%%% text "(%d years)" age %%%</em>%%% condition endif %%%%%% condition else %%%%%% condition if age %%%<em>%%% text "(%d years ago)" age %%%</em>%%% condition endif %%%%%% condition endif %%%</td></tr>
+	%%% condition if start_date & end_date %%% – %%% condition endif %%%
+	%%% condition if end_date %%%%%% text Dissolution: %%% %%% item end_date wrap_date %%%%%% condition if age %%% <em>%%% text "(%d years)" age %%%</em>%%% condition endif %%%%%% condition else %%%%%% condition if age %%%<em>%%% text "(%d years ago)" age %%%</em>%%% condition endif %%%%%% condition endif %%%</td></tr>
 %%% condition endif %%%
 %%% condition if date_of_birth %%%
 <tr><th>%%% text Birth %%%</th><td>%%% item date_of_birth wrap_date "*&nbsp;%s" %%% %%% item date_of_death wrap_date "†&nbsp;%s" %%% %%% condition if male %%%♂%%% condition elseif female %%%♀%%% condition elseif diverse %%%⚪︎%%% condition endif %%% %%% text "(Age: %d)" age %%%</td></tr>
