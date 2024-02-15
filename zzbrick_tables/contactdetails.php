@@ -98,3 +98,4 @@ $zz['unless']['export_mode']['subselect']['field_suffix'][0] = ':</em>';
 $zz['unless']['export_mode']['subselect']['field_suffix'][1] = '<br>';
 $zz['unless']['export_mode']['subselect']['prefix'] = '';
 $zz['unless']['export_mode']['subselect']['suffix'] = '';
+$zz['unless']['export_mode']['subselect']['concat_rows'] = '';
