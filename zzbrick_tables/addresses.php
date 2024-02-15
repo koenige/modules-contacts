@@ -8,7 +8,7 @@
  * Part of »Zugzwang Project«
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2015, 2017-2021, 2023 Gustaf Mossakowski
+ * @copyright Copyright © 2015, 2017-2021, 2023-2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -102,6 +102,7 @@ $zz['fields'][7]['geojson'] = 'latitude';
 $zz['fields'][7]['geocode'] = 'latitude';
 $zz['fields'][7]['append_next'] = true;
 $zz['fields'][7]['suffix'] = ' / ';
+$zz['fields'][7]['explanation'] = 'Is determined automatically, if possible';
 
 $zz['fields'][8]['field_name'] = 'longitude';
 $zz['fields'][8]['type'] = 'number';
