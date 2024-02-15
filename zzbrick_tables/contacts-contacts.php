@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2019-2022 Gustaf Mossakowski
+ * @copyright Copyright © 2019-2022, 2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -137,3 +137,11 @@ $zz['sql_association'] = 'SELECT /*_PREFIX_*/contacts_contacts.*
 		ON /*_PREFIX_*/categories.category_id = /*_PREFIX_*/contacts_contacts.relation_category_id
 ';
 $zz['sqlorder'] = ' ORDER BY /*_PREFIX_*/contacts.contact, sequence, main_contacts.contact';
+
+
+$zz['subselect']['sql'] = 'SELECT contacts_contacts.contact_id, contact
+	FROM contacts_contacts
+	LEFT JOIN contacts
+		ON contacts_contacts.main_contact_id = contacts.contact_id
+	WHERE contacts_contacts.published = "yes"
+	ORDER BY contact';
