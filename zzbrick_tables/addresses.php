@@ -43,6 +43,8 @@ $zz['fields'][3]['trim'] = true;
 $zz['fields'][3]['geocode'] = 'street_name';
 $zz['fields'][3]['class'] = 'block480a';
 
+$zz['fields'][12] = []; // street_no, if needed
+
 $zz['fields'][4]['field_name'] = 'postcode';
 $zz['fields'][4]['type'] = 'text';
 $zz['fields'][4]['placeholder'] = true;
