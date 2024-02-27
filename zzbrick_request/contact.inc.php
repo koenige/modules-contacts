@@ -14,33 +14,20 @@
 
 
 function mod_contacts_contact($params, $settings) {
-	if (isset($_GET['sendlogin']) AND isset($_POST['sendlogin'])) {
+	if (isset($_GET['sendlogin']) AND isset($_POST['sendlogin']))
 		return brick_format('%%% make sendlogin '.implode(' ', $params).' %%%');
-	}
 
-	$sql = 'SELECT contact_id, contact, contact_short, contact_abbr,
-			contacts.identifier, contacts.description, remarks
-			, SUBSTRING_INDEX(path, "/", -1) AS scope
-			, categories.parameters
-			, 1 AS alive
-			, start_date, end_date
-			, IFNULL(
-				TIMESTAMPDIFF(YEAR, start_date, IFNULL(CAST(IF(
-					SUBSTRING(end_date, -6) = "-00-00",
-					CONCAT(YEAR(end_date), "-01-01"), end_date) AS DATE
-				), CURDATE())),
-				YEAR(IFNULL(end_date, CURDATE())) - YEAR(start_date)
-			) AS age
-			, category_id, category
-			, country_id, country
-	    FROM contacts
-	    LEFT JOIN countries USING (country_id)
-	    LEFT JOIN categories
-	    	ON contacts.contact_category_id = categories.category_id
-	    WHERE contacts.identifier = "%s"';
+	$sql = 'SELECT contact_id
+		FROM contacts
+		WHERE contacts.identifier = "%s"';
 	$sql = sprintf($sql, wrap_db_escape(implode('/', $params)));
-	$data = wrap_db_fetch($sql);
+	$data = wrap_db_fetch($sql, 'contact_id');
 	if (!$data) return false;
+	if (count($data) !== 1) return false;
+
+	wrap_include_files('zzbrick_request_get/contactdata', 'contacts');
+	$data = mod_contacts_get_contactdata($data);
+	$data = reset($data);
 	$data[$data['scope']] = true;
 
 	// is there a more specific profile page?
@@ -78,14 +65,9 @@ function mod_contacts_contact($params, $settings) {
 		}
 	}
 
-	// contact details
-	$data += mf_contacts_contactdetails($data['contact_id']);
-	
 	// addresses
 	$data['addresses'] = mf_contacts_addresses($data['contact_id']);
 
-	// contacts_media
-	
 	// contacts_contacts
 	// @todo associations, depending on relations.parameters
 	$sql = 'SELECT cc_id, contact, cc.remarks, cc.sequence, relations.category AS relation
