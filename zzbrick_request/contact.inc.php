@@ -65,9 +65,6 @@ function mod_contacts_contact($params, $settings) {
 		}
 	}
 
-	// addresses
-	$data['addresses'] = mf_contacts_addresses($data['contact_id']);
-
 	// contacts_contacts
 	// @todo associations, depending on relations.parameters
 	$sql = 'SELECT cc_id, contact, cc.remarks, cc.sequence, relations.category AS relation
@@ -145,17 +142,6 @@ function mod_contacts_contact($params, $settings) {
 
 	$data = mod_contacts_contact_packages($data);
 	
-	// contacts_identifiers
-	$sql = 'SELECT contact_identifier_id, identifier, IF(current = "yes", 1, NULL) AS current
-			, category_id, category
-		FROM contacts_identifiers
-		LEFT JOIN categories
-			ON contacts_identifiers.identifier_category_id = categories.category_id
-		WHERE contact_id = %d
-		ORDER BY categories.sequence, categories.path, contacts_identifiers.identifier';
-	$sql = sprintf($sql, $data['contact_id']);
-	$data['identifiers'] = wrap_db_fetch($sql, 'contact_identifier_id');
-	
 	// duplicates?
 	$sql = 'SELECT contact_id, identifier
 		FROM contacts
@@ -195,12 +181,8 @@ function mod_contacts_contact($params, $settings) {
 			$data['masquerade_link'] = wrap_path('default_masquerade', $data['contact_id']);
 		}
 	}
-	if (count($params) !== 1) {
+	if (count($params) !== 1)
 		$data['deep'] = str_repeat('../', count($params) -1);
-	}
-	
-	// profiles
-	$data['profiles'] = wrap_profiles($data);
 
 	if ($data['scope'] === 'person') {
 		$page['title'] = trim((!empty($data['title_prefix']) ? $data['title_prefix'].' ' : '')

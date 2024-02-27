@@ -81,14 +81,44 @@ function mod_contacts_get_contactdata($data, $settings = [], $id_field_name = ''
 
 	// addresses
 	// @todo translations
-	$addresses[wrap_setting('lang')] = mf_contacts_addresses($ids);
+	$addresses = mf_contacts_addresses($ids);
+	foreach ($addresses as $contact_id => $contactaddresses)
+		$data[$contact_id]['addresses'] = $contactaddresses;
+
+	// contacts_identifiers
+	$identifiers[wrap_setting('lang')] = mf_contacts_identifiers($ids);
 
 	$data = wrap_data_merge($data, $contacts, $id_field_name, $lang_field_name);
 	$data = wrap_data_merge($data, $contactdetails, $id_field_name, $lang_field_name);
-	$data = wrap_data_merge($data, $addresses, $id_field_name, $lang_field_name);
+	$data = wrap_data_merge($data, $identifiers, $id_field_name, $lang_field_name);
 	
-	// addresses
-//	$data['addresses'] = mf_contacts_addresses($data['contact_id']);
-
+	foreach ($data as $contact_id => $line)
+		$data[$contact_id]['profiles'] = wrap_profiles($line);
+	
 	return $data;
 }	
+
+/**
+ * get identifiers per contact
+ *
+ * @param array $ids
+ * @return array
+ */
+function mf_contacts_identifiers($ids) {
+	$sql = 'SELECT contact_id, contact_identifier_id, identifier
+			, IF(current = "yes", 1, NULL) AS current
+			, category_id, category
+		FROM contacts_identifiers
+		LEFT JOIN categories
+			ON contacts_identifiers.identifier_category_id = categories.category_id
+		WHERE contact_id IN (%s)
+		ORDER BY categories.sequence, categories.path, contacts_identifiers.identifier';
+	$sql = sprintf($sql, implode(',', $ids));
+	$identifiers = wrap_db_fetch($sql, 'contact_identifier_id');
+	$identifiers = wrap_translate($identifiers, 'categories', 'category_id');
+	
+	$data = [];
+	foreach ($identifiers as $contact_identifier_id => $identifier)
+		$data[$identifier['contact_id']]['identifiers'][$contact_identifier_id] = $identifier;
+	return $data;
+}
