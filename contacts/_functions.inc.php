@@ -86,7 +86,7 @@ function mf_contacts_addresses($contact_ids, $restrict_to = false) {
 		LEFT JOIN /*_PREFIX_*/countries USING (country_id)
 		LEFT JOIN /*_PREFIX_*/categories
 			ON /*_PREFIX_*/categories.category_id = /*_PREFIX_*/addresses.address_category_id
-		WHERE contact_id IN (%d)
+		WHERE contact_id IN (%s)
 		ORDER BY contact_id, categories.sequence, postcode, address';
 	$sql = sprintf($sql, implode(',', $ids));
 	$addresses = wrap_db_fetch($sql, 'address_id');
