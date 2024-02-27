@@ -34,7 +34,7 @@ function mod_contacts_get_contactdata($data, $settings = [], $id_field_name = ''
 			contacts.identifier, contacts.description, remarks
 			, SUBSTRING_INDEX(path, "/", -1) AS scope
 			, categories.parameters
-			, IF (ISNULL(date_end), 1, NULL) AS alive
+			, IF (ISNULL(end_date), 1, NULL) AS alive
 			, start_date, end_date
 			, IFNULL(
 				TIMESTAMPDIFF(YEAR, start_date, IFNULL(CAST(IF(
