@@ -182,7 +182,7 @@ function mf_contacts_relations($ids) {
 			ON contacts.contact_id = persons.contact_id
 		LEFT JOIN categories contact_categories
 			ON contacts.contact_category_id = contact_categories.category_id
-		WHERE cc.contact_id = (%s) 
+		WHERE cc.contact_id IN (%s) 
 		ORDER BY sequence, contact';
 	$sql = sprintf($sql
 		, implode(',', $ids)
