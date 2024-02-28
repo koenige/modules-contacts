@@ -198,8 +198,9 @@ function mf_contacts_relations($ids) {
 	$i = 0;
 	foreach ($relations as $cc_id => $relation) {
 		// set index, set relation
-		if (!array_key_exists($relation['relation'], $indices)) {
-			$indices[$relation['relation']] = $i++;
+		$index = sprintf('%s-%s', $relation['relation_type'], $relation['relation']);
+		if (!array_key_exists($index, $indices)) {
+			$indices[$index] = $i++;
 			$this_rel = [];
 			$this_rel['relation'] = $relation['relation'];
 			// relation parameters
@@ -209,12 +210,12 @@ function mf_contacts_relations($ids) {
 			if (!empty($rparams[$relation['relation_type']]['relation']))
 				$this_rel['relation'] = $rparams[$relation['relation_type']]['relation'];
 			$this_rel['relation_parameters'] = $rparams;
-			$data[$relation['my_contact_id']][$relation['relation_type']][$indices[$relation['relation']]] = $this_rel;
+			$data[$relation['my_contact_id']][$relation['relation_type']][$indices[$index]] = $this_rel;
 		}
 		$relation['profile_path'] = mf_contacts_relations_profile($relation);
 		unset($relation['relation_parameters']);
 		unset($relation['category_parameters']);
-		$data[$relation['my_contact_id']][$relation['relation_type']][$indices[$relation['relation']]]['contacts'][$cc_id] = $relation;
+		$data[$relation['my_contact_id']][$relation['relation_type']][$indices[$index]]['contacts'][$cc_id] = $relation;
 	}
 	return $data;
 }
