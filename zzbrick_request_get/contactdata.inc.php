@@ -145,6 +145,7 @@ function mf_contacts_relations($ids) {
 			, contact_categories.category AS category
 			, contact_categories.parameters AS category_parameters
 			, relations.parameters AS relation_parameters
+			, IF(contacts.end_date, NULL, 1) AS alive
 			, IF(persons.date_of_death, 1, NULL) AS dead
 			, role
 		FROM contacts_contacts cc
@@ -171,6 +172,7 @@ function mf_contacts_relations($ids) {
 			, contact_categories.category AS category
 			, contact_categories.parameters AS category_parameters
 			, relations.parameters AS relation_parameters
+			, IF(contacts.end_date, NULL, 1) AS alive
 			, IF(persons.date_of_death, 1, NULL) AS dead
 			, role
 		FROM contacts_contacts cc
