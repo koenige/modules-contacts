@@ -85,12 +85,13 @@ function mod_contacts_get_contactdata($data, $settings = [], $id_field_name = ''
 	foreach ($addresses as $contact_id => $contactaddresses)
 		$data[$contact_id]['addresses'] = $contactaddresses;
 
-	// contacts_identifiers
 	$identifiers[wrap_setting('lang')] = mf_contacts_identifiers($ids);
+	$relations[wrap_setting('lang')] = mf_contacts_relations($ids);	
 
 	$data = wrap_data_merge($data, $contacts, $id_field_name, $lang_field_name);
 	$data = wrap_data_merge($data, $contactdetails, $id_field_name, $lang_field_name);
 	$data = wrap_data_merge($data, $identifiers, $id_field_name, $lang_field_name);
+	$data = wrap_data_merge($data, $relations, $id_field_name, $lang_field_name);
 	
 	foreach ($data as $contact_id => $line)
 		$data[$contact_id]['profiles'] = wrap_profiles($line);
@@ -121,4 +122,119 @@ function mf_contacts_identifiers($ids) {
 	foreach ($identifiers as $contact_identifier_id => $identifier)
 		$data[$identifier['contact_id']]['identifiers'][$contact_identifier_id] = $identifier;
 	return $data;
+}
+
+/**
+ * get relations (associations, parents, children) per contact
+ *
+ * @param array $ids
+ * @return array
+ */
+function mf_contacts_relations($ids) {
+	$sql = 'SELECT CONCAT(cc_id, "-", cc.main_contact_id) AS cc_id
+			, cc.main_contact_id AS my_contact_id
+			, cc.remarks, cc.sequence, contact
+			, relations.category AS relation
+			, IF(relations.parameters LIKE "%%&association=1%%"
+				, "associations"
+				, "parents"
+			) AS relation_type
+			, relations.path AS relation_path
+			, identifier
+			, contact_categories.category_id AS contact_category_id
+			, contact_categories.category AS category
+			, contact_categories.parameters AS category_parameters
+			, relations.parameters AS relation_parameters
+			, IF(persons.date_of_death, 1, NULL) AS dead
+			, role
+		FROM contacts_contacts cc
+		LEFT JOIN categories relations
+			ON cc.relation_category_id = relations.category_id
+		LEFT JOIN contacts
+			ON cc.contact_id = contacts.contact_id
+		LEFT JOIN persons
+			ON contacts.contact_id = persons.contact_id
+		LEFT JOIN categories contact_categories
+			ON contacts.contact_category_id = contact_categories.category_id
+		WHERE cc.main_contact_id IN (%s) 
+		UNION SELECT CONCAT(cc_id, "-", cc.contact_id) AS cc_id
+			, cc.contact_id AS my_contact_id
+			, cc.remarks, cc.sequence, contact
+			, relations.category AS relation
+			, IF(relations.parameters LIKE "%%&association=1%%"
+				, "associations"
+				, "children"
+			) AS relation_type
+			, relations.path AS relation_path
+			, identifier
+			, contact_categories.category_id AS contact_category_id
+			, contact_categories.category AS category
+			, contact_categories.parameters AS category_parameters
+			, relations.parameters AS relation_parameters
+			, IF(persons.date_of_death, 1, NULL) AS dead
+			, role
+		FROM contacts_contacts cc
+		LEFT JOIN categories relations
+			ON cc.relation_category_id = relations.category_id
+		LEFT JOIN contacts
+			ON cc.main_contact_id = contacts.contact_id
+		LEFT JOIN persons
+			ON contacts.contact_id = persons.contact_id
+		LEFT JOIN categories contact_categories
+			ON contacts.contact_category_id = contact_categories.category_id
+		WHERE cc.contact_id = (%s) 
+		ORDER BY sequence, contact';
+	$sql = sprintf($sql
+		, implode(',', $ids)
+		, implode(',', $ids)
+	);
+	$relations = wrap_db_fetch($sql, 'cc_id');
+	$relations = wrap_translate($relations, 'categories', 'contact_category_id');
+	
+	$data = [];
+	$indices = [];
+	$i = 0;
+	foreach ($relations as $cc_id => $relation) {
+		// set index, set relation
+		if (!array_key_exists($relation['relation'], $indices)) {
+			$indices[$relation['relation']] = $i++;
+			$data[$relation['my_contact_id']][$relation['relation_type']][$indices[$relation['relation']]] = [];
+			$this_rel = &$data[$relation['my_contact_id']][$relation['relation_type']][$indices[$relation['relation']]];
+			$this_rel['relation'] = $relation['relation'];
+			// relation parameters
+			$rparams = [];
+			if ($relation['relation_parameters'])
+				parse_str($relation['relation_parameters'], $rparams);
+			if (!empty($rparams[$relation['relation_type']]['relation']))
+				$this_rel['relation'] = $rparams[$relation['relation_type']]['relation'];
+			$this_rel['relation_parameters'] = $rparams;
+		}
+		$relation['profile_path'] = mf_contacts_relations_profile($relation);
+		unset($relation['relation_parameters']);
+		unset($relation['category_parameters']);
+		$this_rel['contacts'][$cc_id] = $relation;
+	}
+	return $data;
+}
+
+/**
+ * get contacts profile for relations
+ *
+ * @param array $relation
+ * @return string
+ */
+function mf_contacts_relations_profile($relation) {
+	$cparams = [];
+	if (!$relation['category_parameters']) return '';
+	
+	parse_str($relation['category_parameters'], $cparams);
+	if (!empty($cparams['type']) AND wrap_setting('contacts_profile_path['.$cparams['type'].']'))
+		return wrap_setting('base').sprintf(
+			wrap_setting('contacts_profile_path['.$cparams['type'].']'), $relation['identifier']
+		);
+	if (wrap_setting('contacts_profile_path[*]'))
+		return wrap_setting('base').sprintf(
+			wrap_setting('contacts_profile_path[*]'), $relation['identifier']
+		);
+	return '';
 }

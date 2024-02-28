@@ -64,80 +64,10 @@ function mod_contacts_contact($params, $settings) {
 			break;
 		}
 	}
-
-	// contacts_contacts
-	// @todo associations, depending on relations.parameters
-	$sql = 'SELECT cc_id, contact, cc.remarks, cc.sequence, relations.category AS relation
-			, IF(relations.parameters LIKE "%%&association=1%%"
-				, "associations"
-				, IF(cc.main_contact_id = %d, "parents", "children")
-			) AS relation_type
-			, relations.path AS relation_path
-			, identifier
-			, contact_categories.category AS category
-			, contact_categories.parameters AS category_parameters
-			, relations.parameters AS relation_parameters
-			, IF(persons.date_of_death, 1, NULL) AS dead
-			, role
-		FROM contacts_contacts cc
-		LEFT JOIN categories relations
-			ON cc.relation_category_id = relations.category_id
-		LEFT JOIN contacts
-			ON (IF(cc.main_contact_id = %d, cc.contact_id, cc.main_contact_id)) = contacts.contact_id
-		LEFT JOIN persons
-			ON contacts.contact_id = persons.contact_id
-		LEFT JOIN categories contact_categories
-			ON contacts.contact_category_id = contact_categories.category_id
-		WHERE cc.main_contact_id = %d
-		OR cc.contact_id = %d
-		ORDER BY cc.sequence, contact';
-	$sql = sprintf($sql
-		, $data['contact_id']
-		, $data['contact_id']
-		, $data['contact_id']
-		, $data['contact_id']
-	);
-	$data['relations'] = wrap_db_fetch($sql, ['relation', 'cc_id'], 'list relation contacts');
-	$data['relations'] = array_values($data['relations']);
-	foreach ($data['relations'] as $index => $relation_types) {
-		$relation = [];
-		foreach ($relation_types['contacts'] as $cc_id => $contactrelation) {
-			$rparams = [];
-			if ($contactrelation['relation_parameters'])
-				parse_str($contactrelation['relation_parameters'], $rparams);
-			if (!empty($rparams[$contactrelation['relation_type']]['relation'])) {
-				$data['relations'][$index]['relation']
-					= $rparams[$contactrelation['relation_type']]['relation'];
-			}
-			$cparams = [];
-			if ($contactrelation['category_parameters'])
-				parse_str($contactrelation['category_parameters'], $cparams);
-			if (!empty($cparams['type']) AND wrap_setting('contacts_profile_path['.$cparams['type'].']')) {
-				$data['relations'][$index]['contacts'][$cc_id]['profile_path'] = wrap_setting('base').sprintf(
-					wrap_setting('contacts_profile_path['.$cparams['type'].']'), $contactrelation['identifier']
-				);
-			} elseif (wrap_setting('contacts_profile_path[*]')) {
-				$data['relations'][$index]['contacts'][$cc_id]['profile_path'] = wrap_setting('base').sprintf(
-					wrap_setting('contacts_profile_path[*]'), $contactrelation['identifier']
-				);
-			} else {
-				continue;
-			}
-			if (!$relation) {
-				$relation = $contactrelation;
-				$relation['relation_parameters'] = $rparams;
-			}
-		}
-		if ($relation['relation_type'] !== 'parents') continue;
-		$type = !empty($relation['relation_parameters']['alias'])
-			? $relation['relation_parameters']['alias'] : $relation['relation_path'];
-		$type = substr($type, strrpos($type, '/') + 1);
-		if (!wrap_setting('contacts_relations_path['.$type.']'))
-			$success = wrap_setting_path('contacts_relations_path['.$type.']', 'forms contacts-contacts', ['scope' => $type]);
-		if (wrap_setting('contacts_relations_path['.$type.']'))
-			$data['relations'][$index]['relations_path'] = wrap_setting('base').sprintf(
-				wrap_setting('contacts_relations_path['.$type.']'), $params[0]
-			);
+	
+	if (!empty($data['parents'])) {
+		foreach ($data['parents'] as $index => $parents)
+			$data['parents'][$index]['relations_path'] = mod_contacts_contact_relations_path($parents, $params[0]);
 	}
 
 	$data = mod_contacts_contact_packages($data);
@@ -238,4 +168,22 @@ function mod_contacts_contact_template($data) {
 	}
 	$tpl .= wrap_template('contact', [], 'error');
 	return $tpl;
+}
+
+/**
+ * get relations path per category
+ *
+ * @param array $relation
+ * @param string $identifier
+ * @return string
+ */
+function mod_contacts_contact_relations_path($relation, $identifier) {
+	$type = $relation['relation_parameters']['alias'] ?? $relation['relation_path'];
+	$type = substr($type, strrpos($type, '/') + 1);
+	if (!wrap_setting('contacts_relations_path['.$type.']'))
+		wrap_setting_path('contacts_relations_path['.$type.']', 'forms contacts-contacts', ['scope' => $type]);
+	if (!wrap_setting('contacts_relations_path['.$type.']')) return '';
+	return wrap_setting('base').sprintf(
+		wrap_setting('contacts_relations_path['.$type.']'), $identifier
+	);
 }

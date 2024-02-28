@@ -71,7 +71,33 @@
 </td></tr>
 %%% condition endif %%%
 %%% block contact_4 %%%
-%%% loop relations %%%
+%%% loop associations %%%
+<tr><th>%%% item relation %%%
+%%% condition if relations_path %%%
+<p class="edit"><small><a href="%%% item relations_path %%%">%%% text Edit %%%</a></small></p>
+%%% condition endif %%%
+</th><td>
+<ul>
+%%% loop contacts %%%
+<li>%%% item profile_path "<a href='%s'>" %%%%%% item contact %%%%%% item profile_path </a> %%%%%% item dead " †" %%% %%% item role %%% %%% item remarks %%%</li>
+%%% loop end %%%
+</ul>
+</td></tr>
+%%% loop end %%%
+%%% loop children %%%
+<tr><th>%%% item relation %%%
+%%% condition if relations_path %%%
+<p class="edit"><small><a href="%%% item relations_path %%%">%%% text Edit %%%</a></small></p>
+%%% condition endif %%%
+</th><td>
+<ul>
+%%% loop contacts %%%
+<li>%%% item profile_path "<a href='%s'>" %%%%%% item contact %%%%%% item profile_path </a> %%%%%% item dead " †" %%% %%% item role %%% %%% item remarks %%%</li>
+%%% loop end %%%
+</ul>
+</td></tr>
+%%% loop end %%%
+%%% loop parents %%%
 <tr><th>%%% item relation %%%
 %%% condition if relations_path %%%
 <p class="edit"><small><a href="%%% item relations_path %%%">%%% text Edit %%%</a></small></p>
