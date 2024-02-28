@@ -137,7 +137,7 @@ function mf_contacts_relations($ids) {
 			, relations.category AS relation
 			, IF(relations.parameters LIKE "%%&association=1%%"
 				, "associations"
-				, "parents"
+				, "children"
 			) AS relation_type
 			, relations.path AS relation_path
 			, identifier
@@ -163,7 +163,7 @@ function mf_contacts_relations($ids) {
 			, relations.category AS relation
 			, IF(relations.parameters LIKE "%%&association=1%%"
 				, "associations"
-				, "children"
+				, "parents"
 			) AS relation_type
 			, relations.path AS relation_path
 			, identifier
@@ -198,8 +198,7 @@ function mf_contacts_relations($ids) {
 		// set index, set relation
 		if (!array_key_exists($relation['relation'], $indices)) {
 			$indices[$relation['relation']] = $i++;
-			$data[$relation['my_contact_id']][$relation['relation_type']][$indices[$relation['relation']]] = [];
-			$this_rel = &$data[$relation['my_contact_id']][$relation['relation_type']][$indices[$relation['relation']]];
+			$this_rel = [];
 			$this_rel['relation'] = $relation['relation'];
 			// relation parameters
 			$rparams = [];
@@ -208,11 +207,12 @@ function mf_contacts_relations($ids) {
 			if (!empty($rparams[$relation['relation_type']]['relation']))
 				$this_rel['relation'] = $rparams[$relation['relation_type']]['relation'];
 			$this_rel['relation_parameters'] = $rparams;
+			$data[$relation['my_contact_id']][$relation['relation_type']][$indices[$relation['relation']]] = $this_rel;
 		}
 		$relation['profile_path'] = mf_contacts_relations_profile($relation);
 		unset($relation['relation_parameters']);
 		unset($relation['category_parameters']);
-		$this_rel['contacts'][$cc_id] = $relation;
+		$data[$relation['my_contact_id']][$relation['relation_type']][$indices[$relation['relation']]]['contacts'][$cc_id] = $relation;
 	}
 	return $data;
 }
