@@ -26,8 +26,9 @@ function mod_contacts_contact($params, $settings) {
 	if (count($data) !== 1) return false;
 
 	wrap_include_files('zzbrick_request_get/contactdata', 'contacts');
-	$data = mod_contacts_get_contactdata($data);
-	$data = reset($data);
+	$contacts = mod_contacts_get_contactdata($data);
+	$data = reset($contacts);
+	$data['templates'] = $contacts['templates'] ?? [];
 	$data[$data['scope']] = true;
 
 	// is there a more specific profile page?
@@ -70,8 +71,6 @@ function mod_contacts_contact($params, $settings) {
 			$data['parents'][$index]['relations_path'] = mod_contacts_contact_relations_path($parents, $params[0]);
 	}
 
-	$data = mod_contacts_contact_packages($data);
-	
 	// duplicates?
 	$sql = 'SELECT contact_id, identifier
 		FROM contacts
@@ -131,27 +130,6 @@ function mod_contacts_contact($params, $settings) {
 }
 
 /**
- * get further contact data from modules
- *
- * @param array $data
- * @return array
- */
-function mod_contacts_contact_packages($data) {
-	$files = wrap_include_files('contact');
-	if (!$files) {
-		$data['templates'] = [];
-		return $data;
-	}
-	foreach (array_keys($files) as $package) {
-		wrap_package_activate($package);
-		$function = sprintf('mf_%s_contact', $package);
-		if (!function_exists($function)) continue;
-		$data = $function($data);
-	}
-	return $data;
-}
-
-/**
  * add template blocks from modules
  *
  * @param array $data
@@ -160,7 +138,7 @@ function mod_contacts_contact_packages($data) {
 function mod_contacts_contact_template($data) {
 	$tpl = '';
 	foreach ($data['templates'] as $block => $templates) {
-		$tpl = '%%% block definition '.$block.' %%%'."\n";
+		$tpl .= '%%% block definition '.$block.' %%%'."\n";
 		foreach ($templates as $template) {
 			$tpl .= wrap_template($template, [], 'error');
 		}

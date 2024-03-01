@@ -92,6 +92,8 @@ function mod_contacts_get_contactdata($data, $settings = [], $id_field_name = ''
 	$data = wrap_data_merge($data, $contactdetails, $id_field_name, $lang_field_name);
 	$data = wrap_data_merge($data, $identifiers, $id_field_name, $lang_field_name);
 	$data = wrap_data_merge($data, $relations, $id_field_name, $lang_field_name);
+
+	$data = mod_contacts_contactdata_packages($data, $ids);
 	
 	foreach ($data as $contact_id => $line)
 		$data[$contact_id]['profiles'] = wrap_profiles($line);
@@ -245,4 +247,26 @@ function mf_contacts_relations_profile($relation) {
 			wrap_setting('contacts_profile_path[*]'), $relation['identifier']
 		);
 	return '';
+}
+
+/**
+ * get further contact data from modules
+ *
+ * @param array $data
+ * @param array $ids
+ * @return array
+ */
+function mod_contacts_contactdata_packages($data, $ids) {
+	$files = wrap_include_files('contact');
+	if (!$files) {
+		$data['templates'] = [];
+		return $data;
+	}
+	foreach (array_keys($files) as $package) {
+		wrap_package_activate($package);
+		$function = sprintf('mf_%s_contact', $package);
+		if (!function_exists($function)) continue;
+		$data = $function($data, $ids);
+	}
+	return $data;
 }
