@@ -95,8 +95,10 @@ function mod_contacts_get_contactdata($data, $settings = [], $id_field_name = ''
 
 	$data = mod_contacts_contactdata_packages($data, $ids);
 	
-	foreach ($data as $contact_id => $line)
+	foreach ($data as $contact_id => $line) {
+		if (!is_numeric($contact_id)) continue;
 		$data[$contact_id]['profiles'] = wrap_profiles($line);
+	}
 	
 	return $data;
 }	
