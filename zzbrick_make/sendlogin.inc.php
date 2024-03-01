@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2021-2022 Gustaf Mossakowski
+ * @copyright Copyright © 2021-2022, 2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -39,9 +39,10 @@ function mod_contacts_make_sendlogin($params, $settings) {
 		, wrap_category_id('provider/e-mail')
 	);
 	$contact = wrap_db_fetch($sql);
-	if (!$contact) {
-		wrap_error('Could not find contact '.wrap_html_escape($params[0]), E_USER_ERROR);
-	}
+	if (!$contact)
+		wrap_error(wrap_text(
+			'Contact %s was not found.', ['values' => [wrap_html_escape($params[0])]]
+		), E_USER_ERROR);
 
 	if (!empty($_SESSION['logged_in'])) {
 		$sql = 'SELECT identification AS e_mail, identifier, contact
@@ -61,16 +62,13 @@ function mod_contacts_make_sendlogin($params, $settings) {
 	$mail['to']['name'] = $contact['contact'];
 	$mail['to']['e_mail'] = $contact['e_mail'];
 	$contact['addlogin_hash'] = wrap_set_hash($contact['contact_id'].'-'.$contact['identifier'], 'addlogin_key');
-	$template = 'addlogin-mail';
-	if (!empty($settings['lang']))
-		$template .= '-'.$settings['lang']; // add -informal this way, too
-	$mail['message'] = wrap_template($template, $contact);
+	$mail['message'] = wrap_template('addlogin-mail', $contact);
 	$success = wrap_mail($mail);
 	if (!$success) {
-		wrap_error(sprintf(
-			'Unable to send login link to contact ID %d (%s). Mail was not sent.',
-			$contact['contact_id'], $contact['contact']), E_USER_ERROR
-		);
+		wrap_error(wrap_text(
+			'The login link could not be emailed to contact %s (ID %d).',
+			['values' => [$contact['contact_id'], $contact['contact']]
+		), E_USER_ERROR);
 	}
 	if (array_key_exists('redirect', $settings) AND !$settings['redirect']) return;
 	return wrap_redirect_change();
