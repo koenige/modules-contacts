@@ -219,6 +219,7 @@ function mf_contacts_relations($ids) {
 			if (!empty($rparams[$relation['relation_type']]['relation']))
 				$this_rel['relation'] = $rparams[$relation['relation_type']]['relation'];
 			$this_rel['relation_parameters'] = $rparams;
+			$this_rel['relation_path'] = $relation['relation_path'];
 			$data[$relation['my_contact_id']][$relation['relation_type']][$indices[$index]] = $this_rel;
 		}
 		$relation['profile_path'] = mf_contacts_relations_profile($relation);
