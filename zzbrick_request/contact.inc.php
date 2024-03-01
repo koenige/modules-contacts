@@ -156,8 +156,6 @@ function mod_contacts_contact_template($data) {
  * @return string
  */
 function mod_contacts_contact_relations_path($relation, $identifier) {
-	$type = $relation['relation_parameters']['alias'] ?? $relation['relation_path'];
-	$type = substr($type, strrpos($type, '/') + 1);
 	if (!wrap_setting('contacts_relations_path['.$type.']'))
 		wrap_setting_path('contacts_relations_path['.$type.']', 'forms contacts-contacts', ['scope' => $type]);
 	if (!wrap_setting('contacts_relations_path['.$type.']')) return '';

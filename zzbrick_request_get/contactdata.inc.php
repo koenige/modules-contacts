@@ -143,7 +143,7 @@ function mf_contacts_relations($ids) {
 				, "associations"
 				, "children"
 			) AS relation_type
-			, relations.path AS relation_path
+			, SUBSTRING_INDEX(IFNULL(SUBSTRING_INDEX(SUBSTRING_INDEX(relations.parameters, "&alias=", -1), "&", 1), relations.path), "/", -1) AS relation_path
 			, identifier
 			, contact_categories.category_id AS contact_category_id
 			, contact_categories.category AS category
@@ -171,7 +171,7 @@ function mf_contacts_relations($ids) {
 				, "associations"
 				, "parents"
 			) AS relation_type
-			, relations.path AS relation_path
+			, SUBSTRING_INDEX(IFNULL(SUBSTRING_INDEX(SUBSTRING_INDEX(relations.parameters, "&alias=", -1), "&", 1), relations.path), "/", -1) AS relation_path
 			, identifier
 			, contact_categories.category_id AS contact_category_id
 			, contact_categories.category AS category
