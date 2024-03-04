@@ -62,8 +62,8 @@ function mf_contacts_add_details($data) {
 	$values['POST']['provider_category_id'] = $data['provider_category_id'] ?? wrap_category_id('provider/'.$data['provider_category']);
 	$ops = zzform_multi('contactdetails', $values);
 	if (!$ops['id']) {
-		wrap_error(wrap_text('Unable to add %s address %s to contact ID %d, Reason: %s'
-			, ['values' => [$path, $data['e_mail'], $data['contact_id'], json_encode($ops['error'])]]
+		wrap_error(wrap_text('Unable to add %s %s to contact ID %d, Reason: %s'
+			, ['values' => [$path, $data['identification'], $data['contact_id'], json_encode($ops['error'])]]
 		));
 		return 0;
 	}
