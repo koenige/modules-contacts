@@ -66,9 +66,9 @@ function mod_contacts_contact($params, $settings) {
 		}
 	}
 	
-	if (!empty($data['parents'])) {
-		foreach ($data['parents'] as $index => $parents)
-			$data['parents'][$index]['relations_path'] = mod_contacts_contact_relations_path($parents, $params[0]);
+	if (!empty($data['children'])) {
+		foreach ($data['children'] as $index => $parents)
+			$data['children'][$index]['relations_path'] = mod_contacts_contact_relations_path($parents, $params[0]);
 	}
 
 	// duplicates?
