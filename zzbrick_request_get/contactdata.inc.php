@@ -216,8 +216,9 @@ function mf_contacts_relations($ids) {
 			$rparams = [];
 			if ($relation['relation_parameters'])
 				parse_str($relation['relation_parameters'], $rparams);
-			if (!empty($rparams[$relation['relation_type']]['relation']))
-				$this_rel['relation'] = $rparams[$relation['relation_type']]['relation'];
+			$inverse_relation = mf_contacts_relations_inverse($relation['relation_type']);
+			if (!empty($rparams[$inverse_relation]['relation']))
+				$this_rel['relation'] = $rparams[$inverse_relation]['relation'];
 			$this_rel['relation_parameters'] = $rparams;
 			$this_rel['relation_path'] = $relation['relation_path'];
 			$data[$relation['my_contact_id']][$relation['relation_type']][$indices[$index]] = $this_rel;
@@ -272,4 +273,18 @@ function mod_contacts_contactdata_packages($data, $ids) {
 		$data = $function($data, $ids);
 	}
 	return $data;
+}
+
+/**
+ * show inverse relation
+ *
+ * @param string $relation
+ * @return string
+ */
+function mf_contacts_relations_inverse($relation) {
+	switch ($relation) {
+		case 'children': return 'parents';
+		case 'parents': return 'children';
+	}
+	return $relation;
 }
