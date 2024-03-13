@@ -67,7 +67,7 @@ function mod_contacts_make_sendlogin($params, $settings) {
 	if (!$success) {
 		wrap_error(wrap_text(
 			'The login link could not be emailed to contact %s (ID %d).',
-			['values' => [$contact['contact_id'], $contact['contact']]
+			['values' => [$contact['contact_id'], $contact['contact']]]
 		), E_USER_ERROR);
 	}
 	if (array_key_exists('redirect', $settings) AND !$settings['redirect']) return;
