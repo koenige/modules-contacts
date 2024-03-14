@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2009, 2016-2017, 2020, 2023 Gustaf Mossakowski
+ * @copyright Copyright © 2009, 2016-2017, 2020, 2023-2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -23,7 +23,6 @@ $zz['fields'][1]['type'] = 'id';
 $zz['fields'][2]['field_name'] = 'contact_id';
 $zz['fields'][2]['type'] = 'select';
 $zz['fields'][2]['sql'] = 'SELECT contact_id, contact, identifier
-		, contact AS veranstaltungsort
 	FROM contacts
 	ORDER BY identifier';
 $zz['fields'][2]['display_field'] = 'contact';
