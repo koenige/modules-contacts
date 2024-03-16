@@ -6,7 +6,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2018-2023 Gustaf Mossakowski
+ * @copyright Copyright © 2018-2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -56,3 +56,5 @@
 /* 2023-06-14-1 */	UPDATE webpages SET content = REPLACE(content, '%%% forms contacts-contacts * ', '%%% forms contacts-contacts * *=contact ') WHERE content LIKE '%\%\%\% forms contacts-contacts * %';
 /* 2023-08-28-1 */	ALTER TABLE `contacts_categories` ADD `type_category_id` int unsigned NOT NULL, ADD `sequence` tinyint unsigned NULL AFTER `type_category_id`, ADD `last_update` timestamp NOT NULL AFTER `sequence`;
 /* 2023-08-28-2 */	INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'categories', 'category_id', (SELECT DATABASE()), 'contacts_categories', 'contact_category_id', 'type_category_id', 'no-delete');
+/* 2024-03-15-1 */	ALTER TABLE `contacts_categories` ADD UNIQUE `contact_id_category_id` (`contact_id`, `category_id`), ADD INDEX `category_id` (`category_id`), ADD INDEX `type_category_id` (`type_category_id`), DROP INDEX `contact_id`;
+/* 2024-03-16-1 */	ALTER TABLE `contacts_categories` CHANGE `last_update` `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP;
