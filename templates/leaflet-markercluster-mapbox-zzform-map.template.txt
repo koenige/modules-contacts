@@ -6,7 +6,7 @@
 # https://www.zugzwang.org/modules/contacts
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2018-2020 Gustaf Mossakowski
+# @copyright Copyright © 2018-2020, 2024 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 <div id="map"></div>
@@ -15,11 +15,7 @@
 <script src="%%% setting behaviour_path %%%/leaflet-markercluster%%% setting leaflet_dist_path %%%/leaflet.markercluster.js"></script>
 <script src="%%% item geojson %%%"></script>
 <script>
-
-	var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/%%% setting mapbox_user %%%/%%% setting mapbox_style %%%/tiles/512/{z}/{x}/{y}?access_token=%%% setting mapbox_access_token %%%', {
-		maxZoom: 18, tileSize: 512,  zoomOffset: -1,
-		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-	});
+	%%% template leaflet-tiles-mapbox %%%
 
 	var map = L.map('map').addLayer(tiles);
 	var markers = L.markerClusterGroup({maxClusterRadius: 20});
