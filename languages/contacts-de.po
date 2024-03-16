@@ -610,10 +610,6 @@ msgstr "Profile"
 msgid "Registration"
 msgstr "Registrierung"
 
-#: templates/leaflet-markercluster-mapbox-zzform-map.template.txt
-msgid "Further Information"
-msgstr "Weitere Informationen"
-
 msgid "and"
 msgstr "und"
 
