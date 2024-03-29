@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2015-2016, 2018-2023 Gustaf Mossakowski
+ * @copyright Copyright © 2015-2016, 2018-2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -97,23 +97,24 @@ function mod_contacts_contactverification($params, $settings) {
 	$cv = wrap_db_fetch($sql);
 
 	wrap_setting('log_username', $cv['identifier']);
-	$values = [];
-	$values['POST']['cv_id'] = $cv['cv_id'];
 	if ($action === 'confirm') {
+		$values = [];
+		$values['POST']['cv_id'] = $cv['cv_id'];
 		$values['action'] = 'update';
 		$values['POST']['verification_date'] = date('Y-m-d H:i:s');
 		$values['POST']['verification_ip'] = wrap_setting('remote_ip');
 		$values['POST']['status'] = 'confirmed per link';
+		$ops = zzform_multi('contacts-verifications', $values);
+		if (!$ops['id']) {
+			wrap_error(sprintf(
+				'%s ID %s could not be updated. %s',
+				$form['category'], $data['contact_id'], implode(', ', $ops['error'])
+			), E_USER_ERROR);
+		}
 	} else {
-		$values['action'] = 'delete';
+		zzform_delete('contacts_verifications', $cv['cv_id'], E_USER_ERROR);
 	}
-	$ops = zzform_multi('contacts-verifications', $values);
-	if (!$ops['id']) {
-		wrap_error(sprintf(
-			'%s ID %s could not be %sd. %s',
-			$form['category'], $data['contact_id'], $values['action'], implode(', ', $ops['error'])
-		), E_USER_ERROR);
-	}
+
 	$form[$action] = true;
 
 	$page['text'] = wrap_template($tpl, $form);
