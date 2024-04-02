@@ -113,6 +113,10 @@ function mf_contacts_identifiers($ids) {
 	$sql = 'SELECT contact_id, contact_identifier_id, identifier
 			, IF(current = "yes", 1, NULL) AS current
 			, category_id, category
+			, IFNULL(
+				SUBSTRING_INDEX(SUBSTRING_INDEX(categories.parameters, "&alias=identifiers/", -1), "&", 1),
+				SUBSTRING_INDEX(categories.path, "/", -1)
+			) AS path
 		FROM contacts_identifiers
 		LEFT JOIN categories
 			ON contacts_identifiers.identifier_category_id = categories.category_id
