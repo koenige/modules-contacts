@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2014-2015, 2017-2018, 2021-2023 Gustaf Mossakowski
+ * @copyright Copyright © 2014-2015, 2017-2018, 2021-2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -71,6 +71,20 @@ $zz['fields'][3]['sql_character_set'][2] = 'utf8';
 $zz['fields'][3]['display_field'] = 'image';
 $zz['fields'][3]['group'] = 'folder';
 $zz['fields'][3]['exclude_from_search'] = true;
+
+if (in_array('activities', wrap_setting('modules'))) {
+	$zz['fields'][11]['field_name'] = 'formfield_id';
+	$zz['fields'][11]['type'] = 'select';
+	$zz['fields'][11]['sql'] = 'SELECT formfield_id
+			, CONCAT(event, " ", formfields.sequence)
+		FROM formfields
+		LEFT JOIN forms USING (form_id)
+		LEFT JOIN events USING (event_id)
+		ORDER BY identifier, formfields.sequence';
+	$zz['fields'][11]['exclude_from_search'] = true;
+	$zz['fields'][11]['hide_in_list'] = true;
+	$zz['fields'][11]['hide_in_form'] = true;
+}
 
 $zz['fields'][20]['field_name'] = 'last_update';
 $zz['fields'][20]['type'] = 'timestamp';
