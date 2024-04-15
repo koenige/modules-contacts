@@ -13,7 +13,7 @@
  */
 
 
-function mod_contacts_contactverification($params, $settings) {
+function mod_contacts_make_contactverification($params, $settings) {
 	wrap_setting('cache', false);
 	wrap_setting_add('extra_http_headers', 'X-Frame-Options: Deny');
 	wrap_setting_add('extra_http_headers', "Content-Security-Policy: frame-ancestors 'self'");
