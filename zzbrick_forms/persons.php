@@ -33,7 +33,7 @@ $zz['fields'][2]['hide_in_form'] = true;
 $zz['fields'][2]['hide_in_list'] = true;
 $zz['fields'][2]['function'] = 'mf_contacts_edit_contact_name';
 $zz['fields'][2]['fields'] = [
-	'persons.first_name', 'persons.name_particle', 'persons.last_name'
+	'persons.first_name', 'persons.name_particle', 'persons.last_name', 'contact_id'
 ];
 $zz['fields'][2]['export'] = false;
 unset($zz['fields'][2]['add_details_destination']);
