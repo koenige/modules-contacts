@@ -18,8 +18,6 @@ function mod_contacts_contactverification($params, $settings) {
 	wrap_setting_add('extra_http_headers', 'X-Frame-Options: Deny');
 	wrap_setting_add('extra_http_headers', "Content-Security-Policy: frame-ancestors 'self'");
 
-	$tpl = 'contact-verification';
-
 	$form = [];
 	$form['reminder'] = false;
 	$form['own_e_mail'] = $settings['e_mail'] ?? wrap_setting('own_e_mail');
@@ -54,7 +52,7 @@ function mod_contacts_contactverification($params, $settings) {
 
 	if (!$form['code']) {
 		$form['form'] = true;
-		$page['text'] = wrap_template($tpl, $form);
+		$page['text'] = wrap_template('contact-verification', $form);
 		return $page;
 	}
 
@@ -68,7 +66,7 @@ function mod_contacts_contactverification($params, $settings) {
 		$form['no_data'] = true;
 		$form['form'] = true;
 		$form['check_'.$action] = true;
-		$page['text'] = wrap_template($tpl, $form);
+		$page['text'] = wrap_template('contact-verification', $form);
 		return $page;
 	}
 	
@@ -80,12 +78,12 @@ function mod_contacts_contactverification($params, $settings) {
 		} else {
 			$form['form'] = true;
 		}
-		$page['text'] = wrap_template($tpl, $form);
+		$page['text'] = wrap_template('contact-verification', $form);
 		return $page;
 	}
 	
 	if (!$action) {
-		$page['text'] = wrap_template($tpl, $form);
+		$page['text'] = wrap_template('contact-verification', $form);
 		return $page;
 	}
 
@@ -98,25 +96,19 @@ function mod_contacts_contactverification($params, $settings) {
 
 	wrap_setting('log_username', $cv['identifier']);
 	if ($action === 'confirm') {
-		$values = [];
-		$values['POST']['cv_id'] = $cv['cv_id'];
-		$values['action'] = 'update';
-		$values['POST']['verification_date'] = date('Y-m-d H:i:s');
-		$values['POST']['verification_ip'] = wrap_setting('remote_ip');
-		$values['POST']['status'] = 'confirmed per link';
-		$ops = zzform_multi('contacts-verifications', $values);
-		if (!$ops['id']) {
-			wrap_error(sprintf(
-				'%s ID %s could not be updated. %s',
-				$form['category'], $data['contact_id'], implode(', ', $ops['error'])
-			), E_USER_ERROR);
-		}
+		$line = [
+			'cv_id' => $cv['cv_id'],
+			'verification_date' => date('Y-m-d H:i:s'),
+			'verification_ip' => wrap_setting('remote_ip'),
+			'status' => 'confirmed per link'
+		];
+		zzform_update('contacts-verifications', $line, E_USER_ERROR);
 	} else {
 		zzform_delete('contacts_verifications', $cv['cv_id'], E_USER_ERROR);
 	}
 
 	$form[$action] = true;
 
-	$page['text'] = wrap_template($tpl, $form);
+	$page['text'] = wrap_template('contact-verification', $form);
 	return $page;
 }
