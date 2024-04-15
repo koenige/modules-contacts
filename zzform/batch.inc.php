@@ -22,50 +22,24 @@
  * @return int
  */
 function mf_contacts_add_person($data, $error_code = E_USER_ERROR) {
-	$values = [];
-	$values['action'] = 'insert';
-	$values['POST']['contact_category_id'] = wrap_category_id('contact/person');
-	$values['ids'] = ['contact_id', 'contact_category_id', 'country_id'];
+	$line = [
+		'contact_category_id' => wrap_category_id('contact/person')
+	];
 	// @todo add persons IDs
 	foreach ($data as $field_name => $value) {
 		if ($field_name === 'e_mail') continue;
-		$values['POST']['persons'][0][$field_name] = $value;
+		$line['persons'][0][$field_name] = $value;
 	}
-	$ops = zzform_multi('persons', $values, 'forms');
-	if (!$ops['id']) {
-		wrap_error(wrap_text('Unable to add person (values %s), Reason: %s'
-			, ['values' => [json_encode($data), json_encode($ops['error'])]]
-		), $error_code);
-		return 0;
-	}
-	if (!empty($data['e_mail'])) {
-		$data['contact_id'] = $ops['id'];
-		$data['provider_category'] = 'e-mail';
-		$data['identification'] = $data['e_mail'];
-		mf_contacts_add_details($data);
-	}
-	return $ops['id'];
-}
+	$contact_id = zzform_insert('forms/persons', $line);
+	if (!$contact_id) return 0;
 
-/**
- * add contact details to a contact
- *
- * @param array $data
- * @return int
- */
-function mf_contacts_add_details($data) {
-	$values = [];
-	$values['action'] = 'insert';
-	$values['ids'] = ['contact_id', 'provider_category_id'];
-	$values['POST']['contact_id'] = $data['contact_id'];
-	$values['POST']['identification'] = $data['identification'];
-	$values['POST']['provider_category_id'] = $data['provider_category_id'] ?? wrap_category_id('provider/'.$data['provider_category']);
-	$ops = zzform_multi('contactdetails', $values);
-	if (!$ops['id']) {
-		wrap_error(wrap_text('Unable to add %s %s to contact ID %d, Reason: %s'
-			, ['values' => [$path, $data['identification'], $data['contact_id'], json_encode($ops['error'])]]
-		));
-		return 0;
+	if (!empty($data['e_mail'])) {
+		$line = [
+			'contact_id' => $contact_id,
+			'identification' => $data['e_mail'],
+			'provider_category_id' => wrap_category_id('provider/e-mail')
+		];
+		zzform_insert('contactdetails', $line);
 	}
-	return $ops['id'];
+	return $contact_id;
 }
