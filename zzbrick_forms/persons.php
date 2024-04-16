@@ -223,12 +223,12 @@ $zz['where']['contact_category_id'] = wrap_category_id('contact/person');
 unset($zz['filter'][1]); // contact_category
 
 if (wrap_setting('contacts_published')) {
-	$zz['filter'][1]['title'] = wrap_text('Published');
-	$zz['filter'][1]['identifier'] = 'published';
-	$zz['filter'][1]['type'] = 'list';
-	$zz['filter'][1]['where'] = 'published';
-	$zz['filter'][1]['selection']['yes'] = wrap_text('yes');
-	$zz['filter'][1]['selection']['no'] = wrap_text('no');
+	$zz['filter'][3]['title'] = wrap_text('Published');
+	$zz['filter'][3]['identifier'] = 'published';
+	$zz['filter'][3]['type'] = 'list';
+	$zz['filter'][3]['where'] = 'published';
+	$zz['filter'][3]['selection']['yes'] = wrap_text('yes');
+	$zz['filter'][3]['selection']['no'] = wrap_text('no');
 }
 
 $zz['filter'][2]['sql'] = wrap_edit_sql($zz['filter'][2]['sql'], 'WHERE', sprintf('contact_category_id = %d', wrap_category_id('contact/person')));
