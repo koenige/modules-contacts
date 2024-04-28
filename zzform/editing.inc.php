@@ -23,10 +23,14 @@ function mf_contacts_edit_contact_name($fields) {
 	$parts = ['first_name', 'name_particle', 'last_name'];
 	$values = [];
 	foreach ($parts as $part) {
-		if (!$fields['persons.'.$part]) continue;
-		$fields['persons.'.$part] = trim($fields['persons.'.$part]);
-		if (!$fields['persons.'.$part]) continue;
-		$values[] = $fields['persons.'.$part];
+		if (array_key_exists('persons.'.$part, $fields))
+			$key = 'persons.'.$part;
+		elseif (array_key_exists($part, $fields))
+			$key = $part;
+		else continue;
+		$fields[$key] = trim($fields[$key]);
+		if (!$fields[$key]) continue;
+		$values[] = $fields[$key];
 	}
 	if (!$values AND $fields['contact_id']) {
 		// batch operations might not have persons record if it is not updated
