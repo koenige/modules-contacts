@@ -265,16 +265,18 @@ function mf_contacts_relations_profile($relation) {
  * @return array
  */
 function mod_contacts_contactdata_packages($data, $ids) {
-	$files = wrap_include_files('contact');
+	$files = wrap_include('contact');
 	if (!$files) {
 		$data['templates'] = [];
 		return $data;
 	}
-	foreach (array_keys($files) as $package) {
+	foreach ($files['packages'] as $package)
 		wrap_package_activate($package);
-		$function = sprintf('mf_%s_contact', $package);
-		if (!function_exists($function)) continue;
-		$data = $function($data, $ids);
+
+	foreach ($files['functions'] as $function) {
+		if (empty($function['short'])) continue;
+		if ($function['short'] !== 'contact') continue;
+		$data = $function['function']($data, $ids);
 	}
 	return $data;
 }

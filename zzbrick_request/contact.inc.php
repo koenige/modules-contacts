@@ -25,7 +25,7 @@ function mod_contacts_contact($params, $settings) {
 	if (!$data) return false;
 	if (count($data) !== 1) return false;
 
-	wrap_include_files('zzbrick_request_get/contactdata', 'contacts');
+	wrap_include('zzbrick_request_get/contactdata', 'contacts');
 	$contacts = mod_contacts_get_contactdata($data);
 	$data = reset($contacts);
 	$data['templates'] = $contacts['templates'] ?? [];
