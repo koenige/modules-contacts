@@ -20,7 +20,62 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.6\n"
+
+#: configuration/access.cfg
+msgid "merge contact records"
+msgstr ""
+
+#: configuration/access.cfg
+msgid "set or change date of death"
+msgstr ""
+
+#: configuration/access.cfg
+msgid "explicitly change identifier of a person"
+msgstr ""
+
+#: configuration/access.cfg
+msgid "list all contacts (without persons)"
+msgstr ""
+
+#: configuration/access.cfg
+msgid "edit third party identifiers of contacts"
+msgstr ""
+
+#: configuration/access.cfg
+msgid "see online status of a person, link to logins"
+msgstr ""
+
+#: configuration/access.cfg
+msgid "list all persons"
+msgstr ""
+
+#: configuration/access.cfg
+msgid "list all contacts that are places"
+msgstr ""
+
+#: configuration/access.cfg
+msgid "read contact profile pages"
+msgstr ""
+
+#: configuration/access.cfg
+msgid "read contact profile pages of persons"
+msgstr ""
+
+#: configuration/access.cfg
+msgid "read contact profile pages of general contacts"
+msgstr ""
+
+#: configuration/access.cfg
+msgid "publish contacts or contact details, relations"
+msgstr ""
+
+#: configuration/access.cfg
+msgid "edit internal remarks per contact"
+msgstr ""
+
+#: configuration/access.cfg
+msgid "confirm an e-mail address (double opt-in)"
+msgstr ""
 
 #: templates/addlogin.template.txt
 msgid ""
