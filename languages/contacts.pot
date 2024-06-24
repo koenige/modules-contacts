@@ -77,6 +77,134 @@ msgstr ""
 msgid "confirm an e-mail address (double opt-in)"
 msgstr ""
 
+#: configuration/settings.cfg
+msgid "secret key which forms a hash that allows to add a login"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "timeframe in minutes during which the addlogin_key is valid"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "rights that are given to contact if a login is added via e-mail"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "show field contact_abbr in contacts table"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "show field contact_short in contacts table"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "show field contact_sort in contacts table"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "show field country in contacts table"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "show values in field country in contacts table hierarchically"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "show country as column in list view"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "add label field for contact details"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "show field end_date in contacts table"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "list with all contacts (without persons)"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "show identifiers as subtable for contacts"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "secret key which forms a hash that allows to login via link"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "timeframe in minutes during which the linklogin_key is valid"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "include table contacts_media in contacts table"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "maximum media records associated to contact"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "minimum media records associated to contact"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "disallow deletion of contacts"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "show field parameters in contacts table"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "list with all persons"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "show field `persons.sex` in list"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "list with all contacts that are places"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "path to internal profile page of a person"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "path to internal profile page of a contact, if no special path is given"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "show a field contacts.published in forms, to set status of a contact to published"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "path to staff list of an organisation (contact)"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "show field start_date in contacts table"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "path to confirm an e-mail address (double opt-in)"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "initial installation date of contacts module (for updates)"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "ID of owner of website in contact list"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "ID of country where website is in (default country)"
+msgstr ""
+
 #: templates/addlogin.template.txt
 msgid ""
 "You are trying to create a new login for you. But somehow, the web address "
