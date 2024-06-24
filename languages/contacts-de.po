@@ -498,7 +498,7 @@ msgstr "Über mich"
 msgid "A few lines about the person."
 msgstr "Ein paar Zeilen zur Person."
 
-#: zzbrick_request/contactverification.inc.php
+#: zzbrick_make/contactverification.inc.php
 msgid "Confirm Registration"
 msgstr "Registrierung bestätigen"
 

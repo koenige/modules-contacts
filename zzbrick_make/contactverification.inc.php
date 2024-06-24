@@ -21,12 +21,13 @@ function mod_contacts_make_contactverification($params, $settings) {
 	$form = [];
 	$form['reminder'] = false;
 	$form['own_e_mail'] = $settings['e_mail'] ?? wrap_setting('own_e_mail');
-	$form['category'] = $settings['category'] ?? 'Registration';
+	$category = $settings['category'] ?? 'Registration';
+	$form['category'] = wrap_text($category, $settings['translation_context'] ? ['context' => $settings['translation_context']] : []);
 	$form['action'] = $settings['path'] ?? parse_url(wrap_setting('request_uri'), PHP_URL_PATH);
 
 	$possible_actions = ['confirm', 'delete'];
 	$page['query_strings'] = ['code', 'action', 'confirm', 'delete'];
-	$page['breadcrumbs'][]['title'] = wrap_text(sprintf('Confirm %s', $form['category']));
+	$page['breadcrumbs'][]['title'] = wrap_text(sprintf('Confirm %s', $category));
 
 	// What to do?
 	if (!empty($_GET['code']) && !empty($_GET['action'])
