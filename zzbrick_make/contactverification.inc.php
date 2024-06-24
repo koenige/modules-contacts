@@ -22,7 +22,7 @@ function mod_contacts_make_contactverification($params, $settings) {
 	$form['reminder'] = false;
 	$form['own_e_mail'] = $settings['e_mail'] ?? wrap_setting('own_e_mail');
 	$category = $settings['category'] ?? 'Registration';
-	$form['category'] = wrap_text($category, $settings['translation_context'] ? ['context' => $settings['translation_context']] : []);
+	$form['category'] = wrap_text($category, !empty($settings['translation_context']) ? ['context' => $settings['translation_context']] : []);
 	$form['action'] = $settings['path'] ?? parse_url(wrap_setting('request_uri'), PHP_URL_PATH);
 
 	$possible_actions = ['confirm', 'delete'];
