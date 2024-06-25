@@ -18,16 +18,20 @@ function mod_contacts_make_contactverification($params, $settings) {
 	wrap_setting_add('extra_http_headers', 'X-Frame-Options: Deny');
 	wrap_setting_add('extra_http_headers', "Content-Security-Policy: frame-ancestors 'self'");
 
+	$hook = wrap_hook($settings);
+
 	$form = [];
 	$form['reminder'] = false;
 	$form['own_e_mail'] = $settings['e_mail'] ?? wrap_setting('own_e_mail');
-	$category = $settings['category'] ?? 'Registration';
-	$form['category'] = wrap_text($category, !empty($settings['translation_context']) ? ['context' => $settings['translation_context']] : []);
+	$form['category_text'] = $settings['category'] ?? 'Registration';
+	$form['category'] = wrap_text($form['category_text']);
 	$form['action'] = $settings['path'] ?? parse_url(wrap_setting('request_uri'), PHP_URL_PATH);
+	if ($hook['init'])
+		$form = $hook['init']($form);
 
 	$possible_actions = ['confirm', 'delete'];
 	$page['query_strings'] = ['code', 'action', 'confirm', 'delete'];
-	$page['breadcrumbs'][]['title'] = wrap_text(sprintf('Confirm %s', $category));
+	$page['breadcrumbs'][]['title'] = wrap_text(sprintf('Confirm %s', $form['category_text']));
 
 	// What to do?
 	if (!empty($_GET['code']) && !empty($_GET['action'])
@@ -109,6 +113,10 @@ function mod_contacts_make_contactverification($params, $settings) {
 	}
 
 	$form[$action] = true;
+	$form['contact_id'] = $data['contact_id'];
+	$form['action'] = $action;
+	if ($hook['finish'])
+		$form = $hook['finish']($form);
 
 	$page['text'] = wrap_template('contact-verification', $form);
 	return $page;
