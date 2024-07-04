@@ -261,16 +261,19 @@ $zz['fields'][94]['field_name'] = 'first_name';
 $zz['fields'][94]['type'] = 'display';
 $zz['fields'][94]['hide_in_form'] = true;
 $zz['fields'][94]['hide_in_list'] = true;
+$zz['fields'][94]['exclude_from_search'] = true;
 
 $zz['fields'][95]['field_name'] = 'name_particle';
 $zz['fields'][95]['type'] = 'display';
 $zz['fields'][95]['hide_in_form'] = true;
 $zz['fields'][95]['hide_in_list'] = true;
+$zz['fields'][95]['exclude_from_search'] = true;
 
 $zz['fields'][96]['field_name'] = 'last_name';
 $zz['fields'][96]['type'] = 'display';
 $zz['fields'][96]['hide_in_form'] = true;
 $zz['fields'][96]['hide_in_list'] = true;
+$zz['fields'][96]['exclude_from_search'] = true;
 
 $zz['fields'][97]['field_name'] = 'created';
 $zz['fields'][97]['type'] = 'hidden';
