@@ -80,6 +80,13 @@ $zz['fields'][3]['geojson'] = 'identifier';
 $zz['fields'][3]['merge_ignore'] = true;
 $zz['fields'][3]['unique'] = true;
 $zz['fields'][3]['character_set'] = 'latin1';
+$zz['fields'][3]['if'][1]['identifier']['concat'] = '.';
+$zz['fields'][3]['if'][1]['identifier']['exists'] = '.';
+$zz['fields'][3]['if'][1]['fields'] = [
+	'persons.first_name', 'persons.name_particle', 'persons.last_name',
+	'contact_category_id[parameters]', 'identifier'
+];
+$zz['fields'][3]['if'][1]['identifier']['parameters'] = 'contact_category_id[parameters]';
 
 $zz['fields'][4]['title'] = 'Category';
 $zz['fields'][4]['field_name'] = 'contact_category_id';
@@ -250,6 +257,21 @@ $zz['fields'][15]['hide_in_list'] = true;
 if (!wrap_setting('contacts_parameters'))
 	$zz['fields'][15]['hide_in_form'] = true;
 
+$zz['fields'][94]['field_name'] = 'first_name';
+$zz['fields'][94]['type'] = 'display';
+$zz['fields'][94]['hide_in_form'] = true;
+$zz['fields'][94]['hide_in_list'] = true;
+
+$zz['fields'][95]['field_name'] = 'name_particle';
+$zz['fields'][95]['type'] = 'display';
+$zz['fields'][95]['hide_in_form'] = true;
+$zz['fields'][95]['hide_in_list'] = true;
+
+$zz['fields'][96]['field_name'] = 'last_name';
+$zz['fields'][96]['type'] = 'display';
+$zz['fields'][96]['hide_in_form'] = true;
+$zz['fields'][96]['hide_in_list'] = true;
+
 $zz['fields'][97]['field_name'] = 'created';
 $zz['fields'][97]['type'] = 'hidden';
 $zz['fields'][97]['type_detail'] = 'datetime';
@@ -268,8 +290,10 @@ $zz['sql'] = 'SELECT /*_PREFIX_*/contacts.*, category
 			LIMIT 1) AS latlon
 		, /*_PREFIX_*/categories.parameters AS contact_parameters
 		, /*_PREFIX_*/countries.country_code
+		, /*_PREFIX_*/persons.first_name, /*_PREFIX_*/persons.last_name, /*_PREFIX_*/persons.name_particle
 	FROM /*_PREFIX_*/contacts
 	LEFT JOIN /*_PREFIX_*/countries USING (country_id)
+	LEFT JOIN /*_PREFIX_*/persons USING (contact_id)
 	LEFT JOIN /*_PREFIX_*/contacts_verifications USING (contact_id)
 	LEFT JOIN /*_PREFIX_*/categories
 		ON /*_PREFIX_*/contacts.contact_category_id = /*_PREFIX_*/categories.category_id
@@ -299,6 +323,9 @@ $zz['filter'][2]['sql'] = 'SELECT DISTINCT
 
 if (isset($_GET['nolist']) AND empty($_GET['referer']))
 	$zz['page']['dynamic_referer'] = $zz['fields'][2]['link'];
+
+$zz['conditions'][1]['scope'] = 'record';
+$zz['conditions'][1]['where'] = 'NOT ISNULL(person_id)';
 
 $zz['hooks']['before_insert'][] = 'mf_contacts_hook_check_contactdetails';
 $zz['hooks']['before_update'][] = 'mf_contacts_hook_check_contactdetails';

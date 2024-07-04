@@ -42,12 +42,9 @@ $zz['fields'][2]['field_sequence'] = 2;
 // identifier
 $zz['fields'][3]['export'] = false;
 $zz['fields'][3]['unique'] = true;
-$zz['fields'][3]['identifier']['concat'] = '.';
-$zz['fields'][3]['identifier']['exists'] = '.';
-$zz['fields'][3]['fields'] = [
-	'persons.first_name', 'persons.name_particle', 'persons.last_name',
-	'contact_category_id[parameters]', 'identifier'
-];
+$zz['fields'][3]['fields'] = $zz['fields'][3]['if'][1]['fields'];
+$zz['fields'][3]['identifier'] = $zz['fields'][3]['if'][1]['identifier'];
+unset($zz['fields'][3]['if']);
 $zz['fields'][3]['merge_ignore'] = true;
 $zz['fields'][3]['field_sequence'] = 65;
 $zz['fields'][3]['separator'] = true;
