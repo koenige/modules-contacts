@@ -795,3 +795,7 @@ msgstr ""
 #: zzform/hooks.inc.php
 msgid "Is it true that your first and last name are the same?"
 msgstr ""
+
+#: zzbrick_tables/contacts.php:317
+msgid "Alpha"
+msgstr ""
