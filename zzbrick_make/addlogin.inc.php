@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2022-2023 Gustaf Mossakowski
+ * @copyright Copyright © 2022-2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -19,10 +19,6 @@
  * @param array $params
  */
 function mod_contacts_make_addlogin($params) {
-	global $zz_conf;
-
-	$zz_conf['url_self'] = wrap_setting('request_uri');
-	unset($_GET['add']); // not needed anymore, remove because of zzform's add
 	$data = [];
 	$page['query_strings'][] = 'add';
 	$page['query_strings'][] = 'request'; // @deprecated
@@ -41,8 +37,8 @@ function mod_contacts_make_addlogin($params) {
 	$sql = sprintf(wrap_sql_query('auth_login_exists'), $params[0]);
 	$existing = wrap_db_fetch($sql, '', 'single value');
 	if ($existing) {
-		$data['missing_user_or_login_exists'] = true;
 		wrap_error(sprintf('Could not create login, login for user already exists: %s', $params[0]), E_USER_NOTICE);
+		$data['missing_user_or_login_exists'] = true;
 		$page['text'] = wrap_template('addlogin', $data);
 		return $page;
 	}
@@ -62,16 +58,14 @@ function mod_contacts_make_addlogin($params) {
 	// set addlogin_key_validity_in_minutes
 	$access = wrap_check_hash($user['user_id'].'-'.$user['username'], $params[1], '', 'addlogin_key');
 	if (!$access) {
-		$data['invalid_request'] = true;
 		wrap_error(sprintf('Could not create login, hash is invalid: %s %s', $params[0], $params[1]), E_USER_NOTICE);
+		$data['invalid_request'] = true;
 		$page['text'] = wrap_template('addlogin', $data);
 		return $page;
 	}
 
 	// everything is correct, let user add a login
-	// addlogin must be a custom form script
 	wrap_setting('log_username', $user['username']);
 	$page = brick_format('%%% forms addlogin '.$user['user_id'].' %%%');
-	$page['query_strings'] = ['add'];
 	return $page;
 }

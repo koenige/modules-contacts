@@ -5,10 +5,24 @@
 # https://www.zugzwang.org/modules/contacts
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2018 Gustaf Mossakowski
+# @copyright Copyright © 2018, 2024 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 #
+%%% condition if explanation %%%
+
+<h2>%%% text Set a Password %%%</h2>
+<p>%%% text Please set a password for the login. %%%
+ %%% text "The password must be at least <strong>%d characters</strong> long." setting login_password_minlength %%%
+ %%% text In the future, access is granted with the username below and the password you chose. %%%</p>
+
+<h3>%%% text Hints for secure passwords %%%</h3>
+
+<div markdown="1">
+%%% text password-rules %%%
+</div>
+
+%%% condition else %%%
 <div id="login">
 %%% condition if invalid_request %%%
 <p class="error">%%% text You are trying to create a new login for you. But somehow, the web address (URL) you clicked seems to be incorrect. Maybe some part is missing? %%%</p>
@@ -20,3 +34,4 @@
 
 %%% condition endif %%%
 </div>
+%%% condition endif %%%

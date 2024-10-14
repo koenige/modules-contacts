@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2021-2023 Gustaf Mossakowski
+ * @copyright Copyright © 2021-2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -21,14 +21,7 @@ $zz = zzform_include('logins');
 // remarks: logins script must work with contact_id
 
 $zz['title'] = 'Add a new login';
-$zz['explanation'] = '<h2>'.wrap_text('Set a Password').'</h2><p>'
-	.wrap_text('Please set a password for the login.').' '
-	.wrap_text('The password must be at least <strong>%d characters</strong> long.', ['values' => wrap_setting('login_password_minlength')]).' '
-	.wrap_text('In the future, access is granted with the username below and the password you chose.')
-	.'</p>'
-	.markdown(
-	'### '.wrap_text('Hints for secure passwords')
-	."\n\n".wrap_text('password-rules'));
+$zz['explanation'] = wrap_template('addlogin', ['explanation' => 1]);
 $zz['access'] = 'add_only';
 
 $zz['where']['contact_id'] = $brick['vars'][0];
@@ -44,7 +37,8 @@ if (wrap_setting('login_with_email')) {
 	$sql = sprintf('SELECT identification
 		FROM contactdetails
 		WHERE contact_id = %d
-		AND provider_category_id = %d LIMIT 1', $brick['vars'][0], wrap_category_id('provider/e-mail'));
+		AND provider_category_id = /*_ID categories provider/e-mail _*/
+		LIMIT 1', $brick['vars'][0]);
 	$zz['sql'] = wrap_edit_sql($zz['sql'], 'SELECT', sprintf('(%s) AS username', $sql));
 } else {
 	$sql = sprintf('SELECT identifier
@@ -81,6 +75,8 @@ if (!empty($zz['fields'][20]))
 // keep URL from confirmation script
 if (!empty($brick['local_settings']['url_self']))
 	$zz_conf['url_self'] = $brick['local_settings']['url_self'];
+else
+	$zz_conf['url_self'] = wrap_setting('request_uri'); // because of ?add=
 if (!empty($brick['local_settings']['query_strings']))
 	$zz['page']['query_strings'] = $brick['local_settings']['query_strings'];
 
