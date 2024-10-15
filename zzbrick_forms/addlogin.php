@@ -72,11 +72,8 @@ unset($zz['fields'][13]);
 if (!empty($zz['fields'][20]))
 	$zz['fields'][20]['hide_in_form'] = true;
 
-// keep URL from confirmation script
-if (!empty($brick['local_settings']['url_self']))
-	$zz_conf['url_self'] = $brick['local_settings']['url_self'];
-else
-	$zz_conf['url_self'] = wrap_setting('request_uri'); // because of ?add=
+// keep URL query from confirmation script
+$zz['setting']['zzform_url_keep_query'] = true;
 if (!empty($brick['local_settings']['query_strings']))
 	$zz['page']['query_strings'] = $brick['local_settings']['query_strings'];
 
