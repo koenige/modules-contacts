@@ -16,6 +16,8 @@
 function mod_contacts_placeholder_contact($brick) {
 	global $zz_page;
 	
+	$identifier = explode('/', $brick['parameter']);
+	$identifier = reset($identifier);
 	$sql = 'SELECT contact_id, contact, identifier
 			, SUBSTRING_INDEX(path, "/", -1) AS scope
 			, CONCAT("contact_id:", contacts.contact_id) AS contact_rights
@@ -26,7 +28,7 @@ function mod_contacts_placeholder_contact($brick) {
 		LEFT JOIN categories
 			ON contacts.contact_category_id = categories.category_id
 		WHERE identifier = "%s"';
-	$sql = sprintf($sql, wrap_db_escape($brick['parameter']));
+	$sql = sprintf($sql, wrap_db_escape($identifier));
 	$brick['data'] = wrap_db_fetch($sql);
 	if (!$brick['data']) wrap_quit(404);
 	if ($brick['data']['category_parameters']) {
