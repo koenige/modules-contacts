@@ -36,7 +36,7 @@ function mod_contacts_contact($params, $settings) {
 	if ($path AND $path !== wrap_setting('request_uri'))
 		wrap_redirect($path);
 	
-	wrap_module_parameters('contacts', $data['parameters']);
+	wrap_match_module_parameters('contacts', $data['parameters']);
 	if (!empty($settings['scope'])) {
 		if ($settings['scope'] !== $data['scope']) return false;
 		switch ($settings['scope']) {
