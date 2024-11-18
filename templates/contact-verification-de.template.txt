@@ -6,7 +6,7 @@
 # https://www.zugzwang.org/modules/contacts
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2015, 2018, 2022 Gustaf Mossakowski
+# @copyright Copyright © 2015, 2018, 2022, 2024 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 <div class="contactverification">
@@ -43,8 +43,8 @@ erneute Bestätigung ist nicht notwendig.</p>
 <tr><th><label for="code">Code:</label></th> <td><input type="text" name="code" id="code" size="32" value="%%% item code %%%"></td></tr>
 <tr><th><td>
 %%% condition if reminder %%%<div class="reminder">%%% condition endif %%%
-<label for="confirm"><input type="radio" name="action" value="confirm" id="confirm" required="required"%%% item check_confirm " checked" %%%> %%% item category wrap_text %%% bestätigen</label>
-<label for="delete"><input type="radio" name="action" value="delete" id="delete" required="required"%%% item check_delete " checked" %%%> %%% item category wrap_text %%% löschen</label>
+<label for="confirm"><input type="radio" name="action" value="confirm" id="confirm" required%%% item check_confirm " checked" %%%> %%% item category wrap_text %%% bestätigen</label>
+<label for="delete"><input type="radio" name="action" value="delete" id="delete" required%%% item check_delete " checked" %%%> %%% item category wrap_text %%% löschen</label>
 %%% condition if reminder %%%</div>%%% condition endif %%%
 <br><input type="submit" class="submit"></td></tr>
 </table>
