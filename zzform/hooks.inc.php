@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2021, 2023 Gustaf Mossakowski
+ * @copyright Copyright © 2021, 2023-2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -49,11 +49,7 @@ function mf_contacts_check_contact($ops) {
 			$change['validation_fields'][$index] = [
 				'contact' => [
 					'class' => 'reselect',
-					'explanation' => wrap_text('Is it true that your name contains capital letters after the first letter?').' '
-						.wrap_text('If so, please resubmit the form. If not, please enter the correct information.')
-						.'<br><label for="checkbox_mixedcase"><input type="checkbox" id="checkbox_mixedcase" name="zz_mixedcase"> '
-						.wrap_text('Yes, that’s right.')
-						.'</label>'
+					'explanation' => wrap_template('contact-namecheck', ['mixedcase' => true])
 				]
 			];
 		}
@@ -84,11 +80,7 @@ function mf_contacts_check_names($ops) {
 				],
 				'last_name' => [
 					'class' => 'reselect',
-					'explanation' => wrap_text('Is it true that your first and last name are the same?').' '
-						.wrap_text('If so, please resubmit the form. If not, please enter the correct information.')
-						.'<br><label for="checkbox_identical"><input type="checkbox" id="checkbox_identical" name="zz_identical"> '
-						.wrap_text('Yes, that’s right.')
-						.'</label>'
+					'explanation' => wrap_template('contact-namecheck', ['identical' => true])
 				]
 			];
 		}
@@ -102,11 +94,7 @@ function mf_contacts_check_names($ops) {
 				],
 				'last_name' => [
 					'class' => 'reselect',
-					'explanation' => wrap_text('Is it true that your name contains capital letters after the first letter?').' '
-						.wrap_text('If so, please resubmit the form. If not, please enter the correct information.')
-						.'<br><label for="checkbox_mixedcase"><input type="checkbox" id="checkbox_mixedcase" name="zz_mixedcase"> '
-						.wrap_text('Yes, that’s right.')
-						.'</label>'
+					'explanation' => wrap_template('contact-namecheck', ['mixedcase' => true])
 				]
 			];
 		}

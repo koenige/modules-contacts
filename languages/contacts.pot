@@ -780,19 +780,19 @@ msgstr ""
 msgid "Please check the name you entered."
 msgstr ""
 
-#: zzform/hooks.inc.php
+#: templates/contact-namecheck.template.txt
 msgid "Is it true that your name contains capital letters after the first letter?"
 msgstr ""
 
-#: zzform/hooks.inc.php
+#: templates/contact-namecheck.template.txt
 msgid "Yes, that’s right."
 msgstr ""
 
-#: zzform/hooks.inc.php
+#: templates/contact-namecheck.template.txt
 msgid "If so, please resubmit the form. If not, please enter the correct information."
 msgstr ""
 
-#: zzform/hooks.inc.php
+#: templates/contact-namecheck.template.txt
 msgid "Is it true that your first and last name are the same?"
 msgstr ""
 
