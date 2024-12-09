@@ -34,7 +34,6 @@ $zz['fields'][2]['cols'] = 50;
 $zz['fields'][2]['kml'] = 'title';
 $zz['fields'][2]['geojson'] = 'title';
 $zz['fields'][2]['export_no_html'] = true;
-$zz['fields'][2]['unless']['export_mode']['list_format'] = 'nl2br';
 $zz['fields'][2]['unless']['export_mode']['list_suffix'] = '<br>';
 $zz['fields'][2]['unless']['export_mode']['list_append_next'] = true;
 $zz['fields'][2]['merge_equal'] = true;
