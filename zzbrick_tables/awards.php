@@ -8,7 +8,7 @@
  * Part of »Zugzwang Project«
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2016-2017, 2019-2023 Gustaf Mossakowski
+ * @copyright Copyright © 2016-2017, 2019-2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -26,7 +26,6 @@ $zz['fields'][2]['type']= 'select';
 $zz['fields'][2]['sql'] = 'SELECT category_id, category, main_category_id
 	FROM /*_PREFIX_*/categories';
 $zz['fields'][2]['display_field'] = 'category';
-$zz['fields'][2]['key_field_name'] = 'category_id';
 $zz['fields'][2]['show_hierarchy'] = 'main_category_id';
 $zz['fields'][2]['show_hierarchy_subtree'] = wrap_category_id('awards');
 $zz['fields'][2]['if'][2]['list_prefix'] = '<del>';

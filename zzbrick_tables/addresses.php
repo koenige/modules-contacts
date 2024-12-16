@@ -131,7 +131,6 @@ $zz['fields'][10]['hide_in_list'] = true;
 
 $zz['fields'][9]['title'] = 'Type';
 $zz['fields'][9]['field_name'] = 'address_category_id';
-$zz['fields'][9]['key_field_name'] = 'category_id';
 $zz['fields'][9]['type'] = 'select';
 $zz['fields'][9]['sql'] = 'SELECT category_id, category, main_category_id
 	FROM categories ORDER BY sequence, category';

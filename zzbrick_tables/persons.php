@@ -24,10 +24,10 @@ $zz['fields'][1]['field_sequence'] = 12;
 
 $zz['fields'][2]['field_name'] = 'contact_id';
 $zz['fields'][2]['type'] = 'select';
-$zz['fields'][2]['sql'] = sprintf('SELECT contact_id, contact
+$zz['fields'][2]['sql'] = 'SELECT contact_id, contact
 	FROM contacts
-	WHERE contact_category_id = %d
-	ORDER BY contact', wrap_category_id('contact/person'));
+	WHERE contact_category_id = /*_ID categories contact/person _*/
+	ORDER BY contact';
 $zz['fields'][2]['display_field'] = 'contact';
 $zz['fields'][2]['character_set'] = 'utf8';
 $zz['fields'][2]['hide_in_list'] = true;
@@ -38,7 +38,8 @@ $zz['fields'][3]['field_name'] = 'title_prefix';
 $zz['fields'][3]['hide_in_list'] = true;
 $zz['fields'][3]['replace_values'] = ['-' => ''];
 $zz['fields'][3]['field_sequence'] = 14;
-$zz['fields'][3]['sql'] = 'SELECT DISTINCT title_prefix, title_prefix FROM persons ORDER BY title_prefix';
+$zz['fields'][3]['sql'] = 'SELECT DISTINCT title_prefix, title_prefix
+	FROM persons ORDER BY title_prefix';
 
 $zz['fields'][4]['title'] = 'First name';
 $zz['fields'][4]['field_name'] = 'first_name';
@@ -122,7 +123,6 @@ $zz['fields'][11]['field_sequence'] = 22;
 
 $zz['fields'][10]['title'] = 'Nationality';
 $zz['fields'][10]['field_name'] = 'nationality_country_id';
-$zz['fields'][10]['key_field_name'] = 'country_id';
 $zz['fields'][10]['type'] = 'select';
 $zz['fields'][10]['sql'] = 'SELECT country_id, country_code, country
 	FROM /*_PREFIX_*/countries

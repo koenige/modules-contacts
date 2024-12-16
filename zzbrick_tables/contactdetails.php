@@ -46,11 +46,9 @@ if (wrap_setting('contacts_details_with_label'))
 $zz['fields'][4]['title'] = 'Type';
 $zz['fields'][4]['field_name'] = 'provider_category_id';
 $zz['fields'][4]['type'] = 'select';
-$zz['fields'][4]['sql'] = sprintf('SELECT category_id, category
+$zz['fields'][4]['sql'] = 'SELECT category_id, category
 	FROM /*_PREFIX_*/categories
-	WHERE main_category_id = %d',
-	wrap_category_id('provider')
-);
+	WHERE main_category_id = /*_ID categories provider _*/';
 $zz['fields'][4]['display_field'] = 'category';
 $zz['fields'][4]['character_set'] = 'utf8';
 

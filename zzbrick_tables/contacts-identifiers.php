@@ -33,12 +33,10 @@ $zz['fields'][3]['field_name'] = 'identifier';
 $zz['fields'][4]['title'] = 'Category';
 $zz['fields'][4]['field_name'] = 'identifier_category_id';
 $zz['fields'][4]['type'] = 'select';
-$zz['fields'][4]['sql'] = sprintf('SELECT category_id, category
+$zz['fields'][4]['sql'] = 'SELECT category_id, category
 	FROM categories
-	WHERE main_category_id = %d
-', wrap_category_id('identifiers'));
+	WHERE main_category_id = /*_ID categories identifiers _*/';
 $zz['fields'][4]['display_field'] = 'category';
-$zz['fields'][4]['key_field_name'] = 'category_id';
 
 $zz['fields'][5]['field_name'] = 'current';
 $zz['fields'][5]['type'] = 'select';

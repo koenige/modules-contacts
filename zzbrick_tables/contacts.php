@@ -90,14 +90,11 @@ $zz['fields'][3]['if'][1]['identifier']['parameters'] = 'contact_category_id[par
 $zz['fields'][4]['title'] = 'Category';
 $zz['fields'][4]['field_name'] = 'contact_category_id';
 $zz['fields'][4]['type'] = 'select';
-$zz['fields'][4]['sql'] = sprintf('SELECT category_id, category, parameters
+$zz['fields'][4]['sql'] = 'SELECT category_id, category, parameters
 	FROM /*_PREFIX_*/categories
-	WHERE main_category_id = %d
-	ORDER BY sequence, category',
-	wrap_category_id('contact')
-);
+	WHERE main_category_id = /*_ID categories contact _*/
+	ORDER BY sequence, category';
 $zz['fields'][4]['sql_ignore'][] = 'parameters';
-$zz['fields'][4]['key_field_name'] = 'category_id';
 $zz['fields'][4]['if']['where']['hide_in_form'] = true;
 $zz['fields'][4]['if']['where']['hide_in_list'] = true;
 $zz['fields'][4]['unless']['export_mode']['list_prefix'] = '<em>';
