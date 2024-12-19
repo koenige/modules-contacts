@@ -73,7 +73,7 @@ function mod_contacts_get_contactdata($data, $settings = [], $id_field_name = ''
 	}
 
 	// media
-	$contacts = wrap_data_media($contacts, $ids, $langs, 'contacts', 'contact');
+	$contacts = wrap_data_media($contacts, $ids, $langs, 'contacts', 'contacts_media.contact');
 
 	// contact details
 	// @todo translations (categories)
