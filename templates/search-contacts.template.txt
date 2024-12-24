@@ -5,9 +5,9 @@
 # https://www.zugzwang.org/modules/contacts
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2020, 2022 Gustaf Mossakowski
+# @copyright Copyright © 2020, 2022, 2024 Gustaf Mossakowski
 #
 %%% loop contacts %%%
-<h3>%%% condition if website %%%<a href="%%% item website %%%">%%% condition endif %%%%%% item contact %%%%%% item website </a> %%%</h3>
+<h3>%%% if website %%%<a href="%%% item website %%%">%%% endif %%%%%% item contact %%%%%% item website </a> %%%</h3>
 %%% item description markdown %%%
 %%% loop end %%%

@@ -8,20 +8,20 @@
 # @copyright Copyright © 2024 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
-%%% condition if mixedcase %%%
+%%% if mixedcase %%%
 %%% text Is it true that your name contains capital letters after the first letter? %%%
  %%% text If so, please resubmit the form. If not, please enter the correct information. %%%
-<br>%%% condition unless setting html_label_after_input %%%<label for="checkbox_mixedcase">%%% condition endif %%%
+<br>%%% unless setting html_label_after_input %%%<label for="checkbox_mixedcase">%%% endif %%%
 <input type="checkbox" id="checkbox_mixedcase" name="zz_mixedcase">
-%%% condition if setting html_label_after_input %%%<label for="checkbox_mixedcase">%%% condition endif %%%
+%%% if setting html_label_after_input %%%<label for="checkbox_mixedcase">%%% endif %%%
  %%% text Yes, that’s right. %%%</label>
 
-%%% condition elseif identical %%%
+%%% elseif identical %%%
 %%% text Is it true that your first and last name are the same? %%%
  %%% text If so, please resubmit the form. If not, please enter the correct information. %%%
-<br>%%% condition unless setting html_label_after_input %%%<label for="checkbox_identical">%%% condition endif %%%
+<br>%%% unless setting html_label_after_input %%%<label for="checkbox_identical">%%% endif %%%
 <input type="checkbox" id="checkbox_identical" name="zz_identical">
-%%% condition if setting html_label_after_input %%%<label for="checkbox_identical">%%% condition endif %%%
+%%% if setting html_label_after_input %%%<label for="checkbox_identical">%%% endif %%%
  %%% text Yes, that’s right. %%%</label>
 
-%%% condition endif %%%
+%%% endif %%%

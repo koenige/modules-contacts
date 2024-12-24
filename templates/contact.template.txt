@@ -9,46 +9,46 @@
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 <div class="contact">
-%%% condition if first_name | last_name %%%
+%%% if first_name | last_name %%%
 <h1>%%% item title_prefix "<em>%s</em> " %%%%%% item first_name %%% %%% item name_particle %%% %%% item last_name %%% %%% item title_suffix " <em>%s</em>" %%%%%% item date_of_death "†" %%%</h1>
-%%% condition if birth_name %%%
+%%% if birth_name %%%
 <h2>%%% text " (born %s)" birth_name %%%</h2>
-%%% condition endif %%%
-%%% condition else %%%
+%%% endif %%%
+%%% else %%%
 <h1>%%% item contact nl2br %%%</h1>
 <h2>%%% item category %%%</h2>
-%%% condition endif %%%
+%%% endif %%%
 
-%%% condition if contact_short | contact_abbr %%%
-<p class="contact_short">%%% condition if contact_short %%%
+%%% if contact_short | contact_abbr %%%
+<p class="contact_short">%%% if contact_short %%%
 <em>%%% text Short form: %%%</em> %%% item contact_short %%%
-%%% condition endif %%%
-%%% condition if contact_short & contact_abbr %%%, %%% condition endif %%%
-%%% condition if contact_abbr %%%
+%%% endif %%%
+%%% if contact_short & contact_abbr %%%, %%% endif %%%
+%%% if contact_abbr %%%
 <em>%%% text Abbreviation: %%%</em> %%% item contact_abbr %%%
-%%% condition endif %%%
+%%% endif %%%
 </p>
-%%% condition endif %%%
+%%% endif %%%
 
-%%% condition if description %%%
+%%% if description %%%
 %%% item description markdown %%%
-%%% condition endif %%%
+%%% endif %%%
 
 <table>
 <tbody>
 %%% block contact_1 %%%
-%%% condition if start_date | end_date %%%
+%%% if start_date | end_date %%%
 <tr><th>%%% text Period %%%</th><td>
-	%%% condition if start_date %%%%%% text Foundation: %%% %%% item start_date wrap_date %%%%%% condition endif %%% 
-	%%% condition if start_date & end_date %%% – %%% condition endif %%%
-	%%% condition if end_date %%%%%% text Dissolution: %%% %%% item end_date wrap_date %%%%%% condition if age %%% <em>%%% text "(%d years)" age %%%</em>%%% condition endif %%%%%% condition else %%%%%% condition if age %%%<em>%%% text "(%d years ago)" age %%%</em>%%% condition endif %%%%%% condition endif %%%</td></tr>
-%%% condition endif %%%
-%%% condition if date_of_birth %%%
-<tr><th>%%% text Birth %%%</th><td>%%% item date_of_birth wrap_date "*&nbsp;%s" %%% %%% item date_of_death wrap_date "†&nbsp;%s" %%% %%% condition if male %%%♂%%% condition elseif female %%%♀%%% condition elseif diverse %%%⚪︎%%% condition endif %%% %%% text "(Age: %d)" age %%%</td></tr>
-%%% condition endif %%%
-%%% condition if country %%%
-<tr><th>%%% condition if person %%%%%% text Nationality %%%%%% condition else %%%%%% text Country %%%%%% condition endif %%%</th><td>%%% item country %%%</td></tr>
-%%% condition endif %%%
+	%%% if start_date %%%%%% text Foundation: %%% %%% item start_date wrap_date %%%%%% endif %%% 
+	%%% if start_date & end_date %%% – %%% endif %%%
+	%%% if end_date %%%%%% text Dissolution: %%% %%% item end_date wrap_date %%%%%% if age %%% <em>%%% text "(%d years)" age %%%</em>%%% endif %%%%%% else %%%%%% if age %%%<em>%%% text "(%d years ago)" age %%%</em>%%% endif %%%%%% endif %%%</td></tr>
+%%% endif %%%
+%%% if date_of_birth %%%
+<tr><th>%%% text Birth %%%</th><td>%%% item date_of_birth wrap_date "*&nbsp;%s" %%% %%% item date_of_death wrap_date "†&nbsp;%s" %%% %%% if male %%%♂%%% elseif female %%%♀%%% elseif diverse %%%⚪︎%%% endif %%% %%% text "(Age: %d)" age %%%</td></tr>
+%%% endif %%%
+%%% if country %%%
+<tr><th>%%% if person %%%%%% text Nationality %%%%%% else %%%%%% text Country %%%%%% endif %%%</th><td>%%% item country %%%</td></tr>
+%%% endif %%%
 %%% block contact_2 %%%
 %%% loop mail %%%
 <tr><th>%%% item category %%%</th><td>%%% item mailto %%%%%% item label " (%s)" %%%</td></tr>
@@ -63,19 +63,19 @@
 <tr><th>%%% item category %%%</th><td><a href="%%% item username_url %%%" target="_blank" itemprop="url">@%%% item identification %%%</a>%%% item label " (%s)" %%%</td></tr>
 %%% loop end %%%
 %%% block contact_3 %%%
-%%% condition if addresses %%%
+%%% if addresses %%%
 <tr><th>%%% text Address %%%</th><td>
 %%% loop addresses %%%
-<p><em>%%% item category %%%: %%% condition if receive_mail %%%%%% text (for mailing) %%%%%% condition endif %%%</em><br>%%% item address nl2br %%%<br>%%% item postcode %%% %%% item place %%%<br>%%% item country %%%</p>
+<p><em>%%% item category %%%: %%% if receive_mail %%%%%% text (for mailing) %%%%%% endif %%%</em><br>%%% item address nl2br %%%<br>%%% item postcode %%% %%% item place %%%<br>%%% item country %%%</p>
 %%% loop end %%%
 </td></tr>
-%%% condition endif %%%
+%%% endif %%%
 %%% block contact_4 %%%
 %%% loop associations %%%
 <tr><th>%%% item relation %%%
-%%% condition if relations_path %%%
+%%% if relations_path %%%
 <p class="edit"><small><a href="%%% item relations_path %%%">%%% text Edit %%%</a></small></p>
-%%% condition endif %%%
+%%% endif %%%
 </th><td>
 <ul>
 %%% loop contacts %%%
@@ -86,9 +86,9 @@
 %%% loop end %%%
 %%% loop parents %%%
 <tr><th>%%% item relation %%%
-%%% condition if relations_path %%%
+%%% if relations_path %%%
 <p class="edit"><small><a href="%%% item relations_path %%%">%%% text Edit %%%</a></small></p>
-%%% condition endif %%%
+%%% endif %%%
 </th><td>
 <ul>
 %%% loop contacts %%%
@@ -99,9 +99,9 @@
 %%% loop end %%%
 %%% loop children %%%
 <tr><th>%%% item relation %%%
-%%% condition if relations_path %%%
+%%% if relations_path %%%
 <p class="edit"><small><a href="%%% item relations_path %%%">%%% text Edit %%%</a></small></p>
-%%% condition endif %%%
+%%% endif %%%
 </th><td>
 <ul>
 %%% loop contacts %%%
@@ -111,80 +111,80 @@
 </td></tr>
 %%% loop end %%%
 %%% block contact_5 %%%
-%%% condition if identifiers %%%
+%%% if identifiers %%%
 <tr>
 <th>%%% text Identifiers %%%</th>
 <td>
 <ul>
 %%% loop identifiers %%%
-<li>%%% item category %%%: %%% item identifier %%% %%% condition if current %%%<em>%%% text (current) %%%</em>%%% condition else %%%<em>%%% text (outdated) %%%</em>%%% condition endif %%%</li>
+<li>%%% item category %%%: %%% item identifier %%% %%% if current %%%<em>%%% text (current) %%%</em>%%% else %%%<em>%%% text (outdated) %%%</em>%%% endif %%%</li>
 %%% loop end %%%
 </ul>
 </td>
 </tr>
-%%% condition endif %%%
-%%% condition if profiles %%%
+%%% endif %%%
+%%% if profiles %%%
 <tr>
 <th>%%% text Profiles %%%</th>
 <td>
 <ul>
 %%% loop profiles %%%
-<li><a href="%%% item url %%%" target="_blank" itemprop="url">%%% condition if title %%%%%% item title %%%%%% condition else %%%%%% item url %%%%%% condition endif %%%</a></li>
+<li><a href="%%% item url %%%" target="_blank" itemprop="url">%%% if title %%%%%% item title %%%%%% else %%%%%% item url %%%%%% endif %%%</a></li>
 %%% loop end %%%
 </ul>
 </td>
 </tr>
-%%% condition endif %%%
+%%% endif %%%
 
 %%% block contact_6 %%%
-%%% condition if logindata %%%
+%%% if logindata %%%
 <tr class="online_state"><th>%%% text Online? %%%</th>
-<td>%%% condition if login_id %%%
-%%% condition if logged_in %%%
+<td>%%% if login_id %%%
+%%% if logged_in %%%
 %%% text currently online %%% 
-%%% condition elseif last_click %%%
+%%% elseif last_click %%%
 %%% text last seen %%% %%% item last_click wrap_date %%%
-%%% condition else %%%
+%%% else %%%
 %%% text never online %%%
-%%% condition endif %%%
-%%% condition unless active %%%
+%%% endif %%%
+%%% unless active %%%
 %%% text inactive login %%%
-%%% condition endif %%%
-%%% condition if masquerade_link %%%
+%%% endif %%%
+%%% if masquerade_link %%%
  – <a href="%%% item masquerade_link %%%">%%% text masquerade login %%%</a>
-%%% condition endif %%%
-%%% condition else %%%
+%%% endif %%%
+%%% else %%%
 %%% text without a login %%%
-%%% condition if sendlogin %%%
+%%% if sendlogin %%%
 <p class="infomsg">%%% text An access code for the login has been sent! %%%</p>
-%%% condition elseif mail & alive %%%
+%%% elseif mail & alive %%%
 <form method="POST" action="./?sendlogin"><input type="submit" value="%%% text Send mail with access code %%%" name="sendlogin"></form>
-%%% condition endif %%%
-%%% condition endif %%%
+%%% endif %%%
+%%% endif %%%
 </td></tr>
-%%% condition endif %%% 
+%%% endif %%% 
 %%% block contact_7 %%%
-%%% condition if remarks %%%
+%%% if remarks %%%
 <tr class="remarks"><th>%%% text Remarks %%%</th><td>%%% item remarks markdown %%%</td></tr>
-%%% condition endif %%%
+%%% endif %%%
 %%% block contact_8 %%%
 </tbody>
 </table>
 
 <p class="edit"><a href="%%% item deep %%%../?edit=%%% item contact_id %%%&amp;nolist">%%% text Edit record %%%</a>
-%%% condition unless setting contacts_no_delete %%%
-%%% condition unless parents | children | associations %%% | <a href="%%% item deep %%%../?delete=%%% item contact_id %%%">%%% text Delete record %%%</a>
-%%% condition endif %%%
-%%% condition endif %%%</p>
+%%% unless setting contacts_no_delete %%%
+%%% unless parents | children | associations %%% | <a href="%%% item deep %%%../?delete=%%% item contact_id %%%">%%% text Delete record %%%</a>
+%%% endif %%%
+%%% endif %%%</p>
 
-%%% condition unless participations %%%
-%%% condition if participation_contact_path %%%
+%%% unless participations %%%
+%%% if participation_contact_path %%%
 <p class="edit"><a href="%%% item participation_contact_path %%%?add">%%% text Add to a group %%%</a></p>
-%%% condition endif %%%
-%%% condition endif %%%
+%%% endif %%%
+%%% endif %%%
 
-%%% condition if duplicates %%%
+%%% if duplicates %%%
 <p class="edit"><a href="%%% item deep %%%../?q=%%% item contact rawurlencode %%%">%%% text Possible duplicates of this record %%%</a></p>
-%%% condition endif %%%
+%%% endif %%%
 
 </div>
