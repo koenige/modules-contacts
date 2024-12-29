@@ -28,15 +28,14 @@ function mod_contacts_make_sendlogin($params, $settings) {
 		FROM persons
 		LEFT JOIN contacts USING (contact_id)
 		LEFT JOIN contactdetails USING (contact_id)
-		WHERE %s
-		AND contactdetails.provider_category_id = %d
+		WHERE contacts.%s
+		AND contactdetails.provider_category_id = /*_ID categories provider/e-mail _*/
 		ORDER BY contactdetails.contactdetail_id
 		LIMIT 1';
 	$sql = sprintf($sql
 		, is_numeric($params[0])
-			? sprintf('contacts.contact_id = %d', $params[0])
-			: sprintf('contacts.identifier = "%s"', wrap_db_escape($params[0]))
-		, wrap_category_id('provider/e-mail')
+			? sprintf('contact_id = %d', $params[0])
+			: sprintf('identifier = "%s"', wrap_db_escape($params[0]))
 	);
 	$contact = wrap_db_fetch($sql);
 	if (!$contact)
@@ -49,10 +48,10 @@ function mod_contacts_make_sendlogin($params, $settings) {
 			FROM contacts
 			LEFT JOIN contactdetails USING (contact_id)
 			WHERE contact_id = %d
-			AND contactdetails.provider_category_id = %d
+			AND contactdetails.provider_category_id = /*_ID categories provider/e-mail _*/
 			ORDER BY contactdetails.contactdetail_id
 			LIMIT 1';
-		$sql = sprintf($sql, $_SESSION['user_id'], wrap_category_id('provider/e-mail'));
+		$sql = sprintf($sql, $_SESSION['user_id']);
 		$sender = wrap_db_fetch($sql);
 		$contact['sender'] = $sender['contact'];
 		$contact['sender_link'] = $sender['identifier'];

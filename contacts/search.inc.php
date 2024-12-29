@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2020, 2022 Gustaf Mossakowski
+ * @copyright Copyright © 2020, 2022, 2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -22,16 +22,13 @@ function mf_contacts_search($q) {
 	$sql = 'SELECT contact_id, contact, description
 			, (SELECT identification FROM contactdetails
 				WHERE contactdetails.contact_id = contacts.contact_id
-				AND provider_category_id = %d
+				AND provider_category_id = /*_ID categories provider/website _*/
 			) AS website
 		FROM contacts
 		WHERE %s
 		AND published = "yes"
 		AND !ISNULL(description)';
-	$sql = sprintf($sql
-		, wrap_category_id('provider/website')
-		, implode(' AND ', $where)
-	);
+	$sql = sprintf($sql, implode(' AND ', $where));
 	$data['contacts'] = wrap_db_fetch($sql, 'contact_id');
 	return $data;
 }

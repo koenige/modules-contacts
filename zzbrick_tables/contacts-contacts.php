@@ -32,12 +32,12 @@ $zz['fields'][6]['for_action_ignore'] = true;
 $zz['fields'][2]['field_name'] = 'contact_id';
 $zz['fields'][2]['type'] = 'select';
 $zz['fields'][2]['sql'] = 'SELECT contact_id
-		, IF(contact_category_id != %d, CONCAT(postcode, " ", place), "") AS place
+		, IF(contact_category_id != /*_ID categories contact/person _*/
+		, CONCAT(postcode, " ", place), "") AS place
 		, contact, identifier
 	FROM /*_PREFIX_*/contacts
 	LEFT JOIN /*_PREFIX_*/addresses USING (contact_id)
 	ORDER BY identifier';
-$zz['fields'][2]['sql'] = sprintf($zz['fields'][2]['sql'], wrap_category_id('contact/person'));
 $zz['fields'][2]['display_field'] = 'contact';
 $zz['fields'][2]['search'] = 'contacts.contact';
 $zz['fields'][2]['placeholder'] = true;

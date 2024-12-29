@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2021, 2023 Gustaf Mossakowski
+ * @copyright Copyright © 2021, 2023-2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -18,10 +18,8 @@ if (empty($brick['data']['contact_id'])) wrap_quit(404);
 if (!empty($brick['local_settings']['scope'])) {
 	$sql = 'SELECT category_id, category, parameters
 		FROM categories
-		WHERE category_id = %d';
-	$sql = sprintf($sql
-		, wrap_category_id('relation/'.$brick['local_settings']['scope'])
-	);
+		WHERE category_id = /*_ID categories relation/%s _*/';
+	$sql = sprintf($sql, $brick['local_settings']['scope']);
 	$category = wrap_db_fetch($sql);
 	parse_str($category['parameters'], $category['parameters']);
 	if (!$category) wrap_quit(404);

@@ -124,7 +124,7 @@ $zz['filter'][1]['field_name'] = 'award_category_id';
 $zz['filter'][1]['where'] = 'award_category_id';
 
 $zz['conditions'][1]['scope'] = 'record';
-$zz['conditions'][1]['where'] = sprintf('contacts.contact_category_id = %d', wrap_category_id('contact/person'));
+$zz['conditions'][1]['where'] = 'contacts.contact_category_id = /*_ID categories contact/person _*/';
 
 $zz['conditions'][2]['scope'] = 'record';
 $zz['conditions'][2]['where'] = '/*_PREFIX_*/awards.published = "no"';

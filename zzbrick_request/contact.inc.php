@@ -95,15 +95,12 @@ function mod_contacts_contact($params, $settings) {
 		} else {
 			$sql = 'SELECT login_id
 					, FROM_UNIXTIME(last_click) AS last_click
-					, IF(logged_in = "yes", IF((last_click + 60 * %d >= UNIX_TIMESTAMP()), 1, NULL), NULL) AS logged_in
+					, IF(logged_in = "yes", IF((last_click + 60 * /*_SETTING logout_inactive_after _*/ >= UNIX_TIMESTAMP()), 1, NULL), NULL) AS logged_in
 					, IF(active = "yes", 1, NULL) as active
 				FROM logins
 				WHERE contact_id = %d';
 		}
-		$sql = sprintf($sql
-			, wrap_setting('logout_inactive_after')
-			, $data['contact_id']
-		);
+		$sql = sprintf($sql, $data['contact_id']);
 		$login = wrap_db_fetch($sql);
 		if ($login) {
 			$data += $login;
