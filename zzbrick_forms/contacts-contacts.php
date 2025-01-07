@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2021, 2023-2024 Gustaf Mossakowski
+ * @copyright Copyright © 2021, 2023-2025 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -48,7 +48,7 @@ if (!empty($category['parameters']['contact']['add_details'])) {
 }
 if (!empty($category['parameters']['contact']['category'])) {
 	$zz['fields'][2]['sql'] = wrap_edit_sql($zz['fields'][2]['sql'], 'WHERE',
-		sprintf('contact_category_id = %d', wrap_category_id('contact/'.$category['parameters']['contact']['category']))
+		sprintf('contact_category_id = /*_ID categories contact/%s _*/', $category['parameters']['contact']['category'])
 	);
 }
 

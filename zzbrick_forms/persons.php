@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2019-2024 Gustaf Mossakowski
+ * @copyright Copyright © 2019-2025 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -228,7 +228,9 @@ if (wrap_setting('contacts_published')) {
 	$zz['filter'][3]['selection']['no'] = wrap_text('no');
 }
 
-$zz['filter'][2]['sql'] = wrap_edit_sql($zz['filter'][2]['sql'], 'WHERE', sprintf('contact_category_id = %d', wrap_category_id('contact/person')));
+$zz['filter'][2]['sql'] = wrap_edit_sql($zz['filter'][2]['sql'], 'WHERE', 
+	'contact_category_id = /*_ID categories contact/person _*/'
+);
 
 if (isset($_GET['nolist']))
 	$zz['page']['dynamic_referer'] = $zz['fields'][2]['link'];
