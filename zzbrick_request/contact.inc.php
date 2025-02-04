@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2021-2024 Gustaf Mossakowski
+ * @copyright Copyright © 2021-2025 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -88,7 +88,7 @@ function mod_contacts_contact($params, $settings) {
 		if (wrap_setting('login_with_login_rights')) {
 			$sql = 'SELECT login_id, login_rights
 					, FROM_UNIXTIME(last_click) AS last_click
-					, IF(logged_in = "yes", IF((last_click + 60 * %d >= UNIX_TIMESTAMP()), 1, NULL), NULL) AS logged_in
+					, IF(logged_in = "yes", IF((last_click + 60 * /*_SETTING logout_inactive_after _*/ >= UNIX_TIMESTAMP()), 1, NULL), NULL) AS logged_in
 					, IF(active = "yes", 1, NULL) as active
 				FROM logins
 				WHERE contact_id = %d';
