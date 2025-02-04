@@ -6,7 +6,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2018-2024 Gustaf Mossakowski
+ * @copyright Copyright © 2018-2025 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -59,3 +59,4 @@
 /* 2024-03-15-1 */	ALTER TABLE `contacts_categories` ADD UNIQUE `contact_id_category_id` (`contact_id`, `category_id`), ADD INDEX `category_id` (`category_id`), ADD INDEX `type_category_id` (`type_category_id`), DROP INDEX `contact_id`;
 /* 2024-03-16-1 */	ALTER TABLE `contacts_categories` CHANGE `last_update` `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP;
 /* 2024-04-15-1 */	UPDATE webpages SET content = REPLACE(content, '%%% request contactverification ', '%%% make contactverification ') WHERE content LIKE '%\%\%\% request contactverification %';
+/* 2025-02-04-1 */	UPDATE webpages SET content = REPLACE(content, '%%% request contact * type=', '%%% request contact * scope=') WHERE content LIKE '%\%\%\% request contact * type=%';
