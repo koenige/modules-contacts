@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2019-2022, 2024 Gustaf Mossakowski
+ * @copyright Copyright © 2019-2022, 2024-2025 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -141,3 +141,5 @@ $zz['subselect']['sql'] = 'SELECT contacts_contacts.contact_id, contact
 		ON contacts_contacts.main_contact_id = contacts.contact_id
 	WHERE contacts_contacts.published = "yes"
 	ORDER BY contact';
+
+$zz['list']['batch_delete'] = true;
