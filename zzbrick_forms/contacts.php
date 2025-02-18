@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2023-2024 Gustaf Mossakowski
+ * @copyright Copyright © 2023-2025 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -303,89 +303,7 @@ foreach ($new as $pos => $association)
 	array_splice($values['relations'], $pos -1, 0, [$association]);
 
 foreach ($values['relations'] as $index => $relation) {
-	$zz['fields'][$no] = zzform_include('contacts-contacts');
-	if (!$separator) {
-		$zz['fields'][$no]['separator_before'] = true;
-		$separator = true;
-	}
-	if (!empty($relation['association']) OR !empty($relation['parameters']['reverse_relation'])) {
-		$contact_no = 2; // contact_id
-		$f_contact_no = 3; // main_contact_id
-		$zz['fields'][$no]['sql'] = $zz['fields'][$no]['sql_association'];
-	} else {
-		$contact_no = 3; // main_contact_id
-		$f_contact_no = 2; // contact_id
-	}
-	$zz['fields'][$no]['type'] = 'subtable';
-	$zz['fields'][$no]['form_display'] = 'lines';
-	$zz['fields'][$no]['table_name'] = 'contacts_contacts'.$relation['category_id'].$index;
-	$zz['fields'][$no]['title'] = $relation['category'];
-	$zz['fields'][$no]['sql'] .= sprintf(' WHERE relation_category_id = %d', $relation['category_id']);
-	$zz['fields'][$no]['sql'] .= ' ORDER BY sequence, contact';
-	if (isset($relation['parameters']['show_title']))
-		$zz['fields'][$no]['show_title'] = $relation['parameters']['show_title'];
-	if (isset($relation['parameters']['integrate_in_next']))
-		$zz['fields'][$no]['integrate_in_next'] = $relation['parameters']['integrate_in_next'];
-	if (isset($relation['parameters']['min_records']))
-		$zz['fields'][$no]['min_records'] = $relation['parameters']['min_records'];
-	if (isset($relation['parameters']['max_records']))
-		$zz['fields'][$no]['max_records'] = $relation['parameters']['max_records'];
-	if (!empty($relation['parameters']['placeholder']))
-		$zz['fields'][$no]['fields'][$contact_no]['placeholder'] = $relation['parameters']['placeholder'];
-	else
-		$zz['fields'][$no]['fields'][$contact_no]['placeholder'] = $relation['category'];
-	$zz['fields'][$no]['fields'][$f_contact_no]['type'] = 'foreign_key';
-	if (!empty($relation['parameters']['main_contact']['category'])) {
-		$categories = $relation['parameters']['main_contact']['category'];
-		if (!is_array($categories)) $categories = [$categories];
-		foreach ($categories as $index => $category) {
-			$categories[$index] = wrap_category_id('contact/'.$category);
-		}
-		$zz['fields'][$no]['fields'][$contact_no]['sql'] = wrap_edit_sql(
-			$zz['fields'][$no]['fields'][$contact_no]['sql'], 'WHERE',
-			sprintf('contact_category_id IN (%s)', implode(',', $categories))
-		);
-	}
-	if (!empty($relation['parameters']['main_contact']['add_details'])) {
-		$zz['fields'][$no]['fields'][$contact_no]['add_details']
-			= wrap_setting('base').$relation['parameters']['main_contact']['add_details'];
-		// no recursive linking on forms that link to add_details on themselves
-		// this is not possible to edit
-		if ($zz['fields'][$no]['fields'][$contact_no]['add_details'] === parse_url(wrap_setting('request_uri'), PHP_URL_PATH))
-			$zz['fields'][$no]['hide_in_form'] = true;
-	}
-	$zz['fields'][$no]['fields'][6]['placeholder'] = 'No.';
-	if (isset($relation['parameters']['sequence'])) {
-		if ($relation['parameters']['sequence'] === 'hidden') {
-			$zz['fields'][$no]['fields'][6]['type'] = 'hidden';
-			$zz['fields'][$no]['fields'][6]['class'] = 'hidden';
-		} elseif ($relation['parameters']['sequence'] === 'sequence') {
-			$zz['fields'][$no]['fields'][6]['type'] = 'sequence';
-		} elseif (!$relation['parameters']['sequence']) {
-			$zz['fields'][$no]['fields'][6]['hide_in_form'] = true;
-		}
-	}
-	// category
-	$zz['fields'][$no]['fields'][4]['type'] = 'hidden';
-	$zz['fields'][$no]['fields'][4]['type_detail'] = 'select';
-	$zz['fields'][$no]['fields'][4]['value'] = $relation['category_id'];
-	$zz['fields'][$no]['fields'][4]['hide_in_form'] = true;
-	// remarks
-	$zz['fields'][$no]['fields'][9]['placeholder'] = 'Remarks';
-	if (empty($relation['parameters']['remarks']))
-		unset($zz['fields'][$no]['fields'][9]);
-	// role
-	if (empty($relation['parameters']['role']))
-		unset($zz['fields'][$no]['fields'][11]);
-	else
-		$zz['fields'][$no]['fields'][11]['placeholder'] = true;
-	// published
-	$zz['fields'][$no]['fields'][10]['type'] = 'hidden';
-	$zz['fields'][$no]['fields'][10]['hide_in_form'] = true;
-	$zz['fields'][$no]['hide_in_list'] = true;
-	if (!empty($relation['parameters']['explanation']))
-		$zz['fields'][$no]['explanation'] = $relation['parameters']['explanation'];
-	
+	mf_contacts_contacts_subtable($zz, 'contacts', $relation, $no);
 	$no++;
 }
 
