@@ -164,7 +164,7 @@ if (!empty($zz['fields'][$no - 1]))
 // contacts_categories
 //
 
-mf_default_categories_subtable($zz, 'contacts', 'contact-properties', 50);
+mf_default_categories_subtable($zz, 'contacts', 'contact-properties', 50, $values['categories_restrict_to'] ?? '');
 
 //
 // contacts-contacts
