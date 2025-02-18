@@ -72,7 +72,6 @@ if (wrap_setting('contacts_media')) {
 // addresses
 //
 
-$separator = false;
 if (!empty($values['addresses_restrict_to']))
 	mf_default_categories_restrict($values, 'addresses', 'address');
 if (isset($values['addresses'])) {
@@ -85,47 +84,8 @@ if (isset($values['addresses'])) {
 	];
 	$no = 5; // @deprecated for backwards compatibility, keep no. 5 for single table
 }
-$subtable_params = [
-	'title_desc', 'min_records', 'min_records_required', 'max_records', 'title_button'
-	, 'explanation'
-];
 foreach ($values['addresses'] as $category_id => $category) {
-	$zz['fields'][$no] = zzform_include('addresses');
-	if (!$separator) {
-		$zz['fields'][$no]['separator_before'] = true;
-		$separator = true;
-	}
-	$zz['fields'][$no]['table_name'] = 'address_'.$category_id;
-	$zz['fields'][$no]['title'] = $category['category'];
-	$zz['fields'][$no]['type'] = 'subtable';
-	$zz['fields'][$no]['min_records'] = 0;
-	$zz['fields'][$no]['fields'][2]['type'] = 'foreign_key';
-	foreach ($subtable_params as $s_param) {
-		if (empty($category['parameters'][$s_param])) continue;
-		$zz['fields'][$no][$s_param] = $category['parameters'][$s_param];
-	}
-	if ($category_id) {
-		// address_catgory_id
-		$zz['fields'][$no]['fields'][9]['type'] = 'hidden';
-		$zz['fields'][$no]['fields'][9]['value'] = $category_id;
-		$zz['fields'][$no]['fields'][9]['def_val_ignore'] = true;
-		$zz['fields'][$no]['fields'][9]['hide_in_form'] = true;
-
-		$zz['fields'][$no]['sql'] .= sprintf(' WHERE address_category_id = %d', $category_id);
-	}
-	if (empty($category['parameters']['fields']))
-		$category['parameters']['fields'] = [];
-	foreach ($category['parameters']['fields'] as $field_name => $def) {
-		if ($field_name === 'country_id' AND !empty($def['default']))
-			$def['default'] = wrap_id('countries', $def['default']);
-		foreach ($zz['fields'][$no]['fields'] as $sub_no => $sub_field)	{
-			if (empty($sub_field['field_name'])) continue;
-			if ($sub_field['field_name'] !== $field_name) continue;
-			$zz['fields'][$no]['fields'][$sub_no] = array_merge($sub_field, $def);
-		}
-	}
-	// @todo use category for columns
-	$zz['fields'][$no]['unless']['export_mode']['list_append_next'] = true;
+	mf_contacts_addresses_subtable($zz, $category, $no);
 	$no++;
 }
 

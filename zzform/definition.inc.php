@@ -14,6 +14,58 @@
 
 
 /**
+ * create addresses-subtable from categories
+ *
+ * @param array $zz
+ * @param array $def definition of table
+ * @param int $no
+ */
+function mf_contacts_addresses_subtable(&$zz, $def, $no) {
+	static $separator = false;
+	$subtable_params = [
+		'title_desc', 'min_records', 'min_records_required', 'max_records', 'title_button'
+		, 'explanation'
+	];
+
+	$zz['fields'][$no] = zzform_include('addresses');
+	if (!$separator) {
+		$zz['fields'][$no]['separator_before'] = true;
+		$separator = true;
+	}
+	$zz['fields'][$no]['table_name'] = 'address_'.$def['category_id'];
+	$zz['fields'][$no]['title'] = $def['category'];
+	$zz['fields'][$no]['type'] = 'subtable';
+	$zz['fields'][$no]['min_records'] = 0;
+	$zz['fields'][$no]['fields'][2]['type'] = 'foreign_key';
+	foreach ($subtable_params as $s_param) {
+		if (empty($def['parameters'][$s_param])) continue;
+		$zz['fields'][$no][$s_param] = $def['parameters'][$s_param];
+	}
+	if ($def['category_id']) {
+		// address_catgory_id
+		$zz['fields'][$no]['fields'][9]['type'] = 'hidden';
+		$zz['fields'][$no]['fields'][9]['value'] = $def['category_id'];
+		$zz['fields'][$no]['fields'][9]['def_val_ignore'] = true;
+		$zz['fields'][$no]['fields'][9]['hide_in_form'] = true;
+
+		$zz['fields'][$no]['sql'] .= sprintf(' WHERE address_category_id = %d', $def['category_id']);
+	}
+	if (empty($def['parameters']['fields']))
+		$def['parameters']['fields'] = [];
+	foreach ($def['parameters']['fields'] as $field_name => $field_def) {
+		if ($field_name === 'country_id' AND !empty($field_def['default']))
+			$field_def['default'] = wrap_id('countries', $field_def['default']);
+		foreach ($zz['fields'][$no]['fields'] as $sub_no => $sub_field)	{
+			if (empty($sub_field['field_name'])) continue;
+			if ($sub_field['field_name'] !== $field_name) continue;
+			$zz['fields'][$no]['fields'][$sub_no] = array_merge($sub_field, $field_def);
+		}
+	}
+	// @todo use category for columns
+	$zz['fields'][$no]['unless']['export_mode']['list_append_next'] = true;
+}
+
+/**
  * create _contacts-subtable from categories
  *
  * @param array $zz
