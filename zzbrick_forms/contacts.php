@@ -72,6 +72,7 @@ if (wrap_setting('contacts_media')) {
 // addresses
 //
 
+$separator = false;
 if (!empty($values['addresses_restrict_to']))
 	mf_default_categories_restrict($values, 'addresses', 'address');
 if (isset($values['addresses'])) {
@@ -86,6 +87,10 @@ if (isset($values['addresses'])) {
 }
 foreach ($values['addresses'] as $category_id => $category) {
 	mf_contacts_addresses_subtable($zz, $category, $no);
+	if (!$separator) {
+		$zz['fields'][$no]['separator_before'] = true;
+		$separator = true;
+	}
 	$no++;
 }
 
@@ -140,82 +145,11 @@ foreach ($values['contactdetails'] as $category_id => $category) {
 }
 
 foreach ($values['contactdetails'] as $category) {
-	if (!empty($category['categories'])) {
-		if (!empty($category['parameters']['category'])) {
-			$category['category'] = $category['parameters']['category'];
-			$category['category'] = wrap_text($category['category']);
-		} elseif (count($category['categories']) === 1) {
-			$category['category'] = reset($category['categories']);
-			$category['category'] = $category['category']['category'];
-		} else {
-			$category['category'] = $category['parameters']['type'];
-			$category['category'] = $category['category'] === 'url' ? strtoupper($category['category']) : ucfirst($category['category']);
-			$category['category'] = wrap_text($category['category']);
-		}
-	}
-
-	$zz['fields'][$no] = zzform_include('contactdetails');
+	mf_contacts_contactdetails_subtable($zz, $category, $no);
 	if (!$separator) {
 		$zz['fields'][$no]['separator_before'] = true;
 		$separator = true;
 	}
-	$zz['fields'][$no]['title_tab'] = 'Contact Details';
-	$zz['fields'][$no]['class'] = 'contactdetails';
-	$zz['fields'][$no]['table_name'] = 'contactdetails_'.$category['category_id'];
-	$zz['fields'][$no]['title'] = $category['category'];
-	if (!empty($category['parameters']['title']))
-		$zz['fields'][$no]['title'] = $category['parameters']['title'];
-	$zz['fields'][$no]['type'] = 'subtable';
-	$zz['fields'][$no]['min_records'] = isset($category['parameters']['min_records']) ? $category['parameters']['min_records'] : 1;
-	$zz['fields'][$no]['max_records'] = !empty($category['parameters']['max_records'])
-		? $category['parameters']['max_records']
-		: (!empty($category['categories']) ? count($category['categories']) : 1);
-	$zz['fields'][$no]['fields'][2]['type'] = 'foreign_key';
-	if (!empty($category['parameters']['type']) AND in_array($category['parameters']['type'], ['mail', 'url', 'phone', 'username'])) {
-		$zz['fields'][$no]['fields'][3]['type'] = $category['parameters']['type'];
-	}
-	$parameters_to_fields = [
-		'explanation', 'parse_url', 'url', 'dont_check_username_online',
-		'validate', 'title'
-	];
-	foreach ($parameters_to_fields as $parameter_to_field) {
-		if (empty($category['parameters'][$parameter_to_field])) continue;
-		$zz['fields'][$no]['fields'][3][$parameter_to_field] = $category['parameters'][$parameter_to_field];
-	}
-	if (empty($category['categories']))
-		$category['categories'][$category['category_id']] = $category;
-	$zz['fields'][$no]['sql'] .= sprintf(
-		' WHERE /*_PREFIX_*/contactdetails.provider_category_id IN (%s)'
-		, implode(',', array_keys($category['categories']))
-	);
-	if (count($category['categories']) === 1) {
-		$zz['fields'][$no]['fields'][4]['type'] = 'hidden';
-		$zz['fields'][$no]['fields'][4]['hide_in_form'] = true;
-		$zz['fields'][$no]['fields'][4]['value'] = $category['category_id'];
-	} else {
-		$zz['fields'][$no]['fields'][4]['sql'] .= sprintf(
-			' AND category_id IN (%s)'
-			, implode(',', array_keys($category['categories']))
-		);
-		$zz['fields'][$no]['fields'][4]['default'] = key($category['categories']);
-	}
-	$zz['fields'][$no]['fields'][4]['def_val_ignore'] = true;
-	$zz['fields'][$no]['fields'][4]['for_action_ignore'] = true;
-	$zz['fields'][$no]['fields'][5]['hide_in_form']
-		= isset($category['parameters']['label']) ? !$category['parameters']['label']
-		: (wrap_setting('contacts_details_with_label') ? false : true);
-	$zz['fields'][$no]['form_display'] = 'lines';
-	$zz['fields'][$no]['subselect']['sql'] = wrap_edit_sql(
-		$zz['fields'][$no]['subselect']['sql'], 'WHERE',
-		sprintf('/*_PREFIX_*/contactdetails.provider_category_id IN (%s)', implode(',', array_keys($category['categories'])))
-	);
-	$zz['fields'][$no]['if']['export_mode']['subselect']['sql'] = wrap_edit_sql(
-		$zz['fields'][$no]['if']['export_mode']['subselect']['sql'], 'WHERE',
-		sprintf('/*_PREFIX_*/contactdetails.provider_category_id IN (%s)', implode(',', array_keys($category['categories'])))
-	);
-	$zz['fields'][$no]['export_no_html'] = true;
-	if (!empty($category['field_sequence']))
-		$zz['fields'][$no]['field_sequence'] = $category['field_sequence'];
 	if ($no - 29 < count($values['contactdetails'])) {
 		$zz['fields'][$no]['unless']['export_mode']['list_append_next'] = true;
 	}
