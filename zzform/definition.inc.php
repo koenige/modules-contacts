@@ -92,6 +92,7 @@ function mf_contacts_contactdetails_subtable(&$zz, $def, $no) {
 	$zz['fields'][$no]['min_records'] = $def['parameters']['min_records'] ?? 1;
 	$zz['fields'][$no]['max_records'] = $def['parameters']['max_records']
 		?? (!empty($def['categories']) ? count($def['categories']) : 1);
+	$zz['fields'][$no]['explanation'] = $def['parameters']['explanation'] ?? '';
 
 	// fields
 	$zz['fields'][$no]['fields'][2]['type'] = 'foreign_key';
@@ -101,7 +102,7 @@ function mf_contacts_contactdetails_subtable(&$zz, $def, $no) {
 	}
 	$parameters_to_fields = [
 		'explanation', 'parse_url', 'url', 'dont_check_username_online',
-		'validate', 'title'
+		'validate', 'title', 'suffix'
 	];
 	foreach ($parameters_to_fields as $parameter_to_field) {
 		if (empty($def['parameters'][$parameter_to_field])) continue;
