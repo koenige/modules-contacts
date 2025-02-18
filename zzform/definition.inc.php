@@ -23,7 +23,7 @@
 function mf_contacts_addresses_subtable(&$zz, $def, $no) {
 	$subtable_params = [
 		'title_desc', 'min_records', 'min_records_required', 'max_records', 'title_button'
-		, 'explanation'
+		, 'explanation', 'hide_in_list'
 	];
 
 	$zz['fields'][$no] = zzform_include('addresses');
@@ -31,20 +31,56 @@ function mf_contacts_addresses_subtable(&$zz, $def, $no) {
 	$zz['fields'][$no]['title'] = $def['category'];
 	$zz['fields'][$no]['type'] = 'subtable';
 	$zz['fields'][$no]['min_records'] = 0;
-	$zz['fields'][$no]['fields'][2]['type'] = 'foreign_key';
 	foreach ($subtable_params as $s_param) {
 		if (empty($def['parameters'][$s_param])) continue;
 		$zz['fields'][$no][$s_param] = $def['parameters'][$s_param];
 	}
 	if ($def['category_id']) {
-		// address_catgory_id
-		$zz['fields'][$no]['fields'][9]['type'] = 'hidden';
-		$zz['fields'][$no]['fields'][9]['value'] = $def['category_id'];
-		$zz['fields'][$no]['fields'][9]['def_val_ignore'] = true;
-		$zz['fields'][$no]['fields'][9]['hide_in_form'] = true;
-
 		$zz['fields'][$no]['sql'] .= sprintf(' WHERE address_category_id = %d', $def['category_id']);
 	}
+	
+	foreach ($zz['fields'][$no]['fields'] as $sub_no => $sub_field) {
+		$identifier = zzform_field_identifier($sub_field);
+		if (!$identifier) continue;
+		
+		switch ($identifier) {
+		case 'contact_id':
+			$zz['fields'][$no]['fields'][$sub_no]['type'] = 'foreign_key';
+			break;
+
+		case 'address':
+			if (!empty($def['parameters']['hide_address'])) {
+				$zz['fields'][$no]['fields'][$sub_no]['hide_in_form'] = true;
+				$zz['fields'][$no]['fields'][$sub_no]['hide_in_list'] = true;
+			}
+			break;
+
+		case 'postcode':
+			if (!empty($def['parameters']['hide_postcode'])) {
+				$zz['fields'][$no]['fields'][$sub_no]['hide_in_form'] = true;
+				$zz['fields'][$no]['fields'][$sub_no]['hide_in_list'] = true;
+			}
+			break;
+		
+		case 'address_category_id':
+			if ($def['category_id']) {
+				$zz['fields'][$no]['fields'][$sub_no]['type'] = 'hidden';
+				$zz['fields'][$no]['fields'][$sub_no]['value'] = $def['category_id'];
+				$zz['fields'][$no]['fields'][$sub_no]['def_val_ignore'] = true;
+				$zz['fields'][$no]['fields'][$sub_no]['hide_in_form'] = true;
+			}
+			break;
+
+		case 'receive_mail':
+			if (!empty($zz['fields'][$no]['max_records']) AND $zz['fields'][$no]['max_records'].'' == '1') {
+				$zz['fields'][$no]['fields'][$sub_no]['hide_in_form'] = true;
+				$zz['fields'][$no]['fields'][$sub_no]['hide_in_list'] = true;
+			}
+			break;
+		}
+	}
+
+	// complete field definitions
 	if (empty($def['parameters']['fields']))
 		$def['parameters']['fields'] = [];
 	foreach ($def['parameters']['fields'] as $field_name => $field_def) {
@@ -93,6 +129,7 @@ function mf_contacts_contactdetails_subtable(&$zz, $def, $no) {
 	$zz['fields'][$no]['max_records'] = $def['parameters']['max_records']
 		?? (!empty($def['categories']) ? count($def['categories']) : 1);
 	$zz['fields'][$no]['explanation'] = $def['parameters']['explanation'] ?? '';
+	$zz['fields'][$no]['hide_in_list'] = $def['parameters']['hide_in_list'] ?? false;
 
 	// fields
 	$zz['fields'][$no]['fields'][2]['type'] = 'foreign_key';
@@ -312,7 +349,7 @@ function mf_contacts_contacts_subtable(&$zz, $table, $def, $no) {
 			$zz['fields'][$no]['unless']['export_mode']['list_append_next'] = true;
 		$zz['fields'][$no]['subselect']['sql'] = wrap_edit_sql(
 			$zz['fields'][$no]['subselect']['sql'], 'WHERE',
-			sprintf('role_category_id = %d', $def['category_id'])	
+			sprintf('%s = %d', $category_field, $def['category_id'])	
 		);
 	}
 	$zz['fields'][$no]['class'] = 'hidden480';
