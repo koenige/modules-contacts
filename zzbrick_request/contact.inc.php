@@ -37,7 +37,7 @@ function mod_contacts_contact($params, $settings) {
 		wrap_redirect($path);
 	
 	wrap_match_module_parameters('contacts', $data['parameters']);
-	if (!empty($settings['scope'])) {
+	if (!empty($settings['scope']) AND $settings['scope'] !== '*') {
 		if ($settings['scope'] !== $data['scope']) return false;
 		switch ($settings['scope']) {
 		case 'person':
