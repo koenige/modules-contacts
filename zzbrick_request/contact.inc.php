@@ -33,7 +33,7 @@ function mod_contacts_contact($params, $settings) {
 
 	// is there a more specific profile page?
 	$path = wrap_path('contacts_profile['.$data['scope'].']', $data['identifier']);
-	if ($path AND $path !== wrap_setting('request_uri'))
+	if ($path AND $path !== parse_url(wrap_setting('request_uri'), PHP_URL_PATH))
 		wrap_redirect($path);
 	
 	wrap_match_module_parameters('contacts', $data['parameters']);
