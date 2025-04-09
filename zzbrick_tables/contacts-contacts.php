@@ -33,7 +33,8 @@ $zz['fields'][2]['field_name'] = 'contact_id';
 $zz['fields'][2]['type'] = 'select';
 $zz['fields'][2]['sql'] = 'SELECT contact_id
 		, IF(contact_category_id != /*_ID categories contact/person _*/
-		, CONCAT(postcode, " ", place), "") AS place
+			, CONCAT(postcode, " ", place), ""
+		) AS place
 		, contact, identifier
 	FROM /*_PREFIX_*/contacts
 	LEFT JOIN /*_PREFIX_*/addresses USING (contact_id)
@@ -47,6 +48,7 @@ $zz['fields'][2]['link'] = [
 	'area' => 'contacts_profile[*]',
 	'fields' => ['identifier']
 ];
+$zz['fields'][2]['unique_ignore'] = ['identifier'];
 
 $zz['fields'][4]['title'] = 'Relation';
 $zz['fields'][4]['field_name'] = 'relation_category_id';
@@ -81,6 +83,7 @@ $zz['fields'][3]['link'] = [
 	'area' => 'contacts_profile[*]',
 	'fields' => ['main_identifier']
 ];
+$zz['fields'][3]['unique_ignore'] = ['identifier'];
 
 $zz['fields'][11]['field_name'] = 'role';
 $zz['fields'][11]['type'] = 'text';

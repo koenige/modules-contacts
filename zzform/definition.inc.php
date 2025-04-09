@@ -257,7 +257,7 @@ function mf_contacts_contacts_subtable(&$zz, $table, $def, $no) {
 			case $contact_field:
 				$zz['fields'][$no]['fields'][$sub_no]['show_title'] = false;
 				$zz['fields'][$no]['fields'][$sub_no]['sql'] = sprintf(
-					'SELECT contact_id, contact
+					'SELECT contact_id, contact, identifier
 					FROM contacts
 					LEFT JOIN categories
 						ON contacts.contact_category_id = categories.category_id
