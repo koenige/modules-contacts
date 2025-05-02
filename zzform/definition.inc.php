@@ -211,7 +211,8 @@ function mf_contacts_contacts_subtable(&$zz, $table, $def, $no) {
 			$zz['fields'][$no]['separator_before'] = true;
 			$separator = true;
 		}
-		if (!empty($def['association']) OR !empty($def['parameters']['reverse_relation'])) {
+		if (!empty($def['association']) OR !empty($def['parameters']['reverse_relation'])
+			OR !empty($def['reverse'])) {
 			$foreign_key_field = 'main_contact_id';
 			$zz['fields'][$no]['sql'] = $zz['fields'][$no]['sql_association'];
 		} else {
