@@ -214,7 +214,7 @@ function mf_contacts_contacts_subtable(&$zz, $table, $def, $no) {
 		if (!empty($def['association']) OR !empty($def['parameters']['reverse_relation'])
 			OR !empty($def['reverse'])) {
 			$foreign_key_field = 'main_contact_id';
-			$zz['fields'][$no]['sql'] = $zz['fields'][$no]['sql_association'];
+			$zz['fields'][$no]['foreign_key_field_name'] = 'main_contact_id';
 		} else {
 			$contact_field = 'main_contact_id';
 		}
@@ -229,6 +229,8 @@ function mf_contacts_contacts_subtable(&$zz, $table, $def, $no) {
 	$zz['fields'][$no]['title'] = $def['category'];
 	$zz['fields'][$no]['table_name']
 		= str_replace('/*_PREFIX_*/', '', $zz['fields'][$no]['table']).'_'.$def['category_id'];
+	if (!empty($def['association']))
+		$zz['fields'][$no]['table_name'] .= '-assoc';
 	$zz['fields'][$no]['type'] = 'subtable';
 	$zz['fields'][$no]['min_records'] = $def['parameters']['min_records'] ?? 1;
 	$zz['fields'][$no]['min_records_required'] = $def['parameters']['min_records_required'] ?? 0;

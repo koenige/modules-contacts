@@ -125,16 +125,6 @@ $zz['sql'] = 'SELECT /*_PREFIX_*/contacts_contacts.*
 	LEFT JOIN /*_PREFIX_*/categories
 		ON /*_PREFIX_*/categories.category_id = /*_PREFIX_*/contacts_contacts.relation_category_id
 ';
-$zz['sql_association'] = 'SELECT /*_PREFIX_*/contacts_contacts.*
-		, main_contacts.contact AS main_contact, /*_PREFIX_*/contacts.contact
-		, /*_PREFIX_*/categories.category
-	FROM /*_PREFIX_*/contacts_contacts
-	LEFT JOIN /*_PREFIX_*/contacts main_contacts USING (contact_id)
-	LEFT JOIN /*_PREFIX_*/contacts 
-		ON /*_PREFIX_*/contacts_contacts.main_contact_id = contacts.contact_id
-	LEFT JOIN /*_PREFIX_*/categories
-		ON /*_PREFIX_*/categories.category_id = /*_PREFIX_*/contacts_contacts.relation_category_id
-';
 $zz['sqlorder'] = ' ORDER BY /*_PREFIX_*/contacts.contact, sequence, main_contacts.contact';
 
 
