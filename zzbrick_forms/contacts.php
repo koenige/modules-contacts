@@ -176,7 +176,6 @@ $separator = false;
 $no = 60;
 // associations?
 $pos = 0;
-$new = [];
 foreach ($values['relations'] as $index => $relation) {
 	if (!$relation['parameters']) continue;
 	$pos++;
@@ -187,16 +186,9 @@ foreach ($values['relations'] as $index => $relation) {
 				$values['relations'][$index]['parameters'], $values['relations'][$index]['parameters'][$key]
 			);
 	}
-	if (!empty($values['relations'][$index]['parameters']['association'])) {
-		$new[$pos] = $values['relations'][$index];
-		$new[$pos]['parameters']['integrate_in_next'] = true;
-		$new[$pos]['association'] = true;
-	}
 }
-foreach ($new as $pos => $association)
-	array_splice($values['relations'], $pos -1, 0, [$association]);
 
-foreach ($values['relations'] as $index => $relation) {
+foreach ($values['relations'] as $relation) {
 	mf_contacts_contacts_subtable($zz, 'contacts', $relation, $no);
 	$no++;
 }
@@ -215,4 +207,3 @@ if (wrap_setting('contacts_identifiers')) {
 	$zz['fields'][19]['form_display'] = 'lines';
 	$zz['fields'][19]['hide_in_list'] = true;
 }
-
