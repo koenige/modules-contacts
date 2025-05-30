@@ -6,7 +6,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2018-2024 Gustaf Mossakowski
+ * @copyright Copyright © 2018-2025 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -174,7 +174,8 @@ CREATE TABLE `contacts_identifiers` (
   `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`contact_identifier_id`),
   UNIQUE KEY `identifier_category_id` (`identifier_category_id`,`identifier`),
-  UNIQUE KEY `contact_id` (`contact_id`,`identifier_category_id`,`current`)
+  UNIQUE KEY `contact_id` (`contact_id`,`identifier_category_id`,`current`),
+  KEY `identifier` (`identifier`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'contacts', 'contact_id', (SELECT DATABASE()), 'contacts_identifiers', 'contact_identifier_id', 'contact_id', 'delete');

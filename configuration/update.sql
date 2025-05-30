@@ -60,3 +60,4 @@
 /* 2024-03-16-1 */	ALTER TABLE `contacts_categories` CHANGE `last_update` `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP;
 /* 2024-04-15-1 */	UPDATE webpages SET content = REPLACE(content, '%%% request contactverification ', '%%% make contactverification ') WHERE content LIKE '%\%\%\% request contactverification %';
 /* 2025-02-04-1 */	UPDATE webpages SET content = REPLACE(content, '%%% request contact * type=', '%%% request contact * scope=') WHERE content LIKE '%\%\%\% request contact * type=%';
+/* 2025-05-30-1 */	ALTER TABLE `contacts_identifiers` ADD INDEX `identifier` (`identifier`);
