@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2021, 2023-2024 Gustaf Mossakowski
+ * @copyright Copyright © 2021, 2023-2025 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -131,7 +131,6 @@ function mf_contacts_check_mixedcase($name) {
  */
 function mf_contacts_hook_check_contactdetails($ops) {
 	$record_count = [];
-	$change = [];
 	foreach ($ops['planned'] as $index => $table) {
 		if ($table['table'] !== 'contactdetails') continue;
 		if (empty($ops['record_new'][$index])) continue; // deleted
@@ -147,26 +146,27 @@ function mf_contacts_hook_check_contactdetails($ops) {
 		if (!$category_id) continue; // deleted record, still there, but incomplete
 		$category_ids[] = $category_id;
 	}
-	if ($category_ids) {
-		$sql = 'SELECT category_id, parameters
-			FROM /*_PREFIX_*/categories
-			WHERE category_id IN (%s)';
-		$sql = sprintf($sql, implode(',', $category_ids));
-		$categories = wrap_db_fetch($sql, 'category_id');
-		foreach ($categories as $category_id => $category) {
-			if (!$category['parameters']) continue;
-			parse_str($category['parameters'], $parameters);
-			if (empty($parameters['move_more_records_to'])) continue;
-			if (empty($parameters['max_records'])) continue;
-			if ($record_count[$category_id] <= $parameters['max_records']) continue;
-			$shown_record_count = 0;
-			foreach ($ops['planned'] as $index => $table) {
-				if ($table['table'] !== 'contactdetails') continue;
-				if ($ops['record_new'][$index]['provider_category_id'].'' !== $category_id.'') continue;
-				$shown_record_count++;
-				if ($shown_record_count <= $parameters['max_records']) continue;
-				$change['record_replace'][$index]['provider_category_id'] = wrap_category_id($parameters['move_more_records_to']);
-			}
+	if (!$category_ids) return [];
+
+	$change = [];
+	$sql = 'SELECT category_id, parameters
+		FROM /*_PREFIX_*/categories
+		WHERE category_id IN (%s)';
+	$sql = sprintf($sql, implode(',', $category_ids));
+	$categories = wrap_db_fetch($sql, 'category_id');
+	foreach ($categories as $category_id => $category) {
+		if (!$category['parameters']) continue;
+		parse_str($category['parameters'], $parameters);
+		if (empty($parameters['move_more_records_to'])) continue;
+		if (empty($parameters['max_records'])) continue;
+		if ($record_count[$category_id] <= $parameters['max_records']) continue;
+		$shown_record_count = 0;
+		foreach ($ops['planned'] as $index => $table) {
+			if ($table['table'] !== 'contactdetails') continue;
+			if ($ops['record_new'][$index]['provider_category_id'].'' !== $category_id.'') continue;
+			$shown_record_count++;
+			if ($shown_record_count <= $parameters['max_records']) continue;
+			$change['record_replace'][$index]['provider_category_id'] = wrap_category_id($parameters['move_more_records_to']);
 		}
 	}
 	return $change;
