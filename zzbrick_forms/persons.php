@@ -159,45 +159,49 @@ $zz['fields'][97]['field_sequence'] = 97;
 $zz['fields'][99]['field_sequence'] = 99;
 
 // for search!
-$zz['fields'][90]['field_name'] = 'person';
-$zz['fields'][90]['type'] = 'display';
-$zz['fields'][90]['search'] = 'contact';
-$zz['fields'][90]['character_set'] = 'utf8';
-$zz['fields'][90]['hide_in_form'] = true;
-$zz['fields'][90]['hide_in_list'] = true;
-$zz['fields'][90]['export'] = false;
+$zz['fields'][100]['field_name'] = 'full_name';
+$zz['fields'][100]['type'] = 'display';
+$zz['fields'][100]['search'] = 'contact';
+$zz['fields'][100]['character_set'] = 'utf8';
+$zz['fields'][100]['hide_in_form'] = true;
+$zz['fields'][100]['hide_in_list'] = true;
+$zz['fields'][100]['export'] = false;
 
-$zz['fields'][91]['field_name'] = 'person';
-$zz['fields'][91]['type'] = 'display';
-$zz['fields'][91]['search'] = 'REPLACE(contacts.identifier, ".", " ")';
-$zz['fields'][91]['character_set'] = 'latin1';
-$zz['fields'][91]['hide_in_form'] = true;
-$zz['fields'][91]['hide_in_list'] = true;
-$zz['fields'][91]['export'] = false;
+$zz['fields'][101]['title'] = 'Internal full name';
+$zz['fields'][101]['field_name'] = 'person_internal';
+$zz['fields'][101]['type'] = 'display';
+$zz['fields'][101]['search'] = 'REPLACE(contacts.identifier, ".", " ")';
+$zz['fields'][101]['character_set'] = 'latin1';
+$zz['fields'][101]['hide_in_form'] = true;
+$zz['fields'][101]['hide_in_list'] = true;
+$zz['fields'][101]['export'] = false;
 
-$zz['fields'][92]['field_name'] = 'person';
-$zz['fields'][92]['type'] = 'display';
-$zz['fields'][92]['search'] = 'CONCAT(SUBSTRING_INDEX(first_name, " ", 1), " ", IFNULL(CONCAT(name_particle, " "), ""), last_name)';
-$zz['fields'][92]['character_set'] = 'utf8';
-$zz['fields'][92]['hide_in_form'] = true;
-$zz['fields'][92]['hide_in_list'] = true;
-$zz['fields'][92]['export'] = false;
+$zz['fields'][102]['title'] = 'Full name with first name only';
+$zz['fields'][102]['field_name'] = 'first_first_full';
+$zz['fields'][102]['type'] = 'display';
+$zz['fields'][102]['search'] = 'CONCAT(SUBSTRING_INDEX(first_name, " ", 1), " ", IFNULL(CONCAT(name_particle, " "), ""), last_name)';
+$zz['fields'][102]['character_set'] = 'utf8';
+$zz['fields'][102]['hide_in_form'] = true;
+$zz['fields'][102]['hide_in_list'] = true;
+$zz['fields'][102]['export'] = false;
 
-$zz['fields'][94]['field_name'] = 'person';
-$zz['fields'][94]['type'] = 'display';
-$zz['fields'][94]['search'] = 'CONCAT(last_name, ", ", IFNULL(CONCAT(name_particle, " "), ""), first_name)';
-$zz['fields'][94]['character_set'] = 'utf8';
-$zz['fields'][94]['hide_in_form'] = true;
-$zz['fields'][94]['hide_in_list'] = true;
-$zz['fields'][94]['export'] = false;
+$zz['fields'][103]['title'] = 'Last name, given names';
+$zz['fields'][103]['field_name'] = 'last_first_name';
+$zz['fields'][103]['type'] = 'display';
+$zz['fields'][103]['search'] = 'CONCAT(last_name, ", ", IFNULL(CONCAT(name_particle, " "), ""), first_name)';
+$zz['fields'][103]['character_set'] = 'utf8';
+$zz['fields'][103]['hide_in_form'] = true;
+$zz['fields'][103]['hide_in_list'] = true;
+$zz['fields'][103]['export'] = false;
 
-$zz['fields'][93]['field_name'] = 'person';
-$zz['fields'][93]['type'] = 'display';
-$zz['fields'][93]['search'] = 'CONCAT(first_name, " ", IFNULL(CONCAT(name_particle, " "), ""), birth_name)';
-$zz['fields'][93]['character_set'] = 'utf8';
-$zz['fields'][93]['hide_in_form'] = true;
-$zz['fields'][93]['hide_in_list'] = true;
-$zz['fields'][93]['export'] = false;
+$zz['fields'][104]['title'] = 'Full name with birth name';
+$zz['fields'][104]['field_name'] = 'first_birth_name';
+$zz['fields'][104]['type'] = 'display';
+$zz['fields'][104]['search'] = 'CONCAT(first_name, " ", IFNULL(CONCAT(name_particle, " "), ""), birth_name)';
+$zz['fields'][104]['character_set'] = 'utf8';
+$zz['fields'][104]['hide_in_form'] = true;
+$zz['fields'][104]['hide_in_list'] = true;
+$zz['fields'][104]['export'] = false;
 
 
 $zz['sql'] = 'SELECT /*_PREFIX_*/contacts.*, category

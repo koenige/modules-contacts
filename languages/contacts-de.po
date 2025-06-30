@@ -5,7 +5,7 @@
 # https://www.zugzwang.org/modules/contacts
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2015-2016, 2018-2024 Gustaf Mossakowski
+# @copyright Copyright © 2015-2016, 2018-2025 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 msgid ""
@@ -20,7 +20,193 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.6\n"
+
+#: configuration/access.cfg
+msgid "merge contact records"
+msgstr ""
+
+#: configuration/access.cfg
+msgid "set or change date of death"
+msgstr ""
+
+#: configuration/access.cfg
+msgid "explicitly change identifier of a person"
+msgstr ""
+
+#: configuration/access.cfg
+msgid "list all contacts (without persons)"
+msgstr ""
+
+#: configuration/access.cfg
+msgid "edit third party identifiers of contacts"
+msgstr ""
+
+#: configuration/access.cfg
+msgid "see online status of a person, link to logins"
+msgstr ""
+
+#: configuration/access.cfg
+msgid "list all persons"
+msgstr ""
+
+#: configuration/access.cfg
+msgid "list all contacts that are places"
+msgstr ""
+
+#: configuration/access.cfg
+msgid "read contact profile pages"
+msgstr ""
+
+#: configuration/access.cfg
+msgid "read contact profile pages of persons"
+msgstr ""
+
+#: configuration/access.cfg
+msgid "read contact profile pages of general contacts"
+msgstr ""
+
+#: configuration/access.cfg
+msgid "publish contacts or contact details, relations"
+msgstr ""
+
+#: configuration/access.cfg
+msgid "edit internal remarks per contact"
+msgstr ""
+
+#: configuration/access.cfg
+msgid "confirm an e-mail address (double opt-in)"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "secret key which forms a hash that allows to add a login"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "timeframe in minutes during which the addlogin_key is valid"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "rights that are given to contact if a login is added via e-mail"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "show field contact_abbr in contacts table"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "show field contact_short in contacts table"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "show field contact_sort in contacts table"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "show field country in contacts table"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "show values in field country in contacts table hierarchically"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "show country as column in list view"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "add label field for contact details"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "show field end_date in contacts table"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "list with all contacts (without persons)"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "show identifiers as subtable for contacts"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "secret key which forms a hash that allows to login via link"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "timeframe in minutes during which the linklogin_key is valid"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "include table contacts_media in contacts table"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "maximum media records associated to contact"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "minimum media records associated to contact"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "disallow deletion of contacts"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "show field parameters in contacts table"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "list with all persons"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "show field `persons.sex` in list"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "list with all contacts that are places"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "path to internal profile page of a person"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "path to internal profile page of a contact, if no special path is given"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid ""
+"show a field contacts.published in forms, to set status of a contact to "
+"published"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "path to staff list of an organisation (contact)"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "show field start_date in contacts table"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "path to confirm an e-mail address (double opt-in)"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "initial installation date of contacts module (for updates)"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "ID of owner of website in contact list"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "ID of country where website is in (default country)"
+msgstr ""
 
 #: templates/addlogin.template.txt
 msgid ""
@@ -96,6 +282,26 @@ msgstr "Kontakte (ohne Personen)"
 #: zzbrick_forms/organisers.php
 msgid "Organisers"
 msgstr "Organisatoren"
+
+#: zzbrick_forms/persons.php
+msgid "Full name"
+msgstr "Vollständiger Name"
+
+#: zzbrick_forms/persons.php
+msgid "Internal full name"
+msgstr "Interner vollständiger Name"
+
+#: zzbrick_forms/persons.php
+msgid "Full name with first name only"
+msgstr "Vollständiger Name, nur erster Vorname"
+
+#: zzbrick_forms/persons.php
+msgid "Last name, given names"
+msgstr "Nachname, Vornamen"
+
+#: zzbrick_forms/persons.php
+msgid "Full name with birth name"
+msgstr "Vollständiger Name mit Geburtsname"
 
 #: zzbrick_forms/places.php
 msgid "Places"
@@ -617,17 +823,17 @@ msgstr "und"
 msgid "Please check the name you entered."
 msgstr "Bitte überprüfen Sie den eingegebenen Namen."
 
-#: zzform/hooks.inc.php
+#: templates/contact-namecheck.template.txt
 msgid ""
 "Is it true that your name contains capital letters after the first letter?"
 msgstr ""
 "Stimmt es, dass Ihr Name nach dem ersten Buchstaben Großbuchstaben enthält?"
 
-#: zzform/hooks.inc.php
+#: templates/contact-namecheck.template.txt
 msgid "Yes, that’s right."
 msgstr "Ja, das stimmt."
 
-#: zzform/hooks.inc.php
+#: templates/contact-namecheck.template.txt
 msgid ""
 "If so, please resubmit the form. If not, please enter the correct "
 "information."
@@ -635,6 +841,10 @@ msgstr ""
 "Senden Sie in diesem Fall das Formular erneut. Wenn nicht, geben Sie bitte "
 "die richtigen Informationen ein."
 
-#: zzform/hooks.inc.php
+#: templates/contact-namecheck.template.txt
 msgid "Is it true that your first and last name are the same?"
 msgstr "Stimmt es, dass Ihr Vor- und Nachname gleich sind?"
+
+#: zzbrick_tables/contacts.php:317
+msgid "Alpha"
+msgstr "Alpha"

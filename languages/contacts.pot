@@ -5,7 +5,7 @@
 # https://www.zugzwang.org/modules/default
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2019-2024 Gustaf Mossakowski
+# @copyright Copyright © 2019-2025 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 msgid ""
@@ -259,6 +259,26 @@ msgstr ""
 
 #: zzbrick_forms/organisers.php
 msgid "Organisers"
+msgstr ""
+
+#: zzbrick_forms/persons.php
+msgid "Full name"
+msgstr ""
+
+#: zzbrick_forms/persons.php
+msgid "Internal full name"
+msgstr ""
+
+#: zzbrick_forms/persons.php
+msgid "Full name with first name only"
+msgstr ""
+
+#: zzbrick_forms/persons.php
+msgid "Last name, given names"
+msgstr ""
+
+#: zzbrick_forms/persons.php
+msgid "Full name with birth name"
 msgstr ""
 
 #: zzbrick_forms/places.php
