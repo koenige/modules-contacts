@@ -1,0 +1,849 @@
+# contacts module
+# Translations, template
+#
+# Part of »Zugzwang Project«
+# https://www.zugzwang.org/modules/default
+#
+# @author Gustaf Mossakowski <gustaf@koenige.org>
+# @copyright Copyright © 2019-2025 Gustaf Mossakowski
+# @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Zugzwang Project -- contact module\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Gustaf Mossakowski <gustaf@koenige.org>\n"
+"Language-Team: \n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.6\n"
+
+#: configuration/access.cfg
+msgid "merge contact records"
+msgstr "kişi kayıtlarını birleştirme"
+
+#: configuration/access.cfg
+msgid "set or change date of death"
+msgstr "ölüm tarihini belirleme veya değiştirme"
+
+#: configuration/access.cfg
+msgid "explicitly change identifier of a person"
+msgstr "bir kişinin tanımlayıcısını açıkça değiştirmek"
+
+#: configuration/access.cfg
+msgid "list all contacts (without persons)"
+msgstr "tüm kişileri listele (kişiler olmadan)"
+
+#: configuration/access.cfg
+msgid "edit third party identifiers of contacts"
+msgstr "kişilerin üçüncü taraf tanımlayıcılarını düzenleme"
+
+#: configuration/access.cfg
+msgid "see online status of a person, link to logins"
+msgstr "bir kişinin çevrimiçi durumunu görmek, girişlere bağlantı vermek"
+
+#: configuration/access.cfg
+msgid "list all persons"
+msgstr "tüm kişileri listeleyin"
+
+#: configuration/access.cfg
+msgid "list all contacts that are places"
+msgstr "yer olan tüm kişileri listeleyin"
+
+#: configuration/access.cfg
+msgid "read contact profile pages"
+msgstr "kişi profil sayfalarını okuyun"
+
+#: configuration/access.cfg
+msgid "read contact profile pages of persons"
+msgstr "kişilerin iletişim profili sayfalarını okuyun"
+
+#: configuration/access.cfg
+msgid "read contact profile pages of general contacts"
+msgstr "genel kişilerin kişi profili sayfalarını okuyun"
+
+#: configuration/access.cfg
+msgid "publish contacts or contact details, relations"
+msgstr "kişileri veya iletişim bilgilerini, ilişkileri yayınlamak"
+
+#: configuration/access.cfg
+msgid "edit internal remarks per contact"
+msgstr "kişi başına dahili açıklamaları düzenleme"
+
+#: configuration/access.cfg
+msgid "confirm an e-mail address (double opt-in)"
+msgstr "bir e-posta adresini onaylayın (çift katılım)"
+
+#: configuration/settings.cfg
+msgid "secret key which forms a hash that allows to add a login"
+msgstr "bir oturum açma eklemeye izin veren bir karma oluşturan gizli anahtar"
+
+#: configuration/settings.cfg
+msgid "timeframe in minutes during which the addlogin_key is valid"
+msgstr "addlogin_key'in geçerli olduğu dakika cinsinden zaman dilimi"
+
+#: configuration/settings.cfg
+msgid "rights that are given to contact if a login is added via e-mail"
+msgstr "e-posta yoluyla bir oturum açma eklenirse kişiye verilen haklar"
+
+#: configuration/settings.cfg
+msgid "show field contact_abbr in contacts table"
+msgstr "kişiler tablosunda contact_abbr alanını göster"
+
+#: configuration/settings.cfg
+msgid "show field contact_short in contacts table"
+msgstr "kişiler tablosunda contact_short alanını göster"
+
+#: configuration/settings.cfg
+msgid "show field contact_sort in contacts table"
+msgstr "kişiler tablosunda contact_sort alanını göster"
+
+#: configuration/settings.cfg
+msgid "show field country in contacts table"
+msgstr "kişiler tablosunda ülke alanını göster"
+
+#: configuration/settings.cfg
+msgid "show values in field country in contacts table hierarchically"
+msgstr ""
+"kişiler tablosunda ülke alanındaki değerleri hiyerarşik olarak gösterme"
+
+#: configuration/settings.cfg
+msgid "show country as column in list view"
+msgstr "ülkeyi liste görünümünde sütun olarak göster"
+
+#: configuration/settings.cfg
+msgid "add label field for contact details"
+msgstr "iletişim bilgileri için etiket alanı ekleyin"
+
+#: configuration/settings.cfg
+msgid "show field end_date in contacts table"
+msgstr "kişiler tablosunda end_date alanını göster"
+
+#: configuration/settings.cfg
+msgid "list with all contacts (without persons)"
+msgstr "tüm kişileri içeren liste (kişiler olmadan)"
+
+#: configuration/settings.cfg
+msgid "show identifiers as subtable for contacts"
+msgstr "kişiler için tanımlayıcıları alt tablo olarak göster"
+
+#: configuration/settings.cfg
+msgid "secret key which forms a hash that allows to login via link"
+msgstr ""
+"bağlantı üzerinden giriş yapmayı sağlayan bir karma oluşturan gizli anahtar"
+
+#: configuration/settings.cfg
+msgid "timeframe in minutes during which the linklogin_key is valid"
+msgstr "linklogin_key'in geçerli olduğu dakika cinsinden zaman dilimi"
+
+#: configuration/settings.cfg
+msgid "include table contacts_media in contacts table"
+msgstr "contacts_media tablosunu kişiler tablosuna dahil et"
+
+#: configuration/settings.cfg
+msgid "maximum media records associated to contact"
+msgstr "kişiyle ilişkili maksimum medya kaydı"
+
+#: configuration/settings.cfg
+msgid "minimum media records associated to contact"
+msgstr "kişiyle ilişkili minimum medya kayıtları"
+
+#: configuration/settings.cfg
+msgid "disallow deletion of contacts"
+msgstr "kişilerin silinmesine izin verme"
+
+#: configuration/settings.cfg
+msgid "show field parameters in contacts table"
+msgstr "kişiler tablosunda alan parametrelerini göster"
+
+#: configuration/settings.cfg
+msgid "list with all persons"
+msgstr "tüm kişilerle birlikte liste"
+
+#: configuration/settings.cfg
+msgid "show field `persons.sex` in list"
+msgstr "listede `persons.sex` alanını göster"
+
+#: configuration/settings.cfg
+msgid "list with all contacts that are places"
+msgstr "yer alan tüm kişileri içeren liste"
+
+#: configuration/settings.cfg
+msgid "path to internal profile page of a person"
+msgstr "bir kişinin dahili profil sayfasına giden yol"
+
+#: configuration/settings.cfg
+msgid "path to internal profile page of a contact, if no special path is given"
+msgstr "özel bir yol verilmemişse, kişinin dahili profil sayfasına giden yol"
+
+#: configuration/settings.cfg
+msgid ""
+"show a field contacts.published in forms, to set status of a contact to "
+"published"
+msgstr ""
+"bir kişinin durumunu yayınlanmış olarak ayarlamak için formlarda "
+"contacts.published alanını gösterme"
+
+#: configuration/settings.cfg
+msgid "path to staff list of an organisation (contact)"
+msgstr "bir kuruluşun personel listesine giden yol (kişi)"
+
+#: configuration/settings.cfg
+msgid "show field start_date in contacts table"
+msgstr "kişiler tablosunda start_date alanını göster"
+
+#: configuration/settings.cfg
+msgid "path to confirm an e-mail address (double opt-in)"
+msgstr "e-posta adresini onaylama yolu (çift katılım)"
+
+#: configuration/settings.cfg
+msgid "initial installation date of contacts module (for updates)"
+msgstr "rehber modülünün ilk kurulum tarihi (güncellemeler için)"
+
+#: configuration/settings.cfg
+msgid "ID of owner of website in contact list"
+msgstr "Kişi listesindeki web sitesi sahibinin kimliği"
+
+#: configuration/settings.cfg
+msgid "ID of country where website is in (default country)"
+msgstr "Web sitesinin bulunduğu ülkenin kimliği (varsayılan ülke)"
+
+#: templates/addlogin.template.txt
+msgid ""
+"You are trying to create a new login for you. But somehow, the web address "
+"(URL) you clicked seems to be incorrect. Maybe some part is missing?"
+msgstr ""
+"Sizin için yeni bir giriş oluşturmaya çalışıyorsunuz. Ancak bir şekilde, "
+"tıkladığınız web adresi (URL) yanlış görünüyor. Belki bir kısmı eksiktir?"
+
+#: templates/addlogin.template.txt
+msgid "Back to login page"
+msgstr "Giriş sayfasına dön"
+
+#: templates/addlogin.template.txt
+msgid ""
+"Sorry, you cannot create a login for this username. Either the user does not "
+"exist on our website or there already exists a login for this username."
+msgstr ""
+"Üzgünüz, bu kullanıcı adı için bir giriş oluşturamazsınız. Ya kullanıcı web "
+"sitemizde mevcut değil ya da bu kullanıcı adı için zaten bir giriş var."
+
+#: templates/linklogin.template.txt
+msgid ""
+"You are trying to login via a link. But somehow, the web address (URL) you "
+"clicked seems to be incorrect. Maybe some part is missing?"
+msgstr ""
+"Bir bağlantı üzerinden giriş yapmaya çalışıyorsunuz. Ancak bir şekilde, "
+"tıkladığınız web adresi (URL) yanlış görünüyor. Belki bir kısmı eksiktir?"
+
+#: templates/linklogin.template.txt
+msgid ""
+"Please also be aware that the link we sent to you has a limited validity. "
+"Maybe time’s up."
+msgstr ""
+"Lütfen size gönderdiğimiz linkin sınırlı bir geçerliliği olduğunu da "
+"unutmayın. Belki de zaman dolmuştur."
+
+#: zzbrick_forms/addlogin.php
+msgid "Add a new login"
+msgstr "Yeni bir oturum açma ekleyin"
+
+#: zzbrick_forms/addlogin.php
+msgid "Set a Password"
+msgstr "Parola Belirleme"
+
+#: zzbrick_forms/addlogin.php
+msgid "Please set a password for the login."
+msgstr "Lütfen giriş için bir şifre belirleyin."
+
+#: zzbrick_forms/addlogin.php
+msgid "The password must be at least <strong>%d characters</strong> long."
+msgstr "Parola en az <strong>%d karakter</strong> uzunluğunda olmalıdır."
+
+#: zzbrick_forms/addlogin.php
+msgid ""
+"In the future, access is granted with the username below and the password "
+"you chose."
+msgstr ""
+"Gelecekte, aşağıdaki kullanıcı adı ve seçtiğiniz şifre ile erişim sağlanır."
+
+#: zzbrick_forms/addlogin.php
+msgid "Save password"
+msgstr "Şifreyi kaydet"
+
+#: zzbrick_forms/contacts-general.php
+msgid "Contacts (without persons)"
+msgstr "Kişiler (kişi olmadan)"
+
+#: zzbrick_forms/organisers.php
+msgid "Organisers"
+msgstr "Organizatörler"
+
+#: zzbrick_forms/persons.php
+msgid "Full name"
+msgstr "Tam İsim"
+
+#: zzbrick_forms/persons.php
+msgid "Internal full name"
+msgstr "Dahili tam ad"
+
+#: zzbrick_forms/persons.php
+msgid "Full name with first name only"
+msgstr "Yalnızca ilk adla birlikte tam ad"
+
+#: zzbrick_forms/persons.php
+msgid "Last name, given names"
+msgstr "Soyadı, verilen adlar"
+
+#: zzbrick_forms/persons.php
+msgid "Full name with birth name"
+msgstr "Doğum adı ile birlikte tam ad"
+
+#: zzbrick_forms/places.php
+msgid "Places"
+msgstr "Konumlar"
+
+#: zzbrick_forms/places.php
+msgid "Venues"
+msgstr "Mekanlar"
+
+#: zzbrick_forms/places.php
+msgid "Venue"
+msgstr "Mekan"
+
+#: zzbrick_tables/addresses.php
+msgid "Addresses"
+msgstr "Adresler"
+
+#: zzbrick_tables/addresses.php
+msgid "Address"
+msgstr "Adres"
+
+#: zzbrick_tables/addresses.php
+msgid "Country"
+msgstr "Ülke"
+
+#: zzbrick_tables/addresses.php
+msgid "Latitude"
+msgstr "Enlem"
+
+#: zzbrick_tables/addresses.php
+msgid "Longitude"
+msgstr "Boylam"
+
+#: zzbrick_tables/addresses.php
+msgid "Latitude / Longitude"
+msgstr "Enlem / Boylam"
+
+#: zzbrick_tables/addresses.php
+msgid "Postcode"
+msgstr "Posta Kodu"
+
+#: zzbrick_tables/addresses.php
+msgid "Place"
+msgstr "Yer"
+
+#: zzbrick_tables/addresses.php
+msgid "Postcode/Place"
+msgstr "Posta kodu/Yer"
+
+#: zzbrick_tables/addresses.php
+msgid "Street/No."
+msgstr "Sokak/No."
+
+#: zzbrick_tables/addresses.php
+msgid "If there is more than one address:<br>Send letters to this address?"
+msgstr "Birden fazla adres varsa:<br>Mektuplar bu adrese mi gönderiliyor?"
+
+#: zzbrick_tables/addresses.php
+msgid "Is determined automatically, if possible"
+msgstr "Mümkünse otomatik olarak belirlenir"
+
+#: zzbrick_tables/awards.php
+msgid "Awards"
+msgstr "Ödüller"
+
+#: zzbrick_tables/awards.php
+msgid "Date"
+msgstr "Tarih"
+
+#: zzbrick_tables/awards.php
+msgid "Date of Award"
+msgstr "Ödül Tarihi"
+
+#: zzbrick_tables/awards.php
+msgid "Duration from"
+msgstr "Şu tarihten itibaren süre"
+
+#: zzbrick_tables/awards.php
+msgid "Duration until"
+msgstr "Kadar süre"
+
+#: zzbrick_tables/awards.php
+msgid "Duration"
+msgstr "Süre"
+
+#: zzbrick_tables/awards.php
+msgid "Laudation"
+msgstr "Övgü"
+
+#: zzbrick_tables/awards.php
+msgid "Published"
+msgstr "Yayınlanan"
+
+#: zzbrick_tables/awards.php
+msgid "Name at time of award"
+msgstr "Ödül sırasındaki isim"
+
+#: zzbrick_tables/awards.php
+#, fuzzy
+msgid "Display Name"
+msgstr "Ekran adı"
+
+#: zzbrick_tables/contacts.php
+msgid "Contacts"
+msgstr "İletişim"
+
+#: zzbrick_tables/contacts.php
+msgid "Contact"
+msgstr "İletişim"
+
+#: zzbrick_tables/contacts.php
+msgid "Identifier"
+msgstr "Tanımlayıcı"
+
+#: zzbrick_tables/awards.php zzbrick_tables/contacts.php
+msgid "Category"
+msgstr "Kategori"
+
+#: zzbrick_tables/contacts.php
+msgid "Description"
+msgstr "Açıklama"
+
+#: zzbrick_tables/contacts.php zzbrick_tables/awards.php
+msgid "Remarks"
+msgstr "Uyarılar"
+
+#: zzbrick_tables/contacts.php zzbrick_tables/contacts-contacts.php
+msgid "Internal remarks"
+msgstr "İç açıklamalar"
+
+#: zzbrick_tables/contacts.php
+msgid "Name"
+msgstr "Ad"
+
+#: zzbrick_tables/contacts.php
+msgid "Name, short"
+msgstr "İsim, kısa"
+
+#: zzbrick_tables/contacts.php
+msgid "Name, abbr."
+msgstr "İsim, kısaltma."
+
+#: zzbrick_tables/contacts.php
+msgid "Short"
+msgstr "Kısa"
+
+#: zzbrick_tables/contacts.php
+msgid "Publish on website?"
+msgstr "Web sitesinde yayınlamak mı?"
+
+#: zzbrick_tables/contacts.php
+msgid "Created"
+msgstr "Oluşturuldu"
+
+#: zzbrick_tables/contacts.php
+msgid "Start date"
+msgstr "Başlangıç tarihi"
+
+#: zzbrick_tables/contacts.php
+msgid "End date"
+msgstr "Bitiş Tarihi"
+
+#: zzbrick_tables/contacts.php
+msgid "Founding date"
+msgstr "Kuruluş tarihi"
+
+#: zzbrick_tables/contacts.php
+msgid "Dissolution date"
+msgstr "Fesih tarihi"
+
+#: zzbrick_tables/contacts.php
+msgid "Parameters"
+msgstr "Parametreler"
+
+#: zzbrick_tables/contacts.php
+msgid "Sort"
+msgstr "Sırala"
+
+#: zzbrick_tables/contacts-categories.php
+msgid "Categories per Contact"
+msgstr "Kişi Başına Kategoriler"
+
+#: config.inc.php zzbrick_tables/contacts-contacts.php
+msgid "Linked Contacts"
+msgstr "Bağlantılı Kişiler"
+
+#: zzbrick_tables/contacts-contacts.php
+msgid "Relation"
+msgstr "İlişki"
+
+#: zzbrick_tables/contacts-contacts.php
+msgid "Main Contact"
+msgstr "Ana İletişim"
+
+#: zzbrick_tables/contacts-contacts.php
+msgid "No."
+msgstr "Hayır."
+
+#: zzbrick_tables/contacts-contacts.php
+msgid "Role"
+msgstr "Rol"
+
+#: zzbrick_tables/contacts-identifiers.php
+msgid "Identifiers"
+msgstr "Tanımlayıcılar"
+
+#: zzbrick_tables/contacts-identifiers.php
+msgid "current"
+msgstr "geçerli"
+
+#: zzbrick_tables/contacts-media.php
+msgid "Media for Contacts"
+msgstr "Kişiler için Medya"
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Contact Verifications"
+msgstr "İletişim Doğrulamaları"
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Confirmed Mail"
+msgstr "Onaylanmış Posta"
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Entry Date"
+msgstr "Başvuru Tarihi"
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Entry IP"
+msgstr "Giriş IP'si"
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Verification Date"
+msgstr "Doğrulama Tarihi"
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Verification IP"
+msgstr "Doğrulama IP'si"
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Status"
+msgstr "Durum"
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Language"
+msgstr "Dil"
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "Mails sent"
+msgstr "Gönderilen postalar"
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "unverified"
+msgstr "doğrulanmamış"
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "confirmed per link"
+msgstr "bağlantı başına onaylandı"
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "confirmed manually"
+msgstr "manuel olarak onaylandı"
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "complete"
+msgstr "tamamlandı"
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "unsubscribed"
+msgstr "listeden çıktı"
+
+#: zzbrick_tables/contacts-verifications.php
+msgid "deleted"
+msgstr "silindi"
+
+#: zzbrick_tables/contactdetails.php
+msgid "Contact Details"
+msgstr "İletişim Detayları"
+
+#: zzbrick_tables/contactdetails.php
+msgid "Identification"
+msgstr "Kimlik"
+
+#: zzbrick_tables/persons.php
+msgid "Persons"
+msgstr "Kişiler"
+
+#: zzbrick_tables/persons.php
+msgid "Title (prefix)"
+msgstr "Başlık (önek)"
+
+#: zzbrick_tables/persons.php
+msgid "First name"
+msgstr "İsim"
+
+#: zzbrick_tables/persons.php
+msgid "Particle"
+msgstr "Parçacık"
+
+#: zzbrick_tables/persons.php
+msgid "Last name"
+msgstr "Soyadı"
+
+#: zzbrick_tables/persons.php
+msgid "Birth name"
+msgstr "Doğum Ismi"
+
+#: zzbrick_tables/persons.php
+msgid "e. g. nobiliary particle"
+msgstr "örn. nobilier parçacık"
+
+#: zzbrick_tables/persons.php
+msgid "if different from current last name"
+msgstr "mevcut soyadından farklıysa"
+
+#: zzbrick_tables/persons.php
+msgid " (born "
+msgstr " (doğdu"
+
+#: zzbrick_tables/persons.php
+msgid "Title (suffix)"
+msgstr "Başlık (son ek)"
+
+#: zzbrick_tables/persons.php
+msgid "Sex"
+msgstr "Cinsiyet"
+
+#: zzbrick_tables/persons.php
+msgid "female"
+msgstr "kadın"
+
+#: zzbrick_tables/persons.php
+msgid "male"
+msgstr "erkek"
+
+#: zzbrick_tables/persons.php
+msgid "diverse"
+msgstr "farklı"
+
+#: zzbrick_tables/persons.php
+msgid "Date of Birth"
+msgstr "Doğum Tarihi"
+
+# One-letter-abbreviation for sex
+#: zzbrick_tables/persons.php
+msgctxt "persons.sex"
+msgid "S."
+msgstr "S."
+
+# One-letter-abbreviation for female
+#: zzbrick_tables/persons.php
+msgctxt "persons.sex"
+msgid "F"
+msgstr "F"
+
+# One-letter-abbreviation for male
+#: zzbrick_tables/persons.php
+msgctxt "persons.sex"
+msgid "M"
+msgstr "M"
+
+# One-letter-abbreviation for diverse
+#: zzbrick_tables/persons.php
+msgctxt "persons.sex"
+msgid "D"
+msgstr "D"
+
+#: templates/contacts.template.txt
+msgid "Birth"
+msgstr "Doğum"
+
+#: zzbrick_tables/persons.php
+msgid "Date of Death"
+msgstr "Ölüm Tarihi"
+
+#: zzbrick_tables/persons.php
+msgid "Nationality"
+msgstr "Uyruğu"
+
+#: zzbrick_tables/persons.php
+msgid "Change identifier?"
+msgstr "Tanımlayıcıyı değiştirelim mi?"
+
+#: zzbrick_tables/persons.php
+msgid ""
+"To change the identifier. Important: this is the login username, please "
+"inform the person of the change."
+msgstr ""
+"Tanımlayıcıyı değiştirmek için. Önemli: bu oturum açma kullanıcı adıdır, "
+"lütfen değişikliği kişiye bildirin."
+
+#: zzbrick_tables/persons.php
+msgid "Phone"
+msgstr "Telefon"
+
+#: zzbrick_tables/persons.php
+msgid "About me"
+msgstr "Hakkımda"
+
+#: zzbrick_tables/persons.php
+msgid "A few lines about the person."
+msgstr "Kişi hakkında birkaç satır."
+
+#: zzbrick_make/contactverification.inc.php
+msgid "Confirm Registration"
+msgstr "Kaydı Onayla"
+
+#: templates/contact.template.txt
+msgid " (born %s)"
+msgstr " (doğan %s)"
+
+#: templates/contact.template.txt
+msgid "(Age: %d)"
+msgstr "(Yaş: %d)"
+
+#: templates/contact.template.txt
+msgid "Edit"
+msgstr "Düzenle"
+
+#: templates/contact.template.txt
+msgid "Add to a group"
+msgstr "Thêm vào nhóm"
+
+#: templates/contact.template.txt
+msgid "Possible duplicates of this record"
+msgstr "Bu kaydın olası kopyaları"
+
+#: templates/contact.template.txt
+msgid "since"
+msgstr "beri"
+
+#: templates/contact.template.txt
+msgid "Online?"
+msgstr "Çevrimiçi mi?"
+
+#: templates/contact.template.txt
+msgid "currently online"
+msgstr "şu anda çevrimiçi"
+
+#: templates/contact.template.txt
+msgid "last seen"
+msgstr "son görülme"
+
+#: templates/contact.template.txt
+msgid "never online"
+msgstr "asla çevrimiçi değil"
+
+#: templates/contact.template.txt
+msgid "inactive login"
+msgstr "etkin olmayan giriş"
+
+#: templates/contact.template.txt
+msgid "without a login"
+msgstr "giriş yapmadan"
+
+#: templates/contact.template.txt
+msgid "masquerade login"
+msgstr "maskeli̇ balo gi̇ri̇şi̇"
+
+#: templates/contact.template.txt
+msgid "An access code for the login has been sent!"
+msgstr "Giriş için bir erişim kodu gönderildi!"
+
+#: templates/contact.template.txt
+msgid "Send mail with access code"
+msgstr "Erişim kodu ile posta gönderme"
+
+#: templates/contact.template.txt
+msgid "(for mailing)"
+msgstr "(postalama için)"
+
+#: templates/contact.template.txt
+msgid "Foundation:"
+msgstr "Vakıf:"
+
+#: templates/contact.template.txt
+msgid "Dissolution:"
+msgstr "Dağılma:"
+
+#: templates/contact.template.txt
+msgid "(%d year)"
+msgid_plural "(%d years)"
+msgstr[0] "(%d yıl)"
+msgstr[1] "(%d yıl)"
+
+#: templates/contact.template.txt
+msgid "(%d year ago)"
+msgid_plural "(%d years ago)"
+msgstr[0] "(%d yıl önce)"
+msgstr[1] "(%d yıl önce)"
+
+#: templates/contact.template.txt
+msgid "(current)"
+msgstr "(current)"
+
+#: templates/contact.template.txt
+msgid "(outdated)"
+msgstr "(modası geçmiş)"
+
+#: templates/contact.template.txt
+msgid "Short form:"
+msgstr "Kısa şekli:"
+
+#: templates/contact.template.txt
+msgid "Abbreviation:"
+msgstr "Kısaltma:"
+
+#: templates/contact.template.txt
+msgid "Profiles"
+msgstr "Profiller"
+
+#: templates/contact-verification.de.template.txt
+msgid "Registration"
+msgstr "Kayıt"
+
+msgid "and"
+msgstr "ve"
+
+#: zzform/hooks.inc.php
+msgid "Please check the name you entered."
+msgstr "Lütfen girdiğiniz ismi kontrol edin."
+
+#: templates/contact-namecheck.template.txt
+msgid ""
+"Is it true that your name contains capital letters after the first letter?"
+msgstr "İsminizin ilk harfinden sonra büyük harfler içerdiği doğru mu?"
+
+#: templates/contact-namecheck.template.txt
+msgid "Yes, that’s right."
+msgstr "Evet, bu doğru."
+
+#: templates/contact-namecheck.template.txt
+msgid ""
+"If so, please resubmit the form. If not, please enter the correct "
+"information."
+msgstr ""
+"Eğer öyleyse, lütfen formu yeniden gönderin. Değilse, lütfen doğru bilgileri "
+"girin."
+
+#: templates/contact-namecheck.template.txt
+msgid "Is it true that your first and last name are the same?"
+msgstr "Adınızın ve soyadınızın aynı olduğu doğru mu?"
+
+#: zzbrick_tables/contacts.php:317
+msgid "Alpha"
+msgstr "Alfa"
