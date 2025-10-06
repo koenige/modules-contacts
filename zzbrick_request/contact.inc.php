@@ -21,12 +21,12 @@ function mod_contacts_contact($params, $settings) {
 		FROM contacts
 		WHERE contacts.identifier = "%s"';
 	$sql = sprintf($sql, wrap_db_escape(implode('/', $params)));
-	$contact_ids = wrap_db_fetch($sql, 'contact_id');
-	if (!$contact_ids) return false;
-	if (count($contact_ids) !== 1) return false;
+	$contacts = wrap_db_fetch($sql, 'contact_id');
+	if (!$contacts) return false;
+	if (count($contacts) !== 1) return false;
 	
 	wrap_include('data', 'zzwrap');
-	$contacts = wrap_data('contacts', $contact_ids);
+	$contacts = wrap_data('contacts', $contacts);
 	$data = reset($contacts);
 	$data['templates'] = $contacts['templates'] ?? [];
 	$data[$data['scope']] = true;
