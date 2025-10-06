@@ -17,19 +17,12 @@
  * get contact data per ID, pre-sorted
  * existing data is appended to contact data
  *
- * @param array $data
+ * @param array $ids
+ * @param array $$langs
  * @param array $settings (optional)
  * @return array
  */
-function mf_contacts_data($data, $settings = []) {
-	if (!$data) return $data;
-	
-	$id_field_name = $settings['id_field_name'] ?? NULL;
-	$lang_field_name = $settings['lang_field_name'] ?? NULL;
-
-	$ids = wrap_data_ids($data, $id_field_name);
-	$langs = wrap_data_langs($data, $lang_field_name);
-
+function mf_contacts_data($ids, $langs, $settings = []) {
 	$sql = 'SELECT contact_id, contact, contact_short, contact_abbr,
 			contacts.identifier, contacts.description, remarks
 			, SUBSTRING_INDEX(path, "/", -1) AS scope
@@ -79,21 +72,27 @@ function mf_contacts_data($data, $settings = []) {
 	// @todo translations (categories)
 	$contactdetails[wrap_setting('lang')] = mf_contacts_contactdetails($ids);
 
+	$identifiers[wrap_setting('lang')] = mf_contacts_identifiers($ids);
+	$relations[wrap_setting('lang')] = mf_contacts_relations($ids);
+	
+	return [$contacts, $contactdetails, $identifiers, $relations];
+}
+
+/**
+ * get further contact data after merging results
+ *
+ * @param array $data
+ * @param array $ids
+ * @return array
+ */
+function mf_contacts_data_finalize($data, $ids) {
+	$data = wrap_data_packages('contact', $data, $ids);
+
 	// addresses
 	// @todo translations
 	$addresses = mf_contacts_addresses($ids);
 	foreach ($addresses as $contact_id => $contactaddresses)
 		$data[$contact_id]['addresses'] = $contactaddresses;
-
-	$identifiers[wrap_setting('lang')] = mf_contacts_identifiers($ids);
-	$relations[wrap_setting('lang')] = mf_contacts_relations($ids);	
-
-	$data = wrap_data_merge($data, $contacts, $id_field_name, $lang_field_name);
-	$data = wrap_data_merge($data, $contactdetails, $id_field_name, $lang_field_name);
-	$data = wrap_data_merge($data, $identifiers, $id_field_name, $lang_field_name);
-	$data = wrap_data_merge($data, $relations, $id_field_name, $lang_field_name);
-
-	$data = wrap_data_packages('contact', $data, $ids);
 	
 	foreach ($data as $contact_id => $line) {
 		if (!is_numeric($contact_id)) continue;
