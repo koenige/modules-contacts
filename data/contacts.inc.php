@@ -1,14 +1,14 @@
 <?php 
 
 /**
- * news module
+ * contacts module
  * get contact data per ID
  *
  * Part of »Zugzwang Project«
- * https://www.zugzwang.org/modules/news
+ * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2024 Gustaf Mossakowski
+ * @copyright Copyright © 2024-2025 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -19,13 +19,13 @@
  *
  * @param array $data
  * @param array $settings (optional)
- * @param string $id_field_name (optional, if key does not equal event_id)
- * @param string $lang_field_name (optional, if not current language shall be used)
  * @return array
  */
-function mod_contacts_get_contactdata($data, $settings = [], $id_field_name = '', $lang_field_name = '') {
+function mf_contacts_data($data, $settings = []) {
 	if (!$data) return $data;
-	wrap_include('data', 'zzwrap');
+	
+	$id_field_name = $settings['id_field_name'] ?? NULL;
+	$lang_field_name = $settings['lang_field_name'] ?? NULL;
 
 	$ids = wrap_data_ids($data, $id_field_name);
 	$langs = wrap_data_langs($data, $lang_field_name);
@@ -93,7 +93,7 @@ function mod_contacts_get_contactdata($data, $settings = [], $id_field_name = ''
 	$data = wrap_data_merge($data, $identifiers, $id_field_name, $lang_field_name);
 	$data = wrap_data_merge($data, $relations, $id_field_name, $lang_field_name);
 
-	$data = mod_contacts_contactdata_packages($data, $ids);
+	$data = wrap_data_packages('contact', $data, $ids);
 	
 	foreach ($data as $contact_id => $line) {
 		if (!is_numeric($contact_id)) continue;
@@ -255,30 +255,6 @@ function mf_contacts_relations_profile($relation) {
 			wrap_setting('contacts_profile_path[*]'), $relation['identifier']
 		);
 	return '';
-}
-
-/**
- * get further contact data from modules
- *
- * @param array $data
- * @param array $ids
- * @return array
- */
-function mod_contacts_contactdata_packages($data, $ids) {
-	$files = wrap_include('contact');
-	if (!$files) {
-		$data['templates'] = [];
-		return $data;
-	}
-	foreach ($files['packages'] as $package)
-		wrap_package_activate($package);
-
-	foreach ($files['functions'] as $function) {
-		if (empty($function['short'])) continue;
-		if ($function['short'] !== 'contact') continue;
-		$data = $function['function']($data, $ids);
-	}
-	return $data;
 }
 
 /**
