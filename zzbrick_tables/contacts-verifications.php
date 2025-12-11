@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2015, 2018-2021, 2023 Gustaf Mossakowski
+ * @copyright Copyright © 2015, 2018-2021, 2023, 2025 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -94,9 +94,10 @@ $zz_sub['fields'][11]['type'] = 'write_once';
 $zz_sub['fields'][11]['type_detail'] = 'select';
 $zz_sub['fields'][11]['default'] = wrap_language_id(wrap_setting('lang'));
 $zz_sub['fields'][11]['hide_in_list'] = true;
-$zz_sub['fields'][11]['sql'] = 'SELECT language_id, language_en
+$zz_sub['fields'][11]['sql'] = 'SELECT language_id, language
 	FROM /*_PREFIX_*/languages
-	ORDER BY language_en';
+	ORDER BY language';
+$zz_sub['fields'][11]['sql_translate'] = ['language_id' => 'languages'];
 $zz_sub['fields'][11]['display_field'] = 'iso_639_1';
 $zz_sub['fields'][11]['exclude_from_search'] = true;
 
