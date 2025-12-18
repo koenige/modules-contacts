@@ -74,8 +74,9 @@ function mf_contacts_data($ids, $langs, $settings = []) {
 
 	$identifiers[wrap_setting('lang')] = mf_contacts_identifiers($ids);
 	$relations[wrap_setting('lang')] = mf_contacts_relations($ids);
+	$awards[wrap_setting('lang')] = mf_contacts_awards($ids);
 	
-	return [$contacts, $contactdetails, $identifiers, $relations];
+	return [$contacts, $contactdetails, $identifiers, $relations, $awards];
 }
 
 /**
@@ -97,6 +98,15 @@ function mf_contacts_data_finalize($data, $ids) {
 	foreach ($data as $contact_id => $line) {
 		if (!is_numeric($contact_id)) continue;
 		$data[$contact_id]['profiles'] = wrap_profiles($line);
+		
+		// awards: remove contact_display_name if it equals current contact name
+		if (!empty($line['awards'])) {
+			foreach ($line['awards'] as $award_id => $award) {
+				if (!empty($award['contact_display_name']) 
+					AND $award['contact_display_name'] === $line['contact'])
+					unset($data[$contact_id]['awards'][$award_id]['contact_display_name']);
+			}
+		}
 	}
 	
 	return $data;
@@ -268,4 +278,35 @@ function mf_contacts_relations_inverse($relation) {
 		case 'parents': return 'children';
 	}
 	return $relation;
+}
+
+/**
+ * get awards per contact
+ *
+ * @param array $ids
+ * @return array
+ */
+function mf_contacts_awards($ids) {
+	$sql = 'SELECT award_id, contact_id, contact_display_name
+			, award_date, award_year, award_year_to
+			, remarks, laudation, published
+			, category_id, category
+			, SUBSTRING_INDEX(IFNULL(
+				SUBSTRING_INDEX(SUBSTRING_INDEX(categories.parameters, "&alias=", -1), "&", 1),
+				categories.path
+			), "/", -1) AS category_path
+		FROM awards
+		LEFT JOIN categories
+			ON awards.award_category_id = categories.category_id
+		WHERE contact_id IN (%s)
+			AND published = "yes"
+		ORDER BY award_year DESC, award_date DESC, categories.sequence, categories.path';
+	$sql = sprintf($sql, implode(',', $ids));
+	$awards = wrap_db_fetch($sql, 'award_id');
+	$awards = wrap_translate($awards, 'categories', 'category_id');
+	
+	$data = [];
+	foreach ($awards as $award_id => $award)
+		$data[$award['contact_id']]['awards'][$award_id] = $award;
+	return $data;
 }

@@ -135,6 +135,22 @@
 </td>
 </tr>
 %%% endif %%%
+%%% if awards %%%
+<tr>
+<th>%%% text Awards %%%</th>
+<td>
+<ul>
+%%% loop awards %%%
+<li>%%% item category %%%%%% if award_year %%% (%%% item award_year %%%%%% if award_year_to %%%–%%% item award_year_to %%%%%% endif %%%)%%% endif %%%
+%%% if award_date %%%<br><em>%%% item award_date wrap_date %%%</em>%%% endif %%%
+%%% if contact_display_name %%%<br><em>%%% item contact_display_name %%%</em>%%% endif %%%
+%%% if laudation %%%<br>%%% item laudation markdown %%%%%% endif %%%
+</li>
+%%% loop end %%%
+</ul>
+</td>
+</tr>
+%%% endif %%%
 
 %%% block contact_6 %%%
 %%% if logindata %%%
