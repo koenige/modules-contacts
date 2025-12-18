@@ -8,7 +8,7 @@
  * Part of »Zugzwang Project«
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2016-2017, 2019-2024 Gustaf Mossakowski
+ * @copyright Copyright © 2016-2017, 2019-2025 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -31,6 +31,16 @@ $zz['fields'][2]['show_hierarchy_subtree'] = wrap_category_id('awards');
 $zz['fields'][2]['if'][2]['list_prefix'] = '<del>';
 $zz['fields'][2]['if'][2]['list_suffix'] = '</del>';
 
+$zz['fields'][4]['title'] = 'Level';
+$zz['fields'][4]['field_name'] = 'award_level';
+$zz['fields'][4]['type'] = 'text';
+$zz['fields'][4]['maxlength'] = 32;
+$zz['fields'][4]['sql'] = 'SELECT DISTINCT award_level, award_level
+	FROM /*_PREFIX_*/awards
+	WHERE award_level IS NOT NULL
+	ORDER BY award_level';
+$zz['fields'][4]['explanation'] = 'e.g. Gold, Silver, Bronze';
+
 $zz['fields'][3]['field_name'] = 'contact_id';
 $zz['fields'][3]['type'] = 'select';
 $zz['fields'][3]['sql'] = 'SELECT contact_id, contact, identifier
@@ -44,7 +54,6 @@ $zz['fields'][3]['link'] = [
 	'fields' => ['identifier', 'contact_parameters']
 ];
 $zz['fields'][3]['if'][2]['list_prefix'] = '<del>';
-
 
 $zz['fields'][5]['title'] = 'Display Name';
 $zz['fields'][5]['field_name'] = 'contact_display_name';

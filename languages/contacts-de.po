@@ -370,6 +370,14 @@ msgid "Awards"
 msgstr "Auszeichnungen"
 
 #: zzbrick_tables/awards.php
+msgid "Level"
+msgstr "Stufe"
+
+#: zzbrick_tables/awards.php
+msgid "e.g. Gold, Silver, Bronze"
+msgstr "z. B. Gold, Silber, Bronze"
+
+#: zzbrick_tables/awards.php
 msgid "Date"
 msgstr "Datum"
 

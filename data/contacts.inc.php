@@ -288,7 +288,7 @@ function mf_contacts_relations_inverse($relation) {
  */
 function mf_contacts_awards($ids) {
 	$sql = 'SELECT award_id, contact_id, contact_display_name
-			, award_date, award_year, award_year_to
+			, award_level, award_date, award_year, award_year_to
 			, remarks, laudation, published
 			, category_id, category
 			, SUBSTRING_INDEX(IFNULL(

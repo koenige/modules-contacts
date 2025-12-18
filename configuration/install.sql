@@ -43,6 +43,7 @@ INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `
 CREATE TABLE `awards` (
   `award_id` int unsigned NOT NULL AUTO_INCREMENT,
   `award_category_id` int unsigned NOT NULL,
+  `award_level` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `contact_id` int unsigned NOT NULL,
   `contact_display_name` varchar(127) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `award_date` date DEFAULT NULL,

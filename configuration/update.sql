@@ -61,3 +61,4 @@
 /* 2024-04-15-1 */	UPDATE webpages SET content = REPLACE(content, '%%% request contactverification ', '%%% make contactverification ') WHERE content LIKE '%\%\%\% request contactverification %';
 /* 2025-02-04-1 */	UPDATE webpages SET content = REPLACE(content, '%%% request contact * type=', '%%% request contact * scope=') WHERE content LIKE '%\%\%\% request contact * type=%';
 /* 2025-05-30-1 */	ALTER TABLE `contacts_identifiers` ADD INDEX `identifier` (`identifier`);
+/* 2025-12-18-1 */	ALTER TABLE `awards` ADD `award_level` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL AFTER `award_category_id`;

@@ -368,6 +368,14 @@ msgid "Awards"
 msgstr "Ödüller"
 
 #: zzbrick_tables/awards.php
+msgid "Level"
+msgstr "Derece"
+
+#: zzbrick_tables/awards.php
+msgid "e.g. Gold, Silver, Bronze"
+msgstr "örn. Altın, Gümüş, Bronz"
+
+#: zzbrick_tables/awards.php
 msgid "Date"
 msgstr "Tarih"
 
