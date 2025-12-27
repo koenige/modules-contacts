@@ -66,7 +66,7 @@ function mf_contacts_data($ids, $langs, $settings = []) {
 	}
 
 	// media
-	$contacts = wrap_data_media($contacts, $ids, $langs, 'contacts', 'contacts_media.contact');
+	$contacts = wrap_data_media($contacts, $ids, $langs, 'contacts');
 
 	// contact details
 	// @todo translations (categories)
