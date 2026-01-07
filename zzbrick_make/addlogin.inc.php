@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2022-2024 Gustaf Mossakowski
+ * @copyright Copyright © 2022-2024, 2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -19,6 +19,8 @@
  * @param array $params
  */
 function mod_contacts_make_addlogin($params) {
+	wrap_setting('cache', false);
+
 	$data = [];
 	$page['query_strings'][] = 'add';
 	$page['query_strings'][] = 'request'; // @deprecated
