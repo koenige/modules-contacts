@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2021, 2023-2025 Gustaf Mossakowski
+ * @copyright Copyright © 2021, 2023-2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -18,10 +18,9 @@
  * @return array
  */
 function mf_contacts_check() {
-	global $zz_conf;
-
 	// just do this check once
-	$token = sha1($zz_conf['int']['secret_key'].$_POST['zz_id']);
+	// @todo move this to zzform!
+	$token = sha1(zz_state_hash().$_POST['zz_id']);
 	if (!empty($_POST['zz_token']) AND $_POST['zz_token'] === $token) {
 		if (!empty($_POST['zz_identical'])) return [];
 		if (!empty($_POST['zz_mixedcase'])) return [];
