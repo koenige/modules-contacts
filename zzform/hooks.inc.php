@@ -20,13 +20,13 @@
 function mf_contacts_check() {
 	// just do this check once
 	// @todo move this to zzform!
-	$token = sha1(zz_state_hash().$_POST['zz_id']);
-	if (!empty($_POST['zz_token']) AND $_POST['zz_token'] === $token) {
+	$token = sha1(zz_state_hash().$_POST['zz_token']);
+	if (!empty($_POST['zz_recheck_token']) AND $_POST['zz_recheck_token'] === $token) {
 		if (!empty($_POST['zz_identical'])) return [];
 		if (!empty($_POST['zz_mixedcase'])) return [];
 	}
 	$change = [];
-	$change['output_form'] = sprintf('<input type="hidden" name="zz_token" value="%s">', $token);
+	$change['output_form'] = sprintf('<input type="hidden" name="zz_recheck_token" value="%s">', $token);
 	return $change;	
 }
 
