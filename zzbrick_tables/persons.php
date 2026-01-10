@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2011-2015, 2020-2021, 2024 Gustaf Mossakowski
+ * @copyright Copyright © 2011-2015, 2020-2021, 2024, 2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -44,7 +44,7 @@ $zz['fields'][3]['sql'] = 'SELECT DISTINCT title_prefix, title_prefix
 $zz['fields'][4]['title'] = 'First name';
 $zz['fields'][4]['field_name'] = 'first_name';
 $zz['fields'][4]['unless']['export_mode']['list_append_next'] = true;
-$zz['fields'][4]['if']['multi']['null_string'] = true;
+$zz['fields'][4]['if']['batch_mode']['null_string'] = true;
 $zz['fields'][4]['merge_equal'] = true;
 $zz['fields'][4]['field_sequence'] = 15;
 $zz['fields'][4]['link'] = [
@@ -69,7 +69,7 @@ $zz['fields'][6]['title'] = 'Last name';
 $zz['fields'][6]['field_name'] = 'last_name';
 $zz['fields'][6]['list_append_show_title'] = true;
 $zz['fields'][6]['unless']['export_mode']['list_append_next'] = true;
-$zz['fields'][6]['if']['multi']['null_string'] = true;
+$zz['fields'][6]['if']['batch_mode']['null_string'] = true;
 $zz['fields'][6]['unless']['export_mode']['list_hide_value'] = true;
 $zz['fields'][6]['merge_equal'] = true;
 $zz['fields'][6]['field_sequence'] = 17;
