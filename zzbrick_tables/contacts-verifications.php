@@ -45,7 +45,7 @@ $zz['fields'][3]['title'] = 'Entry Date';
 $zz['fields'][3]['field_name'] = 'entry_date';
 $zz['fields'][3]['type'] = 'write_once';
 $zz['fields'][3]['type_detail'] = 'datetime';
-$zz['fields'][3]['default'] = date('Y-m-d H:i:s');
+$zz['fields'][3]['default'] = 'current_date';
 $zz['fields'][3]['unless']['export_mode']['list_append_next'] = true;
 
 $zz['fields'][5]['title'] = 'Entry IP';
