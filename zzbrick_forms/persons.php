@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2019-2025 Gustaf Mossakowski
+ * @copyright Copyright © 2019-2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -119,14 +119,16 @@ while ($no) {
 }
 
 // addresses
-$zz['fields'][5]['separator_before'] = false; // set in forms/contacts
-$zz['fields'][5]['field_sequence'] = 50;
-$zz['fields'][5]['fields'][7]['hide_in_form'] = true; // lat
-$zz['fields'][5]['fields'][8]['hide_in_form'] = true; // lon
-$zz['fields'][5]['min_records'] = 1;
-$zz['fields'][5]['max_records'] = 10;
-$zz['fields'][5]['hide_in_list'] = true;
-$zz['fields'][5]['separator'] = true;
+if (!empty($zz['fields'][5])) {
+	$zz['fields'][5]['separator_before'] = false; // set in forms/contacts
+	$zz['fields'][5]['field_sequence'] = 50;
+	$zz['fields'][5]['fields'][7]['hide_in_form'] = true; // lat
+	$zz['fields'][5]['fields'][8]['hide_in_form'] = true; // lon
+	$zz['fields'][5]['min_records'] = 1;
+	$zz['fields'][5]['max_records'] = 10;
+	$zz['fields'][5]['hide_in_list'] = true;
+	$zz['fields'][5]['separator'] = true;
+}
 
 // description
 $zz['fields'][12]['field_sequence'] = 71;

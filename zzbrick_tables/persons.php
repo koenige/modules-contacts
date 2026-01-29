@@ -80,6 +80,10 @@ $zz['fields'][12]['explanation'] = 'if different from current last name';
 $zz['fields'][12]['list_prefix'] = ' (born ';
 $zz['fields'][12]['list_suffix'] = ')';
 $zz['fields'][12]['field_sequence'] = 18;
+if (!wrap_setting('contacts_birth_name')) {
+	$zz['fields'][12]['hide_in_form'] = true;
+	$zz['fields'][12]['hide_in_list'] = true;
+}
 
 $zz['fields'][7]['title'] = 'Title (suffix)';
 $zz['fields'][7]['field_name'] = 'title_suffix';
@@ -116,7 +120,10 @@ $zz['fields'][11]['title'] = 'Date of Death';
 $zz['fields'][11]['field_name'] = 'date_of_death';
 $zz['fields'][11]['type'] = 'date';
 $zz['fields'][11]['hide_in_list'] = true;
-if (!wrap_access('contacts_date_of_death')) {
+if (!wrap_setting('contacts_date_of_death')) {
+	$zz['fields'][11]['hide_in_form'] = true;
+	$zz['fields'][11]['hide_in_list'] = true;
+} elseif (!wrap_access('contacts_date_of_death')) {
 	$zz['fields'][11]['hide_in_form'] = true;
 }
 $zz['fields'][11]['field_sequence'] = 22;
@@ -133,6 +140,10 @@ $zz['fields'][10]['display_field'] = 'country';
 $zz['fields'][10]['character_set'] = 'utf8';
 $zz['fields'][10]['field_sequence'] = 23;
 $zz['fields'][10]['search'] = '/*_PREFIX_*/countries.country';
+if (!wrap_setting('contacts_nationality_country_id')) {
+	$zz['fields'][10]['hide_in_form'] = true;
+	$zz['fields'][10]['hide_in_list'] = true;
+}
 
 $zz['fields'][99]['field_name'] = 'last_update';
 $zz['fields'][99]['type'] = 'timestamp';

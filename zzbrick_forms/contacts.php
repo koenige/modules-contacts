@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2023-2025 Gustaf Mossakowski
+ * @copyright Copyright © 2023-2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -77,13 +77,15 @@ if (!empty($values['addresses_restrict_to']))
 	mf_default_categories_restrict($values, 'addresses', 'address');
 if (isset($values['addresses'])) {
 	$no = 80;
-} else {
+} elseif (wrap_setting('contacts_addresses_legacy')) {
 	$values['addresses'][] = [
 		'category_id' => 0,
 		'category' => 'Address',
 		'parameters' => []
 	];
 	$no = 5; // @deprecated for backwards compatibility, keep no. 5 for single table
+} else {
+	$values['addresses'] = [];
 }
 foreach ($values['addresses'] as $category_id => $category) {
 	mf_contacts_addresses_subtable($zz, $category, $no);
