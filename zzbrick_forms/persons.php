@@ -15,6 +15,7 @@
 
 $values['contactdetails_restrict_to'] = 'persons';
 $values['relations_restrict_to'] = 'persons';
+$values['categories_restrict_to'] = 'persons';
 
 $zz = zzform_include('contacts', $values, 'forms');
 $zz['title'] = 'Persons';
@@ -104,6 +105,14 @@ $zz['fields'][4]['value'] = wrap_category_id('contact/person');
 $zz['fields'][4]['export'] = false; // contact_category_id
 $zz['fields'][4]['field_sequence'] = 28;
 $zz['fields'][4]['exclude_from_search'] = true;
+
+// categories
+$no = 50;
+while ($no) {
+	if (empty($zz['fields'][$no])) break;
+	$zz['fields'][$no]['field_sequence'] = $no;
+	$no++;
+}
 
 // latlon
 $zz['fields'][8]['export'] = false;
