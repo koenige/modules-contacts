@@ -68,7 +68,9 @@ $zz['fields'][5]['explanation'] = 'e. g. nobiliary particle';
 $zz['fields'][6]['title'] = 'Last name';
 $zz['fields'][6]['field_name'] = 'last_name';
 $zz['fields'][6]['list_append_show_title'] = true;
-$zz['fields'][6]['unless']['export_mode']['list_append_next'] = true;
+if (wrap_setting('contacts_birth_name')) {
+	$zz['fields'][6]['unless']['export_mode']['list_append_next'] = true;
+}
 $zz['fields'][6]['if']['batch_mode']['null_string'] = true;
 $zz['fields'][6]['unless']['export_mode']['list_hide_value'] = true;
 $zz['fields'][6]['merge_equal'] = true;
