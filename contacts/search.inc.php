@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2020, 2022, 2024 Gustaf Mossakowski
+ * @copyright Copyright © 2020, 2022, 2024, 2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -27,7 +27,7 @@ function mf_contacts_search($q) {
 		FROM contacts
 		WHERE %s
 		AND published = "yes"
-		AND !ISNULL(description)';
+		AND description IS NOT NULL';
 	$sql = sprintf($sql, implode(' AND ', $where));
 	$data['contacts'] = wrap_db_fetch($sql, 'contact_id');
 	return $data;
