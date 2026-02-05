@@ -6,7 +6,7 @@
 # https://www.zugzwang.org/modules/contacts
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2018, 2022, 2024 Gustaf Mossakowski
+# @copyright Copyright © 2018, 2022, 2024, 2026 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 <div class="contactverification">
@@ -16,7 +16,7 @@
 
 %%% elseif confirmed_delete %%%
 <p>Deine Daten konnten nicht wieder aus unserer Datenbank entfernt werden, da Du 
-Deine %%% item category wrap_text %%% offensichtlich schon bestätigt hattest. Auf diesem Wege ist eine 
+Deine %%% translate item category %%% offensichtlich schon bestätigt hattest. Auf diesem Wege ist eine 
 Abmeldung nicht mehr möglich.</p>
 <p>Bitte setze Dich direkt mit uns in Verbindung (E-Mail: 
 <a href="mailto:%%% item own_e_mail %%%">%%% item own_e_mail %%%</a>).</p>
@@ -25,10 +25,10 @@ Abmeldung nicht mehr möglich.</p>
 <p><strong>Deine Daten wurden in der Datenbank nicht gefunden.</strong></p>
 
 %%% elseif confirm %%%
-<p>Vielen Dank für Dein Interesse. Deine %%% item category wrap_text %%% wurde bestätigt.</p>
+<p>Vielen Dank für Dein Interesse. Deine %%% translate item category %%% wurde bestätigt.</p>
 
 %%% elseif already_confirmed %%%
-<p><strong>Du hast Deine %%% item category wrap_text %%% bereits bestätigt.</strong> Eine 
+<p><strong>Du hast Deine %%% translate item category %%% bereits bestätigt.</strong> Eine 
 erneute Bestätigung ist nicht notwendig.</p>
 
 %%% endif %%%
@@ -36,15 +36,15 @@ erneute Bestätigung ist nicht notwendig.</p>
 
 %%% if form %%%
 <fieldset>
-<legend>Bestätigung/Löschung der %%% item category wrap_text %%%</legend>
+<legend>Bestätigung/Löschung der %%% translate item category %%%</legend>
 <p>Bitte gib den Bestätigungscode aus der E-Mail per Hand in das Formular ein:</p>
 <form method="GET" action="%%% item action wrap_html_escape %%%" id="confirmation">
 <table>
 <tr><th><label for="code">Code:</label></th> <td><input type="text" name="code" id="code" size="32" value="%%% item code %%%"></td></tr>
 <tr><th><td>
 %%% if reminder %%%<div class="reminder">%%% endif %%%
-%%% unless setting html_label_after_input %%%<label for="confirm">%%% endif %%%<input type="radio" name="action" value="confirm" id="confirm" required%%% item check_confirm " checked" %%%> %%% if setting html_label_after_input %%%<label for="confirm">%%% endif %%%%%% item category wrap_text %%% bestätigen</label>
-%%% unless setting html_label_after_input %%%<label for="delete">%%% endif %%%<input type="radio" name="action" value="delete" id="delete" required%%% item check_delete " checked" %%%> %%% if setting html_label_after_input %%%<label for="delete">%%% endif %%%%%% item category wrap_text %%% löschen</label>
+%%% unless setting html_label_after_input %%%<label for="confirm">%%% endif %%%<input type="radio" name="action" value="confirm" id="confirm" required%%% item check_confirm " checked" %%%> %%% if setting html_label_after_input %%%<label for="confirm">%%% endif %%%%%% translate item category %%% bestätigen</label>
+%%% unless setting html_label_after_input %%%<label for="delete">%%% endif %%%<input type="radio" name="action" value="delete" id="delete" required%%% item check_delete " checked" %%%> %%% if setting html_label_after_input %%%<label for="delete">%%% endif %%%%%% translate item category %%% löschen</label>
 %%% if reminder %%%</div>%%% endif %%%
 <br><input type="submit" class="submit"></td></tr>
 </table>
