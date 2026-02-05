@@ -5,7 +5,7 @@
 # https://www.zugzwang.org/modules/contacts
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2021-2025 Gustaf Mossakowski
+# @copyright Copyright © 2021-2026 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 <div class="contact">
@@ -15,7 +15,7 @@
 <h2>%%% text " (born %s)" birth_name %%%</h2>
 %%% endif %%%
 %%% else %%%
-<h1>%%% item contact nl2br %%%</h1>
+<h1>%%% item contact format=nl2br %%%</h1>
 <h2>%%% item category %%%</h2>
 %%% endif %%%
 
@@ -31,7 +31,7 @@
 %%% endif %%%
 
 %%% if description %%%
-%%% item description markdown %%%
+%%% item description format=markdown %%%
 %%% endif %%%
 
 <table>
@@ -39,12 +39,12 @@
 %%% block contact_1 %%%
 %%% if start_date | end_date %%%
 <tr><th>%%% text Period %%%</th><td>
-	%%% if start_date %%%%%% text Foundation: %%% %%% item start_date wrap_date %%%%%% endif %%% 
+	%%% if start_date %%%%%% text Foundation: %%% %%% item start_date format=date %%%%%% endif %%% 
 	%%% if start_date & end_date %%% – %%% endif %%%
-	%%% if end_date %%%%%% text Dissolution: %%% %%% item end_date wrap_date %%%%%% if age %%% <em>%%% text "(%d years)" age %%%</em>%%% endif %%%%%% else %%%%%% if age %%%<em>%%% text "(%d years ago)" age %%%</em>%%% endif %%%%%% endif %%%</td></tr>
+	%%% if end_date %%%%%% text Dissolution: %%% %%% item end_date format=date %%%%%% if age %%% <em>%%% text "(%d years)" age %%%</em>%%% endif %%%%%% else %%%%%% if age %%%<em>%%% text "(%d years ago)" age %%%</em>%%% endif %%%%%% endif %%%</td></tr>
 %%% endif %%%
 %%% if date_of_birth %%%
-<tr><th>%%% text Birth %%%</th><td>%%% item date_of_birth wrap_date "*&nbsp;%s" %%% %%% item date_of_death wrap_date "†&nbsp;%s" %%% %%% if male %%%♂%%% elseif female %%%♀%%% elseif diverse %%%⚪︎%%% endif %%% %%% text "(Age: %d)" age %%%</td></tr>
+<tr><th>%%% text Birth %%%</th><td>%%% item date_of_birth format=date "*&nbsp;%s" %%% %%% item date_of_death format=date "†&nbsp;%s" %%% %%% if male %%%♂%%% elseif female %%%♀%%% elseif diverse %%%⚪︎%%% endif %%% %%% text "(Age: %d)" age %%%</td></tr>
 %%% endif %%%
 %%% if country %%%
 <tr><th>%%% if person %%%%%% text Nationality %%%%%% else %%%%%% text Country %%%%%% endif %%%</th><td>%%% item country %%%</td></tr>
@@ -66,7 +66,7 @@
 %%% if addresses %%%
 <tr><th>%%% text Address %%%</th><td>
 %%% loop addresses %%%
-<p><em>%%% item category %%%: %%% if receive_mail %%%%%% text (for mailing) %%%%%% endif %%%</em><br>%%% item address nl2br %%%<br>%%% item postcode %%% %%% item place %%%<br>%%% item country %%%</p>
+<p><em>%%% item category %%%: %%% if receive_mail %%%%%% text (for mailing) %%%%%% endif %%%</em><br>%%% item address format=nl2br %%%<br>%%% item postcode %%% %%% item place %%%<br>%%% item country %%%</p>
 %%% loop end %%%
 </td></tr>
 %%% endif %%%
@@ -142,9 +142,9 @@
 <ul>
 %%% loop awards %%%
 <li>%%% item category %%%%%% if award_level %%% – %%% item award_level %%%%%% endif %%%%%% if award_year %%% (%%% item award_year %%%%%% if award_year_to %%%–%%% item award_year_to %%%%%% endif %%%)%%% endif %%%
-%%% if award_date %%%<br><em>%%% item award_date wrap_date %%%</em>%%% endif %%%
+%%% if award_date %%%<br><em>%%% item award_date format=date %%%</em>%%% endif %%%
 %%% if contact_display_name %%%<br><em>%%% item contact_display_name %%%</em>%%% endif %%%
-%%% if laudation %%%<br>%%% item laudation markdown %%%%%% endif %%%
+%%% if laudation %%%<br>%%% item laudation format=markdown %%%%%% endif %%%
 </li>
 %%% loop end %%%
 </ul>
@@ -159,7 +159,7 @@
 %%% if logged_in %%%
 %%% text currently online %%% 
 %%% elseif last_click %%%
-%%% text last seen %%% %%% item last_click wrap_date %%%
+%%% text last seen %%% %%% item last_click format=date %%%
 %%% else %%%
 %%% text never online %%%
 %%% endif %%%
@@ -181,7 +181,7 @@
 %%% endif %%% 
 %%% block contact_7 %%%
 %%% if remarks %%%
-<tr class="remarks"><th>%%% text Remarks %%%</th><td>%%% item remarks markdown %%%</td></tr>
+<tr class="remarks"><th>%%% text Remarks %%%</th><td>%%% item remarks format=markdown %%%</td></tr>
 %%% endif %%%
 %%% block contact_8 %%%
 </tbody>
@@ -196,7 +196,7 @@
 %%% block contact_foot %%%
 
 %%% if duplicates %%%
-<p class="edit"><a href="%%% item deep %%%../?q=%%% item contact rawurlencode %%%">%%% text Possible duplicates of this record %%%</a></p>
+<p class="edit"><a href="%%% item deep %%%../?q=%%% item contact format=rawurlencode %%%">%%% text Possible duplicates of this record %%%</a></p>
 %%% endif %%%
 
 </div>

@@ -38,7 +38,7 @@ erneute Bestätigung ist nicht notwendig.</p>
 <fieldset>
 <legend>Bestätigung/Löschung der %%% translate item category %%%</legend>
 <p>Bitte gib den Bestätigungscode aus der E-Mail per Hand in das Formular ein:</p>
-<form method="GET" action="%%% item action wrap_html_escape %%%" id="confirmation">
+<form method="GET" action="%%% item action format=html_escape %%%" id="confirmation">
 <table>
 <tr><th><label for="code">Code:</label></th> <td><input type="text" name="code" id="code" size="32" value="%%% item code %%%"></td></tr>
 <tr><th><td>

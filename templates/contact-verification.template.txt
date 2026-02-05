@@ -5,7 +5,7 @@
 # https://www.zugzwang.org/modules/contacts
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2015, 2018, 2022, 2024 Gustaf Mossakowski
+# @copyright Copyright © 2015, 2018, 2022, 2024, 2026 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 <div class="contactverification">
@@ -15,7 +15,7 @@
 
 %%% elseif confirmed_delete %%%
 <p>Your data could not be removed from our database, because it looks like you
-already confirmed your %%% item category strtolower %%%. This way, a cancellation is not possible.</p>
+already confirmed your %%% item category format=strtolower %%%. This way, a cancellation is not possible.</p>
 <p>Please contact us directly (E-Mail: 
 <a href="mailto:%%% item own_e_mail %%%">%%% item own_e_mail %%%</a>).</p>
 
@@ -23,10 +23,10 @@ already confirmed your %%% item category strtolower %%%. This way, a cancellatio
 <p><strong>Your data was not found in the database.</strong></p>
 
 %%% elseif confirm %%%
-<p>Thank you for your interest. Your %%% item category strtolower %%% was confirmed.</p>
+<p>Thank you for your interest. Your %%% item category format=strtolower %%% was confirmed.</p>
 
 %%% elseif already_confirmed %%%
-<p><strong>You already confirmed your %%% item category strtolower %%%.</strong> Another 
+<p><strong>You already confirmed your %%% item category format=strtolower %%%.</strong> Another 
 confirmation is not necessary.</p>
 
 %%% endif %%%
@@ -34,15 +34,15 @@ confirmation is not necessary.</p>
 
 %%% if form %%%
 <fieldset>
-<legend>Confirmation/Deletion of the %%% item category strtolower %%%</legend>
+<legend>Confirmation/Deletion of the %%% item category format=strtolower %%%</legend>
 <p>Please enter the confirmation code from your e-mail into the form:</p>
-<form method="GET" action="%%% item action wrap_html_escape %%%" id="confirmation">
+<form method="GET" action="%%% item action format=html_escape %%%" id="confirmation">
 <table>
 <tr><th><label for="code">Code:</label></th> <td><input type="text" name="code" id="code" size="32" value="%%% item code %%%"></td></tr>
 <tr><th><td>
 %%% if reminder %%%<div class="reminder">%%% endif %%%
-%%% unless setting html_label_after_input %%%<label for="confirm">%%% endif %%%<input type="radio" name="action" value="confirm" id="confirm" required%%% item check_confirm " checked" %%%> %%% if setting html_label_after_input %%%<label for="confirm">%%% endif %%%Confirm %%% item category strtolower %%%</label>
-%%% unless setting html_label_after_input %%%<label for="delete">%%% endif %%%<input type="radio" name="action" value="delete" id="delete" required%%% item check_delete " checked" %%%> %%% if setting html_label_after_input %%%<label for="delete">%%% endif %%%Delete %%% item category strtolower %%%</label>
+%%% unless setting html_label_after_input %%%<label for="confirm">%%% endif %%%<input type="radio" name="action" value="confirm" id="confirm" required%%% item check_confirm " checked" %%%> %%% if setting html_label_after_input %%%<label for="confirm">%%% endif %%%Confirm %%% item category format=strtolower %%%</label>
+%%% unless setting html_label_after_input %%%<label for="delete">%%% endif %%%<input type="radio" name="action" value="delete" id="delete" required%%% item check_delete " checked" %%%> %%% if setting html_label_after_input %%%<label for="delete">%%% endif %%%Delete %%% item category format=strtolower %%%</label>
 %%% if reminder %%%</div>%%% endif %%%
 <br><input type="submit" class="submit"></td></tr>
 </table>
