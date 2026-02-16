@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2023-2025 Gustaf Mossakowski
+ * @copyright Copyright © 2023-2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -346,8 +346,8 @@ function mf_contacts_contacts_subtable(&$zz, $table, $def, $no) {
 	// list view
 	if (!empty($zz['fields'][$no]['subselect'])) {
 		$zz['fields'][$no]['unless']['export_mode']['subselect']['prefix']
-			= '<br><em>'.wrap_text($def['category']).'</em>: ';
-		$zz['fields'][$no]['unless']['export_mode']['subselect']['suffix'] = '';
+			= '<p><em>'.wrap_text($def['category']).'</em>: ';
+		$zz['fields'][$no]['unless']['export_mode']['subselect']['suffix'] = '</p>';
 		if (empty($def['last_category']))
 			$zz['fields'][$no]['unless']['export_mode']['list_append_next'] = true;
 		$zz['fields'][$no]['subselect']['sql'] = wrap_edit_sql(
