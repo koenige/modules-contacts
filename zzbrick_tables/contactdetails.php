@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2015, 2017-2019, 2021, 2023-2024 Gustaf Mossakowski
+ * @copyright Copyright © 2015, 2017-2019, 2021, 2023-2024, 2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -52,7 +52,7 @@ $zz['fields'][4]['sql'] = 'SELECT category_id, category
 $zz['fields'][4]['display_field'] = 'category';
 $zz['fields'][4]['character_set'] = 'utf8';
 
-if (in_array('activities', wrap_setting('modules'))) {
+if (wrap_package('activities')) {
 	$zz['fields'][6]['field_name'] = 'formfield_id';
 	$zz['fields'][6]['type'] = 'select';
 	$zz['fields'][6]['sql'] = 'SELECT formfield_id

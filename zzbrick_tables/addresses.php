@@ -8,7 +8,7 @@
  * Part of »Zugzwang Project«
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2015, 2017-2021, 2023-2024 Gustaf Mossakowski
+ * @copyright Copyright © 2015, 2017-2021, 2023-2024, 2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -141,7 +141,7 @@ $zz['fields'][9]['show_hierarchy_subtree'] = wrap_category_id('address');
 $zz['fields'][9]['def_val_ignore'] = true;
 $zz['fields'][9]['class'] = 'hidden480';
 
-if (in_array('activities', wrap_setting('modules'))) {
+if (wrap_package('activities')) {
 	$zz['fields'][11]['field_name'] = 'formfield_id';
 	$zz['fields'][11]['type'] = 'select';
 	$zz['fields'][11]['sql'] = 'SELECT formfield_id
