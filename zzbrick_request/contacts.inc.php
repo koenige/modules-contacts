@@ -61,7 +61,11 @@ function mod_contacts_contacts($params, $settings) {
 	// $page['title'] = 'Contacts';
 	// @todo if category, use category title
 
-	$template = mod_contacts_contacts_template($data);
+	$template = $settings['template'] ?? '';
+	if ($template)
+		$template = mod_contacts_contacts_template($data, $template);
+	else
+		$template = mod_contacts_contacts_template($data);
 	$page['text'] = wrap_template($template, $data);
 	return $page;
 }
@@ -70,9 +74,10 @@ function mod_contacts_contacts($params, $settings) {
  * add template blocks from modules
  *
  * @param array $data
+ * @param string $main_template
  * @return string
  */
-function mod_contacts_contacts_template($data) {
+function mod_contacts_contacts_template($data, $main_template = 'contacts') {
 	$tpl = '';
 	foreach ($data['templates'] as $block => $templates) {
 		$tpl .= '%%% block definition '.$block.' %%%'."\n";
@@ -81,6 +86,6 @@ function mod_contacts_contacts_template($data) {
 		}
 		$tpl .= '%%% block definition end %%%'."\n\n";
 	}
-	$tpl .= wrap_template('contacts', [], 'error');
+	$tpl .= wrap_template($main_template, [], 'error');
 	return $tpl;
 }
