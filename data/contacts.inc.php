@@ -72,12 +72,15 @@ function mf_contacts_data($ids, $langs, $settings = []) {
 	// contact details
 	// @todo translations (categories)
 	$contactdetails[wrap_setting('lang')] = mf_contacts_contactdetails($ids);
+	
+	// categories
+	$categories[wrap_setting('lang')] = mf_contacts_categories($ids);
 
 	$identifiers[wrap_setting('lang')] = mf_contacts_identifiers($ids);
 	$relations[wrap_setting('lang')] = mf_contacts_relations($ids);
 	$awards[wrap_setting('lang')] = mf_contacts_awards($ids);
 	
-	return [$contacts, $contactdetails, $identifiers, $relations, $awards];
+	return [$contacts, $contactdetails, $categories, $identifiers, $relations, $awards];
 }
 
 /**
@@ -123,9 +126,9 @@ function mf_contacts_identifiers($ids) {
 	$sql = 'SELECT contact_id, contact_identifier_id, identifier
 			, IF(current = "yes", 1, NULL) AS current
 			, category_id, category
-			, IFNULL(
-				SUBSTRING_INDEX(SUBSTRING_INDEX(categories.parameters, "&alias=identifiers/", -1), "&", 1),
-				SUBSTRING_INDEX(categories.path, "/", -1)
+			, SUBSTRING_INDEX(CASE WHEN LOCATE("&alias=", categories.parameters) > 0 THEN
+				SUBSTRING_INDEX(SUBSTRING_INDEX(categories.parameters, "&alias=", -1), "&", 1)
+				ELSE categories.path END, "/", -1
 			) AS path
 		FROM contacts_identifiers
 		LEFT JOIN categories
@@ -157,7 +160,10 @@ function mf_contacts_relations($ids) {
 				, "associations"
 				, "children"
 			) AS relation_type
-			, SUBSTRING_INDEX(IFNULL(SUBSTRING_INDEX(SUBSTRING_INDEX(relations.parameters, "&alias=", -1), "&", 1), relations.path), "/", -1) AS relation_path
+			, SUBSTRING_INDEX(CASE WHEN LOCATE("&alias=", relations.parameters) > 0 THEN
+				SUBSTRING_INDEX(SUBSTRING_INDEX(relations.parameters, "&alias=", -1), "&", 1)
+				ELSE relations.path END, "/", -1
+			) AS relation_path
 			, identifier
 			, contact_categories.category_id AS contact_category_id
 			, contact_categories.category AS category
@@ -185,7 +191,10 @@ function mf_contacts_relations($ids) {
 				, "associations"
 				, "parents"
 			) AS relation_type
-			, SUBSTRING_INDEX(IFNULL(SUBSTRING_INDEX(SUBSTRING_INDEX(relations.parameters, "&alias=", -1), "&", 1), relations.path), "/", -1) AS relation_path
+			, SUBSTRING_INDEX(CASE WHEN LOCATE("&alias=", relations.parameters) > 0 THEN
+				SUBSTRING_INDEX(SUBSTRING_INDEX(relations.parameters, "&alias=", -1), "&", 1)
+				ELSE relations.path END, "/", -1
+			) AS relation_path
 			, identifier
 			, contact_categories.category_id AS contact_category_id
 			, contact_categories.category AS category
@@ -292,10 +301,10 @@ function mf_contacts_awards($ids) {
 			, award_level, award_date, award_year, award_year_to
 			, remarks, laudation, published
 			, category_id, category
-			, SUBSTRING_INDEX(IFNULL(
-				SUBSTRING_INDEX(SUBSTRING_INDEX(categories.parameters, "&alias=", -1), "&", 1),
-				categories.path
-			), "/", -1) AS category_path
+			, SUBSTRING_INDEX(CASE WHEN LOCATE("&alias=", categories.parameters) > 0 THEN
+				SUBSTRING_INDEX(SUBSTRING_INDEX(categories.parameters, "&alias=", -1), "&", 1)
+				ELSE categories.path END, "/", -1
+			) AS category_path
 		FROM awards
 		LEFT JOIN categories
 			ON awards.award_category_id = categories.category_id
@@ -337,4 +346,40 @@ function mf_contacts_media_placeholder($contacts) {
 		}
 	}
 	return $contacts;
+}
+
+/**
+ * get categories per contact
+ *
+ * @param array $ids
+ * @return array
+ */
+function mf_contacts_categories($ids) {
+	$sql = 'SELECT contacts_categories.contact_category_id
+			, contact_id
+			, categories.category_id, categories.category, contacts_categories.property
+			, SUBSTRING_INDEX(CASE WHEN LOCATE("&alias=", categories.parameters) > 0 THEN
+				SUBSTRING_INDEX(SUBSTRING_INDEX(categories.parameters, "&alias=", -1), "&", 1)
+				ELSE categories.path END, "/", -1
+			) AS category_path
+			, type_category_id, types.category AS type_category
+			, SUBSTRING_INDEX(CASE WHEN LOCATE("&alias=", types.parameters) > 0 THEN
+				SUBSTRING_INDEX(SUBSTRING_INDEX(types.parameters, "&alias=", -1), "&", 1)
+				ELSE types.path END, "/", -1
+			) AS type_path
+		FROM contacts_categories
+		LEFT JOIN categories USING (category_id)
+		LEFT JOIN categories types
+			ON types.category_id = contacts_categories.type_category_id
+		WHERE contact_id IN (%s)
+		ORDER BY categories.sequence, categories.path';
+	$sql = sprintf($sql, implode(',', $ids));
+	$categories = wrap_db_fetch($sql, 'contact_category_id');
+	$categories = wrap_translate($categories, 'categories', 'category_id');
+	$categories = wrap_translate($categories, ['type_category' => 'categories.category'], 'type_category_id');
+
+	$data = [];
+	foreach ($categories as $contact_category_id => $category)
+		$data[$category['contact_id']][$category['type_path']][$contact_category_id] = $category;
+	return $data;
 }
