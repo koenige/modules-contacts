@@ -18,13 +18,15 @@ function mod_contacts_contacts($params, $settings) {
 		$sql = 'SELECT contact_id
 			FROM contacts
 			LEFT JOIN persons USING (contact_id)
+			WHERE published = "yes"
 			ORDER BY last_name, first_name, identifier';
 	} elseif (count($params) === 1) {
 		$sql = 'SELECT contact_id
 			FROM contacts
 			LEFT JOIN contacts_categories USING (contact_id)
 			LEFT JOIN persons USING (contact_id)
-			WHERE category_id = /*_ID categories contact-properties/%s _*/
+			WHERE published = "yes"
+			AND category_id = /*_ID categories contact-properties/%s _*/
 			ORDER BY last_name, first_name, identifier';
 		$sql = sprintf($sql, wrap_db_escape($params[0]));
 	} else {
