@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2024-2025 Gustaf Mossakowski
+ * @copyright Copyright © 2024-2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -67,6 +67,7 @@ function mf_contacts_data($ids, $langs, $settings = []) {
 
 	// media
 	$contacts = wrap_data_media($contacts, $ids, $langs, 'contacts');
+	$contacts = mf_contacts_media_placeholder($contacts);
 
 	// contact details
 	// @todo translations (categories)
@@ -309,4 +310,31 @@ function mf_contacts_awards($ids) {
 	foreach ($awards as $award_id => $award)
 		$data[$award['contact_id']]['awards'][$award_id] = $award;
 	return $data;
+}
+
+/**
+ * add placeholder medium to contacts without images
+ *
+ * @param array $contacts
+ * @return array
+ */
+function mf_contacts_media_placeholder($contacts) {
+	static $placeholder = [];
+
+	foreach ($contacts as $lang => $contacts_per_lang) {
+		foreach ($contacts_per_lang as $contact_id => $contact) {
+			if (!is_numeric($contact_id)) continue;
+			if (!empty($contact['images'])) continue;
+			if (!array_key_exists($contact['scope'], $placeholder)) {
+				$category_id = wrap_category_id('tags/placeholder-'.$contact['scope'], 'check');
+				if (!$category_id) continue;
+				$media = wrap_media($category_id, 'categories', ['limit' => 1]);
+				if (empty($media['images'])) break;
+				$placeholder[$contact['scope']] = $media['images'];
+			}
+			$contacts[$lang][$contact_id]['images'] = $placeholder[$contact['scope']];
+			$contacts[$lang][$contact_id]['placeholder_medium'] = true;
+		}
+	}
+	return $contacts;
 }
