@@ -34,6 +34,18 @@ function mod_contacts_contacts($params, $settings) {
 	
 	wrap_include('data', 'zzwrap');
 	$contacts = wrap_data('contacts', $contacts);
+
+	if (str_contains($params[0], '/')) {
+		[$type_path, $category_path] = explode('/', $params[0], 2);
+		foreach ($contacts as $contact_id => &$contact) {
+			if (!is_numeric($contact_id)) continue;
+			if (empty($contact[$type_path])) continue;
+			$contact[$type_path] = array_filter(
+				$contact[$type_path],
+				fn($cat) => $cat['category_path'] === $category_path
+			);
+		}
+	}
 	
 	$first_contact = reset($contacts);
 	$data = [
