@@ -58,7 +58,7 @@ if (wrap_setting('contacts_media')) {
 		$zz['fields'][98]['fields'][4]['value'] = 1;
 	}
 	$zz['fields'][98]['fields'][3]['add_details'] = [
-		'area' => 'media_internal',
+		'area' => 'media_internal_folder',
 		'fields' => ['contact_category_id'],
 		'target' => [0 => [
 			'ids' => 'categories',
