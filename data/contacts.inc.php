@@ -167,8 +167,11 @@ function mf_contacts_relations($ids) {
 			, identifier
 			, contact_categories.category_id AS contact_category_id
 			, contact_categories.category AS category
-			, contact_categories.parameters AS category_parameters
 			, relations.parameters AS relation_parameters
+			, (CASE WHEN LOCATE("&type=", contact_categories.parameters) > 0 THEN
+				SUBSTRING_INDEX(SUBSTRING_INDEX(contact_categories.parameters, "&type=", -1), "&", 1)
+				ELSE "*" END
+			) AS contact_scope
 			, IF(contacts.end_date, NULL, 1) AS alive
 			, IF(persons.date_of_death, 1, NULL) AS dead
 			, role
@@ -198,7 +201,10 @@ function mf_contacts_relations($ids) {
 			, identifier
 			, contact_categories.category_id AS contact_category_id
 			, contact_categories.category AS category
-			, contact_categories.parameters AS category_parameters
+			, (CASE WHEN LOCATE("&type=", contact_categories.parameters) > 0 THEN
+				SUBSTRING_INDEX(SUBSTRING_INDEX(contact_categories.parameters, "&type=", -1), "&", 1)
+				ELSE "*" END
+			) AS contact_scope
 			, relations.parameters AS relation_parameters
 			, IF(contacts.end_date, NULL, 1) AS alive
 			, IF(persons.date_of_death, 1, NULL) AS dead
@@ -246,34 +252,11 @@ function mf_contacts_relations($ids) {
 			$this_rel['relation_path'] = $relation['relation_path'];
 			$data[$relation['my_contact_id']][$relation['relation_type']][$indices[$index]] = $this_rel;
 		}
-		$relation['profile_path'] = mf_contacts_relations_profile($relation);
+		$relation['profile_path'] = wrap_path('contacts_profile['.($relation['contact_scope'] ?? '*').']', $relation['identifier']);
 		unset($relation['relation_parameters']);
-		unset($relation['category_parameters']);
 		$data[$relation['my_contact_id']][$relation['relation_type']][$indices[$index]]['contacts'][$cc_id] = $relation;
 	}
 	return $data;
-}
-
-/**
- * get contacts profile for relations
- *
- * @param array $relation
- * @return string
- */
-function mf_contacts_relations_profile($relation) {
-	$cparams = [];
-	if (!$relation['category_parameters']) return '';
-	
-	parse_str($relation['category_parameters'], $cparams);
-	if (!empty($cparams['type']) AND wrap_setting('contacts_profile_path['.$cparams['type'].']'))
-		return wrap_setting('base').sprintf(
-			wrap_setting('contacts_profile_path['.$cparams['type'].']'), $relation['identifier']
-		);
-	if (wrap_setting('contacts_profile_path[*]'))
-		return wrap_setting('base').sprintf(
-			wrap_setting('contacts_profile_path[*]'), $relation['identifier']
-		);
-	return '';
 }
 
 /**

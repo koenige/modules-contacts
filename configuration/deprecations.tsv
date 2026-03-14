@@ -16,3 +16,4 @@
 # exclude_pattern: files matching this pattern will be excluded from results (multiple patterns separated by semicolon)
 #
 2026-03-14-1	code	mf_contacts_profile_path	use `contacts_profile` with `wrap_path()` or `area`
+2026-03-14-2	code	contacts_profile_path	use wrap_path('contacts_profile[*]')
