@@ -68,7 +68,7 @@ function mod_contacts_contact($params, $settings) {
 	
 	if (!empty($data['children'])) {
 		foreach ($data['children'] as $index => $parents)
-			$data['children'][$index]['relations_path'] = mod_contacts_contact_relations_path($parents, $params[0]);
+			$data['children'][$index]['relations_path'] = wrap_path('contact_relations['.$parents['relation_path'].']', $params[0]);
 	}
 
 	// duplicates?
@@ -143,21 +143,4 @@ function mod_contacts_contact_template($data) {
 	}
 	$tpl .= wrap_template('contact', [], 'error');
 	return $tpl;
-}
-
-/**
- * get relations path per category
- *
- * @param array $relation
- * @param string $identifier
- * @return string
- */
-function mod_contacts_contact_relations_path($relation, $identifier) {
-	$type = $relation['relation_path'];
-	if (!wrap_setting('contacts_relations_path['.$type.']'))
-		wrap_setting_path('contacts_relations_path['.$type.']', 'forms contacts-contacts', ['scope' => $type]);
-	if (!wrap_setting('contacts_relations_path['.$type.']')) return '';
-	return wrap_setting('base').sprintf(
-		wrap_setting('contacts_relations_path['.$type.']'), $identifier
-	);
 }
