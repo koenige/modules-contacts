@@ -48,8 +48,8 @@ $zz['fields'][4]['if']['batch_mode']['null_string'] = true;
 $zz['fields'][4]['merge_equal'] = true;
 $zz['fields'][4]['field_sequence'] = 15;
 $zz['fields'][4]['link'] = [
-	'function' => 'mf_contacts_profile_path',
-	'fields' => ['identifier', 'contact_parameters']
+	'area' => 'contacts_profile[person]',
+	'fields' => ['identifier']
 ];
 $zz['fields'][4]['add_details_destination'] = true;
 $zz['fields'][4]['mark_scope'] = ['first_name', 'name_particle', 'last_name'];

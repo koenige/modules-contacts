@@ -50,8 +50,9 @@ $zz['fields'][3]['display_field'] = 'contact';
 $zz['fields'][3]['character_set'] = 'utf8';
 $zz['fields'][3]['unless']['export_mode']['list_append_next'] = true;
 $zz['fields'][3]['link'] = [
-	'function' => 'mf_contacts_profile_path',
-	'fields' => ['identifier', 'contact_parameters']
+	'area' => 'contacts_profile[%s]',
+	'area_fields' => ['contact_scope'],
+	'fields' => ['identifier']
 ];
 $zz['fields'][3]['if'][2]['list_prefix'] = '<del>';
 
@@ -114,8 +115,14 @@ $zz['sql'] = 'SELECT /*_PREFIX_*/awards.*
 		, /*_PREFIX_*/contacts.contact
 		, /*_PREFIX_*/contacts.identifier
 		, /*_PREFIX_*/categories.category
+		, (CASE WHEN LOCATE("&type=", contact_categories.parameters) > 0 THEN
+			SUBSTRING_INDEX(SUBSTRING_INDEX(contact_categories.parameters, "&type=", -1), "&", 1)
+			ELSE "*" END
+		) AS contact_scope
 	FROM /*_PREFIX_*/awards
 	LEFT JOIN /*_PREFIX_*/contacts USING (contact_id)
+	LEFT JOIN /*_PREFIX_*/categories contact_categories
+		ON contact_categories.category_id = /*_PREFIX_*/contacts.contact_category_id
 	LEFT JOIN /*_PREFIX_*/categories
 		ON /*_PREFIX_*/awards.award_category_id = /*_PREFIX_*/categories.category_id
 ';

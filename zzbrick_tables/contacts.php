@@ -39,8 +39,9 @@ $zz['fields'][2]['unless']['export_mode']['list_append_next'] = true;
 $zz['fields'][2]['merge_equal'] = true;
 $zz['fields'][2]['add_details_destination'] = true;
 $zz['fields'][2]['link'] = [
-	'function' => 'mf_contacts_profile_path',
-	'fields' => ['identifier', 'contact_parameters']
+	'area' => 'contacts_profile[%s]',
+	'area_fields' => ['contact_scope'],
+	'fields' => ['identifier']
 ];
 $zz['fields'][2]['link_record'] = true;
 
@@ -288,6 +289,10 @@ $zz['sql'] = 'SELECT /*_PREFIX_*/contacts.*, category
 			WHERE /*_PREFIX_*/addresses.contact_id = /*_PREFIX_*/contacts.contact_id
 			LIMIT 1) AS latlon
 		, /*_PREFIX_*/categories.parameters AS contact_parameters
+		, (CASE WHEN LOCATE("&type=", /*_PREFIX_*/categories.parameters) > 0 THEN
+			SUBSTRING_INDEX(SUBSTRING_INDEX(/*_PREFIX_*/categories.parameters, "&type=", -1), "&", 1)
+			ELSE "*" END
+		) AS contact_scope
 		, /*_PREFIX_*/countries.country_code
 		, /*_PREFIX_*/persons.first_name, /*_PREFIX_*/persons.last_name, /*_PREFIX_*/persons.name_particle
 	FROM /*_PREFIX_*/contacts
