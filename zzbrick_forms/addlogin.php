@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2021-2024 Gustaf Mossakowski
+ * @copyright Copyright © 2021-2024, 2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -83,7 +83,7 @@ $zz['record']['no_timeframe'] = true;
 wrap_text_set('Add a record', ' ');
 wrap_text_set('Add record', 'Save password');
 
-$zz['record']['redirect']['successful_insert'] = $brick['local_settings']['link'] ?? wrap_domain_path('login_entry');
+$zz['record']['redirect']['successful_insert'] = $brick['local_settings']['link'] ?? wrap_path('login_entry');
 
 
 /**
