@@ -32,7 +32,9 @@ function mod_contacts_contact($params, $settings) {
 	$data[$data['scope']] = true;
 
 	// is there a more specific profile page?
-	$path = wrap_path('contacts_profile['.$data['scope'].']', $data['identifier']);
+	$path = wrap_path(
+		'contacts_profile['.$data['scope'].']', $data['identifier'], ['hide_missing' => true]
+	);
 	if ($path AND $path !== parse_url(wrap_setting('request_uri'), PHP_URL_PATH))
 		wrap_redirect($path);
 	
@@ -104,7 +106,7 @@ function mod_contacts_contact($params, $settings) {
 		$login = wrap_db_fetch($sql);
 		if ($login) {
 			$data += $login;
-			$data['masquerade_link'] = wrap_path('default_masquerade', $data['contact_id']);
+			$data['masquerade_link'] = wrap_path('default_masquerade', $data['contact_id'], ['hide_missing' => true]);
 		}
 	}
 	if (count($params) !== 1)

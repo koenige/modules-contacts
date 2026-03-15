@@ -252,7 +252,9 @@ function mf_contacts_relations($ids) {
 			$this_rel['relation_path'] = $relation['relation_path'];
 			$data[$relation['my_contact_id']][$relation['relation_type']][$indices[$index]] = $this_rel;
 		}
-		$relation['profile_path'] = wrap_path('contacts_profile['.($relation['contact_scope'] ?? '*').']', $relation['identifier']);
+		$relation['profile_path'] = wrap_path(
+			'contacts_profile['.($relation['contact_scope'] ?? '*').']', $relation['identifier'], ['hide_missing' => true]
+		);
 		unset($relation['relation_parameters']);
 		$data[$relation['my_contact_id']][$relation['relation_type']][$indices[$index]]['contacts'][$cc_id] = $relation;
 	}
