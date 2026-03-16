@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2021-2025 Gustaf Mossakowski
+ * @copyright Copyright © 2021-2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -104,10 +104,7 @@ function mod_contacts_contact($params, $settings) {
 		}
 		$sql = sprintf($sql, $data['contact_id']);
 		$login = wrap_db_fetch($sql);
-		if ($login) {
-			$data += $login;
-			$data['masquerade_link'] = wrap_path('default_masquerade', $data['contact_id'], ['hide_missing' => true]);
-		}
+		if ($login) $data += $login;
 	}
 	if (count($params) !== 1)
 		$data['deep'] = str_repeat('../', count($params) -1);

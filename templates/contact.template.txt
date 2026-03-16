@@ -166,8 +166,8 @@
 %%% unless active %%%
 %%% text inactive login %%%
 %%% endif %%%
-%%% if masquerade_link %%%
- – <a href="%%% item masquerade_link %%%">%%% text masquerade login %%%</a>
+%%% if path default_masquerade %%%
+ – <a href="%%% path default_masquerade contact_id %%%">%%% text masquerade login %%%</a>
 %%% endif %%%
 %%% else %%%
 %%% text without a login %%%
