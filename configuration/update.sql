@@ -6,7 +6,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2018-2025 Gustaf Mossakowski
+ * @copyright Copyright © 2018-2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -69,3 +69,6 @@
 /* 2026-03-12-5 */	DELETE FROM _settings WHERE setting_key = 'contacts_profile_path[person]';
 /* 2026-03-12-6 */	DELETE FROM _settings WHERE setting_key = 'contacts_relations_path[staff]';
 /* 2026-03-12-7 */	DELETE FROM _settings WHERE setting_key = 'contacts_verification_path';
+/* 2026-03-16-1 */	DELETE FROM _settings WHERE setting_key = 'contacts_profile_path[organisation]';
+/* 2026-03-16-2 */	DELETE FROM _settings WHERE setting_key = 'contacts_profile_path[place]';
+/* 2026-03-16-3 */	DELETE FROM _settings WHERE setting_key = 'contacts_profile_path[platform]';
