@@ -220,6 +220,10 @@ $zz['sql'] = 'SELECT /*_PREFIX_*/contacts.*, category
 			WHERE /*_PREFIX_*/addresses.contact_id = /*_PREFIX_*/contacts.contact_id
 			LIMIT 1) AS latlon
 		, /*_PREFIX_*/categories.parameters AS contact_parameters
+		, (CASE WHEN LOCATE("&type=", /*_PREFIX_*/categories.parameters) > 0 THEN
+			SUBSTRING_INDEX(SUBSTRING_INDEX(/*_PREFIX_*/categories.parameters, "&type=", -1), "&", 1)
+			ELSE "*" END
+		) AS contact_scope
 	FROM /*_PREFIX_*/contacts
 	LEFT JOIN /*_PREFIX_*/persons USING (contact_id)
 	LEFT JOIN /*_PREFIX_*/categories
