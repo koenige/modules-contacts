@@ -69,6 +69,9 @@ function mf_contacts_data($ids, $langs, $settings = []) {
 	$contacts = wrap_data_media($contacts, $ids, $langs, 'contacts');
 	$contacts = mf_contacts_media_placeholder($contacts);
 
+	// person data
+	$persons[wrap_setting('lang')] = mf_contacts_persons($ids);
+
 	// contact details
 	// @todo translations (categories)
 	$contactdetails[wrap_setting('lang')] = mf_contacts_contactdetails($ids);
@@ -80,7 +83,10 @@ function mf_contacts_data($ids, $langs, $settings = []) {
 	$relations[wrap_setting('lang')] = mf_contacts_relations($ids);
 	$awards[wrap_setting('lang')] = mf_contacts_awards($ids);
 	
-	return [$contacts, $contactdetails, $categories, $identifiers, $relations, $awards];
+	return [
+		$contacts, $persons, $contactdetails, $categories, $identifiers, $relations,
+		$awards
+	];
 }
 
 /**
@@ -115,6 +121,38 @@ function mf_contacts_data_finalize($data, $ids) {
 	
 	return $data;
 }	
+
+/**
+ * get person data per contact
+ *
+ * @param array $ids
+ * @return array
+ */
+function mf_contacts_persons($ids) {
+	$sql = 'SELECT contact_id, person_id, first_name, name_particle, last_name
+			, birth_name, sex, title_prefix, title_suffix
+			, date_of_birth, date_of_death, country_id, country
+			, IFNULL(
+				TIMESTAMPDIFF(YEAR, date_of_birth, IFNULL(CAST(IF(
+					SUBSTRING(date_of_death, -6) = "-00-00",
+					CONCAT(YEAR(date_of_death), "-01-01"), date_of_death) AS DATE
+				), CURDATE())),
+				YEAR(IFNULL(date_of_death, CURDATE())) - YEAR(date_of_birth)
+			) AS age_person
+			, IF(ISNULL(date_of_death), 1, NULL) AS alive
+		FROM persons
+		LEFT JOIN countries
+			ON persons.nationality_country_id = countries.country_id
+		WHERE contact_id = %d';
+	$sql = sprintf($sql, implode(',', $ids));
+	$persons = wrap_db_fetch($sql, 'contact_id');
+	$persons = wrap_translate($persons, 'countries', 'country_id');
+	foreach ($persons as $contact_id => $person)
+		if (!empty($person['sex'])) $persons[$contact_id][$person['sex']] = true;
+
+	return $persons;
+}
+
 
 /**
  * get identifiers per contact

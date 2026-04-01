@@ -41,31 +41,6 @@ function mod_contacts_contact($params, $settings) {
 	wrap_match_module_parameters('contacts', $data['parameters']);
 	if (!empty($settings['scope']) AND $settings['scope'] !== '*') {
 		if ($settings['scope'] !== $data['scope']) return false;
-		switch ($settings['scope']) {
-		case 'person':
-			$sql = 'SELECT person_id, first_name, name_particle, last_name
-					, birth_name, sex, title_prefix, title_suffix
-					, date_of_birth, date_of_death, country_id, country
-					, IFNULL(
-						TIMESTAMPDIFF(YEAR, date_of_birth, IFNULL(CAST(IF(
-							SUBSTRING(date_of_death, -6) = "-00-00",
-							CONCAT(YEAR(date_of_death), "-01-01"), date_of_death) AS DATE
-						), CURDATE())),
-						YEAR(IFNULL(date_of_death, CURDATE())) - YEAR(date_of_birth)
-					) AS age
-					, IF(ISNULL(date_of_death), 1, NULL) AS alive
-				FROM persons
-				LEFT JOIN countries
-					ON persons.nationality_country_id = countries.country_id
-				WHERE contact_id = %d';
-			$sql = sprintf($sql, $data['contact_id']);
-			$data = array_merge($data, wrap_db_fetch($sql));
-			if (!empty($data['sex'])) $data[$data['sex']] = true;
-			$data = wrap_translate($data, 'countries', 'country_id');
-			break;
-		case 'organisation':
-			break;
-		}
 	}
 	
 	if (!empty($data['children'])) {

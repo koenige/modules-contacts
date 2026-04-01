@@ -44,7 +44,7 @@
 	%%% if end_date %%%%%% text Dissolution: %%% %%% item end_date format=date %%%%%% if age %%% <em>%%% text "(%d years)" age %%%</em>%%% endif %%%%%% else %%%%%% if age %%%<em>%%% text "(%d years ago)" age %%%</em>%%% endif %%%%%% endif %%%</td></tr>
 %%% endif %%%
 %%% if date_of_birth %%%
-<tr><th>%%% text Birth %%%</th><td>%%% item date_of_birth format=date "*&nbsp;%s" %%% %%% item date_of_death format=date "†&nbsp;%s" %%% %%% if male %%%♂%%% elseif female %%%♀%%% elseif diverse %%%⚪︎%%% endif %%% %%% text "(Age: %d)" age %%%</td></tr>
+<tr><th>%%% text Birth %%%</th><td>%%% item date_of_birth format=date "*&nbsp;%s" %%% %%% item date_of_death format=date "†&nbsp;%s" %%% %%% if male %%%♂%%% elseif female %%%♀%%% elseif diverse %%%⚪︎%%% endif %%% %%% text "(Age: %d)" age_person %%%</td></tr>
 %%% endif %%%
 %%% if country %%%
 <tr><th>%%% if person %%%%%% text Nationality %%%%%% else %%%%%% text Country %%%%%% endif %%%</th><td>%%% item country %%%</td></tr>
