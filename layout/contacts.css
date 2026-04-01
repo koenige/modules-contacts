@@ -6,13 +6,13 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2022 Gustaf Mossakowski
+ * @copyright Copyright © 2022, 2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
 
 /* contact */
-
+.contact		{ --contacts-outdated-color: #999; }
 .contact h1 em	{ font-style: normal; font-weight: normal; }
 .contact table	{ border-collapse: collapse; margin: 1em 0; }
 .contact th		{ text-align: left; }
@@ -27,3 +27,5 @@
 .contact ul		{ margin: 0; padding: 0; list-style: none; }
 .contact li		{ margin: 0; padding: 0; }
 .contact p		{ margin: 0 0 .5em; }
+.contact .outdated
+				{ color: var(--contacts-outdated-color); }

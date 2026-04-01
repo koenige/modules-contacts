@@ -111,18 +111,6 @@
 </td></tr>
 %%% loop end %%%
 %%% block contact_5 %%%
-%%% if identifiers %%%
-<tr>
-<th>%%% text Identifiers %%%</th>
-<td>
-<ul>
-%%% loop identifiers %%%
-<li>%%% item category %%%: %%% item identifier %%% %%% if current %%%<em>%%% text (current) %%%</em>%%% else %%%<em>%%% text (outdated) %%%</em>%%% endif %%%</li>
-%%% loop end %%%
-</ul>
-</td>
-</tr>
-%%% endif %%%
 %%% if profiles %%%
 <tr>
 <th>%%% text Profiles %%%</th>
@@ -146,6 +134,25 @@
 %%% if contact_display_name %%%<br><em>%%% item contact_display_name %%%</em>%%% endif %%%
 %%% if laudation %%%<br>%%% item laudation format=markdown %%%%%% endif %%%
 </li>
+%%% loop end %%%
+</ul>
+</td>
+</tr>
+%%% endif %%%
+%%% if identifiers %%%
+<tr>
+<th>%%% text Identifiers %%%</th>
+<td>
+<ul>
+%%% loop identifiers %%%
+%%% if current %%%
+<li>%%% item category %%%: %%% item identifier %%% <em>%%% text (current) %%%</em></li>
+%%% endif %%%
+%%% loop end %%%
+%%% loop identifiers %%%
+%%% unless current %%%
+<li class="outdated">%%% item category %%%: %%% item identifier %%% %%% text (outdated) %%%</li>
+%%% endif %%%
 %%% loop end %%%
 </ul>
 </td>
