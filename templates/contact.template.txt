@@ -194,11 +194,16 @@
 </tbody>
 </table>
 
-<p class="edit"><a href="%%% item deep %%%../?edit=%%% item contact_id %%%&amp;nolist">%%% text Edit record %%%</a>
+<nav class="edit zz-actions%%% if setting zzform_action_icons_hide_labels %%% zz-actions--icon-only%%% endif %%%">
+<ul>
+<li><a href="%%% item deep %%%../?edit=%%% item contact_id %%%&amp;nolist" title="%%% text Edit record %%%">%%% if setting zzform_action_icons %%%%%% icon zzform-action-edit %%%%%% endif %%%<span class="zz-action-label">%%% text Edit record %%%</span></a></li>
 %%% unless setting contacts_no_delete %%%
-%%% unless parents | children | associations %%% | <a href="%%% item deep %%%../?delete=%%% item contact_id %%%">%%% text Delete record %%%</a>
+%%% unless parents | children | associations %%%
+<li><a href="%%% item deep %%%../?delete=%%% item contact_id %%%" title="%%% text Delete record %%%">%%% if setting zzform_action_icons %%%%%% icon zzform-action-delete %%%%%% endif %%%<span class="zz-action-label">%%% text Delete record %%%</span></a></li>
 %%% endif %%%
-%%% endif %%%</p>
+%%% endif %%%
+</ul>
+</nav>
 
 %%% block contact_foot %%%
 
