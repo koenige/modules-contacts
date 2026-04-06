@@ -14,8 +14,6 @@
 
 
 function mod_contacts_placeholder_contact($brick) {
-	global $zz_page;
-	
 	$identifier = explode('/', $brick['parameter']);
 	$identifier = reset($identifier);
 	$sql = 'SELECT contact_id, contact, identifier
@@ -36,12 +34,12 @@ function mod_contacts_placeholder_contact($brick) {
 		wrap_match_module_parameters('contacts', $brick['data']['category_parameters'], false);
 	}
 
-	$zz_page['access'][] = $brick['data']['contact_rights'];
-	wrap_access_page(wrap_page_field('parameters'), $zz_page['access']);
+	wrap_page_meta('access', $brick['data']['contact_rights']);
+	wrap_access_page();
 
-	$zz_page['breadcrumb_placeholder'][] = [
+	wrap_page_meta('breadcrumb_placeholder', [
 		'title' => $brick['data']['contact'],
 		'url_path' => $brick['data']['identifier']
-	];
+	]);
 	return $brick;
 }
