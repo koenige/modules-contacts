@@ -50,5 +50,5 @@ confirmation is not necessary.</p>
 </fieldset>
 %%% endif %%%
 
-<p><a href="%%% setting homepage_url %%%">Back to home page</a></p>
+<p><a href="%%% path home %%%">Back to home page</a></p>
 </div>
