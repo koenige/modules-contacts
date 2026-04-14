@@ -36,6 +36,7 @@ function mf_contacts_contactdetails($contact_ids, $restrict_to = false) {
 	$sql = sprintf($sql, implode(',', $ids));
 	$details = wrap_db_fetch($sql, ['contact_id', 'contactdetail_id']);
 	$data = [];
+	$last_category = false;
 	foreach ($details as $contact_id => $contactdetails) {
 		foreach ($contactdetails as $id => $detail) {
 			if ($detail['parameters'])
@@ -55,6 +56,9 @@ function mf_contacts_contactdetails($contact_ids, $restrict_to = false) {
 					$detail['username_url'] = sprintf($detail['parameters']['url'], $detail['identification']);
 				break;
 			}
+			if ($last_category === $detail['category'])
+				$detail['same_category'] = true;
+			$last_category = $detail['category'];
 			$data[$contact_id][$detail['parameters']['type']][] = $detail;
 			
 		}

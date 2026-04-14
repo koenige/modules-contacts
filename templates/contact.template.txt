@@ -50,9 +50,15 @@
 <tr><th>%%% if person %%%%%% text Nationality %%%%%% else %%%%%% text Country %%%%%% endif %%%</th><td>%%% item country %%%</td></tr>
 %%% endif %%%
 %%% block contact_2 %%%
+%%% if mail %%%
+<tr><th>%%% text E-Mail %%%</th>
+<td><ul>
 %%% loop mail %%%
-<tr><th>%%% item category %%%</th><td>%%% item mailto %%%%%% item label " (%s)" %%%</td></tr>
+<li>%%% unless same_category %%%%%% if category_short %%%<li class="mailcategory">%%% item category %%%:<br>%%% else %%%<li>%%% endif %%%%%% endif %%%%%% item mailto %%%%%% item label " (%s)" %%%</li>
 %%% loop end %%%
+</ul>
+</td></tr>
+%%% endif %%%
 %%% loop phone %%%
 <tr><th>%%% item category %%%</th><td><a href="tel:%%% item identification %%%">%%% item identification %%%</a>%%% item label " (%s)" %%%</td></tr>
 %%% loop end %%%
