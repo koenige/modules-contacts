@@ -205,11 +205,11 @@ function mf_contacts_relations($ids) {
 			, identifier
 			, contact_categories.category_id AS contact_category_id
 			, contact_categories.category AS category
-			, relations.parameters AS relation_parameters
 			, (CASE WHEN LOCATE("&type=", contact_categories.parameters) > 0 THEN
 				SUBSTRING_INDEX(SUBSTRING_INDEX(contact_categories.parameters, "&type=", -1), "&", 1)
 				ELSE "*" END
 			) AS contact_scope
+			, relations.parameters AS relation_parameters
 			, IF(contacts.end_date, NULL, 1) AS alive
 			, IF(persons.date_of_death, 1, NULL) AS dead
 			, role
