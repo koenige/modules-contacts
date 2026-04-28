@@ -45,7 +45,8 @@ function mod_contacts_contact($params, $settings) {
 	
 	if (!empty($data['children'])) {
 		foreach ($data['children'] as $index => $parents)
-			$data['children'][$index]['relations_path'] = wrap_path('contacts_relations['.$parents['relation_path'].']', $params[0]);
+			$data['children'][$index]['relations_path'] = wrap_path('contacts_relations['.$parents['relation_path'].']', $params[0], ['hide_missing' => true]
+		);
 	}
 
 	// duplicates?
