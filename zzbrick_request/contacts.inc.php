@@ -37,7 +37,7 @@ function mod_contacts_contacts($params, $settings) {
 	wrap_include('data', 'zzwrap');
 	$contacts = wrap_data('contacts', $contacts);
 
-	if (str_contains($params[0], '/')) {
+	if ($params && str_contains($params[0], '/')) {
 		[$type_path, $category_path] = explode('/', $params[0], 2);
 		foreach ($contacts as $contact_id => &$contact) {
 			if (!is_numeric($contact_id)) continue;
@@ -47,16 +47,27 @@ function mod_contacts_contacts($params, $settings) {
 				fn($cat) => $cat['category_path'] === $category_path
 			);
 		}
+		unset($contact);
 	}
-	
-	$first_contact = reset($contacts);
-	$data = [
-		'templates' => $contacts['templates'] ?? [],
-		'scope' => $first_contact['scope'],
-		$first_contact['scope'] => true
-	];
+
+	$templates = $contacts['templates'] ?? [];
 	unset($contacts['templates']);
-	$data['contacts'] = $contacts;
+
+	if (!$contacts) {
+		$data = [
+			'templates' => $templates,
+			'contacts' => [],
+			'no_contacts' => true,
+		];
+	} else {
+		$first_contact = reset($contacts);
+		$data = [
+			'templates' => $templates,
+			'scope' => $first_contact['scope'],
+			$first_contact['scope'] => true,
+			'contacts' => $contacts,
+		];
+	}
 
 	// $page['title'] = 'Contacts';
 	// @todo if category, use category title
