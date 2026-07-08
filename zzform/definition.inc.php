@@ -137,14 +137,6 @@ function mf_contacts_contactdetails_subtable(&$zz, $def, $no) {
 		AND in_array($def['parameters']['type'], ['mail', 'url', 'phone', 'username'])) {
 		$zz['fields'][$no]['fields'][3]['type'] = $def['parameters']['type'];
 	}
-	$parameters_to_fields = [
-		'explanation', 'parse_url', 'url', 'dont_check_username_online',
-		'validate', 'title', 'suffix'
-	];
-	foreach ($parameters_to_fields as $parameter_to_field) {
-		if (empty($def['parameters'][$parameter_to_field])) continue;
-		$zz['fields'][$no]['fields'][3][$parameter_to_field] = $def['parameters'][$parameter_to_field];
-	}
 	if (empty($def['categories']))
 		$def['categories'][$def['category_id']] = $def;
 	$zz['fields'][$no]['sql'] .= sprintf(

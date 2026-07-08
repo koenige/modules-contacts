@@ -35,6 +35,11 @@ $zz['fields'][2]['class'] = 'block480a';
 $zz['fields'][3]['field_name'] = 'identification';
 $zz['fields'][3]['remove_local_hostname'] = false;
 $zz['fields'][3]['store_fields'] = ['link'];
+$zz['fields'][3]['read_parameters'] = 'provider_category_id';
+$zz['fields'][3]['merge_parameters'] = [
+	'explanation', 'parse_url', 'url', 'dont_check_username_online',
+	'validate', 'title', 'suffix', 'webfinger',
+];
 
 $zz['fields'][5]['field_name'] = 'label';
 $zz['fields'][5]['type'] = 'text';
@@ -53,9 +58,10 @@ $zz['fields'][7]['hide_in_form'] = true;
 $zz['fields'][4]['title'] = 'Type';
 $zz['fields'][4]['field_name'] = 'provider_category_id';
 $zz['fields'][4]['type'] = 'select';
-$zz['fields'][4]['sql'] = 'SELECT category_id, category
+$zz['fields'][4]['sql'] = 'SELECT category_id, category, parameters
 	FROM /*_PREFIX_*/categories
 	WHERE main_category_id = /*_ID categories provider _*/';
+$zz['fields'][4]['sql_ignore'][] = 'parameters';
 $zz['fields'][4]['display_field'] = 'category';
 $zz['fields'][4]['character_set'] = 'utf8';
 
