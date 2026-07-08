@@ -121,8 +121,8 @@ function mf_contacts_check_mixedcase($name) {
 }
 
 /**
- * if a provider category only allows a certain number of records, move more records
- * to a different provider category (e. g. mails to extra-mails or so)
+ * if a channel category only allows a certain number of records, move more records
+ * to a different channel category (e. g. mails to extra-mails or so)
  * via parameters `move_more_records_to`, `max_records`
  *
  * @param array $ops

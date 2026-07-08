@@ -37,7 +37,7 @@ if (wrap_setting('login_with_email')) {
 	$sql = sprintf('SELECT identification
 		FROM contactdetails
 		WHERE contact_id = %d
-		AND channel_category_id = /*_ID categories provider/e-mail _*/
+		AND channel_category_id = /*_ID categories channel/e-mail _*/
 		LIMIT 1', $brick['vars'][0]);
 	$zz['sql'] = wrap_edit_sql($zz['sql'], 'SELECT', sprintf('(%s) AS username', $sql));
 } else {

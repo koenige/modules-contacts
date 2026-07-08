@@ -29,7 +29,7 @@ function mod_contacts_make_sendlogin($params, $settings) {
 		LEFT JOIN contacts USING (contact_id)
 		LEFT JOIN contactdetails USING (contact_id)
 		WHERE contacts.%s
-		AND contactdetails.channel_category_id = /*_ID categories provider/e-mail _*/
+		AND contactdetails.channel_category_id = /*_ID categories channel/e-mail _*/
 		ORDER BY contactdetails.contactdetail_id
 		LIMIT 1';
 	$sql = sprintf($sql
@@ -48,7 +48,7 @@ function mod_contacts_make_sendlogin($params, $settings) {
 			FROM contacts
 			LEFT JOIN contactdetails USING (contact_id)
 			WHERE contact_id = %d
-			AND contactdetails.channel_category_id = /*_ID categories provider/e-mail _*/
+			AND contactdetails.channel_category_id = /*_ID categories channel/e-mail _*/
 			ORDER BY contactdetails.contactdetail_id
 			LIMIT 1';
 		$sql = sprintf($sql, $_SESSION['user_id']);

@@ -37,7 +37,7 @@ function mf_contacts_add_person($data, $error_code = E_USER_ERROR) {
 		$line = [
 			'contact_id' => $contact_id,
 			'identification' => $data['e_mail'],
-			'channel_category_id' => wrap_category_id('provider/e-mail')
+			'channel_category_id' => wrap_category_id('channel/e-mail')
 		];
 		zzform_insert('contactdetails', $line);
 	}

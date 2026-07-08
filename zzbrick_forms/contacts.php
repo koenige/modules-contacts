@@ -100,7 +100,7 @@ foreach ($values['addresses'] as $category_id => $category) {
 // contactdetails
 //
 
-mf_default_categories_restrict($values, 'contactdetails', 'provider');
+mf_default_categories_restrict($values, 'contactdetails', 'channel');
 
 $no = 30;
 foreach ($values['contactdetails'] as $category_id => $category) {

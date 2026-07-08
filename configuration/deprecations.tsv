@@ -23,3 +23,7 @@
 2026-03-14-6	code	contacts_relations_path	removed, paths from routes; use wrap_path()
 2026-03-14-7	code	contacts_verification_path	removed, paths from routes; use wrap_path()
 2026-07-08-1	code	provider_category_id	use `channel_category_id` instead	activities/configuration/update.sql
+2026-07-08-2	code	ID categories provider	use `ID categories channel`
+2026-07-08-3	code	wrap_category_id('provider	use `wrap_category_id('channel`
+2026-07-08-4	code	id categories provider	use `id categories channel`
+2026-07-08-5	code	'contactdetails', 'provider'	use `'contactdetails', 'channel'`

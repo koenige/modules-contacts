@@ -60,7 +60,7 @@ $zz['fields'][4]['field_name'] = 'channel_category_id';
 $zz['fields'][4]['type'] = 'select';
 $zz['fields'][4]['sql'] = 'SELECT category_id, category, parameters
 	FROM /*_PREFIX_*/categories
-	WHERE main_category_id = /*_ID categories provider _*/';
+	WHERE main_category_id = /*_ID categories channel _*/';
 $zz['fields'][4]['sql_ignore'][] = 'parameters';
 $zz['fields'][4]['display_field'] = 'category';
 $zz['fields'][4]['character_set'] = 'utf8';

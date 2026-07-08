@@ -14,7 +14,7 @@ Managing contacts (persons and organisations) in Zugzwang Project CMS.
 
     'address' = list of different address types (home, work)
     'contact' = list of different contact types (person, organisation)
-    'provider' = list of different contact providers (e-mail, website, phone)
+    'channel' = list of different contact channels (e-mail, website, phone)
     'relation' = list of contact relations (member)
 
 * Database files found in `configuration` folder

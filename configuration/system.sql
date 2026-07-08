@@ -6,7 +6,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2020-2023 Gustaf Mossakowski
+ * @copyright Copyright © 2020-2023, 2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -30,7 +30,7 @@ WHERE active = 'yes' AND identifier = _latin1'%s';
 SELECT password
 , (SELECT identification FROM /*_PREFIX_*/contactdetails cd
 WHERE cd.contact_id = contacts.contact_id
-AND channel_category_id = /*_ID CATEGORIES provider/e-mail _*/ ORDER BY identification LIMIT 1) AS username
+AND channel_category_id = /*_ID categories channel/e-mail _*/ ORDER BY identification LIMIT 1) AS username
 , contacts.contact_id AS user_id, logins.login_id
 FROM /*_PREFIX_*/logins logins
 LEFT JOIN /*_PREFIX_*/contacts contacts USING (contact_id)
