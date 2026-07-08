@@ -34,6 +34,7 @@ $zz['fields'][2]['class'] = 'block480a';
 
 $zz['fields'][3]['field_name'] = 'identification';
 $zz['fields'][3]['remove_local_hostname'] = false;
+$zz['fields'][3]['store_fields'] = ['link'];
 
 $zz['fields'][5]['field_name'] = 'label';
 $zz['fields'][5]['type'] = 'text';
@@ -42,6 +43,12 @@ $zz['fields'][5]['hide_in_form'] = true;
 $zz['fields'][5]['size'] = 6;
 if (wrap_setting('contacts_details_with_label'))
 	$zz['fields'][5]['hide_in_form'] = false;
+
+$zz['fields'][7]['field_name'] = 'link';
+$zz['fields'][7]['title'] = 'Link';
+$zz['fields'][7]['type'] = 'url';
+$zz['fields'][7]['hide_in_list'] = true;
+$zz['fields'][7]['hide_in_form'] = true;
 
 $zz['fields'][4]['title'] = 'Type';
 $zz['fields'][4]['field_name'] = 'provider_category_id';

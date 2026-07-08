@@ -24,7 +24,7 @@ function mf_contacts_contactdetails($contact_ids, $restrict_to = false) {
 	if (!$contact_ids) return [];
 	$ids = !is_array($contact_ids) ? [$contact_ids] : $contact_ids;
 	$sql = 'SELECT contact_id, contactdetail_id, identification, contact
-			, categories.parameters, category, category_short, label
+			, categories.parameters, category, category_short, label, link
 			, category_id
 		FROM contactdetails
 		LEFT JOIN contacts USING (contact_id)
@@ -52,7 +52,9 @@ function mf_contacts_contactdetails($contact_ids, $restrict_to = false) {
 				$detail['mailto'] = wrap_mailto($detail['contact'], $detail['identification']);
 				break;
 			case 'username':
-				if (!empty($detail['parameters']['url']))
+				if (!empty($detail['link']))
+					$detail['username_url'] = $detail['link'];
+				elseif (!empty($detail['parameters']['url']))
 					$detail['username_url'] = sprintf($detail['parameters']['url'], $detail['identification']);
 				break;
 			}
