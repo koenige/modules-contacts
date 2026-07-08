@@ -22,7 +22,7 @@ function mf_contacts_search($q) {
 	$sql = 'SELECT contact_id, contact, description
 			, (SELECT identification FROM contactdetails
 				WHERE contactdetails.contact_id = contacts.contact_id
-				AND provider_category_id = /*_ID categories provider/website _*/
+				AND channel_category_id = /*_ID categories provider/website _*/
 			) AS website
 		FROM contacts
 		WHERE %s

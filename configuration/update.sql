@@ -76,3 +76,6 @@
 /* 2026-06-27-2 */	INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'contacts', 'contact_id', (SELECT DATABASE()), 'connections', 'connection_id', 'contact_id', 'no-delete');
 /* 2026-06-27-3 */	INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'contacts', 'contact_id', (SELECT DATABASE()), 'connections', 'connection_id', 'connected_contact_id', 'no-delete');
 /* 2026-06-28-1 */	ALTER TABLE `contactdetails` ADD `link` varchar(255) COLLATE 'utf8mb4_unicode_ci' NULL AFTER `label`;
+/* 2026-07-08-1 */	ALTER TABLE `contactdetails` CHANGE `provider_category_id` `channel_category_id` int unsigned NOT NULL;
+/* 2026-07-08-2 */	ALTER TABLE `contactdetails` DROP INDEX `provider_category_id`, ADD INDEX `channel_category_id` (`channel_category_id`);
+/* 2026-07-08-3 */	UPDATE `_relations` SET `detail_field` = 'channel_category_id' WHERE `detail_table` = 'contactdetails' AND `detail_field` = 'provider_category_id';

@@ -35,7 +35,7 @@ $zz['fields'][2]['class'] = 'block480a';
 $zz['fields'][3]['field_name'] = 'identification';
 $zz['fields'][3]['remove_local_hostname'] = false;
 $zz['fields'][3]['store_fields'] = ['link'];
-$zz['fields'][3]['read_parameters'] = 'provider_category_id';
+$zz['fields'][3]['read_parameters'] = 'channel_category_id';
 $zz['fields'][3]['merge_parameters'] = [
 	'explanation', 'parse_url', 'url', 'dont_check_username_online',
 	'validate', 'title', 'suffix', 'webfinger',
@@ -56,7 +56,7 @@ $zz['fields'][7]['hide_in_list'] = true;
 $zz['fields'][7]['hide_in_form'] = true;
 
 $zz['fields'][4]['title'] = 'Type';
-$zz['fields'][4]['field_name'] = 'provider_category_id';
+$zz['fields'][4]['field_name'] = 'channel_category_id';
 $zz['fields'][4]['type'] = 'select';
 $zz['fields'][4]['sql'] = 'SELECT category_id, category, parameters
 	FROM /*_PREFIX_*/categories
@@ -88,21 +88,21 @@ $zz['sql'] = 'SELECT /*_PREFIX_*/contactdetails.*, contact
 	FROM /*_PREFIX_*/contactdetails
 	LEFT JOIN /*_PREFIX_*/contacts USING (contact_id)
 	LEFT JOIN /*_PREFIX_*/categories
-		ON /*_PREFIX_*/categories.category_id = /*_PREFIX_*/contactdetails.provider_category_id
+		ON /*_PREFIX_*/categories.category_id = /*_PREFIX_*/contactdetails.channel_category_id
 ';
 $zz['sqlorder'] = ' ORDER BY identifier, path, identification';
 
-$zz['unique'][] = ['contact_id', 'identification', 'provider_category_id'];
+$zz['unique'][] = ['contact_id', 'identification', 'channel_category_id'];
 
 
 $zz['subselect']['sql'] = 'SELECT category, identification, contact_id
 	FROM /*_PREFIX_*/contactdetails
 	LEFT JOIN /*_PREFIX_*/categories
-		ON /*_PREFIX_*/contactdetails.provider_category_id = /*_PREFIX_*/categories.category_id';
+		ON /*_PREFIX_*/contactdetails.channel_category_id = /*_PREFIX_*/categories.category_id';
 $zz['if']['export_mode']['subselect']['sql'] = 'SELECT identification, contact_id
 	FROM /*_PREFIX_*/contactdetails
 	LEFT JOIN /*_PREFIX_*/categories
-		ON /*_PREFIX_*/contactdetails.provider_category_id = /*_PREFIX_*/categories.category_id';
+		ON /*_PREFIX_*/contactdetails.channel_category_id = /*_PREFIX_*/categories.category_id';
 $zz['subselect']['concat_fields'] = ' ';
 $zz['unless']['export_mode']['subselect']['field_prefix'][0] = '<em>';
 $zz['unless']['export_mode']['subselect']['field_suffix'][0] = ':</em>';

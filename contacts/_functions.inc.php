@@ -29,7 +29,7 @@ function mf_contacts_contactdetails($contact_ids, $restrict_to = false) {
 		FROM contactdetails
 		LEFT JOIN contacts USING (contact_id)
 		LEFT JOIN categories
-			ON categories.category_id = contactdetails.provider_category_id
+			ON categories.category_id = contactdetails.channel_category_id
 		WHERE contact_id IN (%s)
 		ORDER BY categories.sequence, identification
 	';

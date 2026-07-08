@@ -140,7 +140,7 @@ function mf_contacts_contactdetails_subtable(&$zz, $def, $no) {
 	if (empty($def['categories']))
 		$def['categories'][$def['category_id']] = $def;
 	$zz['fields'][$no]['sql'] .= sprintf(
-		' WHERE /*_PREFIX_*/contactdetails.provider_category_id IN (%s)'
+		' WHERE /*_PREFIX_*/contactdetails.channel_category_id IN (%s)'
 		, implode(',', array_keys($def['categories']))
 	);
 	if (count($def['categories']) === 1) {
@@ -162,11 +162,11 @@ function mf_contacts_contactdetails_subtable(&$zz, $def, $no) {
 	$zz['fields'][$no]['form_display'] = 'lines';
 	$zz['fields'][$no]['subselect']['sql'] = wrap_edit_sql(
 		$zz['fields'][$no]['subselect']['sql'], 'WHERE',
-		sprintf('/*_PREFIX_*/contactdetails.provider_category_id IN (%s)', implode(',', array_keys($def['categories'])))
+		sprintf('/*_PREFIX_*/contactdetails.channel_category_id IN (%s)', implode(',', array_keys($def['categories'])))
 	);
 	$zz['fields'][$no]['if']['export_mode']['subselect']['sql'] = wrap_edit_sql(
 		$zz['fields'][$no]['if']['export_mode']['subselect']['sql'], 'WHERE',
-		sprintf('/*_PREFIX_*/contactdetails.provider_category_id IN (%s)', implode(',', array_keys($def['categories'])))
+		sprintf('/*_PREFIX_*/contactdetails.channel_category_id IN (%s)', implode(',', array_keys($def['categories'])))
 	);
 	$zz['fields'][$no]['export_no_html'] = true;
 	if (!empty($def['field_sequence']))

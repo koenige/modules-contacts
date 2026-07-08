@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2021-2022, 2024 Gustaf Mossakowski
+ * @copyright Copyright © 2021-2022, 2024, 2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -29,7 +29,7 @@ function mod_contacts_make_sendlogin($params, $settings) {
 		LEFT JOIN contacts USING (contact_id)
 		LEFT JOIN contactdetails USING (contact_id)
 		WHERE contacts.%s
-		AND contactdetails.provider_category_id = /*_ID categories provider/e-mail _*/
+		AND contactdetails.channel_category_id = /*_ID categories provider/e-mail _*/
 		ORDER BY contactdetails.contactdetail_id
 		LIMIT 1';
 	$sql = sprintf($sql
@@ -48,7 +48,7 @@ function mod_contacts_make_sendlogin($params, $settings) {
 			FROM contacts
 			LEFT JOIN contactdetails USING (contact_id)
 			WHERE contact_id = %d
-			AND contactdetails.provider_category_id = /*_ID categories provider/e-mail _*/
+			AND contactdetails.channel_category_id = /*_ID categories provider/e-mail _*/
 			ORDER BY contactdetails.contactdetail_id
 			LIMIT 1';
 		$sql = sprintf($sql, $_SESSION['user_id']);

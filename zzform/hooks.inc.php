@@ -133,11 +133,11 @@ function mf_contacts_hook_check_contactdetails($ops) {
 	foreach ($ops['planned'] as $index => $table) {
 		if ($table['table'] !== 'contactdetails') continue;
 		if (empty($ops['record_new'][$index])) continue; // deleted
-		$provider_category_id = $ops['record_new'][$index]['provider_category_id'];
-		if (!array_key_exists($provider_category_id, $record_count))
-			$record_count[$provider_category_id] = 1;
+		$channel_category_id = $ops['record_new'][$index]['channel_category_id'];
+		if (!array_key_exists($channel_category_id, $record_count))
+			$record_count[$channel_category_id] = 1;
 		else
-			$record_count[$provider_category_id] ++;
+			$record_count[$channel_category_id] ++;
 	}
 	$category_ids = [];
 	foreach ($record_count as $category_id => $count) {
@@ -162,10 +162,10 @@ function mf_contacts_hook_check_contactdetails($ops) {
 		$shown_record_count = 0;
 		foreach ($ops['planned'] as $index => $table) {
 			if ($table['table'] !== 'contactdetails') continue;
-			if ($ops['record_new'][$index]['provider_category_id'].'' !== $category_id.'') continue;
+			if ($ops['record_new'][$index]['channel_category_id'].'' !== $category_id.'') continue;
 			$shown_record_count++;
 			if ($shown_record_count <= $parameters['max_records']) continue;
-			$change['record_replace'][$index]['provider_category_id'] = wrap_category_id($parameters['move_more_records_to']);
+			$change['record_replace'][$index]['channel_category_id'] = wrap_category_id($parameters['move_more_records_to']);
 		}
 	}
 	return $change;

@@ -22,3 +22,4 @@
 2026-03-14-5	code	contacts_places_path	removed, paths from routes; use wrap_path()
 2026-03-14-6	code	contacts_relations_path	removed, paths from routes; use wrap_path()
 2026-03-14-7	code	contacts_verification_path	removed, paths from routes; use wrap_path()
+2026-07-08-1	code	provider_category_id	use `channel_category_id` instead	activities/configuration/update.sql

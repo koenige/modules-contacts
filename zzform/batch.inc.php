@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2024 Gustaf Mossakowski
+ * @copyright Copyright © 2024, 2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -37,7 +37,7 @@ function mf_contacts_add_person($data, $error_code = E_USER_ERROR) {
 		$line = [
 			'contact_id' => $contact_id,
 			'identification' => $data['e_mail'],
-			'provider_category_id' => wrap_category_id('provider/e-mail')
+			'channel_category_id' => wrap_category_id('provider/e-mail')
 		];
 		zzform_insert('contactdetails', $line);
 	}
