@@ -27,3 +27,5 @@
 2026-07-08-3	code	wrap_category_id('provider	use `wrap_category_id('channel`
 2026-07-08-4	code	id categories provider	use `id categories channel`
 2026-07-08-5	code	'contactdetails', 'provider'	use `'contactdetails', 'channel'`
+2026-07-09-1	code_regex	mf_contacts_contactdetails\([^)]+,\s*['"]	use settings array as second parameter, e.g. ['restrict_to' => 'places']
+2026-07-09-2	code_regex	mf_contacts_addresses\([^)]+,\s*['"]	use settings array as second parameter, e.g. ['restrict_to' => 'places']
