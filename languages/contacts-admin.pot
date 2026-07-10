@@ -1,19 +1,14 @@
 # contacts module
-# Translations, admin template
+# Translations, admin
 #
 # Part of »Zugzwang Project«
-# https://www.zugzwang.org/modules/default
-#
-# @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2026 Gustaf Mossakowski
-# @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
+# https://www.zugzwang.org/modules/contacts
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Zugzwang Project -- contact module, admin\n"
-"POT-Creation-Date: \n"
+"Project-Id-Version: Zugzwang Project -- contacts module\n"
+"POT-Creation-Date: 2026-07-10 10:30+0000\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Gustaf Mossakowski <gustaf@koenige.org>\n"
 "Language-Team: \n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
@@ -21,198 +16,178 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: configuration/access.cfg
+#: configuration/access.cfg:19
 msgid "Merge contact records"
 msgstr ""
 
-#: configuration/access.cfg
+#: configuration/access.cfg:23
 msgid "Set or change date of death"
 msgstr ""
 
-#: configuration/access.cfg
+#: configuration/access.cfg:27
 msgid "Explicitly change identifier of a person"
 msgstr ""
 
-#: configuration/access.cfg
+#: configuration/access.cfg:31
 msgid "Edit third party identifiers of contacts"
 msgstr ""
 
-#: configuration/access.cfg
+#: configuration/access.cfg:35
 msgid "See online status of a person, link to logins"
 msgstr ""
 
-#: configuration/access.cfg
+#: configuration/access.cfg:39
 msgid "Read contact profile pages"
 msgstr ""
 
-#: configuration/access.cfg
+#: configuration/access.cfg:43
 msgid "Publish contacts or contact details, relations"
 msgstr ""
 
-#: configuration/access.cfg
+#: configuration/access.cfg:47
 msgid "Edit internal remarks per contact"
 msgstr ""
 
-#: configuration/routes.cfg
+#: configuration/package.cfg:15
+msgid "People and organisations: addresses, contact channels, and relationships"
+msgstr ""
+
+#: configuration/routes.cfg:12
 msgid "List with all contacts (without persons)"
 msgstr ""
 
-#: configuration/routes.cfg
+#: configuration/routes.cfg:17
 msgid "List with all persons"
 msgstr ""
 
-#: configuration/routes.cfg
+#: configuration/routes.cfg:22
 msgid "List with all contacts that are places"
 msgstr ""
 
-#: configuration/routes.cfg
+#: configuration/routes.cfg:27
 msgid "Profile page of a contact"
 msgstr ""
 
-#: configuration/routes.cfg
+#: configuration/routes.cfg:33
 msgid "List of contacts related to a contact"
 msgstr ""
 
-#: configuration/routes.cfg
+#: configuration/routes.cfg:39
 msgid "Confirm an e-mail address (double opt-in)"
 msgstr ""
 
-#: configuration/settings.cfg
+#: configuration/settings.cfg:20
 msgid "Secret key which forms a hash that allows to add a login"
 msgstr ""
 
-#: configuration/settings.cfg
+#: configuration/settings.cfg:25
 msgid "Timeframe in minutes during which the addlogin_key is valid"
 msgstr ""
 
-#: configuration/settings.cfg
+#: configuration/settings.cfg:30
 msgid "Rights that are given to contact if a login is added via e-mail"
 msgstr ""
 
-#: configuration/settings.cfg
+#: configuration/settings.cfg:35
 msgid "Show field for address in contacts table, legacy version"
 msgstr ""
 
-#: configuration/settings.cfg
+#: configuration/settings.cfg:40
 msgid "Show field for birth name in persons table"
 msgstr ""
 
-#: configuration/settings.cfg
+#: configuration/settings.cfg:45
 msgid "Show field contact_abbr in contacts table"
 msgstr ""
 
-#: configuration/settings.cfg
+#: configuration/settings.cfg:49
 msgid "Show field contact_short in contacts table"
 msgstr ""
 
-#: configuration/settings.cfg
+#: configuration/settings.cfg:53
 msgid "Show field contact_sort in contacts table"
 msgstr ""
 
-#: configuration/settings.cfg
+#: configuration/settings.cfg:57
 msgid "Show field country in contacts table"
 msgstr ""
 
-#: configuration/settings.cfg
+#: configuration/settings.cfg:61
 msgid "Show values in field country in contacts table hierarchically"
 msgstr ""
 
-#: configuration/settings.cfg
+#: configuration/settings.cfg:65
 msgid "Show country as column in list view"
 msgstr ""
 
-#: configuration/settings.cfg
+#: configuration/settings.cfg:69
 msgid "Show field for date of death in persons table"
 msgstr ""
 
-#: configuration/settings.cfg
+#: configuration/settings.cfg:74
 msgid "Show field for nationality in persons table"
 msgstr ""
 
-#: configuration/settings.cfg
+#: configuration/settings.cfg:79
 msgid "Add label field for contact details"
 msgstr ""
 
-#: configuration/settings.cfg
+#: configuration/settings.cfg:83
 msgid "Show field end_date in contacts table"
 msgstr ""
 
-#: configuration/settings.cfg
+#: configuration/settings.cfg:87
 msgid "Show identifiers as subtable for contacts"
 msgstr ""
 
-#: configuration/settings.cfg
+#: configuration/settings.cfg:91
 msgid "Secret key which forms a hash that allows to login via link"
 msgstr ""
 
-#: configuration/settings.cfg
+#: configuration/settings.cfg:96
 msgid "Timeframe in minutes during which the linklogin_key is valid"
 msgstr ""
 
-#: configuration/settings.cfg
+#: configuration/settings.cfg:101
 msgid "Include table contacts_media in contacts table"
 msgstr ""
 
-#: configuration/settings.cfg
+#: configuration/settings.cfg:105
 msgid "Maximum media records associated to contact"
 msgstr ""
 
-#: configuration/settings.cfg
+#: configuration/settings.cfg:110
 msgid "Minimum media records associated to contact"
 msgstr ""
 
-#: configuration/settings.cfg
+#: configuration/settings.cfg:114
 msgid "Disallow deletion of contacts"
 msgstr ""
 
-#: configuration/settings.cfg
+#: configuration/settings.cfg:120
 msgid "Show field parameters in contacts table"
 msgstr ""
 
-#: configuration/settings.cfg
+#: configuration/settings.cfg:125
 msgid "Show field `persons.sex` in list"
 msgstr ""
 
-#: configuration/settings.cfg
+#: configuration/settings.cfg:129
 msgid "Show a field contacts.published in forms, to set status of a contact to published"
 msgstr ""
 
-#: configuration/settings.cfg
+#: configuration/settings.cfg:134
 msgid "Show field start_date in contacts table"
 msgstr ""
 
-#: configuration/settings.cfg
+#: configuration/settings.cfg:138
 msgid "Initial installation date of contacts module (for updates)"
 msgstr ""
 
-#: configuration/settings.cfg
+#: configuration/settings.cfg:142
 msgid "ID of owner of website in contact list"
 msgstr ""
 
-#: configuration/settings.cfg
+#: configuration/settings.cfg:146
 msgid "ID of country where website is in (default country)"
-msgstr ""
-
-#: configuration/access.cfg
-msgid "List with all contacts (without persons)"
-msgstr ""
-
-#: configuration/access.cfg
-msgid "List with all persons"
-msgstr ""
-
-#: configuration/access.cfg
-msgid "List with all contacts that are places"
-msgstr ""
-
-#: configuration/access.cfg
-msgid "List of contacts related to a contact"
-msgstr ""
-
-#: configuration/access.cfg
-msgid "Confirm an e-mail address (double opt-in)"
-msgstr ""
-
-#: configuration/package.cfg
-msgid "People and organisations: addresses, contact channels, and relationships"
 msgstr ""
