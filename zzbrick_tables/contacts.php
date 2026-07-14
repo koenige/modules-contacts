@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2015-2024 Gustaf Mossakowski
+ * @copyright Copyright © 2015-2024, 2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -144,6 +144,7 @@ $zz['fields'][49] = [];
 // contacts_verifications
 $zz['fields'][7] = [];
 
+$zz['fields'][8]['title'] = 'Latitude/Longitude';
 $zz['fields'][8]['field_name'] = 'latlon';
 $zz['fields'][8]['type'] = 'display';
 $zz['fields'][8]['exclude_from_search'] = true;
@@ -260,6 +261,7 @@ $zz['fields'][94]['hide_in_form'] = true;
 $zz['fields'][94]['hide_in_list'] = true;
 $zz['fields'][94]['exclude_from_search'] = true;
 
+$zz['fields'][95]['title'] = 'Particle';
 $zz['fields'][95]['field_name'] = 'name_particle';
 $zz['fields'][95]['type'] = 'display';
 $zz['fields'][95]['hide_in_form'] = true;

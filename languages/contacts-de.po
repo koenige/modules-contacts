@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zugzwang Project -- contact module\n"
-"POT-Creation-Date: 2026-07-10 13:39+0000\n"
+"POT-Creation-Date: 2026-07-14 09:21+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gustaf Mossakowski <gustaf@koenige.org>\n"
 "Language-Team: \n"
@@ -22,21 +22,21 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.9\n"
 
-#: config.inc.php zzbrick_tables/contacts-contacts.php
+#: config.inc.php zzbrick_tables/contacts-contacts.php:16
 msgid "Linked Contacts"
 msgstr "Verknüpfte Kontakte"
 
 #: templates/addlogin.template.txt:14
 msgid "Set a Password"
-msgstr "Festlegen eines Passworts"
+msgstr "Passwort festlegen"
 
 #: templates/addlogin.template.txt:15
 msgid "Please set a password for the login."
-msgstr "Bitte legen Sie ein Passwort fest."
+msgstr "Bitte legen Sie ein Passwort für die Anmeldung fest."
 
 #: templates/addlogin.template.txt:16
 msgid "The password must be at least <strong>%d characters</strong> long."
-msgstr "Das Passwort muss mindestens <strong>%d Zeichen</strong> enthalten."
+msgstr "Das Passwort muss mindestens <strong>%d Zeichen</strong> lang sein."
 
 #: templates/addlogin.template.txt:17
 msgid ""
@@ -85,7 +85,7 @@ msgstr "Kurzform:"
 msgid "Abbreviation:"
 msgstr "Abkürzung:"
 
-#: templates/contact.template.txt:41
+#: templates/contact.template.txt:41 zzbrick_tables/contacts.php:173
 msgid "Period"
 msgstr "Zeitraum"
 
@@ -113,15 +113,16 @@ msgstr "Auflösung:"
 msgid "(Age: %d)"
 msgstr "(Alter: %d)"
 
-#: templates/contact.template.txt:47
+#: templates/contact.template.txt:47 zzbrick_tables/persons.php:113
 msgid "Birth"
 msgstr "Geburt"
 
-#: templates/contact.template.txt:50 zzbrick_tables/addresses.php
+#: templates/contact.template.txt:50 zzbrick_tables/addresses.php:70
+#: zzbrick_tables/contacts.php:191
 msgid "Country"
 msgstr "Land"
 
-#: templates/contact.template.txt:50 zzbrick_tables/persons.php
+#: templates/contact.template.txt:50 zzbrick_tables/persons.php:132
 msgid "Nationality"
 msgstr "Nationalität"
 
@@ -146,11 +147,12 @@ msgstr "Bearbeiten"
 msgid "Profiles"
 msgstr "Profile"
 
-#: templates/contact.template.txt:134 zzbrick_tables/awards.php
+#: templates/contact.template.txt:134 zzbrick_tables/awards.php:16
 msgid "Awards"
 msgstr "Auszeichnungen"
 
-#: templates/contact.template.txt:150 zzbrick_tables/contacts-identifiers.php
+#: templates/contact.template.txt:150
+#: zzbrick_tables/contacts-identifiers.php:16
 msgid "Identifiers"
 msgstr "Kennungen"
 
@@ -198,8 +200,8 @@ msgstr "Ein Zugangscode für den Login wurde versendet!"
 msgid "Send mail with access code"
 msgstr "Mail mit Zugangscode senden"
 
-#: templates/contact.template.txt:197 zzbrick_tables/awards.php
-#: zzbrick_tables/contacts.php
+#: templates/contact.template.txt:197 zzbrick_tables/awards.php:103
+#: zzbrick_tables/contacts.php:227 zzbrick_tables/contacts-contacts.php:93
 msgid "Remarks"
 msgstr "Anmerkungen"
 
@@ -256,15 +258,19 @@ msgstr ""
 "Bitte beachten Sie auch, dass der Link, den wir Ihnen gesendet haben, eine "
 "begrenzte Gültigkeit hat. Vielleicht ist die Zeit um."
 
-#: zzbrick_forms/addlogin.php
+#: zzbrick_forms/addlogin.php:23
 msgid "Add a new login"
 msgstr "Neuen Login hinzufügen"
 
-#: zzbrick_forms/addlogin.php
+#: zzbrick_forms/addlogin.php:84
 msgid "Save password"
 msgstr "Passwort speichern"
 
-#: zzbrick_forms/contacts-general.php
+#: zzbrick_forms/contacts.php:49
+msgid "Media"
+msgstr "Medien"
+
+#: zzbrick_forms/contacts-general.php:20
 msgid "Contacts (without persons)"
 msgstr "Kontakte (ohne Personen)"
 
@@ -272,53 +278,85 @@ msgstr "Kontakte (ohne Personen)"
 msgid "Active"
 msgstr "Aktiv"
 
-#: zzbrick_forms/contacts-general.php:42 zzbrick_forms/persons.php:245
+#: zzbrick_forms/contacts-general.php:42 zzbrick_forms/persons.php:64
+#: zzbrick_forms/persons.php:245 zzbrick_tables/addresses.php:121
+#: zzbrick_tables/awards.php:99 zzbrick_tables/contacts.php:242
+#: zzbrick_tables/contacts-contacts.php:101
+#: zzbrick_tables/contacts-identifiers.php:43
 msgid "yes"
 msgstr "ja"
 
-#: zzbrick_forms/contacts-general.php:43 zzbrick_forms/persons.php:246
+#: zzbrick_forms/contacts-general.php:43 zzbrick_forms/persons.php:64
+#: zzbrick_forms/persons.php:246 zzbrick_tables/addresses.php:121
+#: zzbrick_tables/awards.php:99 zzbrick_tables/contacts.php:242
+#: zzbrick_tables/contacts-contacts.php:101
 msgid "no"
 msgstr "nein"
 
-#: zzbrick_forms/organisers.php
+#: zzbrick_forms/organisers.php:18
 msgid "Organisers"
 msgstr "Organisatoren"
 
-#: zzbrick_forms/persons.php
+#: zzbrick_forms/persons.php:21 zzbrick_tables/persons.php:16
+msgid "Persons"
+msgstr "Personen"
+
+#: zzbrick_forms/persons.php:60
+msgid "Change identifier?"
+msgstr "Kennung ändern?"
+
+#: zzbrick_forms/persons.php:61
+msgid ""
+"To change the identifier. Important: this is the login username, please "
+"inform the person of the change."
+msgstr ""
+"Um die Kennung zu ändern. Wichtig: Dies ist der Login-Benutzername. Bitte "
+"informieren Sie die Person über die Änderung."
+
+#: zzbrick_forms/persons.php:88
+msgid "Person"
+msgstr "Person"
+
+#: zzbrick_forms/persons.php:144
+msgid "About me"
+msgstr "Über mich"
+
+#: zzbrick_forms/persons.php:145
+msgid "A few lines about the person."
+msgstr "Ein paar Zeilen zur Person."
+
+#: zzbrick_forms/persons.php:173
 msgid "Full name"
 msgstr "Vollständiger Name"
 
-#: zzbrick_forms/persons.php
-msgid "Full name with birth name"
-msgstr "Vollständiger Name mit Geburtsname"
-
-#: zzbrick_forms/persons.php
-msgid "Full name with first name only"
-msgstr "Vollständiger Name, nur erster Vorname"
-
-#: zzbrick_forms/persons.php
+#: zzbrick_forms/persons.php:181
 msgid "Internal full name"
 msgstr "Interner vollständiger Name"
 
-#: zzbrick_forms/persons.php
+#: zzbrick_forms/persons.php:190
+msgid "Full name with first name only"
+msgstr "Vollständiger Name, nur erster Vorname"
+
+#: zzbrick_forms/persons.php:199
 msgid "Last name, given names"
 msgstr "Nachname, Vornamen"
 
-#: zzbrick_forms/persons.php:241 zzbrick_tables/awards.php
+#: zzbrick_forms/persons.php:208
+msgid "Full name with birth name"
+msgstr "Vollständiger Name mit Geburtsname"
+
+#: zzbrick_forms/persons.php:241 zzbrick_tables/awards.php:97
+#: zzbrick_tables/contacts.php:240 zzbrick_tables/contacts-contacts.php:99
 msgid "Published"
 msgstr "Veröffentlicht"
 
-#: zzbrick_forms/places.php
-msgid "Places"
-msgstr "Orte"
-
-#: zzbrick_forms/places.php
-msgid "Venue"
-msgstr "Veranstaltungsort"
-
-#: zzbrick_forms/places.php
+#: zzbrick_forms/places.php:20
 msgid "Venues"
 msgstr "Veranstaltungsorte"
+
+#: zzbrick_forms/places.php:23
+msgid "Venue"
+msgstr "Veranstaltungsort"
 
 #: zzbrick_make/contactverification.inc.php
 msgid "Confirm Registration"
@@ -334,371 +372,447 @@ msgstr ""
 "Der Anmeldelink konnte nicht per E-Mail an den Kontakt %s (ID %d) gesendet "
 "werden."
 
-#: zzbrick_tables/addresses.php
+#: zzbrick_tables/addresses.php:16
 msgid "Addresses"
 msgstr "Adressen"
 
-#: zzbrick_tables/addresses.php
+#: zzbrick_tables/addresses.php:19 zzbrick_tables/awards.php:19
+#: zzbrick_tables/connections.php:19 zzbrick_tables/contactdetails.php:19
+#: zzbrick_tables/contacts.php:19 zzbrick_tables/contacts-categories.php:19
+#: zzbrick_tables/contacts-contacts.php:19
+#: zzbrick_tables/contacts-identifiers.php:19
+#: zzbrick_tables/contacts-media.php:19
+#: zzbrick_tables/contacts-verifications.php:19 zzbrick_tables/persons.php:19
+msgid "ID"
+msgstr "ID"
+
+#: zzbrick_tables/addresses.php:23 zzbrick_tables/awards.php:44
+#: zzbrick_tables/connections.php:25 zzbrick_tables/connections.php:41
+#: zzbrick_tables/contactdetails.php:23
+#: zzbrick_tables/contacts-categories.php:23
+#: zzbrick_tables/contacts-contacts.php:32
+#: zzbrick_tables/contacts-identifiers.php:23
+#: zzbrick_tables/contacts-media.php:29
+#: zzbrick_tables/contacts-verifications.php:23 zzbrick_tables/persons.php:25
+msgid "Contact"
+msgstr "Kontakt"
+
+#: zzbrick_tables/addresses.php:35
+msgid "Street/No."
+msgstr "Straße/Nr."
+
+#: zzbrick_tables/addresses.php:48
+msgid "Postcode"
+msgstr "PLZ"
+
+#: zzbrick_tables/addresses.php:53
+msgid "Postcode/Place"
+msgstr "PLZ/Ort"
+
+#: zzbrick_tables/addresses.php:59
+msgid "Place"
+msgstr "Ort"
+
+#: zzbrick_tables/addresses.php:94
+msgid "Latitude"
+msgstr "Breitengrad"
+
+#: zzbrick_tables/addresses.php:95
+msgid "Latitude / Longitude"
+msgstr "Breite / Länge"
+
+#: zzbrick_tables/addresses.php:107
+msgid "Is determined automatically, if possible"
+msgstr "Wird nach Möglichkeit automatisch ermittelt"
+
+#: zzbrick_tables/addresses.php:109
+msgid "Longitude"
+msgstr "Längengrad"
+
+#: zzbrick_tables/addresses.php:119
+msgid "Receive mail"
+msgstr "Postempfang"
+
+#: zzbrick_tables/addresses.php:124
 msgid "If there is more than one address:<br>Send letters to this address?"
 msgstr ""
 "Falls es mehr als eine Adresse gibt:<br>Sollen Briefe hierhin gesendet "
 "werden?"
 
-#: zzbrick_tables/addresses.php
-msgid "Is determined automatically, if possible"
-msgstr "Wird nach Möglichkeit automatisch ermittelt"
+#: zzbrick_tables/addresses.php:132 zzbrick_tables/contactdetails.php:58
+msgid "Type"
+msgstr "Typ"
 
-#: zzbrick_tables/addresses.php
-msgid "Latitude"
-msgstr "Breitengrad"
+#: zzbrick_tables/addresses.php:145 zzbrick_tables/contactdetails.php:69
+#: zzbrick_tables/contacts-media.php:75
+msgid "Formfield"
+msgstr "Formularfeld"
 
-#: zzbrick_tables/addresses.php
-msgid "Latitude / Longitude"
-msgstr "Breite / Länge"
+#: zzbrick_tables/addresses.php:158 zzbrick_tables/awards.php:109
+#: zzbrick_tables/connections.php:59 zzbrick_tables/contactdetails.php:82
+#: zzbrick_tables/contacts.php:285 zzbrick_tables/contacts-categories.php:56
+#: zzbrick_tables/contacts-contacts.php:111
+#: zzbrick_tables/contacts-identifiers.php:46
+#: zzbrick_tables/contacts-media.php:88 zzbrick_tables/persons.php:149
+msgid "Last update"
+msgstr "Stand"
 
-#: zzbrick_tables/addresses.php
-msgid "Longitude"
-msgstr "Längengrad"
-
-#: zzbrick_tables/addresses.php
-msgid "Place"
-msgstr "Ort"
-
-#: zzbrick_tables/addresses.php
-msgid "Postcode"
-msgstr "PLZ"
-
-#: zzbrick_tables/addresses.php
-msgid "Postcode/Place"
-msgstr "PLZ/Ort"
-
-#: zzbrick_tables/addresses.php
-msgid "Street/No."
-msgstr "Straße/Nr."
-
-#: zzbrick_tables/awards.php
-msgid "Date"
-msgstr "Datum"
-
-#: zzbrick_tables/awards.php
-msgid "Date of Award"
-msgstr "Datum der Auszeichnung"
-
-#: zzbrick_tables/awards.php
-msgid "Display Name"
-msgstr "Anzeigename"
-
-#: zzbrick_tables/awards.php
-msgid "Duration"
-msgstr "Dauer"
-
-#: zzbrick_tables/awards.php
-msgid "Duration from"
-msgstr "Dauer von"
-
-#: zzbrick_tables/awards.php
-msgid "Duration until"
-msgstr "Dauer bis"
-
-#: zzbrick_tables/awards.php
-msgid "Laudation"
-msgstr "Laudatio"
-
-#: zzbrick_tables/awards.php
-msgid "Level"
-msgstr "Stufe"
-
-#: zzbrick_tables/awards.php
-msgid "Name at time of award"
-msgstr "Name zum Zeitpunkt der Vergabe"
-
-#: zzbrick_tables/awards.php
-msgid "e.g. Gold, Silver, Bronze"
-msgstr "z. B. Gold, Silber, Bronze"
-
-#: zzbrick_tables/awards.php:131 zzbrick_tables/contacts.php:312
+#: zzbrick_tables/awards.php:23 zzbrick_tables/awards.php:131
+#: zzbrick_tables/contacts.php:91 zzbrick_tables/contacts.php:314
+#: zzbrick_tables/contacts-categories.php:36
 #: zzbrick_tables/contacts-categories.php:78
+#: zzbrick_tables/contacts-identifiers.php:33
 msgid "Category"
 msgstr "Kategorie"
 
-#: zzbrick_tables/contactdetails.php
-msgid "Contact Details"
-msgstr "Kontaktdaten"
+#: zzbrick_tables/awards.php:34
+msgid "Level"
+msgstr "Stufe"
 
-#: zzbrick_tables/contactdetails.php
-msgid "Identification"
-msgstr "Identifikation"
+#: zzbrick_tables/awards.php:42
+msgid "e.g. Gold, Silver, Bronze"
+msgstr "z. B. Gold, Silber, Bronze"
 
-#: zzbrick_tables/contacts.php
-msgid "Contact"
-msgstr "Kontakt"
+#: zzbrick_tables/awards.php:59
+msgid "Display Name"
+msgstr "Anzeigename"
 
-#: zzbrick_tables/contacts.php
-msgid "Contacts"
-msgstr "Kontakte"
+#: zzbrick_tables/awards.php:61
+msgid "Name at time of award"
+msgstr "Name zum Zeitpunkt der Vergabe"
 
-#: zzbrick_tables/contacts.php
-msgid "Created"
-msgstr "Erstellt"
+#: zzbrick_tables/awards.php:72
+msgid "Date"
+msgstr "Datum"
 
-#: zzbrick_tables/contacts.php
-msgid "Description"
-msgstr "Beschreibung"
+#: zzbrick_tables/awards.php:73
+msgid "Date of Award"
+msgstr "Datum der Auszeichnung"
 
-#: zzbrick_tables/contacts.php
-msgid "Dissolution date"
-msgstr "Auflösungsdatum"
+#: zzbrick_tables/awards.php:78
+msgid "Duration from"
+msgstr "Dauer von"
 
-#: zzbrick_tables/contacts.php
-msgid "End date"
-msgstr "Enddatum"
+#: zzbrick_tables/awards.php:79 zzbrick_tables/awards.php:80
+msgid "Duration"
+msgstr "Dauer"
 
-#: zzbrick_tables/contacts.php
-msgid "Founding date"
-msgstr "Gründungsdatum"
+#: zzbrick_tables/awards.php:86
+msgid "Duration until"
+msgstr "Dauer bis"
 
-#: zzbrick_tables/contacts.php
-msgid "Identifier"
-msgstr "Kennung"
+#: zzbrick_tables/awards.php:92
+msgid "Laudation"
+msgstr "Laudatio"
 
-#: zzbrick_tables/contacts.php zzbrick_tables/contacts-contacts.php
+#: zzbrick_tables/awards.php:106 zzbrick_tables/contacts.php:234
 msgid "Internal remarks"
 msgstr "Interne Anmerkungen"
 
-#: zzbrick_tables/contacts.php
+#: zzbrick_tables/connections.php:16
+msgid "Connections"
+msgstr ""
+
+#: zzbrick_tables/contactdetails.php:16
+msgid "Contact Details"
+msgstr "Kontaktdaten"
+
+#: zzbrick_tables/contactdetails.php:35
+msgid "Identification"
+msgstr "Identifikation"
+
+#: zzbrick_tables/contactdetails.php:44
+msgid "Label"
+msgstr "Beschriftung"
+
+#: zzbrick_tables/contactdetails.php:53
+msgid "Link"
+msgstr "Link"
+
+#: zzbrick_tables/contacts.php:16
+msgid "Contacts"
+msgstr "Kontakte"
+
+#: zzbrick_tables/contacts.php:26
 msgid "Name"
 msgstr "Name"
 
-#: zzbrick_tables/contacts.php
-msgid "Name, abbr."
-msgstr "Name, Abk."
-
-#: zzbrick_tables/contacts.php
-msgid "Name, short"
-msgstr "Name, kurz"
-
-#: zzbrick_tables/contacts.php
-msgid "Parameters"
-msgstr "Parameter"
-
-#: zzbrick_tables/contacts.php
-msgid "Publish on website?"
-msgstr "Auf der Website veröffentlichen?"
-
-#: zzbrick_tables/contacts.php
+#: zzbrick_tables/contacts.php:48
 msgid "Short"
 msgstr "Kurz"
 
-#: zzbrick_tables/contacts.php
+#: zzbrick_tables/contacts.php:49
+msgid "Name, short"
+msgstr "Name, kurz"
+
+#: zzbrick_tables/contacts.php:56
+msgid "Name, abbr."
+msgstr "Name, Abk."
+
+#: zzbrick_tables/contacts.php:63
 msgid "Sort"
 msgstr "Sortierung"
 
-#: zzbrick_tables/contacts.php
-msgid "Start date"
-msgstr "Anfangsdatum"
+#: zzbrick_tables/contacts.php:71 zzbrick_tables/contacts-identifiers.php:31
+msgid "Identifier"
+msgstr "Kennung"
 
-#: zzbrick_tables/contacts.php:318
+#: zzbrick_tables/contacts.php:147
+msgid "Latitude/Longitude"
+msgstr "Breiten-/Längengrad"
+
+#: zzbrick_tables/contacts.php:155
+msgid "Description"
+msgstr "Beschreibung"
+
+#: zzbrick_tables/contacts.php:172
+msgid "Start"
+msgstr "Start"
+
+#: zzbrick_tables/contacts.php:178
+msgid "Founding date"
+msgstr "Gründungsdatum"
+
+#: zzbrick_tables/contacts.php:182
+msgid "End"
+msgstr "Ende"
+
+#: zzbrick_tables/contacts.php:187
+msgid "Dissolution date"
+msgstr "Auflösungsdatum"
+
+#: zzbrick_tables/contacts.php:239
+msgid "Pub."
+msgstr "Öffentl."
+
+#: zzbrick_tables/contacts.php:245
+msgid "Publish on website?"
+msgstr "Auf der Website veröffentlichen?"
+
+#: zzbrick_tables/contacts.php:252
+msgid "Parameters"
+msgstr "Parameter"
+
+#: zzbrick_tables/contacts.php:258 zzbrick_tables/persons.php:44
+msgid "First name"
+msgstr "Vorname"
+
+#: zzbrick_tables/contacts.php:264 zzbrick_tables/persons.php:59
+msgid "Particle"
+msgstr "Namenszusatz"
+
+#: zzbrick_tables/contacts.php:271 zzbrick_tables/persons.php:68
+msgid "Last name"
+msgstr "Nachname"
+
+#: zzbrick_tables/contacts.php:277
+msgid "Created"
+msgstr "Erstellt"
+
+#: zzbrick_tables/contacts.php:320
 msgid "Alpha"
 msgstr "Alpha"
 
-#: zzbrick_tables/contacts-categories.php
+#: zzbrick_tables/contacts-categories.php:16
 msgid "Categories per Contact"
 msgstr "Kategorien pro Kontakt"
 
-#: zzbrick_tables/contacts-contacts.php
-msgid "Main Contact"
-msgstr "Hauptkontakt"
+#: zzbrick_tables/contacts-categories.php:31
+#: zzbrick_tables/contacts-contacts.php:23
+msgid "Seq."
+msgstr "Folge"
 
-#: zzbrick_tables/contacts-contacts.php
+#: zzbrick_tables/contacts-categories.php:32
+#: zzbrick_tables/contacts-contacts.php:24
+msgid "Sequence"
+msgstr "Reihenfolge"
+
+#: zzbrick_tables/contacts-categories.php:46
+msgid "Property"
+msgstr "Eigenschaft"
+
+#: zzbrick_tables/contacts-categories.php:48
+msgid "Type category"
+msgstr ""
+
+#: zzbrick_tables/contacts-contacts.php:29 zzbrick_tables/contacts-media.php:23
 msgid "No."
 msgstr "Nr."
 
-#: zzbrick_tables/contacts-contacts.php
+#: zzbrick_tables/contacts-contacts.php:53
 msgid "Relation"
 msgstr "Beziehung"
 
-#: zzbrick_tables/contacts-contacts.php
+#: zzbrick_tables/contacts-contacts.php:67
+msgid "Main Contact"
+msgstr "Hauptkontakt"
+
+#: zzbrick_tables/contacts-contacts.php:88
 msgid "Role"
 msgstr "Rolle"
+
+#: zzbrick_tables/contacts-contacts.php:98
+msgid "WWW?"
+msgstr "WWW?"
+
+#: zzbrick_tables/contacts-identifiers.php:41
+msgid "Current"
+msgstr "Aktuell"
 
 #: zzbrick_tables/contacts-identifiers.php:44
 msgid "current"
 msgstr "aktuell"
 
-#: zzbrick_tables/contacts-media.php
+#: zzbrick_tables/contacts-media.php:16
 msgid "Media for Contacts"
 msgstr "Medien für Kontakte"
 
-#: zzbrick_tables/contacts-verifications.php
-msgid "Confirmed Mail"
-msgstr "Bestätigte E-Mail"
+#: zzbrick_tables/contacts-media.php:36
+msgid "Preview"
+msgstr "Vorschau"
 
-#: zzbrick_tables/contacts-verifications.php
+#: zzbrick_tables/contacts-media.php:57
+msgid "Medium"
+msgstr "Medium"
+
+#: zzbrick_tables/contacts-verifications.php:16
 msgid "Contact Verifications"
 msgstr "Kontaktverifizierungen"
 
-#: zzbrick_tables/contacts-verifications.php
+#: zzbrick_tables/contacts-verifications.php:39
+msgid "Confirmed Mail"
+msgstr "Bestätigte E-Mail"
+
+#: zzbrick_tables/contacts-verifications.php:44
 msgid "Entry Date"
 msgstr "Eintragsdatum"
 
-#: zzbrick_tables/contacts-verifications.php
+#: zzbrick_tables/contacts-verifications.php:51
 msgid "Entry IP"
 msgstr "Eintrags-IP"
 
-#: zzbrick_tables/contacts-verifications.php
-msgid "Language"
-msgstr "Sprache"
+#: zzbrick_tables/contacts-verifications.php:60
+msgid "Hash"
+msgstr "Hash"
 
-#: zzbrick_tables/contacts-verifications.php
-msgid "Mails sent"
-msgstr "E-Mails versandt"
-
-#: zzbrick_tables/contacts-verifications.php
-msgid "Status"
-msgstr "Status"
-
-#: zzbrick_tables/contacts-verifications.php
+#: zzbrick_tables/contacts-verifications.php:68
 msgid "Verification Date"
 msgstr "Bestätigungsdatum"
 
-#: zzbrick_tables/contacts-verifications.php
+#: zzbrick_tables/contacts-verifications.php:76
 msgid "Verification IP"
 msgstr "Bestätigungs-IP"
 
-#: zzbrick_tables/contacts-verifications.php
+#: zzbrick_tables/contacts-verifications.php:84
+msgid "Status"
+msgstr "Status"
+
+#: zzbrick_tables/contacts-verifications.php:87
 msgid "complete"
 msgstr "komplett"
 
-#: zzbrick_tables/contacts-verifications.php
+#: zzbrick_tables/contacts-verifications.php:87
 msgid "confirmed manually"
 msgstr "per Hand bestätigt"
 
-#: zzbrick_tables/contacts-verifications.php
+#: zzbrick_tables/contacts-verifications.php:87
 msgid "confirmed per link"
 msgstr "per Link bestätigt"
 
-#: zzbrick_tables/contacts-verifications.php
+#: zzbrick_tables/contacts-verifications.php:87
+msgid "unverified"
+msgstr "unbestätigt"
+
+#: zzbrick_tables/contacts-verifications.php:88
 msgid "deleted"
 msgstr "gelöscht"
 
-#: zzbrick_tables/contacts-verifications.php
+#: zzbrick_tables/contacts-verifications.php:88
 msgid "unsubscribed"
 msgstr "abgemeldet"
 
-#: zzbrick_tables/contacts-verifications.php
-msgid "unverified"
-msgstr "unbestätigt"
+#: zzbrick_tables/contacts-verifications.php:92
+msgid "Language"
+msgstr "Sprache"
+
+#: zzbrick_tables/contacts-verifications.php:104
+msgid "Mails sent"
+msgstr "E-Mails versandt"
 
 #: zzbrick_tables/persons.php
 msgid " (born "
 msgstr " (geb. "
 
 #: zzbrick_tables/persons.php
-msgid "A few lines about the person."
-msgstr "Ein paar Zeilen zur Person."
-
-#: zzbrick_tables/persons.php
-msgid "About me"
-msgstr "Über mich"
-
-#: zzbrick_tables/persons.php
-msgid "Birth name"
-msgstr "Geburtsname"
-
-#: zzbrick_tables/persons.php
-msgid "Change identifier?"
-msgstr "Kennung ändern?"
-
-#: zzbrick_tables/persons.php
-msgid "Date of Birth"
-msgstr "Geburtsdatum"
-
-#: zzbrick_tables/persons.php
-msgid "Date of Death"
-msgstr "Sterbedatum"
-
-#: zzbrick_tables/persons.php
-msgid "First name"
-msgstr "Vorname"
-
-#: zzbrick_tables/persons.php
-msgid "Last name"
-msgstr "Nachname"
-
-#: zzbrick_tables/persons.php
-msgid "Particle"
-msgstr "Namenszusatz"
-
-#: zzbrick_tables/persons.php
-msgid "Persons"
-msgstr "Personen"
-
-#: zzbrick_tables/persons.php
 msgid "Phone"
 msgstr "Telefon"
 
-#: zzbrick_tables/persons.php
-msgid "Sex"
-msgstr "Geschlecht"
-
-#: zzbrick_tables/persons.php
+#: zzbrick_tables/persons.php:36
 msgid "Title (prefix)"
 msgstr "Titel (vorne)"
 
-#: zzbrick_tables/persons.php
-msgid "Title (suffix)"
-msgstr "Titel (hinten)"
-
-#: zzbrick_tables/persons.php
-msgid ""
-"To change the identifier. Important: this is the login username, please "
-"inform the person of the change."
-msgstr ""
-"Um die Kennung zu ändern. Wichtig: Dies ist der Login-Benutzername. Bitte "
-"informieren Sie die Person über die Änderung."
-
-#: zzbrick_tables/persons.php
+#: zzbrick_tables/persons.php:66
 msgid "e. g. nobiliary particle"
 msgstr "z. B. Adelsprädikat (von, zu …)"
 
-#: zzbrick_tables/persons.php
+#: zzbrick_tables/persons.php:80
+msgid "Birth name"
+msgstr "Geburtsname"
+
+#: zzbrick_tables/persons.php:81
 msgid "if different from current last name"
 msgstr "falls abweichend vom aktuellen Nachnamen"
 
-#: zzbrick_tables/persons.php:99
+#: zzbrick_tables/persons.php:90
+msgid "Title (suffix)"
+msgstr "Titel (hinten)"
+
+#: zzbrick_tables/persons.php:96
+msgid "Sex"
+msgstr "Geschlecht"
+
+#: zzbrick_tables/persons.php:98
 msgid "diverse"
 msgstr "divers"
 
-#: zzbrick_tables/persons.php:99
+#: zzbrick_tables/persons.php:98
 msgid "female"
 msgstr "weiblich"
 
-#: zzbrick_tables/persons.php:99
+#: zzbrick_tables/persons.php:98
 msgid "male"
 msgstr "männlich"
 
 # One-letter-abbreviation for sex
-#: zzbrick_tables/persons.php:104
+#: zzbrick_tables/persons.php:103
 msgctxt "persons.sex"
 msgid "S."
 msgstr "G."
 
-#: zzbrick_tables/persons.php:108
+#: zzbrick_tables/persons.php:107
 msgctxt "persons.sex"
 msgid "F"
 msgstr "W"
 
 # One-letter-abbreviation for male
-#: zzbrick_tables/persons.php:109
+#: zzbrick_tables/persons.php:108
 msgctxt "persons.sex"
 msgid "M"
 msgstr "M"
 
 # One-letter-abbreviation for diverse
-#: zzbrick_tables/persons.php:110
+#: zzbrick_tables/persons.php:109
 msgctxt "persons.sex"
 msgid "D"
 msgstr "D"
+
+#: zzbrick_tables/persons.php:114
+msgid "Date of Birth"
+msgstr "Geburtsdatum"
+
+#: zzbrick_tables/persons.php:120
+msgid "Date of Death"
+msgstr "Sterbedatum"
 
 #: zzform/hooks.inc.php
 msgid "Please check the name you entered."

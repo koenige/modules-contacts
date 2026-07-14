@@ -96,7 +96,6 @@ $zz['fields'][7]['sql'] = 'SELECT DISTINCT title_suffix, title_suffix FROM perso
 $zz['fields'][8]['field_name'] = 'sex';
 $zz['fields'][8]['type'] = 'select';
 $zz['fields'][8]['enum'] = ['female', 'male', 'diverse'];
-$zz['fields'][8]['enum_title'] = [wrap_text('female'), wrap_text('male'), wrap_text('diverse')];
 $zz['fields'][8]['hide_novalue'] = false;
 $zz['fields'][8]['hide_in_list'] = true;
 $zz['fields'][8]['field_sequence'] = 20;
