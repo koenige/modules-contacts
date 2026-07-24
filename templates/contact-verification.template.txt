@@ -15,8 +15,8 @@
 
 %%% elseif confirmed_delete %%%
 <p>Your data could not be removed from our database, because it looks like you
-already confirmed your %%% item category format=strtolower %%%. This way, a cancellation is not possible.</p>
-<p>Please contact us directly (E-Mail: 
+already confirmed your %%% item category format=strtolower %%%. A cancellation is not possible in this way.</p>
+<p>Please contact us directly (e-mail: 
 <a href="mailto:%%% item own_e_mail %%%">%%% item own_e_mail %%%</a>).</p>
 
 %%% elseif no_data %%%

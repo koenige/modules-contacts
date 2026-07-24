@@ -39,7 +39,7 @@ function mod_contacts_make_addlogin($params) {
 	$sql = sprintf(wrap_sql_query('auth_login_exists'), $params[0]);
 	$existing = wrap_db_fetch($sql, '', 'single value');
 	if ($existing) {
-		wrap_error(sprintf('Could not create login, login for user already exists: %s', $params[0]), E_USER_NOTICE);
+		wrap_error(['Could not create login, login for user already exists: %s', ['values' => [$params[0]]]], E_USER_NOTICE);
 		$data['missing_user_or_login_exists'] = true;
 		$page['text'] = wrap_template('addlogin', $data);
 		return $page;
@@ -49,7 +49,7 @@ function mod_contacts_make_addlogin($params) {
 	$sql = sprintf(wrap_sql_query('auth_username_exists'), $params[0]);
 	$user = wrap_db_fetch($sql);
 	if (!$user) {
-		wrap_error(sprintf('Could not create login, user does not exist: %s', $params[0]), E_USER_NOTICE);
+		wrap_error(['Could not create login, user does not exist: %s', ['values' => [$params[0]]]], E_USER_NOTICE);
 		$data['missing_user_or_login_exists'] = true;
 		$page['text'] = wrap_template('addlogin', $data);
 		return $page;
@@ -60,7 +60,7 @@ function mod_contacts_make_addlogin($params) {
 	// set addlogin_key_validity_in_minutes
 	$access = wrap_check_hash($user['user_id'].'-'.$user['username'], $params[1], '', 'addlogin_key');
 	if (!$access) {
-		wrap_error(sprintf('Could not create login, hash is invalid: %s %s', $params[0], $params[1]), E_USER_NOTICE);
+		wrap_error(['Could not create login, hash is invalid: %s %s', ['values' => [$params[0], $params[1]]]], E_USER_NOTICE);
 		$data['invalid_request'] = true;
 		$page['text'] = wrap_template('addlogin', $data);
 		return $page;

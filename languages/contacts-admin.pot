@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zugzwang Project -- contacts module\n"
-"POT-Creation-Date: 2026-07-10 10:30+0000\n"
+"POT-Creation-Date: 2026-07-24 15:19+0000\n"
 "PO-Revision-Date: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -46,6 +46,10 @@ msgstr ""
 
 #: configuration/access.cfg:47
 msgid "Edit internal remarks per contact"
+msgstr ""
+
+#: configuration/package.cfg:13
+msgid "contacts module"
 msgstr ""
 
 #: configuration/package.cfg:15
@@ -190,4 +194,32 @@ msgstr ""
 
 #: configuration/settings.cfg:146
 msgid "ID of country where website is in (default country)"
+msgstr ""
+
+#: zzbrick_make/addlogin.inc.php:42
+msgid "Could not create login, login for user already exists: %s"
+msgstr ""
+
+#: zzbrick_make/addlogin.inc.php:52
+msgid "Could not create login, user does not exist: %s"
+msgstr ""
+
+#: zzbrick_make/addlogin.inc.php:63
+msgid "Could not create login, hash is invalid: %s %s"
+msgstr ""
+
+#: zzbrick_make/linklogin.inc.php:39
+msgid "Unable to login, user does not exist: %s"
+msgstr ""
+
+#: zzbrick_make/linklogin.inc.php:50
+msgid "Unable to login, token is invalid: %s %s"
+msgstr ""
+
+#: zzbrick_make/sendlogin.inc.php:43
+msgid "Contact %s was not found."
+msgstr ""
+
+#: zzbrick_make/sendlogin.inc.php:68
+msgid "The login link could not be emailed to contact %s (ID %d)."
 msgstr ""

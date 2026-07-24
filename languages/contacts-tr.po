@@ -123,7 +123,7 @@ msgid "Nationality"
 msgstr "Uyruğu"
 
 #: templates/contact.template.txt:54
-msgid "E-Mail"
+msgid "E-mail"
 msgstr ""
 
 #: templates/contact.template.txt:73 zzbrick_tables/addresses.php
@@ -321,10 +321,6 @@ msgstr "Kaydı Onayla"
 
 #: zzbrick_make/sendlogin.inc.php:43
 msgid "Contact %s was not found."
-msgstr ""
-
-#: zzbrick_make/sendlogin.inc.php:68
-msgid "The login link could not be emailed to contact %s (ID %d)."
 msgstr ""
 
 #: zzbrick_tables/addresses.php

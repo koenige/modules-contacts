@@ -39,9 +39,9 @@ function mod_contacts_make_sendlogin($params, $settings) {
 	);
 	$contact = wrap_db_fetch($sql);
 	if (!$contact)
-		wrap_error(wrap_text(
+		wrap_error([
 			'Contact %s was not found.', ['values' => [wrap_html_escape($params[0])]]
-		), E_USER_ERROR);
+		], E_USER_ERROR);
 
 	if (!empty($_SESSION['logged_in'])) {
 		$sql = 'SELECT identification AS e_mail, identifier, contact
@@ -64,10 +64,10 @@ function mod_contacts_make_sendlogin($params, $settings) {
 	$mail['message'] = wrap_template('addlogin-mail', $contact);
 	$success = wrap_mail($mail);
 	if (!$success) {
-		wrap_error(wrap_text(
+		wrap_error([
 			'The login link could not be emailed to contact %s (ID %d).',
 			['values' => [$contact['contact_id'], $contact['contact']]]
-		), E_USER_ERROR);
+		], E_USER_ERROR);
 	}
 	if (array_key_exists('redirect', $settings) AND !$settings['redirect']) return;
 	return wrap_redirect_change();

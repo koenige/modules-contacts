@@ -51,7 +51,7 @@
 %%% endif %%%
 %%% block contact_2 %%%
 %%% if mail %%%
-<tr><th>%%% text E-Mail %%%</th>
+<tr><th>%%% text E-mail %%%</th>
 <td><ul>
 %%% loop mail %%%
 <li>%%% unless same_category %%%%%% if category_short %%%<li class="mailcategory">%%% item category %%%:<br>%%% else %%%<li>%%% endif %%%%%% endif %%%%%% item mailto %%%%%% item label " (%s)" %%%</li>

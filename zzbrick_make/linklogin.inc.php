@@ -36,7 +36,7 @@ function mod_contacts_make_linklogin($params) {
 	$sql = sprintf(wrap_sql_query('auth_username_exists'), $params[0]);
 	$user = wrap_db_fetch($sql);
 	if (!$user) {
-		wrap_error(sprintf('Unable to login, user does not exist: %s', $params[0]), E_USER_NOTICE);
+		wrap_error(['Unable to login, user does not exist: %s', ['values' => [$params[0]]]], E_USER_NOTICE);
 		$data['invalid_request'] = true;
 		$page['text'] = wrap_template('linklogin', $data);
 		return $page;
@@ -47,7 +47,7 @@ function mod_contacts_make_linklogin($params) {
 	$access = wrap_check_hash($user['user_id'].'-'.$user['username'], $params[1], '', 'contacts_linklogin_key');
 	if (!$access) {
 		$data['invalid_request'] = true;
-		wrap_error(sprintf('Unable to login, token is invalid: %s %s', $params[0], $params[1]), E_USER_NOTICE);
+		wrap_error(['Unable to login, token is invalid: %s %s', ['values' => [$params[0], $params[1]]]], E_USER_NOTICE);
 		$page['text'] = wrap_template('linklogin', $data);
 		return $page;
 	}

@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zugzwang Project -- contact module\n"
-"POT-Creation-Date: 2026-07-14 09:21+0000\n"
+"POT-Creation-Date: 2026-07-24 15:17+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gustaf Mossakowski <gustaf@koenige.org>\n"
 "Language-Team: \n"
@@ -127,7 +127,7 @@ msgid "Nationality"
 msgstr "Nationalität"
 
 #: templates/contact.template.txt:54
-msgid "E-Mail"
+msgid "E-mail"
 msgstr "E-Mail"
 
 #: templates/contact.template.txt:73 zzbrick_tables/addresses.php
@@ -282,7 +282,6 @@ msgstr "Aktiv"
 #: zzbrick_forms/persons.php:245 zzbrick_tables/addresses.php:121
 #: zzbrick_tables/awards.php:99 zzbrick_tables/contacts.php:242
 #: zzbrick_tables/contacts-contacts.php:101
-#: zzbrick_tables/contacts-identifiers.php:43
 msgid "yes"
 msgstr "ja"
 
@@ -361,16 +360,6 @@ msgstr "Veranstaltungsort"
 #: zzbrick_make/contactverification.inc.php
 msgid "Confirm Registration"
 msgstr "Registrierung bestätigen"
-
-#: zzbrick_make/sendlogin.inc.php:43
-msgid "Contact %s was not found."
-msgstr "Kontakt %s wurde nicht gefunden."
-
-#: zzbrick_make/sendlogin.inc.php:68
-msgid "The login link could not be emailed to contact %s (ID %d)."
-msgstr ""
-"Der Anmeldelink konnte nicht per E-Mail an den Kontakt %s (ID %d) gesendet "
-"werden."
 
 #: zzbrick_tables/addresses.php:16
 msgid "Addresses"
