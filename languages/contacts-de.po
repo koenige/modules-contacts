@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zugzwang Project -- contact module\n"
-"POT-Creation-Date: 2026-07-24 15:17+0000\n"
+"POT-Creation-Date: 2026-07-27 13:50+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gustaf Mossakowski <gustaf@koenige.org>\n"
 "Language-Team: \n"
@@ -113,7 +113,7 @@ msgstr "Auflösung:"
 msgid "(Age: %d)"
 msgstr "(Alter: %d)"
 
-#: templates/contact.template.txt:47 zzbrick_tables/persons.php:113
+#: templates/contact.template.txt:47 zzbrick_tables/persons.php:114
 msgid "Birth"
 msgstr "Geburt"
 
@@ -122,7 +122,7 @@ msgstr "Geburt"
 msgid "Country"
 msgstr "Land"
 
-#: templates/contact.template.txt:50 zzbrick_tables/persons.php:132
+#: templates/contact.template.txt:50 zzbrick_tables/persons.php:133
 msgid "Nationality"
 msgstr "Nationalität"
 
@@ -429,6 +429,7 @@ msgstr ""
 "werden?"
 
 #: zzbrick_tables/addresses.php:132 zzbrick_tables/contactdetails.php:58
+#: zzbrick_tables/contacts-categories.php:48
 msgid "Type"
 msgstr "Typ"
 
@@ -439,17 +440,17 @@ msgstr "Formularfeld"
 
 #: zzbrick_tables/addresses.php:158 zzbrick_tables/awards.php:109
 #: zzbrick_tables/connections.php:59 zzbrick_tables/contactdetails.php:82
-#: zzbrick_tables/contacts.php:285 zzbrick_tables/contacts-categories.php:56
+#: zzbrick_tables/contacts.php:285 zzbrick_tables/contacts-categories.php:57
 #: zzbrick_tables/contacts-contacts.php:111
 #: zzbrick_tables/contacts-identifiers.php:46
-#: zzbrick_tables/contacts-media.php:88 zzbrick_tables/persons.php:149
+#: zzbrick_tables/contacts-media.php:88 zzbrick_tables/persons.php:150
 msgid "Last update"
 msgstr "Stand"
 
 #: zzbrick_tables/awards.php:23 zzbrick_tables/awards.php:131
 #: zzbrick_tables/contacts.php:91 zzbrick_tables/contacts.php:314
 #: zzbrick_tables/contacts-categories.php:36
-#: zzbrick_tables/contacts-categories.php:78
+#: zzbrick_tables/contacts-categories.php:79
 #: zzbrick_tables/contacts-identifiers.php:33
 msgid "Category"
 msgstr "Kategorie"
@@ -620,10 +621,6 @@ msgstr "Reihenfolge"
 msgid "Property"
 msgstr "Eigenschaft"
 
-#: zzbrick_tables/contacts-categories.php:48
-msgid "Type category"
-msgstr ""
-
 #: zzbrick_tables/contacts-contacts.php:29 zzbrick_tables/contacts-media.php:23
 msgid "No."
 msgstr "Nr."
@@ -778,28 +775,28 @@ msgctxt "persons.sex"
 msgid "S."
 msgstr "G."
 
-#: zzbrick_tables/persons.php:107
+#: zzbrick_tables/persons.php:108
 msgctxt "persons.sex"
 msgid "F"
 msgstr "W"
 
 # One-letter-abbreviation for male
-#: zzbrick_tables/persons.php:108
+#: zzbrick_tables/persons.php:109
 msgctxt "persons.sex"
 msgid "M"
 msgstr "M"
 
 # One-letter-abbreviation for diverse
-#: zzbrick_tables/persons.php:109
+#: zzbrick_tables/persons.php:110
 msgctxt "persons.sex"
 msgid "D"
 msgstr "D"
 
-#: zzbrick_tables/persons.php:114
+#: zzbrick_tables/persons.php:115
 msgid "Date of Birth"
 msgstr "Geburtsdatum"
 
-#: zzbrick_tables/persons.php:120
+#: zzbrick_tables/persons.php:121
 msgid "Date of Death"
 msgstr "Sterbedatum"
 
