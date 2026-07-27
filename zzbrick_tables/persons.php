@@ -102,7 +102,8 @@ $zz['fields'][8]['field_sequence'] = 20;
 if (wrap_setting('contacts_persons_show_sex_in_list')) {
 	$zz['fields'][8]['title_tab'] = ['S.', ['context' => 'persons.sex']];
 	$zz['fields'][8]['hide_in_list'] = false;
-	$zz['fields'][8]['unless']['export_mode']['enum_abbr'] = $zz['fields'][8]['enum_title'];
+	foreach ($zz['fields'][8]['enum'] as $enum)
+		$zz['fields'][8]['unless']['export_mode']['enum_abbr'][] = wrap_text($enum);
 	$zz['fields'][8]['unless']['export_mode']['enum_title'] = [
 		wrap_text('F', ['context' => 'persons.sex']),
 		wrap_text('M', ['context' => 'persons.sex']),
