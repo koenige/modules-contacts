@@ -1,0 +1,28 @@
+{
+    "contacts-parameters": [
+        {
+            "title": "Contacts parameters",
+            "language": "en",
+            "package": "contacts",
+            "identifier": "contacts-parameters",
+            "type": "parameters",
+            "audience": [
+                "editor"
+            ],
+            "table": "contacts",
+            "parameter_field": "parameters"
+        },
+        {
+            "title": "Kontakte-Parameter",
+            "language": "de",
+            "package": "contacts",
+            "identifier": "contacts-parameters",
+            "type": "parameters",
+            "audience": [
+                "editor"
+            ],
+            "table": "contacts",
+            "parameter_field": "parameters"
+        }
+    ]
+}

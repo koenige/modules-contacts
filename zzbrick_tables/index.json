@@ -1,0 +1,39 @@
+{
+    "addresses": {
+        "title": "Addresses"
+    },
+    "awards": {
+        "title": "Awards"
+    },
+    "connections": {
+        "title": "Connections"
+    },
+    "contactdetails": {
+        "title": "Contact Details"
+    },
+    "contacts": {
+        "title": "Contacts",
+        "parameter_field": "parameters",
+        "audience": [
+            "editor"
+        ]
+    },
+    "contacts_categories": {
+        "title": "Categories per Contact"
+    },
+    "contacts_contacts": {
+        "title": "Linked Contacts"
+    },
+    "contacts_identifiers": {
+        "title": "Identifiers"
+    },
+    "contacts_media": {
+        "title": "Media for Contacts"
+    },
+    "contacts_verifications": {
+        "title": "Contact Verifications"
+    },
+    "persons": {
+        "title": "Persons"
+    }
+}
