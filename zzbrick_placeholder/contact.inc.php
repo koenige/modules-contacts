@@ -31,7 +31,7 @@ function mod_contacts_placeholder_contact($brick) {
 	if (!$brick['data']) wrap_quit(404);
 	if ($brick['data']['category_parameters']) {
 		parse_str($brick['data']['category_parameters'], $brick['data']['category_parameters']);
-		wrap_match_module_parameters('contacts', $brick['data']['category_parameters'], false);
+		wrap_setting_from_table('contacts', $brick['data']['category_parameters'], false);
 	}
 
 	wrap_page_meta('access', $brick['data']['contact_rights']);

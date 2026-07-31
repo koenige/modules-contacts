@@ -38,7 +38,7 @@ function mod_contacts_contact($params, $settings) {
 	if ($path AND $path !== parse_url(wrap_setting('request_uri'), PHP_URL_PATH))
 		wrap_redirect($path);
 	
-	wrap_match_module_parameters('contacts', $data['parameters']);
+	wrap_setting_from_table('contacts', $data['parameters']);
 	if (!empty($settings['scope']) AND $settings['scope'] !== '*') {
 		if ($settings['scope'] !== $data['scope']) return false;
 	}
