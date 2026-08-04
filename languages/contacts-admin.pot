@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zugzwang Project -- contacts module\n"
-"POT-Creation-Date: 2026-07-30 16:50+0000\n"
+"POT-Creation-Date: 2026-08-03 01:59+0000\n"
 "PO-Revision-Date: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -144,71 +144,71 @@ msgstr ""
 msgid "Category for contacts without persons subtable"
 msgstr ""
 
-#: configuration/settings.cfg:93
+#: configuration/settings.cfg:94
 msgid "Show identifiers as subtable for contacts"
 msgstr ""
 
-#: configuration/settings.cfg:97
+#: configuration/settings.cfg:98
 msgid "Secret key which forms a hash that allows to login via link"
 msgstr ""
 
-#: configuration/settings.cfg:102
+#: configuration/settings.cfg:103
 msgid "Timeframe in minutes during which the linklogin_key is valid"
 msgstr ""
 
-#: configuration/settings.cfg:107
+#: configuration/settings.cfg:108
 msgid "Include table contacts_media in contacts table"
 msgstr ""
 
-#: configuration/settings.cfg:111
+#: configuration/settings.cfg:112
 msgid "Maximum media records associated to contact"
 msgstr ""
 
-#: configuration/settings.cfg:116
+#: configuration/settings.cfg:117
 msgid "Minimum media records associated to contact"
 msgstr ""
 
-#: configuration/settings.cfg:120
+#: configuration/settings.cfg:121
 msgid "Disallow deletion of contacts"
 msgstr ""
 
-#: configuration/settings.cfg:126
+#: configuration/settings.cfg:128
 msgid "Show field parameters in contacts table"
 msgstr ""
 
-#: configuration/settings.cfg:131
+#: configuration/settings.cfg:133
 msgid "Show field `persons.sex` in list"
 msgstr ""
 
-#: configuration/settings.cfg:135
+#: configuration/settings.cfg:137
 msgid "Show a field contacts.published in forms, to set status of a contact to published"
 msgstr ""
 
-#: configuration/settings.cfg:140
+#: configuration/settings.cfg:142
 msgid "Show field start_date in contacts table"
 msgstr ""
 
-#: configuration/settings.cfg:144
+#: configuration/settings.cfg:146
 msgid "Initial installation date of contacts module (for updates)"
 msgstr ""
 
-#: configuration/settings.cfg:148
+#: configuration/settings.cfg:150
 msgid "ID of owner of website in contact list"
 msgstr ""
 
-#: configuration/settings.cfg:152
+#: configuration/settings.cfg:154
 msgid "ID of country where website is in (default country)"
 msgstr ""
 
-#: configuration/settings.cfg:156
+#: configuration/settings.cfg:158
 msgid "Use category for persons form subtables (contact details, relations, properties)"
 msgstr ""
 
-#: configuration/settings.cfg:162
+#: configuration/settings.cfg:165
 msgid "Show role field in events_contacts subtable"
 msgstr ""
 
-#: configuration/settings.cfg:168
+#: configuration/settings.cfg:172
 msgid "Type of contact detail channel"
 msgstr ""
 
