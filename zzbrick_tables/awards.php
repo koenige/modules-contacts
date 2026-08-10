@@ -8,7 +8,7 @@
  * Part of »Zugzwang Project«
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2016-2017, 2019-2025 Gustaf Mossakowski
+ * @copyright Copyright © 2016-2017, 2019-2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -55,6 +55,7 @@ $zz['fields'][3]['link'] = [
 	'fields' => ['identifier']
 ];
 $zz['fields'][3]['if'][2]['list_prefix'] = '<del>';
+// @todo use contacts_restrict_to from award_category_id to restrict contacts here
 
 $zz['fields'][5]['title'] = 'Display Name';
 $zz['fields'][5]['field_name'] = 'contact_display_name';
