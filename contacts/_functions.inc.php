@@ -59,8 +59,8 @@ function mf_contacts_contactdetails($contact_ids, $settings = false) {
 			case 'username':
 				if (!empty($detail['link']))
 					$detail['username_url'] = $detail['link'];
-				elseif (!empty($detail['parameters']['url']))
-					$detail['username_url'] = sprintf($detail['parameters']['url'], $detail['identification']);
+				elseif (!empty($detail['parameters']['zzform_def']['url']))
+					$detail['username_url'] = sprintf($detail['parameters']['zzform_def']['url'], $detail['identification']);
 				break;
 			}
 			if ($last_category === $detail['category'])

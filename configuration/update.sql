@@ -85,3 +85,10 @@
 /* 2026-08-12-1 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&virtual=1', '&contacts_virtual=1') WHERE `parameters` LIKE '%&virtual=1%';
 /* 2026-08-12-2 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&move_more_records_to=provider/', '&move_more_records_to=channel/') WHERE `parameters` LIKE '&move_more_records_to=provider/';
 /* 2026-08-12-3 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&db_values[provider_category_id]=ID categories provider/', '&db_values[channel_category_id]=ID categories channel/') WHERE `parameters` LIKE '&db_values[provider_category_id]=ID categories provider/';
+/* 2026-08-12-4 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&dont_check_username_online=', '&zzform_def[dont_check_username_online]=') WHERE `path` LIKE 'channel/%' AND `parameters` LIKE '%&dont_check_username_online=%';
+/* 2026-08-12-5 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&parse_url=', '&zzform_def[parse_url]=') WHERE `path` LIKE 'channel/%' AND `parameters` LIKE '%&parse_url=%';
+/* 2026-08-12-6 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&url=', '&zzform_def[url]=') WHERE `path` LIKE 'channel/%' AND `parameters` LIKE '%&url=%';
+/* 2026-08-12-7 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&webfinger=', '&zzform_def[webfinger]=') WHERE `path` LIKE 'channel/%' AND `parameters` LIKE '%&webfinger=%';
+/* 2026-08-12-8 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&validate[', '&zzform_def[validate][') WHERE `path` LIKE 'channel/%' AND `parameters` LIKE '%&validate[%';
+/* 2026-08-12-9 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&title=', '&zzform_def[title]=') WHERE `path` LIKE 'channel/%' AND `parameters` LIKE '%&title=%';
+/* 2026-08-12-10 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&suffix=', '&zzform_def[suffix]=') WHERE `path` LIKE 'channel/%' AND `parameters` LIKE '%&suffix=%';

@@ -106,8 +106,15 @@ $no = 30;
 foreach ($values['contactdetails'] as $category_id => $category) {
 	// parse parameters
 	if (!empty($values['contactdetails_restrict_to'])
-		AND !empty($category['parameters']['if'][$values['contactdetails_restrict_to']]))
+		AND !empty($category['parameters']['if'][$values['contactdetails_restrict_to']])) {
 		$category['parameters'] = array_merge($category['parameters'], $category['parameters']['if'][$values['contactdetails_restrict_to']]);
+		if (empty($category['parameters']['zzform_def']))
+			$category['parameters']['zzform_def'] = [];
+		$category['parameters']['zzform_def'] = array_merge(
+			$category['parameters']['zzform_def'],
+			$category['parameters']['if'][$values['contactdetails_restrict_to']]
+		);
+	}
 
 	// group contactdetails?
 	$continue = false;
