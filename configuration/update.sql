@@ -82,3 +82,4 @@
 /* 2026-07-08-4 */	UPDATE categories SET `category` = 'Channels', `path` = 'channel', `parameters` = '&alias=channel', `last_update` = NOW() WHERE `path` = 'provider';
 /* 2026-07-08-5 */	UPDATE categories SET `path` = REPLACE(`path`, 'provider/', 'channel/'), `last_update` = NOW() WHERE `path` LIKE 'provider/%';
 /* 2026-07-08-6 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&alias=provider', '&alias=channel'), `last_update` = NOW() WHERE `parameters` LIKE '%&alias=provider%';
+/* 2026-08-12-1 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&virtual=1', '&contacts_virtual=1'), `last_update` = NOW() WHERE `parameters` LIKE '%&virtual=1%';
