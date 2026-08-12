@@ -92,3 +92,4 @@
 /* 2026-08-12-8 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&validate[', '&zzform_def[validate][') WHERE `path` LIKE 'channel/%' AND `parameters` LIKE '%&validate[%';
 /* 2026-08-12-9 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&title=', '&zzform_def[title]=') WHERE `path` LIKE 'channel/%' AND `parameters` LIKE '%&title=%';
 /* 2026-08-12-10 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&suffix=', '&zzform_def[suffix]=') WHERE `path` LIKE 'channel/%' AND `parameters` LIKE '%&suffix=%';
+/* 2026-08-12-11 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&type=person', '') WHERE `path` LIKE 'contact/%' AND `parameters` LIKE '%&type=person%';

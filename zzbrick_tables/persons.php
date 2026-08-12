@@ -156,10 +156,16 @@ $zz['fields'][99]['field_sequence'] = 23;
 $zz['sql'] = 'SELECT DISTINCT /*_PREFIX_*/persons.*
 		, /*_PREFIX_*/contacts.contact
 		, /*_PREFIX_*/contacts.identifier
-		, "type=person" AS contact_parameters
+		, /*_PREFIX_*/categories.parameters AS contact_parameters
+		, SUBSTRING_INDEX(CASE WHEN LOCATE("&alias=", /*_PREFIX_*/categories.parameters) > 0 THEN
+			SUBSTRING_INDEX(SUBSTRING_INDEX(/*_PREFIX_*/categories.parameters, "&alias=", -1), "&", 1)
+			ELSE /*_PREFIX_*/categories.path END, "/", -1
+		) AS contact_scope
 		, country
 	FROM /*_PREFIX_*/persons
 	LEFT JOIN /*_PREFIX_*/contacts USING (contact_id)
+	LEFT JOIN /*_PREFIX_*/categories
+		ON /*_PREFIX_*/contacts.contact_category_id = /*_PREFIX_*/categories.category_id
 	LEFT JOIN /*_PREFIX_*/countries
 		ON /*_PREFIX_*/countries.country_id = /*_PREFIX_*/persons.nationality_country_id';
 $zz['sqlorder'] = ' ORDER BY last_name, first_name';

@@ -116,9 +116,9 @@ $zz['sql'] = 'SELECT /*_PREFIX_*/awards.*
 		, /*_PREFIX_*/contacts.contact
 		, /*_PREFIX_*/contacts.identifier
 		, /*_PREFIX_*/categories.category
-		, (CASE WHEN LOCATE("&type=", contact_categories.parameters) > 0 THEN
-			SUBSTRING_INDEX(SUBSTRING_INDEX(contact_categories.parameters, "&type=", -1), "&", 1)
-			ELSE "*" END
+		, SUBSTRING_INDEX(CASE WHEN LOCATE("&alias=", contact_categories.parameters) > 0 THEN
+			SUBSTRING_INDEX(SUBSTRING_INDEX(contact_categories.parameters, "&alias=", -1), "&", 1)
+			ELSE contact_categories.path END, "/", -1
 		) AS contact_scope
 	FROM /*_PREFIX_*/awards
 	LEFT JOIN /*_PREFIX_*/contacts USING (contact_id)

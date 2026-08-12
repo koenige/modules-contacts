@@ -291,9 +291,9 @@ $zz['sql'] = 'SELECT /*_PREFIX_*/contacts.*, category
 			WHERE /*_PREFIX_*/addresses.contact_id = /*_PREFIX_*/contacts.contact_id
 			LIMIT 1) AS latlon
 		, /*_PREFIX_*/categories.parameters AS contact_parameters
-		, (CASE WHEN LOCATE("&type=", /*_PREFIX_*/categories.parameters) > 0 THEN
-			SUBSTRING_INDEX(SUBSTRING_INDEX(/*_PREFIX_*/categories.parameters, "&type=", -1), "&", 1)
-			ELSE "*" END
+		, SUBSTRING_INDEX(CASE WHEN LOCATE("&alias=", /*_PREFIX_*/categories.parameters) > 0 THEN
+			SUBSTRING_INDEX(SUBSTRING_INDEX(/*_PREFIX_*/categories.parameters, "&alias=", -1), "&", 1)
+			ELSE /*_PREFIX_*/categories.path END, "/", -1
 		) AS contact_scope
 		, /*_PREFIX_*/countries.country_code
 		, /*_PREFIX_*/persons.first_name, /*_PREFIX_*/persons.last_name, /*_PREFIX_*/persons.name_particle
