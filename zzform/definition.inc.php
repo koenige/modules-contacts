@@ -49,14 +49,14 @@ function mf_contacts_addresses_subtable(&$zz, $def, $no) {
 			break;
 
 		case 'address':
-			if (!empty($def['parameters']['hide_address'])) {
+			if (!empty($def['parameters']['contacts_hide_address'])) {
 				$zz['fields'][$no]['fields'][$sub_no]['hide_in_form'] = true;
 				$zz['fields'][$no]['fields'][$sub_no]['hide_in_list'] = true;
 			}
 			break;
 
 		case 'postcode':
-			if (!empty($def['parameters']['hide_postcode'])) {
+			if (!empty($def['parameters']['contacts_hide_postcode'])) {
 				$zz['fields'][$no]['fields'][$sub_no]['hide_in_form'] = true;
 				$zz['fields'][$no]['fields'][$sub_no]['hide_in_list'] = true;
 			}
@@ -205,7 +205,7 @@ function mf_contacts_contacts_subtable(&$zz, $table, $def, $no) {
 			$zz['fields'][$no]['separator_before'] = true;
 			$separator = true;
 		}
-		if (!empty($def['association']) OR !empty($def['parameters']['reverse_relation'])
+		if (!empty($def['association']) OR !empty($def['parameters']['contacts_reverse_relation'])
 			OR !empty($def['reverse'])) {
 			$foreign_key_field = 'main_contact_id';
 			$zz['fields'][$no]['foreign_key_field_name'] = 'main_contact_id';

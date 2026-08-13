@@ -93,3 +93,8 @@
 /* 2026-08-12-9 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&title=', '&zzform_def[title]=') WHERE `path` LIKE 'channel/%' AND `parameters` LIKE '%&title=%';
 /* 2026-08-12-10 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&suffix=', '&zzform_def[suffix]=') WHERE `path` LIKE 'channel/%' AND `parameters` LIKE '%&suffix=%';
 /* 2026-08-12-11 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&type=person', '') WHERE `parameters` LIKE '%&type=person%';
+/* 2026-08-13-1 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&hide_address=', '&contacts_hide_address=') WHERE `parameters` LIKE '%&hide_address=%';
+/* 2026-08-13-2 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&hide_postcode=', '&contacts_hide_postcode=') WHERE `parameters` LIKE '%&hide_postcode=%';
+/* 2026-08-13-3 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&reverse_relation=', '&contacts_reverse_relation=') WHERE `parameters` LIKE '%&reverse_relation=%';
+/* 2026-08-13-4 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, 'contacts_params[reverse_relation]', 'contacts_params[contacts_reverse_relation]') WHERE `parameters` LIKE '%contacts_params[reverse_relation]%';
+/* 2026-08-13-5 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, 'organisations_params[reverse_relation]', 'organisations_params[contacts_reverse_relation]') WHERE `parameters` LIKE '%organisations_params[reverse_relation]%';
