@@ -159,7 +159,7 @@ function mf_contacts_contactdetails_subtable(&$zz, $def, $no) {
 	$zz['fields'][$no]['fields'][4]['def_val_ignore'] = true;
 	$zz['fields'][$no]['fields'][4]['for_action_ignore'] = true;
 	$zz['fields'][$no]['fields'][5]['hide_in_form']
-		= isset($def['parameters']['label']) ? !$def['parameters']['label']
+		= isset($def['parameters']['contacts_details_with_label']) ? !$def['parameters']['contacts_details_with_label']
 		: (wrap_setting('contacts_details_with_label') ? false : true);
 	$zz['fields'][$no]['form_display'] = 'lines';
 	$zz['fields'][$no]['subselect']['sql'] = wrap_edit_sql(
