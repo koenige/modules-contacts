@@ -99,3 +99,5 @@
 /* 2026-08-13-4 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, 'contacts_params[reverse_relation]', 'contacts_params[contacts_reverse_relation]') WHERE `parameters` LIKE '%contacts_params[reverse_relation]%';
 /* 2026-08-13-5 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, 'organisations_params[reverse_relation]', 'organisations_params[contacts_reverse_relation]') WHERE `parameters` LIKE '%organisations_params[reverse_relation]%';
 /* 2026-08-13-6 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&label=', '&contacts_details_with_label=') WHERE `path` LIKE 'channel/%' AND `parameters` LIKE '%&label=%';
+/* 2026-08-13-7 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, 'separate[', 'contacts_details_separate[') WHERE `parameters` LIKE '%separate[%';
+/* 2026-08-13-8 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&separate=1', '&contacts_details_separate=1') WHERE `parameters` LIKE '%&separate=1%';

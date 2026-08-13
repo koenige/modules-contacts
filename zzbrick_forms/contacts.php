@@ -119,11 +119,10 @@ foreach ($values['contactdetails'] as $category_id => $category) {
 	// group contactdetails?
 	$continue = false;
 	if (!empty($values['contactdetails_separate'])) $continue = true;
-	if (!empty($category['parameters']['separate'])) {
-		if (!is_array($category['parameters']['separate']) AND $category['parameters']['separate'].'' === '1') $continue = true;
-		// @deprecated, use if-notation instead
+	if (!empty($category['parameters']['contacts_details_separate'])) {
+		if (!is_array($category['parameters']['contacts_details_separate']) AND $category['parameters']['contacts_details_separate'].'' === '1') $continue = true;
 		if (!empty($values['contactdetails_restrict_to'])
-			AND !empty($category['parameters']['separate'][$values['contactdetails_restrict_to']])) $continue = true;
+			AND !empty($category['parameters']['contacts_details_separate'][$values['contactdetails_restrict_to']])) $continue = true;
 	}
 	if (empty($category['parameters']['zzform_def']['type'])) $continue = true;
 	if ($continue) {
