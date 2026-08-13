@@ -46,13 +46,13 @@ function mf_contacts_contactdetails($contact_ids, $settings = false) {
 			if ($detail['parameters'])
 				parse_str($detail['parameters'], $detail['parameters']);
 			else
-				$detail['parameters'] = ['type' => ''];
+				$detail['parameters'] = ['zzform_def' => ['type' => '']];
 			if (!mf_contacts_detail_settings_match($detail['parameters'], $settings)) continue;
 			if (!empty($settings['restrict_to'])
 				AND !empty($detail['parameters']['if'][$settings['restrict_to']]['title'])) {
 				$detail['category'] = $detail['parameters']['if'][$settings['restrict_to']]['title'];
 			}
-			switch ($detail['parameters']['type']) {
+			switch ($detail['parameters']['zzform_def']['type']) {
 			case 'mail':
 				$detail['mailto'] = wrap_mailto($detail['contact'], $detail['identification']);
 				break;
@@ -66,7 +66,7 @@ function mf_contacts_contactdetails($contact_ids, $settings = false) {
 			if ($last_category === $detail['category'])
 				$detail['same_category'] = true;
 			$last_category = $detail['category'];
-			$data[$contact_id][$detail['parameters']['type']][] = $detail;
+			$data[$contact_id][$detail['parameters']['zzform_def']['type']][] = $detail;
 			
 		}
 	}

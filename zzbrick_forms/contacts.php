@@ -125,14 +125,14 @@ foreach ($values['contactdetails'] as $category_id => $category) {
 		if (!empty($values['contactdetails_restrict_to'])
 			AND !empty($category['parameters']['separate'][$values['contactdetails_restrict_to']])) $continue = true;
 	}
-	if (empty($category['parameters']['type'])) $continue = true;
+	if (empty($category['parameters']['zzform_def']['type'])) $continue = true;
 	if ($continue) {
 		$values['contactdetails']['none-'.$category_id] = $category;
 		unset($values['contactdetails'][$category_id]);
 		continue;
 	}
 
-	$key = $category['parameters']['type'];
+	$key = $category['parameters']['zzform_def']['type'];
 	if (!array_key_exists($key, $values['contactdetails'])) {
 		$values['contactdetails'][$key]['parameters'] = [];
 		$values['contactdetails'][$key]['type'] = $key;
