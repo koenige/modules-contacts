@@ -55,7 +55,7 @@ $zz['fields'][3]['link'] = [
 	'fields' => ['identifier']
 ];
 $zz['fields'][3]['if'][2]['list_prefix'] = '<del>';
-// @todo use contacts_restrict_to from award_category_id to restrict contacts here
+// @todo use contacts_filter from award_category_id to restrict contacts here
 
 $zz['fields'][5]['title'] = 'Display Name';
 $zz['fields'][5]['field_name'] = 'contact_display_name';
