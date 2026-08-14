@@ -13,7 +13,7 @@
  */
 
 
-$values['relations_restrict_to'] = 'organisers';
+$values['context']['relations'] = 'contacts_organisers';
 $zz = zzform_include('contacts', $values, 'forms');
 $zz['title'] = 'Organisers';
 

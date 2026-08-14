@@ -13,9 +13,9 @@
  */
 
 
-$values['contactdetails_restrict_to'] = 'persons';
-$values['relations_restrict_to'] = 'persons';
-$values['categories_restrict_to'] = 'persons';
+$values['context']['contactdetails'] = 'contacts_persons';
+$values['context']['relations'] = 'contacts_persons';
+$values['context']['categories'] = 'contacts_persons';
 
 $zz = zzform_include('contacts', $values, 'forms');
 $zz['title'] = 'Persons';

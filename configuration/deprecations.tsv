@@ -29,3 +29,10 @@
 2026-07-08-5	code	'contactdetails', 'provider'	use `'contactdetails', 'channel'`
 2026-07-09-1	code_regex	mf_contacts_contactdetails\([^)]+,\s*['"]	use settings array as second parameter, e.g. ['restrict_to' => 'places']
 2026-07-09-2	code_regex	mf_contacts_addresses\([^)]+,\s*['"]	use settings array as second parameter, e.g. ['restrict_to' => 'places']
+2026-08-14-1	code	&persons=1	use use_for[contacts_persons]=1 in category parameters
+2026-08-14-2	code	&places=1	use use_for[contacts_places]=1 in category parameters
+2026-08-14-3	code	&organisations=1	use use_for[contacts_organisations]=1 in category parameters
+2026-08-14-4	code	contacts_params\[	use if[contacts_general][…] in category parameters
+2026-08-14-5	code	organisations_params\[	use if[contacts_organisations][…] in category parameters
+2026-08-14-6	code	&contacts_reverse=	use if[context][reverse_relation]=1 in category parameters
+2026-08-14-7	code_regex	contacts_details_separate\[[a-z]	use if[context][contacts_details_separate]=1 in category parameters

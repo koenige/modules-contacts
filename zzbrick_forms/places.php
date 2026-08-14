@@ -8,13 +8,13 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2020-2021, 2023-2024 Gustaf Mossakowski
+ * @copyright Copyright © 2020-2021, 2023-2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
 
-$values['contactdetails_restrict_to'] = 'places';
-$values['relations_restrict_to'] = 'places';
+$values['context']['contactdetails'] = 'contacts_places';
+$values['context']['relations'] = 'contacts_places';
 $zz = zzform_include('contacts', $values, 'forms');
 
 $zz['title'] = 'Venues';
@@ -41,7 +41,7 @@ if (!empty($zz['fields'][5]['fields'][10])) {
 }
 $zz['fields'][5]['fields'][9]['sql'] = 'SELECT category_id, category, main_category_id
 	FROM categories
-	WHERE parameters LIKE "%&places=1%"
+	WHERE parameters LIKE "%&use_for[contacts_places]=1%"
 	ORDER BY sequence, category';
 unset($zz['fields'][5]['fields'][9]['default']);
 

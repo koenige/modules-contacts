@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zugzwang Project -- contacts module\n"
-"POT-Creation-Date: 2026-08-03 01:59+0000\n"
+"POT-Creation-Date: 2026-08-14 17:02+0000\n"
 "PO-Revision-Date: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -133,83 +133,135 @@ msgid "Show field for nationality in persons table"
 msgstr ""
 
 #: configuration/settings.cfg:79
-msgid "Add label field for contact details"
-msgstr ""
-
-#: configuration/settings.cfg:83
-msgid "Show field end_date in contacts table"
+msgid "Use own contactdetails subtable for this channel (not grouped by type)"
 msgstr ""
 
 #: configuration/settings.cfg:87
-msgid "Category for contacts without persons subtable"
+msgid "Show label field on contact details."
 msgstr ""
 
 #: configuration/settings.cfg:94
-msgid "Show identifiers as subtable for contacts"
+msgid "Show field end_date in contacts table"
 msgstr ""
 
-#: configuration/settings.cfg:98
-msgid "Secret key which forms a hash that allows to login via link"
+#: configuration/settings.cfg:101
+msgid "Form context: generic contact form (relations only, no persons subtable)"
 msgstr ""
 
-#: configuration/settings.cfg:103
-msgid "Timeframe in minutes during which the linklogin_key is valid"
+#: configuration/settings.cfg:105
+msgid "Form context: organisations contact form (contact details, relations)"
 msgstr ""
 
-#: configuration/settings.cfg:108
-msgid "Include table contacts_media in contacts table"
+#: configuration/settings.cfg:109
+msgid "Form context: organisers contact form"
 msgstr ""
 
-#: configuration/settings.cfg:112
-msgid "Maximum media records associated to contact"
+#: configuration/settings.cfg:113
+msgid "Form context: persons contact form (contact details, relations, properties)"
 msgstr ""
 
 #: configuration/settings.cfg:117
-msgid "Minimum media records associated to contact"
+msgid "Form context: places contact form"
 msgstr ""
 
 #: configuration/settings.cfg:121
-msgid "Disallow deletion of contacts"
+msgid "Hide street address field in this address subtable"
 msgstr ""
 
-#: configuration/settings.cfg:128
-msgid "Show field parameters in contacts table"
+#: configuration/settings.cfg:127
+msgid "Hide postcode field in this address subtable"
 msgstr ""
 
 #: configuration/settings.cfg:133
-msgid "Show field `persons.sex` in list"
+msgid "Show identifiers as subtable for contacts"
 msgstr ""
 
 #: configuration/settings.cfg:137
-msgid "Show a field contacts.published in forms, to set status of a contact to published"
+msgid "Secret key which forms a hash that allows to login via link"
 msgstr ""
 
 #: configuration/settings.cfg:142
+msgid "Timeframe in minutes during which the linklogin_key is valid"
+msgstr ""
+
+#: configuration/settings.cfg:147
+msgid "Include table contacts_media in contacts table"
+msgstr ""
+
+#: configuration/settings.cfg:151
+msgid "Maximum media records associated to contact"
+msgstr ""
+
+#: configuration/settings.cfg:156
+msgid "Minimum media records associated to contact"
+msgstr ""
+
+#: configuration/settings.cfg:160
+msgid "Include category in member-related relation pickers"
+msgstr ""
+
+#: configuration/settings.cfg:166
+msgid "Disallow deletion of contacts"
+msgstr ""
+
+#: configuration/settings.cfg:173
+msgid "Show field parameters in contacts table"
+msgstr ""
+
+#: configuration/settings.cfg:178
+msgid "Show field `persons.sex` in list"
+msgstr ""
+
+#: configuration/settings.cfg:182
+msgid "Show a field contacts.published in forms, to set status of a contact to published"
+msgstr ""
+
+#: configuration/settings.cfg:187
+msgid "Restrict contact picker to these contact category path segments (under contact/)"
+msgstr ""
+
+#: configuration/settings.cfg:199
 msgid "Show field start_date in contacts table"
 msgstr ""
 
-#: configuration/settings.cfg:146
+#: configuration/settings.cfg:206
+msgid "Use place contact instead of address per contact"
+msgstr ""
+
+#: configuration/settings.cfg:212
+msgid "Venue-type contact for events and rooms"
+msgstr ""
+
+#: configuration/settings.cfg:218
+msgid "Contact category marks a virtual venue (no physical place)"
+msgstr ""
+
+#: configuration/settings.cfg:235
+msgid "Configure main-contact side of contacts_contacts relation (category filter, add_details URL)"
+msgstr ""
+
+#: configuration/settings.cfg:242
 msgid "Initial installation date of contacts module (for updates)"
 msgstr ""
 
-#: configuration/settings.cfg:150
+#: configuration/settings.cfg:246
+msgid "Organisation contact type"
+msgstr ""
+
+#: configuration/settings.cfg:253
 msgid "ID of owner of website in contact list"
 msgstr ""
 
-#: configuration/settings.cfg:154
+#: configuration/settings.cfg:257
 msgid "ID of country where website is in (default country)"
 msgstr ""
 
-#: configuration/settings.cfg:158
-msgid "Use category for persons form subtables (contact details, relations, properties)"
+#: configuration/settings.cfg:261
+msgid "Include category in persons-form contactdetail and relation pickers"
 msgstr ""
 
-#: configuration/settings.cfg:165
+#: configuration/settings.cfg:266
 msgid "Show role field in events_contacts subtable"
-msgstr ""
-
-#: configuration/settings.cfg:172
-msgid "Type of contact detail channel"
 msgstr ""
 
 #: zzbrick_make/addlogin.inc.php:42

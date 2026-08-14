@@ -73,7 +73,7 @@ if (wrap_setting('contacts_media')) {
 //
 
 $separator = false;
-if (!empty($values['addresses_restrict_to']))
+if (mf_default_contexts($values, 'addresses'))
 	mf_default_categories_restrict($values, 'addresses', 'address');
 if (isset($values['addresses'])) {
 	$no = 80;
@@ -104,25 +104,11 @@ mf_default_categories_restrict($values, 'contactdetails', 'channel');
 
 $no = 30;
 foreach ($values['contactdetails'] as $category_id => $category) {
-	// parse parameters
-	if (!empty($values['contactdetails_restrict_to'])
-		AND !empty($category['parameters']['if'][$values['contactdetails_restrict_to']])) {
-		$category['parameters'] = array_merge($category['parameters'], $category['parameters']['if'][$values['contactdetails_restrict_to']]);
-		if (empty($category['parameters']['zzform_def']))
-			$category['parameters']['zzform_def'] = [];
-		$category['parameters']['zzform_def'] = array_merge(
-			$category['parameters']['zzform_def'],
-			$category['parameters']['if'][$values['contactdetails_restrict_to']]
-		);
-	}
-
-	// group contactdetails?
 	$continue = false;
-	if (!empty($values['contactdetails_separate'])) $continue = true;
-	if (!empty($category['parameters']['contacts_details_separate'])) {
-		if (!is_array($category['parameters']['contacts_details_separate']) AND $category['parameters']['contacts_details_separate'].'' === '1') $continue = true;
-		if (!empty($values['contactdetails_restrict_to'])
-			AND !empty($category['parameters']['contacts_details_separate'][$values['contactdetails_restrict_to']])) $continue = true;
+	if (!empty($category['parameters']['contacts_details_separate'])
+		AND !is_array($category['parameters']['contacts_details_separate'])
+		AND $category['parameters']['contacts_details_separate'].'' === '1') {
+		$continue = true;
 	}
 	if (empty($category['parameters']['zzform_def']['type'])) $continue = true;
 	if ($continue) {
@@ -172,7 +158,7 @@ if (!empty($zz['fields'][$no - 1]))
 // contacts_categories
 //
 
-mf_default_categories_subtable($zz, 'contacts', 'contact-properties', 50, $values['categories_restrict_to'] ?? '');
+mf_default_categories_subtable($zz, 'contacts', 'contact-properties', 50, mf_default_contexts($values, 'categories') ?? '');
 
 //
 // contacts-contacts
@@ -182,20 +168,6 @@ mf_default_categories_restrict($values, 'relations', 'relation');
 
 $separator = false;
 $no = 60;
-// associations?
-$pos = 0;
-foreach ($values['relations'] as $index => $relation) {
-	if (!$relation['parameters']) continue;
-	$pos++;
-	if (isset($values['relations_restrict_to'])) {
-		$key = sprintf('%s_params', $values['relations_restrict_to']);
-		if (!empty($relation['parameters'][$key]))
-			$values['relations'][$index]['parameters'] = array_merge(
-				$values['relations'][$index]['parameters'], $values['relations'][$index]['parameters'][$key]
-			);
-	}
-}
-
 foreach ($values['relations'] as $relation) {
 	mf_contacts_contacts_subtable($zz, 'contacts', $relation, $no);
 	$no++;

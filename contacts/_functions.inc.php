@@ -13,13 +13,16 @@
  */
 
 
+wrap_include('context', 'default');
+
+
 /**
  * read all contactdetails for a contact from database
  *
  * @param mixed $contact_ids (int or array)
- * @param array|string|false $settings (optional) settings array, or deprecated string
- *		restrict_to context (e.g. 'places'); array keys:
- *		- restrict_to: restrict to category parameter=1
+ * @param array|string|false $settings (optional) settings array, or context string
+ *		array keys:
+ *		- context: form context (use_for on category parameters)
  *		- hidden: false to omit categories with hidden=1 (opt-in; default shows all)
  * @return array
  */
@@ -48,9 +51,9 @@ function mf_contacts_contactdetails($contact_ids, $settings = false) {
 			else
 				$detail['parameters'] = ['zzform_def' => ['type' => '']];
 			if (!mf_contacts_detail_settings_match($detail['parameters'], $settings)) continue;
-			if (!empty($settings['restrict_to'])
-				AND !empty($detail['parameters']['if'][$settings['restrict_to']]['title'])) {
-				$detail['category'] = $detail['parameters']['if'][$settings['restrict_to']]['title'];
+			if (!empty($settings['context'])
+				AND !empty($detail['parameters']['if'][$settings['context']]['title'])) {
+				$detail['category'] = $detail['parameters']['if'][$settings['context']]['title'];
 			}
 			switch ($detail['parameters']['zzform_def']['type']) {
 			case 'mail':
@@ -80,8 +83,8 @@ function mf_contacts_contactdetails($contact_ids, $settings = false) {
  * read all addresses for a contact from database
  *
  * @param mixed $contact_ids (int or array)
- * @param array|string|false $settings (optional) settings array, or deprecated string
- *		restrict_to context; see mf_contacts_contactdetails()
+ * @param array|string|false $settings (optional) settings array, or context string;
+ *		see mf_contacts_contactdetails()
  * @return array
  */
 function mf_contacts_addresses($contact_ids, $settings = false) {
@@ -112,9 +115,9 @@ function mf_contacts_addresses($contact_ids, $settings = false) {
 		else
 			$address['parameters'] = [];
 		if (!mf_contacts_detail_settings_match($address['parameters'], $settings)) continue;
-		if (!empty($settings['restrict_to'])
-			AND !empty($address['parameters']['if'][$settings['restrict_to']]['title'])) {
-			$address['category'] = $address['parameters']['if'][$settings['restrict_to']]['title'];
+		if (!empty($settings['context'])
+			AND !empty($address['parameters']['if'][$settings['context']]['title'])) {
+			$address['category'] = $address['parameters']['if'][$settings['context']]['title'];
 		}
 		$data[$address['contact_id']][$address['address_id']] = $address;
 		if (count($addresses) === 1)
@@ -134,7 +137,7 @@ function mf_contacts_addresses($contact_ids, $settings = false) {
  */
 function mf_contacts_detail_settings_normalize($settings) {
 	if (!$settings) return [];
-	if (is_string($settings)) return ['restrict_to' => $settings];
+	if (is_string($settings)) return ['context' => $settings];
 	if (!is_array($settings)) return [];
 	return $settings;
 }
@@ -148,11 +151,10 @@ function mf_contacts_detail_settings_normalize($settings) {
  */
 function mf_contacts_detail_settings_match($parameters, $settings) {
 	if (!$settings) return true;
-	if (!empty($settings['restrict_to'])) {
-		if (empty($parameters[$settings['restrict_to']])) return false;
-	}
+	if (!empty($settings['context'])
+		AND !mf_default_category_use_for($parameters, $settings['context'])) return false;
 	foreach ($settings as $key => $value) {
-		if ($key === 'restrict_to') continue;
+		if ($key === 'context') continue;
 		if ($value === false) {
 			if (!empty($parameters[$key])) return false;
 			continue;
