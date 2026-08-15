@@ -284,10 +284,6 @@ function mf_contacts_relations($ids) {
 			$title = explode(' / ', $relation['relation']);
 			$display_relation = !empty($relation['relation_reverse'])
 				? $title[1] : $title[0];
-		} else {
-			$inverse_relation = mf_contacts_relations_inverse($relation['relation_type']);
-			if (!empty($rparams[$inverse_relation]['relation']))
-				$display_relation = $rparams[$inverse_relation]['relation'];
 		}
 		$index = sprintf('%s-%s', $relation['relation_type'], $display_relation);
 		if (!array_key_exists($index, $indices)) {
@@ -305,20 +301,6 @@ function mf_contacts_relations($ids) {
 		$data[$relation['my_contact_id']][$relation['relation_type']][$indices[$index]]['contacts'][$cc_id] = $relation;
 	}
 	return $data;
-}
-
-/**
- * show inverse relation
- *
- * @param string $relation
- * @return string
- */
-function mf_contacts_relations_inverse($relation) {
-	switch ($relation) {
-		case 'children': return 'parents';
-		case 'parents': return 'children';
-	}
-	return $relation;
 }
 
 /**

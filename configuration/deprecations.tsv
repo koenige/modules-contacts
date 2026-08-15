@@ -36,3 +36,5 @@
 2026-08-14-5	code	organisations_params\[	use if[contacts_organisations][…] in category parameters
 2026-08-14-6	code	&contacts_reverse=	use if[context][reverse_relation]=1 in category parameters
 2026-08-14-7	code_regex	contacts_details_separate\[[a-z]	use if[context][contacts_details_separate]=1 in category parameters
+2026-08-15-1	code	children[relation]=	use split_title=1 and category name normal / reverse
+2026-08-15-2	code	parents[relation]=	use split_title=1 and category name normal / reverse
