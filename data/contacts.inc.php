@@ -215,6 +215,7 @@ function mf_contacts_relations($ids) {
 			, role
 			, addresses.latitude
 			, addresses.longitude
+			, 1 AS relation_reverse
 		FROM contacts_contacts cc
 		LEFT JOIN categories relations
 			ON cc.relation_category_id = relations.category_id
@@ -249,6 +250,7 @@ function mf_contacts_relations($ids) {
 			, role
 			, addresses.latitude
 			, addresses.longitude
+			, NULL AS relation_reverse
 		FROM contacts_contacts cc
 		LEFT JOIN categories relations
 			ON cc.relation_category_id = relations.category_id
@@ -274,18 +276,24 @@ function mf_contacts_relations($ids) {
 	$i = 0;
 	foreach ($relations as $cc_id => $relation) {
 		// set index, set relation
-		$index = sprintf('%s-%s', $relation['relation_type'], $relation['relation']);
+		$rparams = [];
+		if ($relation['relation_parameters'])
+			parse_str($relation['relation_parameters'], $rparams);
+		$display_relation = $relation['relation'];
+		if (!empty($rparams['split_title']) AND strstr($relation['relation'], ' / ')) {
+			$title = explode(' / ', $relation['relation']);
+			$display_relation = !empty($relation['relation_reverse'])
+				? $title[1] : $title[0];
+		} else {
+			$inverse_relation = mf_contacts_relations_inverse($relation['relation_type']);
+			if (!empty($rparams[$inverse_relation]['relation']))
+				$display_relation = $rparams[$inverse_relation]['relation'];
+		}
+		$index = sprintf('%s-%s', $relation['relation_type'], $display_relation);
 		if (!array_key_exists($index, $indices)) {
 			$indices[$index] = $i++;
 			$this_rel = [];
-			$this_rel['relation'] = $relation['relation'];
-			// relation parameters
-			$rparams = [];
-			if ($relation['relation_parameters'])
-				parse_str($relation['relation_parameters'], $rparams);
-			$inverse_relation = mf_contacts_relations_inverse($relation['relation_type']);
-			if (!empty($rparams[$inverse_relation]['relation']))
-				$this_rel['relation'] = $rparams[$inverse_relation]['relation'];
+			$this_rel['relation'] = $display_relation;
 			$this_rel['relation_parameters'] = $rparams;
 			$this_rel['relation_path'] = $relation['relation_path'];
 			$data[$relation['my_contact_id']][$relation['relation_type']][$indices[$index]] = $this_rel;
