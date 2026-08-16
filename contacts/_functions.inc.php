@@ -52,8 +52,8 @@ function mf_contacts_contactdetails($contact_ids, $settings = false) {
 				$detail['parameters'] = ['zzform' => ['type' => '']];
 			if (!mf_contacts_detail_settings_match($detail['parameters'], $settings)) continue;
 			if (!empty($settings['context'])
-				AND !empty($detail['parameters']['if'][$settings['context']]['title'])) {
-				$detail['category'] = $detail['parameters']['if'][$settings['context']]['title'];
+				AND !empty($detail['parameters']['context_if'][$settings['context']]['title'])) {
+				$detail['category'] = $detail['parameters']['context_if'][$settings['context']]['title'];
 			}
 			switch ($detail['parameters']['zzform']['type']) {
 			case 'mail':
@@ -116,8 +116,8 @@ function mf_contacts_addresses($contact_ids, $settings = false) {
 			$address['parameters'] = [];
 		if (!mf_contacts_detail_settings_match($address['parameters'], $settings)) continue;
 		if (!empty($settings['context'])
-			AND !empty($address['parameters']['if'][$settings['context']]['title'])) {
-			$address['category'] = $address['parameters']['if'][$settings['context']]['title'];
+			AND !empty($address['parameters']['context_if'][$settings['context']]['title'])) {
+			$address['category'] = $address['parameters']['context_if'][$settings['context']]['title'];
 		}
 		$data[$address['contact_id']][$address['address_id']] = $address;
 		if (count($addresses) === 1)
