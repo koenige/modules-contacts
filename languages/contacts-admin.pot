@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zugzwang Project -- contacts module\n"
-"POT-Creation-Date: 2026-08-16 08:46+0000\n"
+"POT-Creation-Date: 2026-08-16 09:46+0000\n"
 "PO-Revision-Date: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -216,43 +216,39 @@ msgstr ""
 msgid "Show a field contacts.published in forms, to set status of a contact to published"
 msgstr ""
 
-#: configuration/settings.cfg:200
+#: configuration/settings.cfg:204
 msgid "Show field start_date in contacts table"
 msgstr ""
 
-#: configuration/settings.cfg:207
+#: configuration/settings.cfg:211
 msgid "Use place contact instead of address per contact"
 msgstr ""
 
-#: configuration/settings.cfg:213
+#: configuration/settings.cfg:217
 msgid "Venue-type contact for events and rooms"
 msgstr ""
 
-#: configuration/settings.cfg:219
+#: configuration/settings.cfg:223
 msgid "Contact category marks a virtual venue (no physical place)"
 msgstr ""
 
-#: configuration/settings.cfg:234
+#: configuration/settings.cfg:238
 msgid "Initial installation date of contacts module (for updates)"
 msgstr ""
 
-#: configuration/settings.cfg:238
+#: configuration/settings.cfg:242
 msgid "Organisation contact type"
 msgstr ""
 
-#: configuration/settings.cfg:245
+#: configuration/settings.cfg:248
 msgid "ID of owner of website in contact list"
 msgstr ""
 
-#: configuration/settings.cfg:249
+#: configuration/settings.cfg:252
 msgid "ID of country where website is in (default country)"
 msgstr ""
 
-#: configuration/settings.cfg:253
-msgid "Include category in persons-form contactdetail and relation pickers"
-msgstr ""
-
-#: configuration/settings.cfg:265
+#: configuration/settings.cfg:259
 msgid "Show role field in events_contacts subtable"
 msgstr ""
 
