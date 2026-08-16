@@ -60,7 +60,7 @@ function mod_contacts_make_sendlogin($params, $settings) {
 	}
 	$mail['to']['name'] = $contact['contact'];
 	$mail['to']['e_mail'] = $contact['e_mail'];
-	$contact['addlogin_hash'] = wrap_set_hash($contact['contact_id'].'-'.$contact['identifier'], 'addlogin_key');
+	$contact['addlogin_hash'] = wrap_set_hash($contact['contact_id'].'-'.$contact['identifier'], 'contacts_addlogin_key');
 	$mail['message'] = wrap_template('addlogin-mail', $contact);
 	$success = wrap_mail($mail);
 	if (!$success) {

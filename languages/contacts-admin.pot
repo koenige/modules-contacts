@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zugzwang Project -- contacts module\n"
-"POT-Creation-Date: 2026-08-16 09:46+0000\n"
+"POT-Creation-Date: 2026-08-16 09:58+0000\n"
 "PO-Revision-Date: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -85,7 +85,7 @@ msgid "Secret key which forms a hash that allows to add a login"
 msgstr ""
 
 #: configuration/settings.cfg:25
-msgid "Timeframe in minutes during which the addlogin_key is valid"
+msgid "Timeframe in minutes during which the contacts_addlogin_key is valid"
 msgstr ""
 
 #: configuration/settings.cfg:30
@@ -205,51 +205,51 @@ msgid "Disallow deletion of contacts"
 msgstr ""
 
 #: configuration/settings.cfg:173
-msgid "Show field parameters in contacts table"
-msgstr ""
-
-#: configuration/settings.cfg:178
-msgid "Show field `persons.sex` in list"
-msgstr ""
-
-#: configuration/settings.cfg:182
-msgid "Show a field contacts.published in forms, to set status of a contact to published"
-msgstr ""
-
-#: configuration/settings.cfg:204
-msgid "Show field start_date in contacts table"
-msgstr ""
-
-#: configuration/settings.cfg:211
-msgid "Use place contact instead of address per contact"
-msgstr ""
-
-#: configuration/settings.cfg:217
-msgid "Venue-type contact for events and rooms"
-msgstr ""
-
-#: configuration/settings.cfg:223
-msgid "Contact category marks a virtual venue (no physical place)"
-msgstr ""
-
-#: configuration/settings.cfg:238
-msgid "Initial installation date of contacts module (for updates)"
-msgstr ""
-
-#: configuration/settings.cfg:242
 msgid "Organisation contact type"
 msgstr ""
 
-#: configuration/settings.cfg:248
-msgid "ID of owner of website in contact list"
+#: configuration/settings.cfg:179
+msgid "Show field parameters in contacts table"
+msgstr ""
+
+#: configuration/settings.cfg:184
+msgid "Show field `persons.sex` in list"
+msgstr ""
+
+#: configuration/settings.cfg:188
+msgid "Show a field contacts.published in forms, to set status of a contact to published"
+msgstr ""
+
+#: configuration/settings.cfg:193
+msgid "Show role field in events_contacts subtable"
+msgstr ""
+
+#: configuration/settings.cfg:201
+msgid "Show field start_date in contacts table"
+msgstr ""
+
+#: configuration/settings.cfg:208
+msgid "Use place contact instead of address per contact"
+msgstr ""
+
+#: configuration/settings.cfg:214
+msgid "Venue-type contact for events and rooms"
+msgstr ""
+
+#: configuration/settings.cfg:220
+msgid "Contact category marks a virtual venue (no physical place)"
 msgstr ""
 
 #: configuration/settings.cfg:252
-msgid "ID of country where website is in (default country)"
+msgid "Initial installation date of contacts module (for updates)"
 msgstr ""
 
-#: configuration/settings.cfg:259
-msgid "Show role field in events_contacts subtable"
+#: configuration/settings.cfg:256
+msgid "ID of owner of website in contact list"
+msgstr ""
+
+#: configuration/settings.cfg:260
+msgid "ID of country where website is in (default country)"
 msgstr ""
 
 #: zzbrick_make/addlogin.inc.php:42

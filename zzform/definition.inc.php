@@ -310,7 +310,7 @@ function mf_contacts_contacts_subtable(&$zz, $table, $def, $no) {
 				break;
 
 			case 'role':
-				if (empty($def['parameters']['role'])) {
+				if (empty($def['parameters']['contacts_role'])) {
 					$zz['fields'][$no]['fields'][$sub_no]['hide_in_form'] = true;
 					$zz['fields'][$no]['fields'][$sub_no]['hide_in_list'] = true;
 					break;

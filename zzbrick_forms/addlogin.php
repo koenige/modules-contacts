@@ -51,7 +51,7 @@ $zz['fields'][2]['display_value'] = wrap_db_fetch($sql, '', 'single value');
 // 6 = login_rights
 if (!empty($zz['fields'][6])) {
 	$zz['fields'][6]['type'] = 'hidden';
-	$zz['fields'][6]['value'] = wrap_setting('addlogin_rights');
+	$zz['fields'][6]['value'] = wrap_setting('contacts_addlogin_rights');
 	$zz['fields'][6]['hide_in_form'] = true;
 }
 

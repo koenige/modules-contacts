@@ -139,3 +139,8 @@
 /* 2026-08-16-2 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&reversed[contacts_filter][', '&reversed[context_link][') WHERE `parameters` LIKE '%&reversed[contacts_filter][%';
 /* 2026-08-16-3 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&person=1', '&context[contacts_persons]=1') WHERE `parameters` LIKE '%&person=1%' AND main_category_id = /*_ID categories identifiers _*/;
 /* 2026-08-16-4 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&organisation=1', '&context[contacts_general]=1') WHERE `parameters` LIKE '%&organisation=1%' AND main_category_id = /*_ID categories identifiers _*/;
+/* 2026-08-16-5 */	UPDATE _settings SET setting_key = 'contacts_addlogin_key' WHERE setting_key = 'addlogin_key';
+/* 2026-08-16-6 */	UPDATE _settings SET setting_key = 'contacts_addlogin_key_validity_in_minutes' WHERE setting_key = 'addlogin_key_validity_in_minutes';
+/* 2026-08-16-7 */	UPDATE _settings SET setting_key = 'contacts_addlogin_rights' WHERE setting_key = 'addlogin_rights';
+/* 2026-08-16-8 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&organisation=1', '&contacts_organisation=1') WHERE `parameters` LIKE '%&organisation=1%';
+/* 2026-08-16-9 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&role=1', '&contacts_role=1') WHERE `parameters` LIKE '%&role=1%';
