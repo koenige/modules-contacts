@@ -138,3 +138,4 @@
 /* 2026-08-16-1 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&contacts_filter[', '&context_link[') WHERE `parameters` LIKE '%&contacts_filter[%';
 /* 2026-08-16-2 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&reversed[contacts_filter][', '&reversed[context_link][') WHERE `parameters` LIKE '%&reversed[contacts_filter][%';
 /* 2026-08-16-3 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&person=1', '&context[contacts_persons]=1') WHERE `parameters` LIKE '%&person=1%' AND main_category_id = /*_ID categories identifiers _*/;
+/* 2026-08-16-4 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&organisation=1', '&context[contacts_general]=1') WHERE `parameters` LIKE '%&organisation=1%' AND main_category_id = /*_ID categories identifiers _*/;

@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2021, 2023-2024 Gustaf Mossakowski
+ * @copyright Copyright © 2021, 2023-2024, 2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -18,6 +18,13 @@ $values['context']['relations'] = 'contacts_general';
 
 $zz = zzform_include('contacts', $values, 'forms');
 $zz['title'] = 'Contacts (without persons)';
+
+if (!empty($zz['fields'][19])) {
+	$zz['fields'][19]['fields'][4]['sql'] = wrap_edit_sql(
+		$zz['fields'][19]['fields'][4]['sql'],
+		'WHERE', 'parameters LIKE "%&context[contacts_general]=1%"'
+	);
+}
 
 $zz['sql'] .= 'WHERE categories.parameters LIKE "%&contacts_general=1%"';
 
