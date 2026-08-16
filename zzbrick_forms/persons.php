@@ -76,7 +76,7 @@ if (!empty($zz['fields'][19])) {
 	$zz['fields'][19]['field_sequence'] = 67;
 	$zz['fields'][19]['fields'][4]['sql'] = wrap_edit_sql(
 		$zz['fields'][19]['fields'][4]['sql'],
-		'WHERE', 'parameters LIKE "%&person=1%"'
+		'WHERE', 'parameters LIKE "%&context[contacts_persons]=1%"'
 	);
 	$zz['fields'][3]['separator'] = false;
 	if (!empty($zz['fields'][27]))
