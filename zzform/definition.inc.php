@@ -253,13 +253,6 @@ function mf_contacts_contacts_subtable(&$zz, $table, $def, $no) {
 
 			case $contact_field:
 				$zz['fields'][$no]['fields'][$sub_no]['show_title'] = false;
-				$zz['fields'][$no]['fields'][$sub_no]['sql'] = sprintf(
-					'SELECT contact_id, contact, identifier
-					FROM contacts
-					LEFT JOIN categories
-						ON contacts.contact_category_id = categories.category_id
-					WHERE categories.parameters LIKE "%%&%s_%s=1%%"
-					ORDER BY identifier', $table, $def['path']);
 				$zz['fields'][$no]['fields'][$sub_no]['add_details']
 					= $def['parameters']['zzform_def']['add_details'] ?? false;
 				$zz['fields'][$no]['fields'][$sub_no]['select_dont_force_single_value'] = true;
@@ -267,15 +260,18 @@ function mf_contacts_contacts_subtable(&$zz, $table, $def, $no) {
 					= $def['parameters']['zzform_def']['placeholder'] ?? $def['category'];
 
 				// restrict contacts to category
-				if (!empty($def['parameters']['main_contact']['category'])) {
-					$categories = $def['parameters']['main_contact']['category'];
-					if (!is_array($categories)) $categories = [$categories];
-					foreach ($categories as $index => $category) {
-						$categories[$index] = wrap_category_id('contact/'.$category);
+				$category_ids = [];
+				if (!empty($def['parameters']['contacts_filter'])) {
+					foreach ($def['parameters']['contacts_filter'] as $category_path => $bool) {
+						if (!$bool) continue;
+						$id = wrap_category_id($category_path);
+						if ($id) $category_ids[] = $id;
 					}
+				}
+				if ($category_ids) {
 					$zz['fields'][$no]['fields'][$sub_no]['sql'] = wrap_edit_sql(
 						$zz['fields'][$no]['fields'][$sub_no]['sql'], 'WHERE',
-						sprintf('contact_category_id IN (%s)', implode(',', $categories))
+						sprintf('contact_category_id IN (%s)', implode(',', $category_ids))
 					);
 				}
 
