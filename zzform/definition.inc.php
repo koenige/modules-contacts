@@ -261,8 +261,8 @@ function mf_contacts_contacts_subtable(&$zz, $table, $def, $no) {
 
 				// restrict contacts to category
 				$category_ids = [];
-				if (!empty($def['parameters']['contacts_filter'])) {
-					foreach ($def['parameters']['contacts_filter'] as $category_path => $bool) {
+				if (!empty($def['parameters']['context_link'])) {
+					foreach ($def['parameters']['context_link'] as $category_path => $bool) {
 						if (!$bool) continue;
 						$id = wrap_category_id($category_path);
 						if ($id) $category_ids[] = $id;
