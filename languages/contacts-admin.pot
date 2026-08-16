@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zugzwang Project -- contacts module\n"
-"POT-Creation-Date: 2026-08-14 17:02+0000\n"
+"POT-Creation-Date: 2026-08-16 07:51+0000\n"
 "PO-Revision-Date: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -216,51 +216,43 @@ msgstr ""
 msgid "Show a field contacts.published in forms, to set status of a contact to published"
 msgstr ""
 
-#: configuration/settings.cfg:187
-msgid "Restrict contact picker to these contact category path segments (under contact/)"
-msgstr ""
-
-#: configuration/settings.cfg:199
+#: configuration/settings.cfg:200
 msgid "Show field start_date in contacts table"
 msgstr ""
 
-#: configuration/settings.cfg:206
+#: configuration/settings.cfg:207
 msgid "Use place contact instead of address per contact"
 msgstr ""
 
-#: configuration/settings.cfg:212
+#: configuration/settings.cfg:213
 msgid "Venue-type contact for events and rooms"
 msgstr ""
 
-#: configuration/settings.cfg:218
+#: configuration/settings.cfg:219
 msgid "Contact category marks a virtual venue (no physical place)"
 msgstr ""
 
-#: configuration/settings.cfg:235
-msgid "Configure main-contact side of contacts_contacts relation (category filter, add_details URL)"
-msgstr ""
-
-#: configuration/settings.cfg:242
+#: configuration/settings.cfg:236
 msgid "Initial installation date of contacts module (for updates)"
 msgstr ""
 
-#: configuration/settings.cfg:246
+#: configuration/settings.cfg:240
 msgid "Organisation contact type"
 msgstr ""
 
-#: configuration/settings.cfg:253
+#: configuration/settings.cfg:247
 msgid "ID of owner of website in contact list"
 msgstr ""
 
-#: configuration/settings.cfg:257
+#: configuration/settings.cfg:251
 msgid "ID of country where website is in (default country)"
 msgstr ""
 
-#: configuration/settings.cfg:261
+#: configuration/settings.cfg:255
 msgid "Include category in persons-form contactdetail and relation pickers"
 msgstr ""
 
-#: configuration/settings.cfg:266
+#: configuration/settings.cfg:267
 msgid "Show role field in events_contacts subtable"
 msgstr ""
 

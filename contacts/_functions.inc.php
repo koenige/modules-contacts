@@ -22,7 +22,7 @@ wrap_include('context', 'default');
  * @param mixed $contact_ids (int or array)
  * @param array|string|false $settings (optional) settings array, or context string
  *		array keys:
- *		- context: form context (use_for on category parameters)
+ *		- context: form context
  *		- hidden: false to omit categories with hidden=1 (opt-in; default shows all)
  * @return array
  */
@@ -152,7 +152,7 @@ function mf_contacts_detail_settings_normalize($settings) {
 function mf_contacts_detail_settings_match($parameters, $settings) {
 	if (!$settings) return true;
 	if (!empty($settings['context'])
-		AND !mf_default_category_use_for($parameters, $settings['context'])) return false;
+		AND !mf_default_category_context($parameters, $settings['context'])) return false;
 	foreach ($settings as $key => $value) {
 		if ($key === 'context') continue;
 		if ($value === false) {

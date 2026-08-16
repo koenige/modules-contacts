@@ -41,7 +41,7 @@ if (!empty($zz['fields'][5]['fields'][10])) {
 }
 $zz['fields'][5]['fields'][9]['sql'] = 'SELECT category_id, category, main_category_id
 	FROM categories
-	WHERE parameters LIKE "%&use_for[contacts_places]=1%"
+	WHERE parameters LIKE "%&context[contacts_places]=1%"
 	ORDER BY sequence, category';
 unset($zz['fields'][5]['fields'][9]['default']);
 
