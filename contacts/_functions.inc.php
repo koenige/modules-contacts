@@ -49,27 +49,27 @@ function mf_contacts_contactdetails($contact_ids, $settings = false) {
 			if ($detail['parameters'])
 				parse_str($detail['parameters'], $detail['parameters']);
 			else
-				$detail['parameters'] = ['zzform_def' => ['type' => '']];
+				$detail['parameters'] = ['zzform' => ['type' => '']];
 			if (!mf_contacts_detail_settings_match($detail['parameters'], $settings)) continue;
 			if (!empty($settings['context'])
 				AND !empty($detail['parameters']['if'][$settings['context']]['title'])) {
 				$detail['category'] = $detail['parameters']['if'][$settings['context']]['title'];
 			}
-			switch ($detail['parameters']['zzform_def']['type']) {
+			switch ($detail['parameters']['zzform']['type']) {
 			case 'mail':
 				$detail['mailto'] = wrap_mailto($detail['contact'], $detail['identification']);
 				break;
 			case 'username':
 				if (!empty($detail['link']))
 					$detail['username_url'] = $detail['link'];
-				elseif (!empty($detail['parameters']['zzform_def']['url']))
-					$detail['username_url'] = sprintf($detail['parameters']['zzform_def']['url'], $detail['identification']);
+				elseif (!empty($detail['parameters']['zzform']['url']))
+					$detail['username_url'] = sprintf($detail['parameters']['zzform']['url'], $detail['identification']);
 				break;
 			}
 			if ($last_category === $detail['category'])
 				$detail['same_category'] = true;
 			$last_category = $detail['category'];
-			$data[$contact_id][$detail['parameters']['zzform_def']['type']][] = $detail;
+			$data[$contact_id][$detail['parameters']['zzform']['type']][] = $detail;
 			
 		}
 	}

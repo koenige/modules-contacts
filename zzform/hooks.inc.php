@@ -157,14 +157,14 @@ function mf_contacts_hook_check_contactdetails($ops) {
 		if (!$category['parameters']) continue;
 		parse_str($category['parameters'], $parameters);
 		if (empty($parameters['move_more_records_to'])) continue;
-		if (empty($parameters['zzform_def']['max_records'])) continue;
-		if ($record_count[$category_id] <= $parameters['zzform_def']['max_records']) continue;
+		if (empty($parameters['zzform']['max_records'])) continue;
+		if ($record_count[$category_id] <= $parameters['zzform']['max_records']) continue;
 		$shown_record_count = 0;
 		foreach ($ops['planned'] as $index => $table) {
 			if ($table['table'] !== 'contactdetails') continue;
 			if ($ops['record_new'][$index]['channel_category_id'].'' !== $category_id.'') continue;
 			$shown_record_count++;
-			if ($shown_record_count <= $parameters['zzform_def']['max_records']) continue;
+			if ($shown_record_count <= $parameters['zzform']['max_records']) continue;
 			$change['record_replace'][$index]['channel_category_id'] = wrap_category_id($parameters['move_more_records_to']);
 		}
 	}

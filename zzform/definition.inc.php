@@ -32,8 +32,8 @@ function mf_contacts_addresses_subtable(&$zz, $def, $no) {
 	$zz['fields'][$no]['type'] = 'subtable';
 	$zz['fields'][$no]['min_records'] = 0;
 	foreach ($subtable_params as $s_param) {
-		if (empty($def['parameters']['zzform_def'][$s_param])) continue;
-		$zz['fields'][$no][$s_param] = $def['parameters']['zzform_def'][$s_param];
+		if (empty($def['parameters']['zzform'][$s_param])) continue;
+		$zz['fields'][$no][$s_param] = $def['parameters']['zzform'][$s_param];
 	}
 	if ($def['category_id']) {
 		$zz['fields'][$no]['sql'] .= sprintf(' WHERE address_category_id = %d', $def['category_id']);
@@ -112,7 +112,7 @@ function mf_contacts_contactdetails_subtable(&$zz, $def, $no) {
 			$def['category'] = reset($def['categories']);
 			$def['category'] = $def['category']['category'];
 		} else {
-			$def['category'] = $def['parameters']['zzform_def']['type'];
+			$def['category'] = $def['parameters']['zzform']['type'];
 			$def['category'] = $def['category'] === 'url' ? strtoupper($def['category']) : ucfirst($def['category']);
 			$def['category'] = wrap_text($def['category']);
 		}
@@ -123,21 +123,21 @@ function mf_contacts_contactdetails_subtable(&$zz, $def, $no) {
 	$zz['fields'][$no]['title_tab'] = 'Contact Details';
 	$zz['fields'][$no]['class'] = 'contactdetails';
 	$zz['fields'][$no]['table_name'] = 'contactdetails_'.$def['category_id'];
-	$zz['fields'][$no]['title'] = $def['parameters']['zzform_def']['title'] ?? $def['category'];
+	$zz['fields'][$no]['title'] = $def['parameters']['zzform']['title'] ?? $def['category'];
 	$zz['fields'][$no]['type'] = 'subtable';
-	$zz['fields'][$no]['min_records'] = $def['parameters']['zzform_def']['min_records'] ?? 1;
-	$zz['fields'][$no]['max_records'] = $def['parameters']['zzform_def']['max_records']
+	$zz['fields'][$no]['min_records'] = $def['parameters']['zzform']['min_records'] ?? 1;
+	$zz['fields'][$no]['max_records'] = $def['parameters']['zzform']['max_records']
 		?? (!empty($def['categories']) ? count($def['categories']) : 1);
-	$zz['fields'][$no]['explanation'] = $def['parameters']['zzform_def']['explanation'] ?? '';
-	$zz['fields'][$no]['hide_in_list'] = $def['parameters']['zzform_def']['hide_in_list'] ?? false;
+	$zz['fields'][$no]['explanation'] = $def['parameters']['zzform']['explanation'] ?? '';
+	$zz['fields'][$no]['hide_in_list'] = $def['parameters']['zzform']['hide_in_list'] ?? false;
 
 	// fields
 	$zz['fields'][$no]['fields'][2]['type'] = 'foreign_key';
-	if (!empty($def['parameters']['zzform_def']['type'])
+	if (!empty($def['parameters']['zzform']['type'])
 		AND in_array(
-			$def['parameters']['zzform_def']['type'], ['mail', 'url', 'phone', 'username']
+			$def['parameters']['zzform']['type'], ['mail', 'url', 'phone', 'username']
 	)) {
-		$zz['fields'][$no]['fields'][3]['type'] = $def['parameters']['zzform_def']['type'];
+		$zz['fields'][$no]['fields'][3]['type'] = $def['parameters']['zzform']['type'];
 	}
 	if (empty($def['categories']))
 		$def['categories'][$def['category_id']] = $def;
@@ -226,9 +226,9 @@ function mf_contacts_contacts_subtable(&$zz, $table, $def, $no) {
 	if (!empty($def['association']))
 		$zz['fields'][$no]['table_name'] .= '-assoc';
 	$zz['fields'][$no]['type'] = 'subtable';
-	$zz['fields'][$no]['min_records'] = $def['parameters']['zzform_def']['min_records'] ?? 1;
-	$zz['fields'][$no]['min_records_required'] = $def['parameters']['zzform_def']['min_records_required'] ?? 0;
-	$zz['fields'][$no]['max_records'] = $def['parameters']['zzform_def']['max_records'] ?? 20;
+	$zz['fields'][$no]['min_records'] = $def['parameters']['zzform']['min_records'] ?? 1;
+	$zz['fields'][$no]['min_records_required'] = $def['parameters']['zzform']['min_records_required'] ?? 0;
+	$zz['fields'][$no]['max_records'] = $def['parameters']['zzform']['max_records'] ?? 20;
 	$zz['fields'][$no]['sql'] = wrap_edit_sql($zz['fields'][$no]['sql'],
 		'WHERE', sprintf('%s = %d', $category_field, $def['category_id'])
 	);
@@ -236,9 +236,9 @@ function mf_contacts_contacts_subtable(&$zz, $table, $def, $no) {
 		'ORDER BY', 'sequence, /*_PREFIX_*/contacts.identifier'
 	);
 	$zz['fields'][$no]['form_display'] = 'lines';
-	$zz['fields'][$no]['show_title'] = $def['parameters']['zzform_def']['show_title'] ?? true;
-	$zz['fields'][$no]['explanation'] = $def['parameters']['zzform_def']['explanation'] ?? '';
-	$zz['fields'][$no]['integrate_in_next'] = $def['parameters']['zzform_def']['integrate_in_next'] ?? false;
+	$zz['fields'][$no]['show_title'] = $def['parameters']['zzform']['show_title'] ?? true;
+	$zz['fields'][$no]['explanation'] = $def['parameters']['zzform']['explanation'] ?? '';
+	$zz['fields'][$no]['integrate_in_next'] = $def['parameters']['zzform']['integrate_in_next'] ?? false;
 
 	// fields
 	foreach ($zz['fields'][$no]['fields'] as $sub_no => $sub_field) {
@@ -254,10 +254,10 @@ function mf_contacts_contacts_subtable(&$zz, $table, $def, $no) {
 			case $contact_field:
 				$zz['fields'][$no]['fields'][$sub_no]['show_title'] = false;
 				$zz['fields'][$no]['fields'][$sub_no]['add_details']
-					= $def['parameters']['zzform_def']['add_details'] ?? false;
+					= $def['parameters']['zzform']['add_details'] ?? false;
 				$zz['fields'][$no]['fields'][$sub_no]['select_dont_force_single_value'] = true;
 				$zz['fields'][$no]['fields'][$sub_no]['placeholder']
-					= $def['parameters']['zzform_def']['placeholder'] ?? $def['category'];
+					= $def['parameters']['zzform']['placeholder'] ?? $def['category'];
 
 				// restrict contacts to category
 				$category_ids = [];
@@ -346,5 +346,5 @@ function mf_contacts_contacts_subtable(&$zz, $table, $def, $no) {
 		);
 	}
 	$zz['fields'][$no]['class'] = 'hidden480';
-	$zz['fields'][$no]['hide_in_list'] = $def['parameters']['zzform_def']['hide_in_list'] ?? $hide_in_list;
+	$zz['fields'][$no]['hide_in_list'] = $def['parameters']['zzform']['hide_in_list'] ?? $hide_in_list;
 }

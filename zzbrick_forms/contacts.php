@@ -110,14 +110,14 @@ foreach ($values['contactdetails'] as $category_id => $category) {
 		AND $category['parameters']['contacts_details_separate'].'' === '1') {
 		$continue = true;
 	}
-	if (empty($category['parameters']['zzform_def']['type'])) $continue = true;
+	if (empty($category['parameters']['zzform']['type'])) $continue = true;
 	if ($continue) {
 		$values['contactdetails']['none-'.$category_id] = $category;
 		unset($values['contactdetails'][$category_id]);
 		continue;
 	}
 
-	$key = $category['parameters']['zzform_def']['type'];
+	$key = $category['parameters']['zzform']['type'];
 	if (!array_key_exists($key, $values['contactdetails'])) {
 		$values['contactdetails'][$key]['parameters'] = [];
 		$values['contactdetails'][$key]['type'] = $key;
