@@ -63,8 +63,8 @@ if (wrap_access('contacts_change_identifier')) {
 	$zz['fields'][27]['type_detail'] = 'select';
 	$zz['fields'][27]['enum'] = ['yes', 'no'];
 	$zz['fields'][27]['options'] = [
-		'yes' => ['fields' => ['persons.first_name', 'persons.name_particle', 'persons.last_name', 'contact_category_id[parameters]']],
-		'no' => ['fields' => ['persons.first_name', 'persons.name_particle', 'persons.last_name', 'contact_category_id[parameters]', 'identifier']]
+		'yes' => ['fields' => ['persons.first_name', 'persons.name_particle', 'persons.last_name']],
+		'no' => ['fields' => ['persons.first_name', 'persons.name_particle', 'persons.last_name', 'identifier']]
 	];
 	$zz['fields'][27]['default'] = 'no';
 	$zz['fields'][27]['field_sequence'] = 66;

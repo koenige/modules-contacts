@@ -70,10 +70,11 @@ $zz['fields'][9] = []; // persons
 
 $zz['fields'][3]['field_name'] = 'identifier';
 $zz['fields'][3]['type'] = 'identifier';
-$zz['fields'][3]['fields'] = ['contact_short', 'contact', 'contact_category_id[parameters]'];
+$zz['fields'][3]['fields'] = ['contact_short', 'contact'];
 $zz['fields'][3]['identifier']['exists'] = '-';
 $zz['fields'][3]['identifier']['ignore_this_if']['contact'] = 'contact_short';
-$zz['fields'][3]['identifier']['parameters'] = 'contact_category_id[parameters]';
+$zz['fields'][3]['read_parameters'] = 'contact_category_id';
+$zz['fields'][3]['merge_parameters'] = ['identifier', 'fields'];
 $zz['fields'][3]['log_username'] = true;
 $zz['fields'][3]['hide_in_list'] = true;
 $zz['fields'][3]['geojson'] = 'identifier';
@@ -83,10 +84,8 @@ $zz['fields'][3]['character_set'] = 'latin1';
 $zz['fields'][3]['if'][1]['identifier']['concat'] = '.';
 $zz['fields'][3]['if'][1]['identifier']['exists'] = '.';
 $zz['fields'][3]['if'][1]['fields'] = [
-	'persons.first_name', 'persons.name_particle', 'persons.last_name',
-	'contact_category_id[parameters]', 'identifier'
+	'persons.first_name', 'persons.name_particle', 'persons.last_name', 'identifier'
 ];
-$zz['fields'][3]['if'][1]['identifier']['parameters'] = 'contact_category_id[parameters]';
 
 $zz['fields'][4]['title'] = 'Category';
 $zz['fields'][4]['field_name'] = 'contact_category_id';

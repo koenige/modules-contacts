@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zugzwang Project -- contacts module\n"
-"POT-Creation-Date: 2026-08-16 09:45+0000\n"
+"POT-Creation-Date: 2026-08-17 04:16+0000\n"
 "PO-Revision-Date: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -68,7 +68,7 @@ msgid "Abbreviation:"
 msgstr ""
 
 #: templates/contact.template.txt:41
-#: zzbrick_tables/contacts.php:173
+#: zzbrick_tables/contacts.php:172
 msgid "Period"
 msgstr ""
 
@@ -103,7 +103,7 @@ msgstr ""
 
 #: templates/contact.template.txt:50
 #: zzbrick_tables/addresses.php:70
-#: zzbrick_tables/contacts.php:191
+#: zzbrick_tables/contacts.php:190
 msgid "Country"
 msgstr ""
 
@@ -191,7 +191,7 @@ msgstr ""
 
 #: templates/contact.template.txt:197
 #: zzbrick_tables/awards.php:104
-#: zzbrick_tables/contacts.php:227
+#: zzbrick_tables/contacts.php:226
 #: zzbrick_tables/contacts-contacts.php:93
 msgid "Remarks"
 msgstr ""
@@ -259,7 +259,7 @@ msgstr ""
 #: zzbrick_forms/persons.php:245
 #: zzbrick_tables/addresses.php:121
 #: zzbrick_tables/awards.php:100
-#: zzbrick_tables/contacts.php:242
+#: zzbrick_tables/contacts.php:241
 #: zzbrick_tables/contacts-contacts.php:101
 msgid "yes"
 msgstr ""
@@ -269,7 +269,7 @@ msgstr ""
 #: zzbrick_forms/persons.php:246
 #: zzbrick_tables/addresses.php:121
 #: zzbrick_tables/awards.php:100
-#: zzbrick_tables/contacts.php:242
+#: zzbrick_tables/contacts.php:241
 #: zzbrick_tables/contacts-contacts.php:101
 msgid "no"
 msgstr ""
@@ -325,7 +325,7 @@ msgstr ""
 
 #: zzbrick_forms/persons.php:241
 #: zzbrick_tables/awards.php:98
-#: zzbrick_tables/contacts.php:240
+#: zzbrick_tables/contacts.php:239
 #: zzbrick_tables/contacts-contacts.php:99
 msgid "Published"
 msgstr ""
@@ -430,7 +430,7 @@ msgstr ""
 #: zzbrick_tables/awards.php:110
 #: zzbrick_tables/connections.php:59
 #: zzbrick_tables/contactdetails.php:82
-#: zzbrick_tables/contacts.php:285
+#: zzbrick_tables/contacts.php:284
 #: zzbrick_tables/contacts-categories.php:57
 #: zzbrick_tables/contacts-contacts.php:111
 #: zzbrick_tables/contacts-identifiers.php:46
@@ -441,8 +441,8 @@ msgstr ""
 
 #: zzbrick_tables/awards.php:23
 #: zzbrick_tables/awards.php:132
-#: zzbrick_tables/contacts.php:91
-#: zzbrick_tables/contacts.php:314
+#: zzbrick_tables/contacts.php:90
+#: zzbrick_tables/contacts.php:313
 #: zzbrick_tables/contacts-categories.php:36
 #: zzbrick_tables/contacts-categories.php:79
 #: zzbrick_tables/contacts-identifiers.php:33
@@ -491,7 +491,7 @@ msgid "Laudation"
 msgstr ""
 
 #: zzbrick_tables/awards.php:107
-#: zzbrick_tables/contacts.php:234
+#: zzbrick_tables/contacts.php:233
 msgid "Internal remarks"
 msgstr ""
 
@@ -544,62 +544,62 @@ msgstr ""
 msgid "Identifier"
 msgstr ""
 
-#: zzbrick_tables/contacts.php:147
+#: zzbrick_tables/contacts.php:146
 msgid "Latitude/Longitude"
 msgstr ""
 
-#: zzbrick_tables/contacts.php:155
+#: zzbrick_tables/contacts.php:154
 msgid "Description"
 msgstr ""
 
-#: zzbrick_tables/contacts.php:172
+#: zzbrick_tables/contacts.php:171
 msgid "Start"
 msgstr ""
 
-#: zzbrick_tables/contacts.php:178
+#: zzbrick_tables/contacts.php:177
 msgid "Founding date"
 msgstr ""
 
-#: zzbrick_tables/contacts.php:182
+#: zzbrick_tables/contacts.php:181
 msgid "End"
 msgstr ""
 
-#: zzbrick_tables/contacts.php:187
+#: zzbrick_tables/contacts.php:186
 msgid "Dissolution date"
 msgstr ""
 
-#: zzbrick_tables/contacts.php:239
+#: zzbrick_tables/contacts.php:238
 msgid "Pub."
 msgstr ""
 
-#: zzbrick_tables/contacts.php:245
+#: zzbrick_tables/contacts.php:244
 msgid "Publish on website?"
 msgstr ""
 
-#: zzbrick_tables/contacts.php:252
+#: zzbrick_tables/contacts.php:251
 msgid "Parameters"
 msgstr ""
 
-#: zzbrick_tables/contacts.php:258
+#: zzbrick_tables/contacts.php:257
 #: zzbrick_tables/persons.php:44
 msgid "First name"
 msgstr ""
 
-#: zzbrick_tables/contacts.php:264
+#: zzbrick_tables/contacts.php:263
 #: zzbrick_tables/persons.php:59
 msgid "Particle"
 msgstr ""
 
-#: zzbrick_tables/contacts.php:271
+#: zzbrick_tables/contacts.php:270
 #: zzbrick_tables/persons.php:68
 msgid "Last name"
 msgstr ""
 
-#: zzbrick_tables/contacts.php:277
+#: zzbrick_tables/contacts.php:276
 msgid "Created"
 msgstr ""
 
-#: zzbrick_tables/contacts.php:320
+#: zzbrick_tables/contacts.php:319
 msgid "Alpha"
 msgstr ""
 
