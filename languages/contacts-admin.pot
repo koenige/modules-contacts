@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zugzwang Project -- contacts module\n"
-"POT-Creation-Date: 2026-08-20 22:33+0000\n"
+"POT-Creation-Date: 2026-08-20 22:43+0000\n"
 "PO-Revision-Date: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -201,54 +201,58 @@ msgid "Include category in member-related relation pickers"
 msgstr ""
 
 #: configuration/settings.cfg:166
+msgid "Move excess contactdetail rows to another channel category when max exceeded"
+msgstr ""
+
+#: configuration/settings.cfg:172
 msgid "Disallow deletion of contacts"
 msgstr ""
 
-#: configuration/settings.cfg:173
+#: configuration/settings.cfg:179
 msgid "Organisation contact type"
 msgstr ""
 
-#: configuration/settings.cfg:179
+#: configuration/settings.cfg:185
 msgid "Show field parameters in contacts table"
 msgstr ""
 
-#: configuration/settings.cfg:184
+#: configuration/settings.cfg:190
 msgid "Show field `persons.sex` in list"
 msgstr ""
 
-#: configuration/settings.cfg:188
+#: configuration/settings.cfg:194
 msgid "Show a field contacts.published in forms, to set status of a contact to published"
 msgstr ""
 
-#: configuration/settings.cfg:193
+#: configuration/settings.cfg:199
 msgid "Show role field in events_contacts subtable"
 msgstr ""
 
-#: configuration/settings.cfg:206
+#: configuration/settings.cfg:212
 msgid "Show field start_date in contacts table"
 msgstr ""
 
-#: configuration/settings.cfg:213
+#: configuration/settings.cfg:219
 msgid "Use place contact instead of address per contact"
 msgstr ""
 
-#: configuration/settings.cfg:219
+#: configuration/settings.cfg:225
 msgid "Venue-type contact for events and rooms"
 msgstr ""
 
-#: configuration/settings.cfg:225
+#: configuration/settings.cfg:231
 msgid "Contact category marks a virtual venue (no physical place)"
 msgstr ""
 
-#: configuration/settings.cfg:270
+#: configuration/settings.cfg:276
 msgid "Initial installation date of contacts module (for updates)"
 msgstr ""
 
-#: configuration/settings.cfg:274
+#: configuration/settings.cfg:280
 msgid "ID of owner of website in contact list"
 msgstr ""
 
-#: configuration/settings.cfg:278
+#: configuration/settings.cfg:284
 msgid "ID of country where website is in (default country)"
 msgstr ""
 

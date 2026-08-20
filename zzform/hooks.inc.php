@@ -123,7 +123,7 @@ function mf_contacts_check_mixedcase($name) {
 /**
  * if a channel category only allows a certain number of records, move more records
  * to a different channel category (e. g. mails to extra-mails or so)
- * via parameters `move_more_records_to`, `max_records`
+ * via parameters `contacts_move_more_records_to`, `max_records`
  *
  * @param array $ops
  * @return array
@@ -156,7 +156,7 @@ function mf_contacts_hook_check_contactdetails($ops) {
 	foreach ($categories as $category_id => $category) {
 		if (!$category['parameters']) continue;
 		parse_str($category['parameters'], $parameters);
-		if (empty($parameters['move_more_records_to'])) continue;
+		if (empty($parameters['contacts_move_more_records_to'])) continue;
 		if (empty($parameters['zzform']['max_records'])) continue;
 		if ($record_count[$category_id] <= $parameters['zzform']['max_records']) continue;
 		$shown_record_count = 0;
@@ -165,7 +165,7 @@ function mf_contacts_hook_check_contactdetails($ops) {
 			if ($ops['record_new'][$index]['channel_category_id'].'' !== $category_id.'') continue;
 			$shown_record_count++;
 			if ($shown_record_count <= $parameters['zzform']['max_records']) continue;
-			$change['record_replace'][$index]['channel_category_id'] = wrap_category_id($parameters['move_more_records_to']);
+			$change['record_replace'][$index]['channel_category_id'] = wrap_category_id($parameters['contacts_move_more_records_to']);
 		}
 	}
 	return $change;
