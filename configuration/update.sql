@@ -145,3 +145,4 @@
 /* 2026-08-16-8 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&organisation=1', '&contacts_organisation=1') WHERE `parameters` LIKE '%&organisation=1%';
 /* 2026-08-16-9 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&role=1', '&contacts_role=1') WHERE `parameters` LIKE '%&role=1%';
 /* 2026-08-20-1 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&contacts_general=', '&context[contacts_general]=') WHERE `parameters` LIKE '%&contacts_general=%';
+/* 2026-08-21-1 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&remarks=1', '&form_show[contacts_contacts.remarks]=1') WHERE `parameters` LIKE '%&remarks=1%';

@@ -13,6 +13,8 @@
  */
 
 
+wrap_include('form', 'default');
+
 /**
  * create addresses-subtable from categories
  *
@@ -326,7 +328,7 @@ function mf_contacts_contacts_subtable(&$zz, $table, $def, $no) {
 
 			case 'remarks':
 				$zz['fields'][$no]['fields'][$sub_no]['placeholder'] = 'Remarks';
-				if (!empty($def['parameters']['remarks'])) break;
+				if (mf_default_form_show($def['parameters'], $table.'_contacts', 'remarks', 1)) break;
 				$zz['fields'][$no]['fields'][$sub_no]['hide_in_form'] = true;
 				$zz['fields'][$no]['fields'][$sub_no]['hide_in_list'] = true;
 				break;
