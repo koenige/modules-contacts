@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zugzwang Project -- contacts module\n"
-"POT-Creation-Date: 2026-08-16 09:58+0000\n"
+"POT-Creation-Date: 2026-08-20 12:08+0000\n"
 "PO-Revision-Date: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -240,15 +240,15 @@ msgstr ""
 msgid "Contact category marks a virtual venue (no physical place)"
 msgstr ""
 
-#: configuration/settings.cfg:252
+#: configuration/settings.cfg:260
 msgid "Initial installation date of contacts module (for updates)"
 msgstr ""
 
-#: configuration/settings.cfg:256
+#: configuration/settings.cfg:264
 msgid "ID of owner of website in contact list"
 msgstr ""
 
-#: configuration/settings.cfg:260
+#: configuration/settings.cfg:268
 msgid "ID of country where website is in (default country)"
 msgstr ""
 

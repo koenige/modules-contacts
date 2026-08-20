@@ -40,3 +40,4 @@
 2026-08-15-2	code	parents[relation]=	use split_title=1 and category name normal / reverse
 2026-08-16-1	code	&organisation=1	use `contacts_organisation`
 2026-08-16-2	code	&role=1	use `contacts_role`
+2026-08-20-1	code	&contacts_general=	use context[contacts_general]=1 in category parameters

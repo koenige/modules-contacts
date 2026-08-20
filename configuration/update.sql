@@ -144,3 +144,4 @@
 /* 2026-08-16-7 */	UPDATE _settings SET setting_key = 'contacts_addlogin_rights' WHERE setting_key = 'addlogin_rights';
 /* 2026-08-16-8 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&organisation=1', '&contacts_organisation=1') WHERE `parameters` LIKE '%&organisation=1%';
 /* 2026-08-16-9 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&role=1', '&contacts_role=1') WHERE `parameters` LIKE '%&role=1%';
+/* 2026-08-20-1 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&contacts_general=', '&context[contacts_general]=') WHERE `parameters` LIKE '%&contacts_general=%';

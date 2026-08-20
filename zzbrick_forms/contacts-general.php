@@ -26,12 +26,12 @@ if (!empty($zz['fields'][19])) {
 	);
 }
 
-$zz['sql'] .= 'WHERE categories.parameters LIKE "%&contacts_general=1%"';
+$zz['sql'] .= 'WHERE categories.parameters LIKE "%&context[contacts_general]=1%"';
 
-$zz['fields'][4]['sql'] .= ' AND categories.parameters LIKE "%&contacts_general=1%"';
+$zz['fields'][4]['sql'] .= ' AND categories.parameters LIKE "%&context[contacts_general]=1%"';
 
 $zz['filter'][1]['sql'] = wrap_edit_sql($zz['filter'][1]['sql'],
-	'WHERE', 'categories.parameters LIKE "%&contacts_general=1%"'
+	'WHERE', 'categories.parameters LIKE "%&context[contacts_general]=1%"'
 );
 
 $zz['filter'][2]['sql'] = wrap_edit_sql($zz['filter'][2]['sql'],
@@ -39,7 +39,7 @@ $zz['filter'][2]['sql'] = wrap_edit_sql($zz['filter'][2]['sql'],
 		ON /*_PREFIX_*/contacts.contact_category_id = /*_PREFIX_*/categories.category_id'
 );
 $zz['filter'][2]['sql'] = wrap_edit_sql($zz['filter'][2]['sql'],
-	'WHERE', 'categories.parameters LIKE "%&contacts_general=1%"'
+	'WHERE', 'categories.parameters LIKE "%&context[contacts_general]=1%"'
 );
 
 $zz['filter'][3]['title'] = wrap_text('Active');
