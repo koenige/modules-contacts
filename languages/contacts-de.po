@@ -573,7 +573,7 @@ msgstr "Auflösungsdatum"
 
 #: zzbrick_tables/contacts.php:239
 msgid "Pub."
-msgstr "Öffentl."
+msgstr "Öff."
 
 #: zzbrick_tables/contacts.php:245
 msgid "Publish on website?"
