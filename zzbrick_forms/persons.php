@@ -241,7 +241,7 @@ if (wrap_setting('contacts_published')) {
 	$zz['filter'][3]['title'] = wrap_text('Published');
 	$zz['filter'][3]['identifier'] = 'published';
 	$zz['filter'][3]['type'] = 'list';
-	$zz['filter'][3]['where'] = 'published';
+	$zz['filter'][3]['where'] = '/*_PREFIX_*/contacts.published';
 	$zz['filter'][3]['selection']['yes'] = wrap_text('yes');
 	$zz['filter'][3]['selection']['no'] = wrap_text('no');
 }

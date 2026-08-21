@@ -314,7 +314,7 @@ function mf_contacts_relations($ids) {
 function mf_contacts_awards($ids) {
 	$sql = 'SELECT award_id, contact_id, contact_display_name
 			, award_level, award_date, award_year, award_year_to
-			, remarks, laudation, published
+			, remarks, laudation, awards.published
 			, category_id, category
 			, SUBSTRING_INDEX(CASE WHEN LOCATE("&alias=", categories.parameters) > 0 THEN
 				SUBSTRING_INDEX(SUBSTRING_INDEX(categories.parameters, "&alias=", -1), "&", 1)
@@ -324,7 +324,7 @@ function mf_contacts_awards($ids) {
 		LEFT JOIN categories
 			ON awards.award_category_id = categories.category_id
 		WHERE contact_id IN (%s)
-			AND published = "yes"
+			AND awards.published = "yes"
 		ORDER BY award_year DESC, award_date DESC, categories.sequence, categories.path';
 	$sql = sprintf($sql, implode(',', $ids));
 	$awards = wrap_db_fetch($sql, 'award_id');
