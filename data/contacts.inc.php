@@ -20,6 +20,7 @@
  * @param array $ids
  * @param array $$langs
  * @param array $settings (optional)
+ *		- published: 1 to return only published contactdetails and addresses
  * @return array
  */
 function mf_contacts_data($ids, $langs, $settings = []) {
@@ -74,7 +75,7 @@ function mf_contacts_data($ids, $langs, $settings = []) {
 
 	// contact details
 	// @todo translations (categories)
-	$contactdetails[wrap_setting('lang')] = mf_contacts_contactdetails($ids);
+	$contactdetails[wrap_setting('lang')] = mf_contacts_contactdetails($ids, $settings);
 	
 	// categories
 	$categories[wrap_setting('lang')] = mf_contacts_categories($ids);
@@ -94,14 +95,15 @@ function mf_contacts_data($ids, $langs, $settings = []) {
  *
  * @param array $data
  * @param array $ids
+ * @param array $settings (optional)
  * @return array
  */
-function mf_contacts_data_finalize($data, $ids) {
+function mf_contacts_data_finalize($data, $ids, $settings = []) {
 	$data = wrap_data_packages('contact', $data, $ids);
 
 	// addresses
 	// @todo translations
-	$addresses = mf_contacts_addresses($ids);
+	$addresses = mf_contacts_addresses($ids, $settings);
 	foreach ($addresses as $contact_id => $contactaddresses)
 		$data[$contact_id]['addresses'] = $contactaddresses;
 	

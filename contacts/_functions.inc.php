@@ -23,7 +23,7 @@ wrap_include('context', 'default');
  * @param array|string|false $settings (optional) settings array, or context string
  *		array keys:
  *		- context: form context
- *		- hidden: false to omit categories with hidden=1 (opt-in; default shows all)
+ *		- published: 1 to return only published channel rows (default: all rows)
  * @return array
  */
 function mf_contacts_contactdetails($contact_ids, $settings = false) {
@@ -33,6 +33,7 @@ function mf_contacts_contactdetails($contact_ids, $settings = false) {
 	$sql = 'SELECT contact_id, contactdetail_id, identification, contact
 			, categories.parameters, category, category_short, label, link
 			, category_id
+			, IF(categories.published = "yes", 1, NULL) AS published
 		FROM contactdetails
 		LEFT JOIN contacts USING (contact_id)
 		LEFT JOIN categories
@@ -50,7 +51,8 @@ function mf_contacts_contactdetails($contact_ids, $settings = false) {
 				parse_str($detail['parameters'], $detail['parameters']);
 			else
 				$detail['parameters'] = ['zzform' => ['type' => '']];
-			if (!mf_contacts_detail_settings_match($detail['parameters'], $settings)) continue;
+			if (!empty($settings['context'])
+				AND !mf_default_category_context($detail['parameters'], $settings['context'])) continue;
 			if (!empty($settings['context'])) {
 				$parameters = mf_default_apply_context_if($detail['parameters'], $settings['context']);
 				if (!empty($parameters['title']))
@@ -74,6 +76,8 @@ function mf_contacts_contactdetails($contact_ids, $settings = false) {
 			
 		}
 	}
+	if (!empty($settings['published']))
+		$data = mf_contacts_filter_published($data);
 	if (is_array($contact_ids)) return $data;
 	$data = reset($data);
 	if (!$data) return [];
@@ -98,6 +102,7 @@ function mf_contacts_addresses($contact_ids, $settings = false) {
 			, category_id, category
 			, contact_id
 			, IF(receive_mail = "yes", 1, NULL) AS receive_mail
+			, IF(categories.published = "yes", 1, NULL) AS published
 			, parameters
 		FROM /*_PREFIX_*/addresses
 		LEFT JOIN /*_PREFIX_*/countries USING (country_id)
@@ -115,7 +120,8 @@ function mf_contacts_addresses($contact_ids, $settings = false) {
 			parse_str($address['parameters'], $address['parameters']);
 		else
 			$address['parameters'] = [];
-		if (!mf_contacts_detail_settings_match($address['parameters'], $settings)) continue;
+		if (!empty($settings['context'])
+			AND !mf_default_category_context($address['parameters'], $settings['context'])) continue;
 		if (!empty($settings['context'])) {
 			$parameters = mf_default_apply_context_if($address['parameters'], $settings['context']);
 			if (!empty($parameters['title']))
@@ -125,6 +131,8 @@ function mf_contacts_addresses($contact_ids, $settings = false) {
 		if (count($addresses) === 1)
 			$data[$address['contact_id']][$address['address_id']]['receive_mail'] = false;
 	}
+	if (!empty($settings['published']))
+		$data = mf_contacts_filter_published($data);
 	if (is_array($contact_ids)) return $data;
 	$data = reset($data);
 	if (!$data) return [];
@@ -145,27 +153,21 @@ function mf_contacts_detail_settings_normalize($settings) {
 }
 
 /**
- * whether a category parameters array passes detail/address settings filters
+ * drop rows without published = 1 from nested contact data
  *
- * @param array $parameters parsed category parameters
- * @param array $settings normalized settings
- * @return bool
+ * @param array $data
+ * @return array
  */
-function mf_contacts_detail_settings_match($parameters, $settings) {
-	if (!$settings) return true;
-	if (!empty($settings['context'])
-		AND !mf_default_category_context($parameters, $settings['context'])) return false;
-	foreach ($settings as $key => $value) {
-		if ($key === 'context') continue;
-		if ($value === false) {
-			if (!empty($parameters[$key])) return false;
+function mf_contacts_filter_published($data) {
+	if (!$data) return $data;
+	foreach ($data as $key => $value) {
+		if (!is_array($value)) continue;
+		if (array_key_exists('published', $value)) {
+			if (empty($value['published'])) unset($data[$key]);
 			continue;
 		}
-		if ($value === true) {
-			if (empty($parameters[$key])) return false;
-			continue;
-		}
-		if (($parameters[$key] ?? null) != $value) return false;
+		$data[$key] = mf_contacts_filter_published($value);
+		if (!$data[$key]) unset($data[$key]);
 	}
-	return true;
+	return $data;
 }

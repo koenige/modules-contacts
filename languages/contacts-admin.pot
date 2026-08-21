@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zugzwang Project -- contacts module\n"
-"POT-Creation-Date: 2026-08-20 22:43+0000\n"
+"POT-Creation-Date: 2026-08-21 09:23+0000\n"
 "PO-Revision-Date: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -41,10 +41,14 @@ msgid "Read contact profile pages"
 msgstr ""
 
 #: configuration/access.cfg:43
-msgid "Publish contacts or contact details, relations"
+msgid "Show preview of unpublished contact data"
 msgstr ""
 
 #: configuration/access.cfg:47
+msgid "Publish contacts or contact details, relations"
+msgstr ""
+
+#: configuration/access.cfg:51
 msgid "Edit internal remarks per contact"
 msgstr ""
 
@@ -244,15 +248,15 @@ msgstr ""
 msgid "Contact category marks a virtual venue (no physical place)"
 msgstr ""
 
-#: configuration/settings.cfg:276
+#: configuration/settings.cfg:272
 msgid "Initial installation date of contacts module (for updates)"
 msgstr ""
 
-#: configuration/settings.cfg:280
+#: configuration/settings.cfg:276
 msgid "ID of owner of website in contact list"
 msgstr ""
 
-#: configuration/settings.cfg:284
+#: configuration/settings.cfg:280
 msgid "ID of country where website is in (default country)"
 msgstr ""
 

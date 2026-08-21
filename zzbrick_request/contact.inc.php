@@ -26,7 +26,8 @@ function mod_contacts_contact($params, $settings) {
 	if (count($contacts) !== 1) return false;
 	
 	wrap_include('data', 'zzwrap');
-	$contacts = wrap_data('contacts', $contacts);
+	$data_settings = wrap_access('contacts_preview') ? [] : ['published' => 1];
+	$contacts = wrap_data('contacts', $contacts, $data_settings);
 	$data = reset($contacts);
 	$data['templates'] = $contacts['templates'] ?? [];
 	$data[$data['scope']] = true;
