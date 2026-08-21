@@ -86,8 +86,12 @@ function mf_contacts_addresses_subtable(&$zz, $def, $no) {
 	if (empty($def['parameters']['zzform_field']))
 		$def['parameters']['zzform_field'] = [];
 	foreach ($def['parameters']['zzform_field'] as $field_name => $field_def) {
-		if ($field_name === 'country_id' AND !empty($field_def['default']))
-			$field_def['default'] = wrap_id('countries', $field_def['default']);
+		if (!empty($field_def['default'])) {
+			$field_def['default'] = wrap_field_value($field_name, $field_def['default']);
+		}
+		if (!empty($field_def['value'])) {
+			$field_def['value'] = wrap_field_value($field_name, $field_def['value']);
+		}
 		foreach ($zz['fields'][$no]['fields'] as $sub_no => $sub_field)	{
 			if (empty($sub_field['field_name'])) continue;
 			if ($sub_field['field_name'] !== $field_name) continue;
