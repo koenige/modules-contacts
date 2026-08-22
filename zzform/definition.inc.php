@@ -124,17 +124,25 @@ function mf_contacts_contactdetails_subtable(&$zz, $def, $no) {
 		}
 	}
 
+	// Grouped by zzform[type]: per-channel keys must not land on the shared field.
+	// identification already merges them via merge_parameters from the selected channel.
+	$single_channel = empty($def['categories']) OR count($def['categories']) === 1;
+
 	// table
 	$zz['fields'][$no] = zzform_include('contactdetails');
 	$zz['fields'][$no]['title_tab'] = 'Contact Details';
 	$zz['fields'][$no]['class'] = 'contactdetails';
 	$zz['fields'][$no]['table_name'] = 'contactdetails_'.$def['category_id'];
-	$zz['fields'][$no]['title'] = $def['parameters']['zzform']['title'] ?? $def['category'];
+	$zz['fields'][$no]['title'] = $single_channel
+		? ($def['parameters']['zzform']['title'] ?? $def['category'])
+		: $def['category'];
 	$zz['fields'][$no]['type'] = 'subtable';
 	$zz['fields'][$no]['min_records'] = $def['parameters']['zzform']['min_records'] ?? 1;
 	$zz['fields'][$no]['max_records'] = $def['parameters']['zzform']['max_records']
 		?? (!empty($def['categories']) ? count($def['categories']) : 1);
-	$zz['fields'][$no]['explanation'] = $def['parameters']['zzform']['explanation'] ?? '';
+	$zz['fields'][$no]['explanation'] = $single_channel
+		? ($def['parameters']['zzform']['explanation'] ?? '')
+		: '';
 	$zz['fields'][$no]['hide_in_list'] = $def['parameters']['zzform']['hide_in_list'] ?? false;
 
 	// fields
@@ -144,6 +152,12 @@ function mf_contacts_contactdetails_subtable(&$zz, $def, $no) {
 			$def['parameters']['zzform']['type'], ['mail', 'url', 'phone', 'username']
 	)) {
 		$zz['fields'][$no]['fields'][3]['type'] = $def['parameters']['zzform']['type'];
+	}
+	if ($single_channel) {
+		foreach ($zz['fields'][$no]['fields'][3]['merge_parameters'] as $key) {
+			if (empty($def['parameters']['zzform'][$key])) continue;
+			$zz['fields'][$no]['fields'][3][$key] = $def['parameters']['zzform'][$key];
+		}
 	}
 	if (empty($def['categories']))
 		$def['categories'][$def['category_id']] = $def;
