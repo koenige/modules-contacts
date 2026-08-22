@@ -175,6 +175,9 @@ function mf_contacts_contactdetails_subtable(&$zz, $def, $no) {
 			, implode(',', array_keys($def['categories']))
 		);
 		$zz['fields'][$no]['fields'][4]['default'] = key($def['categories']);
+		mf_contacts_contactdetails_channel_explanations(
+			$zz['fields'][$no]['fields'][4], $def['categories']
+		);
 	}
 	$zz['fields'][$no]['fields'][4]['def_val_ignore'] = true;
 	$zz['fields'][$no]['fields'][4]['for_action_ignore'] = true;
@@ -193,6 +196,24 @@ function mf_contacts_contactdetails_subtable(&$zz, $def, $no) {
 	$zz['fields'][$no]['export_no_html'] = true;
 	if (!empty($def['field_sequence']))
 		$zz['fields'][$no]['field_sequence'] = $def['field_sequence'];
+}
+
+/**
+ * attach per-channel explanations to the type select (grouped contactdetails)
+ *
+ * @param array $field channel_category_id field, will change
+ * @param array $categories
+ */
+function mf_contacts_contactdetails_channel_explanations(&$field, $categories) {
+	$explanations = [];
+	foreach ($categories as $id => $category) {
+		$text = $category['parameters']['zzform']['explanation'] ?? '';
+		if ($text === '') continue;
+		$explanations[$id] = wrap_text($text);
+	}
+	if (!$explanations) return;
+	$field['data']['explanation'] = true;
+	$field['option_data']['explanation'] = $explanations;
 }
 
 /**
