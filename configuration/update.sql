@@ -79,9 +79,9 @@
 /* 2026-07-08-1 */	ALTER TABLE `contactdetails` CHANGE `provider_category_id` `channel_category_id` int unsigned NOT NULL;
 /* 2026-07-08-2 */	ALTER TABLE `contactdetails` DROP INDEX `provider_category_id`, ADD INDEX `channel_category_id` (`channel_category_id`);
 /* 2026-07-08-3 */	UPDATE `_relations` SET `detail_field` = 'channel_category_id' WHERE `detail_table` = 'contactdetails' AND `detail_field` = 'provider_category_id';
-/* 2026-07-08-4 */	UPDATE categories SET `category` = 'Channels', `path` = 'channel', `parameters` = '&alias=channel') WHERE `path` = 'provider';
-/* 2026-07-08-5 */	UPDATE categories SET `path` = REPLACE(`path`, 'provider/', 'channel/')) WHERE `path` LIKE 'provider/%';
-/* 2026-07-08-6 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&alias=provider', '&alias=channel')) WHERE `parameters` LIKE '%&alias=provider%';
+/* 2026-07-08-4 */	UPDATE categories SET `category` = 'Channels', `path` = 'channel', `parameters` = '&alias=channel' WHERE `path` = 'provider';
+/* 2026-07-08-5 */	UPDATE categories SET `path` = REPLACE(`path`, 'provider/', 'channel/') WHERE `path` LIKE 'provider/%';
+/* 2026-07-08-6 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&alias=provider', '&alias=channel') WHERE `parameters` LIKE '%&alias=provider%';
 /* 2026-08-12-1 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&virtual=1', '&contacts_virtual=1') WHERE `parameters` LIKE '%&virtual=1%';
 /* 2026-08-12-2 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&move_more_records_to=provider/', '&move_more_records_to=channel/') WHERE `parameters` LIKE '&move_more_records_to=provider/';
 /* 2026-08-12-3 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&db_values[provider_category_id]=ID categories provider/', '&db_values[channel_category_id]=ID categories channel/') WHERE `parameters` LIKE '&db_values[provider_category_id]=ID categories provider/';
