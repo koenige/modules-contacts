@@ -9,24 +9,26 @@ msgstr ""
 "Project-Id-Version: Zugzwang Project -- contacts module\n"
 "POT-Creation-Date: 2026-08-23 17:06+0000\n"
 "PO-Revision-Date: \n"
+"Last-Translator: Gustaf Mossakowski <gustaf@koenige.org>\n"
 "Language-Team: \n"
-"Language: en\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.9\n"
 
 #: configuration/access.cfg:19
 msgid "Merge contact records"
-msgstr ""
+msgstr "Kontaktdaten zusammenführen"
 
 #: configuration/access.cfg:23
 msgid "Set or change date of death"
-msgstr ""
+msgstr "Sterbedatum festlegen oder ändern"
 
 #: configuration/access.cfg:27
 msgid "Explicitly change identifier of a person"
-msgstr ""
+msgstr "Die Kennung einer Person explizit ändern"
 
 #: configuration/access.cfg:31
 msgid "Edit third party identifiers of contacts"
@@ -38,7 +40,7 @@ msgstr ""
 
 #: configuration/access.cfg:39
 msgid "Read contact profile pages"
-msgstr ""
+msgstr "Kontaktprofilseiten lesen"
 
 #: configuration/access.cfg:43
 msgid "Show preview of unpublished contact data"
@@ -54,10 +56,11 @@ msgstr ""
 
 #: configuration/package.cfg:13
 msgid "contacts module"
-msgstr ""
+msgstr "Kontaktmodul"
 
 #: configuration/package.cfg:15
-msgid "People and organisations: addresses, contact channels, and relationships"
+msgid ""
+"People and organisations: addresses, contact channels, and relationships"
 msgstr ""
 
 #: configuration/routes.cfg:12
@@ -66,39 +69,39 @@ msgstr ""
 
 #: configuration/routes.cfg:16
 msgid "Organisations"
-msgstr ""
+msgstr "Organisationen"
 
 #: configuration/routes.cfg:17
 msgid "Clubs, companies and institutions"
-msgstr ""
+msgstr "Vereine, Unternehmen und Institutionen"
 
 #: configuration/routes.cfg:21
 msgid "List with all persons"
-msgstr ""
+msgstr "Liste aller Personen"
 
 #: configuration/routes.cfg:25
 msgid "Persons"
-msgstr ""
+msgstr "Personen"
 
 #: configuration/routes.cfg:26
 msgid "Names, roles, photos and contact details"
-msgstr ""
+msgstr "Namen, Funktionen, Fotos und Kontaktdaten"
 
 #: configuration/routes.cfg:30
 msgid "List with all contacts that are places"
-msgstr ""
+msgstr "Liste aller Kontakte, bei denen es sich um Orte handelt"
 
 #: configuration/routes.cfg:35
 msgid "Profile page of a contact"
-msgstr ""
+msgstr "Profilseite eines Kontakts"
 
 #: configuration/routes.cfg:41
 msgid "List of contacts related to a contact"
-msgstr ""
+msgstr "Liste der Kontakte, die mit einem Kontakt in Verbindung stehen"
 
 #: configuration/routes.cfg:47
 msgid "Confirm an e-mail address (double opt-in)"
-msgstr ""
+msgstr "E-Mail-Adresse bestätigen (Double-Opt-in)"
 
 #: configuration/settings.cfg:20
 msgid "Secret key which forms a hash that allows to add a login"
@@ -165,7 +168,8 @@ msgid "Show field end_date in contacts table"
 msgstr ""
 
 #: configuration/settings.cfg:101
-msgid "Form context: generic contact form (relations only, no persons subtable)"
+msgid ""
+"Form context: generic contact form (relations only, no persons subtable)"
 msgstr ""
 
 #: configuration/settings.cfg:105
@@ -177,7 +181,8 @@ msgid "Form context: organisers contact form"
 msgstr ""
 
 #: configuration/settings.cfg:113
-msgid "Form context: persons contact form (contact details, relations, properties)"
+msgid ""
+"Form context: persons contact form (contact details, relations, properties)"
 msgstr ""
 
 #: configuration/settings.cfg:117
@@ -221,12 +226,13 @@ msgid "Include category in member-related relation pickers"
 msgstr ""
 
 #: configuration/settings.cfg:166
-msgid "Move excess contactdetail rows to another channel category when max exceeded"
+msgid ""
+"Move excess contactdetail rows to another channel category when max exceeded"
 msgstr ""
 
 #: configuration/settings.cfg:172
 msgid "Disallow deletion of contacts"
-msgstr ""
+msgstr "Löschen von Kontakten unterbinden"
 
 #: configuration/settings.cfg:179
 msgid "Organisation contact type"
@@ -234,23 +240,25 @@ msgstr ""
 
 #: configuration/settings.cfg:185
 msgid "Show field parameters in contacts table"
-msgstr ""
+msgstr "Feldparameter in der Kontakttabelle anzeigen"
 
 #: configuration/settings.cfg:190
 msgid "Show field `persons.sex` in list"
-msgstr ""
+msgstr "Feld `persons.sex` in der Liste anzeigen"
 
 #: configuration/settings.cfg:194
-msgid "Show a field contacts.published in forms, to set status of a contact to published"
+msgid ""
+"Show a field contacts.published in forms, to set status of a contact to "
+"published"
 msgstr ""
 
 #: configuration/settings.cfg:199
 msgid "Show role field in events_contacts subtable"
-msgstr ""
+msgstr "Feld „Rolle“ in der Detailtabelle „events_contacts“ anzeigen"
 
 #: configuration/settings.cfg:212
 msgid "Show field start_date in contacts table"
-msgstr ""
+msgstr "Das Feld „start_date“ in der Tabelle „contacts“ anzeigen"
 
 #: configuration/settings.cfg:219
 msgid "Use place contact instead of address per contact"
@@ -266,11 +274,11 @@ msgstr ""
 
 #: configuration/settings.cfg:272
 msgid "Initial installation date of contacts module (for updates)"
-msgstr ""
+msgstr "Datum der Erstinstallation des Kontaktmoduls (für Updates)"
 
 #: configuration/settings.cfg:276
 msgid "ID of owner of website in contact list"
-msgstr ""
+msgstr "ID des Website-Betreibers in der Kontaktliste"
 
 #: configuration/settings.cfg:280
 msgid "ID of country where website is in (default country)"
@@ -290,15 +298,15 @@ msgstr ""
 
 #: zzbrick_make/linklogin.inc.php:39
 msgid "Unable to login, user does not exist: %s"
-msgstr ""
+msgstr "Anmeldung nicht möglich, Benutzer existiert nicht: %s"
 
 #: zzbrick_make/linklogin.inc.php:50
 msgid "Unable to login, token is invalid: %s %s"
-msgstr ""
+msgstr "Anmeldung nicht möglich, Token ungültig: %s %s"
 
 #: zzbrick_make/sendlogin.inc.php:43
 msgid "Contact %s was not found."
-msgstr ""
+msgstr "Der Kontakt %s wurde nicht gefunden."
 
 #: zzbrick_make/sendlogin.inc.php:68
 msgid "The login link could not be emailed to contact %s (ID %d)."
