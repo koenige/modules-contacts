@@ -148,3 +148,4 @@
 /* 2026-08-21-1 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&remarks=1', '&form_show[contacts_contacts.remarks]=1') WHERE `parameters` LIKE '%&remarks=1%';
 /* 2026-08-21-2 */	UPDATE categories SET `parameters` = REPLACE(`parameters`, '&move_more_records_to=', '&contacts_move_more_records_to=') WHERE `parameters` LIKE '%&move_more_records_to=%';
 /* 2026-08-21-3 */	UPDATE categories SET `parameters` = REGEXP_REPLACE(`parameters`, '&values(\\[[^\\]=]+\\])+=[^&]*', '') WHERE `main_category_id` = /*_ID categories contact _*/ AND `parameters` LIKE '%&values[%';
+/* 2026-08-25-1 */	ALTER TABLE `contacts_identifiers` CHANGE `identifier` `identifier` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL;

@@ -185,7 +185,7 @@ INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `
 CREATE TABLE `contacts_identifiers` (
   `contact_identifier_id` int unsigned NOT NULL AUTO_INCREMENT,
   `contact_id` int unsigned NOT NULL,
-  `identifier` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `identifier` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `identifier_category_id` int unsigned NOT NULL,
   `current` enum('yes') CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL,
   `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
