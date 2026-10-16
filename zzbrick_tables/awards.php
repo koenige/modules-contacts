@@ -26,6 +26,7 @@ $zz['fields'][2]['type']= 'select';
 $zz['fields'][2]['sql'] = 'SELECT category_id, category, main_category_id
 	FROM /*_PREFIX_*/categories';
 $zz['fields'][2]['display_field'] = 'category';
+$zz['fields'][2]['search'] = '/*_PREFIX_*/categories.category';
 $zz['fields'][2]['show_hierarchy'] = 'main_category_id';
 $zz['fields'][2]['show_hierarchy_subtree'] = wrap_category_id('awards');
 $zz['fields'][2]['if'][2]['list_prefix'] = '<del>';
@@ -127,7 +128,7 @@ $zz['sql'] = 'SELECT /*_PREFIX_*/awards.*
 	LEFT JOIN /*_PREFIX_*/categories
 		ON /*_PREFIX_*/awards.award_category_id = /*_PREFIX_*/categories.category_id
 ';
-$zz['sqlorder'] = ' ORDER BY category, award_year, contacts.identifier';
+$zz['sqlorder'] = ' ORDER BY /*_PREFIX_*/categories.category, /*_PREFIX_*/awards.award_year, /*_PREFIX_*/contacts.identifier';
 
 $zz['filter'][1]['title'] = wrap_text('Category');
 $zz['filter'][1]['identifier'] = 'category';

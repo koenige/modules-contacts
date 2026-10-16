@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zugzwang Project -- contacts module\n"
-"POT-Creation-Date: 2026-10-16 12:10+0000\n"
+"POT-Creation-Date: 2026-10-16 23:35+0000\n"
 "PO-Revision-Date: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -190,7 +190,7 @@ msgid "Send mail with access code"
 msgstr ""
 
 #: templates/contact.template.txt:198
-#: zzbrick_tables/awards.php:104
+#: zzbrick_tables/awards.php:105
 #: zzbrick_tables/contacts.php:226
 #: zzbrick_tables/contacts-contacts.php:93
 msgid "Remarks"
@@ -258,7 +258,7 @@ msgstr ""
 #: zzbrick_forms/persons.php:64
 #: zzbrick_forms/persons.php:245
 #: zzbrick_tables/addresses.php:121
-#: zzbrick_tables/awards.php:100
+#: zzbrick_tables/awards.php:101
 #: zzbrick_tables/contacts.php:241
 #: zzbrick_tables/contacts-contacts.php:101
 msgid "yes"
@@ -268,7 +268,7 @@ msgstr ""
 #: zzbrick_forms/persons.php:64
 #: zzbrick_forms/persons.php:246
 #: zzbrick_tables/addresses.php:121
-#: zzbrick_tables/awards.php:100
+#: zzbrick_tables/awards.php:101
 #: zzbrick_tables/contacts.php:241
 #: zzbrick_tables/contacts-contacts.php:101
 msgid "no"
@@ -324,7 +324,7 @@ msgid "Full name with birth name"
 msgstr ""
 
 #: zzbrick_forms/persons.php:241
-#: zzbrick_tables/awards.php:98
+#: zzbrick_tables/awards.php:99
 #: zzbrick_tables/contacts.php:239
 #: zzbrick_tables/contacts-contacts.php:99
 msgid "Published"
@@ -361,7 +361,7 @@ msgid "ID"
 msgstr ""
 
 #: zzbrick_tables/addresses.php:23
-#: zzbrick_tables/awards.php:44
+#: zzbrick_tables/awards.php:45
 #: zzbrick_tables/connections.php:25
 #: zzbrick_tables/connections.php:41
 #: zzbrick_tables/contactdetails.php:23
@@ -427,7 +427,7 @@ msgid "Formfield"
 msgstr ""
 
 #: zzbrick_tables/addresses.php:158
-#: zzbrick_tables/awards.php:110
+#: zzbrick_tables/awards.php:111
 #: zzbrick_tables/connections.php:59
 #: zzbrick_tables/contactdetails.php:82
 #: zzbrick_tables/contacts.php:284
@@ -440,7 +440,7 @@ msgid "Last update"
 msgstr ""
 
 #: zzbrick_tables/awards.php:23
-#: zzbrick_tables/awards.php:132
+#: zzbrick_tables/awards.php:133
 #: zzbrick_tables/contacts.php:90
 #: zzbrick_tables/contacts.php:313
 #: zzbrick_tables/contacts-categories.php:36
@@ -449,48 +449,48 @@ msgstr ""
 msgid "Category"
 msgstr ""
 
-#: zzbrick_tables/awards.php:34
+#: zzbrick_tables/awards.php:35
 msgid "Level"
 msgstr ""
 
-#: zzbrick_tables/awards.php:42
+#: zzbrick_tables/awards.php:43
 msgid "e.g. Gold, Silver, Bronze"
 msgstr ""
 
-#: zzbrick_tables/awards.php:60
+#: zzbrick_tables/awards.php:61
 msgid "Display Name"
 msgstr ""
 
-#: zzbrick_tables/awards.php:62
+#: zzbrick_tables/awards.php:63
 msgid "Name at time of award"
 msgstr ""
 
-#: zzbrick_tables/awards.php:73
+#: zzbrick_tables/awards.php:74
 msgid "Date"
 msgstr ""
 
-#: zzbrick_tables/awards.php:74
+#: zzbrick_tables/awards.php:75
 msgid "Date of Award"
 msgstr ""
 
-#: zzbrick_tables/awards.php:79
+#: zzbrick_tables/awards.php:80
 msgid "Duration from"
 msgstr ""
 
-#: zzbrick_tables/awards.php:80
 #: zzbrick_tables/awards.php:81
+#: zzbrick_tables/awards.php:82
 msgid "Duration"
 msgstr ""
 
-#: zzbrick_tables/awards.php:87
+#: zzbrick_tables/awards.php:88
 msgid "Duration until"
 msgstr ""
 
-#: zzbrick_tables/awards.php:93
+#: zzbrick_tables/awards.php:94
 msgid "Laudation"
 msgstr ""
 
-#: zzbrick_tables/awards.php:107
+#: zzbrick_tables/awards.php:108
 #: zzbrick_tables/contacts.php:233
 msgid "Internal remarks"
 msgstr ""
