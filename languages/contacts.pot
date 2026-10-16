@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zugzwang Project -- contacts module\n"
-"POT-Creation-Date: 2026-08-21 07:28+0000\n"
+"POT-Creation-Date: 2026-10-16 12:10+0000\n"
 "PO-Revision-Date: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -189,22 +189,22 @@ msgstr ""
 msgid "Send mail with access code"
 msgstr ""
 
-#: templates/contact.template.txt:197
+#: templates/contact.template.txt:198
 #: zzbrick_tables/awards.php:104
 #: zzbrick_tables/contacts.php:226
 #: zzbrick_tables/contacts-contacts.php:93
 msgid "Remarks"
 msgstr ""
 
-#: templates/contact.template.txt:205
+#: templates/contact.template.txt:206
 msgid "Edit record"
 msgstr ""
 
-#: templates/contact.template.txt:208
+#: templates/contact.template.txt:209
 msgid "Delete record"
 msgstr ""
 
-#: templates/contact.template.txt:217
+#: templates/contact.template.txt:218
 msgid "Possible duplicates of this record"
 msgstr ""
 

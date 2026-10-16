@@ -188,6 +188,7 @@
 <p class="infomsg">%%% text An access code for the login has been sent! %%%</p>
 %%% elseif mail & alive %%%
 <form method="POST" action="./?sendlogin"><input type="submit" value="%%% text Send mail with access code %%%" name="sendlogin"></form>
+%%% script default/form-submit-once.js %%%
 %%% endif %%%
 %%% endif %%%
 </td></tr>
