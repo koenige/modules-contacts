@@ -193,8 +193,6 @@ $zz['fields'][18]['sql'] = 'SELECT country_id, country_code, country
 	FROM /*_PREFIX_*/countries
 	ORDER BY country';
 $zz['fields'][18]['sql_translate'] = ['country_id' => 'countries'];
-$zz['fields'][18]['sql_character_set'][1] = 'latin1';
-$zz['fields'][18]['sql_character_set'][2] = 'latin1';
 $zz['fields'][18]['search'] = '/*_PREFIX_*/countries.country';
 $zz['fields'][18]['hide_in_list'] = true;
 $zz['fields'][18]['hide_in_list_if_empty'] = true;

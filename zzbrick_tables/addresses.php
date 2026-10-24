@@ -27,7 +27,6 @@ $zz['fields'][2]['sql'] = 'SELECT contact_id, contact, identifier
 	FROM /*_PREFIX_*/contacts
 	ORDER BY identifier';
 $zz['fields'][2]['display_field'] = 'contact';
-$zz['fields'][2]['sql_character_set'][1] = 'utf8';
 $zz['fields'][2]['if']['where']['hide_in_form'] = true;
 $zz['fields'][2]['if']['where']['hide_in_list'] = true;
 $zz['fields'][2]['class'] = 'block480a';
@@ -73,8 +72,6 @@ $zz['fields'][6]['sql'] = 'SELECT country_id, country_code, country
 	FROM /*_PREFIX_*/countries
 	ORDER BY country';
 $zz['fields'][6]['sql_translate'] = ['country_id' => 'countries'];
-$zz['fields'][6]['sql_character_set'][1] = 'latin1';
-$zz['fields'][6]['sql_character_set'][2] = 'latin1';
 $zz['fields'][6]['display_field'] = 'country_code';
 $zz['fields'][6]['search'] = '/*_PREFIX_*/countries.country';
 $zz['fields'][6]['geocode'] = 'country_id';

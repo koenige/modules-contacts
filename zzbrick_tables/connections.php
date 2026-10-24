@@ -32,7 +32,6 @@ $zz['fields'][2]['sql'] = 'SELECT contact_id
 $zz['fields'][2]['display_field'] = 'contact';
 $zz['fields'][2]['search'] = 'pcontacts.contact';
 $zz['fields'][2]['character_set'] = 'utf8';
-$zz['fields'][2]['sql_character_set'][1] = 'utf8';
 $zz['fields'][2]['add_details'] = wrap_path('contacts_persons');
 $zz['fields'][2]['default'] = $_SESSION['user_id'];
 $zz['fields'][2]['if']['where']['hide_in_form'] = true;
@@ -46,7 +45,6 @@ $zz['fields'][3]['sql'] = 'SELECT contact_id
 	FROM /*_PREFIX_*/persons
 	LEFT JOIN /*_PREFIX_*/contacts USING (contact_id)
 	ORDER BY last_name, first_name';
-$zz['fields'][3]['sql_character_set'][1] = 'utf8';
 $zz['fields'][3]['display_field'] = 'connected_contact';
 $zz['fields'][3]['search'] = 'contacts.contact';
 $zz['fields'][3]['link'] = [

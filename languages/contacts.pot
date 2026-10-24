@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zugzwang Project -- contacts module\n"
-"POT-Creation-Date: 2026-10-16 23:35+0000\n"
+"POT-Creation-Date: 2026-10-24 11:04+0000\n"
 "PO-Revision-Date: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -102,7 +102,7 @@ msgid "Birth"
 msgstr ""
 
 #: templates/contact.template.txt:50
-#: zzbrick_tables/addresses.php:70
+#: zzbrick_tables/addresses.php:69
 #: zzbrick_tables/contacts.php:190
 msgid "Country"
 msgstr ""
@@ -191,7 +191,7 @@ msgstr ""
 
 #: templates/contact.template.txt:198
 #: zzbrick_tables/awards.php:105
-#: zzbrick_tables/contacts.php:226
+#: zzbrick_tables/contacts.php:224
 #: zzbrick_tables/contacts-contacts.php:93
 msgid "Remarks"
 msgstr ""
@@ -257,9 +257,9 @@ msgstr ""
 #: zzbrick_forms/contacts-general.php:49
 #: zzbrick_forms/persons.php:64
 #: zzbrick_forms/persons.php:245
-#: zzbrick_tables/addresses.php:121
+#: zzbrick_tables/addresses.php:118
 #: zzbrick_tables/awards.php:101
-#: zzbrick_tables/contacts.php:241
+#: zzbrick_tables/contacts.php:239
 #: zzbrick_tables/contacts-contacts.php:101
 msgid "yes"
 msgstr ""
@@ -267,9 +267,9 @@ msgstr ""
 #: zzbrick_forms/contacts-general.php:50
 #: zzbrick_forms/persons.php:64
 #: zzbrick_forms/persons.php:246
-#: zzbrick_tables/addresses.php:121
+#: zzbrick_tables/addresses.php:118
 #: zzbrick_tables/awards.php:101
-#: zzbrick_tables/contacts.php:241
+#: zzbrick_tables/contacts.php:239
 #: zzbrick_tables/contacts-contacts.php:101
 msgid "no"
 msgstr ""
@@ -325,7 +325,7 @@ msgstr ""
 
 #: zzbrick_forms/persons.php:241
 #: zzbrick_tables/awards.php:99
-#: zzbrick_tables/contacts.php:239
+#: zzbrick_tables/contacts.php:237
 #: zzbrick_tables/contacts-contacts.php:99
 msgid "Published"
 msgstr ""
@@ -363,7 +363,7 @@ msgstr ""
 #: zzbrick_tables/addresses.php:23
 #: zzbrick_tables/awards.php:45
 #: zzbrick_tables/connections.php:25
-#: zzbrick_tables/connections.php:41
+#: zzbrick_tables/connections.php:40
 #: zzbrick_tables/contactdetails.php:23
 #: zzbrick_tables/contacts-categories.php:23
 #: zzbrick_tables/contacts-contacts.php:32
@@ -374,67 +374,67 @@ msgstr ""
 msgid "Contact"
 msgstr ""
 
-#: zzbrick_tables/addresses.php:35
+#: zzbrick_tables/addresses.php:34
 msgid "Street/No."
 msgstr ""
 
-#: zzbrick_tables/addresses.php:48
+#: zzbrick_tables/addresses.php:47
 msgid "Postcode"
 msgstr ""
 
-#: zzbrick_tables/addresses.php:53
+#: zzbrick_tables/addresses.php:52
 msgid "Postcode/Place"
 msgstr ""
 
-#: zzbrick_tables/addresses.php:59
+#: zzbrick_tables/addresses.php:58
 msgid "Place"
 msgstr ""
 
-#: zzbrick_tables/addresses.php:94
+#: zzbrick_tables/addresses.php:91
 msgid "Latitude"
 msgstr ""
 
-#: zzbrick_tables/addresses.php:95
+#: zzbrick_tables/addresses.php:92
 msgid "Latitude / Longitude"
 msgstr ""
 
-#: zzbrick_tables/addresses.php:107
+#: zzbrick_tables/addresses.php:104
 msgid "Is determined automatically, if possible"
 msgstr ""
 
-#: zzbrick_tables/addresses.php:109
+#: zzbrick_tables/addresses.php:106
 msgid "Longitude"
 msgstr ""
 
-#: zzbrick_tables/addresses.php:119
+#: zzbrick_tables/addresses.php:116
 msgid "Receive mail"
 msgstr ""
 
-#: zzbrick_tables/addresses.php:124
+#: zzbrick_tables/addresses.php:121
 msgid "If there is more than one address:<br>Send letters to this address?"
 msgstr ""
 
-#: zzbrick_tables/addresses.php:132
+#: zzbrick_tables/addresses.php:129
 #: zzbrick_tables/contactdetails.php:58
 #: zzbrick_tables/contacts-categories.php:48
 msgid "Type"
 msgstr ""
 
-#: zzbrick_tables/addresses.php:145
+#: zzbrick_tables/addresses.php:142
 #: zzbrick_tables/contactdetails.php:69
-#: zzbrick_tables/contacts-media.php:75
+#: zzbrick_tables/contacts-media.php:73
 msgid "Formfield"
 msgstr ""
 
-#: zzbrick_tables/addresses.php:158
+#: zzbrick_tables/addresses.php:155
 #: zzbrick_tables/awards.php:111
-#: zzbrick_tables/connections.php:59
+#: zzbrick_tables/connections.php:57
 #: zzbrick_tables/contactdetails.php:82
-#: zzbrick_tables/contacts.php:284
+#: zzbrick_tables/contacts.php:282
 #: zzbrick_tables/contacts-categories.php:57
 #: zzbrick_tables/contacts-contacts.php:111
 #: zzbrick_tables/contacts-identifiers.php:46
-#: zzbrick_tables/contacts-media.php:88
+#: zzbrick_tables/contacts-media.php:86
 #: zzbrick_tables/persons.php:150
 msgid "Last update"
 msgstr ""
@@ -442,7 +442,7 @@ msgstr ""
 #: zzbrick_tables/awards.php:23
 #: zzbrick_tables/awards.php:133
 #: zzbrick_tables/contacts.php:90
-#: zzbrick_tables/contacts.php:313
+#: zzbrick_tables/contacts.php:311
 #: zzbrick_tables/contacts-categories.php:36
 #: zzbrick_tables/contacts-categories.php:79
 #: zzbrick_tables/contacts-identifiers.php:33
@@ -491,7 +491,7 @@ msgid "Laudation"
 msgstr ""
 
 #: zzbrick_tables/awards.php:108
-#: zzbrick_tables/contacts.php:233
+#: zzbrick_tables/contacts.php:231
 msgid "Internal remarks"
 msgstr ""
 
@@ -568,38 +568,38 @@ msgstr ""
 msgid "Dissolution date"
 msgstr ""
 
-#: zzbrick_tables/contacts.php:238
+#: zzbrick_tables/contacts.php:236
 msgid "Pub."
 msgstr ""
 
-#: zzbrick_tables/contacts.php:244
+#: zzbrick_tables/contacts.php:242
 msgid "Publish on website?"
 msgstr ""
 
-#: zzbrick_tables/contacts.php:251
+#: zzbrick_tables/contacts.php:249
 msgid "Parameters"
 msgstr ""
 
-#: zzbrick_tables/contacts.php:257
+#: zzbrick_tables/contacts.php:255
 #: zzbrick_tables/persons.php:44
 msgid "First name"
 msgstr ""
 
-#: zzbrick_tables/contacts.php:263
+#: zzbrick_tables/contacts.php:261
 #: zzbrick_tables/persons.php:59
 msgid "Particle"
 msgstr ""
 
-#: zzbrick_tables/contacts.php:270
+#: zzbrick_tables/contacts.php:268
 #: zzbrick_tables/persons.php:68
 msgid "Last name"
 msgstr ""
 
-#: zzbrick_tables/contacts.php:276
+#: zzbrick_tables/contacts.php:274
 msgid "Created"
 msgstr ""
 
-#: zzbrick_tables/contacts.php:319
+#: zzbrick_tables/contacts.php:317
 msgid "Alpha"
 msgstr ""
 
