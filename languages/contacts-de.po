@@ -710,6 +710,10 @@ msgid "unverified"
 msgstr "unbestätigt"
 
 #: zzbrick_tables/contacts-verifications.php:88
+msgid "no confirmation required"
+msgstr "keine Bestätigung erforderlich"
+
+#: zzbrick_tables/contacts-verifications.php:88
 msgid "deleted"
 msgstr "gelöscht"
 

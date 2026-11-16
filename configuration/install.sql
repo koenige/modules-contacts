@@ -228,7 +228,7 @@ CREATE TABLE `contacts_verifications` (
   `verification_hash` varchar(8) CHARACTER SET latin1 COLLATE latin1_general_cs DEFAULT NULL,
   `confirmed_mail` varchar(127) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `mails_sent` tinyint unsigned NOT NULL DEFAULT '0',
-  `status` enum('unverified','confirmed per link','confirmed manually','complete','unsubscribed','deleted') CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
+  `status` enum('unverified','confirmed per link','confirmed manually','no confirmation required','complete','unsubscribed','deleted') CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
   `language_id` int unsigned NOT NULL,
   `completion_date` datetime DEFAULT NULL,
   PRIMARY KEY (`cv_id`),
