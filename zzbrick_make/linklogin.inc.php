@@ -20,7 +20,7 @@
  */
 function mod_contacts_make_linklogin($params) {
 	$data = [];
-	$page['query_strings'] = ['link'];
+	$page['query_strings'] = ['link', 'url'];
 	if (count($params) < 2) {
 		$data['invalid_request'] = true;
 		$page['text'] = wrap_template('linklogin', $data);
@@ -51,8 +51,12 @@ function mod_contacts_make_linklogin($params) {
 		$page['text'] = wrap_template('linklogin', $data);
 		return $page;
 	}
-	$sql = sprintf(wrap_sql_query('auth_login_exists'), $params[0]);
-	$existing = wrap_db_fetch($sql, '', 'single value');
+	$existing = false;
+	// logins.contact_id only exists if logins are linked to contacts
+	if (wrap_setting('login_with_contact_id') OR wrap_setting('login_with_email')) {
+		$sql = sprintf(wrap_sql_query('auth_login_exists'), $params[0]);
+		$existing = wrap_db_fetch($sql, '', 'single value');
+	}
 	if ($existing) {
 		// if user has a login: do a full login
 		mf_contacts_login_user($params[0]);
@@ -62,6 +66,6 @@ function mod_contacts_make_linklogin($params) {
 		$_SESSION = $user;
 		session_write_close();
 	}
-	wrap_redirect_change(wrap_path('login_entry'));
+	wrap_redirect_change(mod_zzwrap_login_redirect_url() ?: wrap_path('login_entry'));
 	return $page;
 }
