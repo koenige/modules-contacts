@@ -51,8 +51,8 @@ $zz['fields'][3]['display_field'] = 'contact';
 $zz['fields'][3]['character_set'] = 'utf8';
 $zz['fields'][3]['unless']['export_mode']['list_append_next'] = true;
 $zz['fields'][3]['link'] = [
-	'area' => 'contacts_profile[%s]',
-	'area_fields' => ['contact_scope'],
+	'route' => 'contacts_profile[%s]',
+	'route_fields' => ['contact_scope'],
 	'fields' => ['identifier']
 ];
 $zz['fields'][3]['if'][2]['list_prefix'] = '<del>';

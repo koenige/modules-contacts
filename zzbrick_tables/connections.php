@@ -48,7 +48,7 @@ $zz['fields'][3]['sql'] = 'SELECT contact_id
 $zz['fields'][3]['display_field'] = 'connected_contact';
 $zz['fields'][3]['search'] = 'contacts.contact';
 $zz['fields'][3]['link'] = [
-	'area' => 'contacts_profile[person]',
+	'route' => 'contacts_profile[person]',
 	'fields' => ['identifier']
 ]; 
 

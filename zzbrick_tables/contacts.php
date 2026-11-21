@@ -39,8 +39,8 @@ $zz['fields'][2]['unless']['export_mode']['list_append_next'] = true;
 $zz['fields'][2]['merge_equal'] = true;
 $zz['fields'][2]['add_details_destination'] = true;
 $zz['fields'][2]['link'] = [
-	'area' => 'contacts_profile[%s]',
-	'area_fields' => ['contact_scope'],
+	'route' => 'contacts_profile[%s]',
+	'route_fields' => ['contact_scope'],
 	'fields' => ['identifier']
 ];
 $zz['fields'][2]['link_record'] = true;

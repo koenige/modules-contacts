@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/contacts
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2019-2022, 2024-2025 Gustaf Mossakowski
+ * @copyright Copyright © 2019-2022, 2024-2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -45,7 +45,7 @@ $zz['fields'][2]['placeholder'] = true;
 $zz['fields'][2]['select_dont_force_single_value'] = true;
 $zz['fields'][2]['select_empty_no_add'] = true;
 $zz['fields'][2]['link'] = [
-	'area' => 'contacts_profile[*]',
+	'route' => 'contacts_profile[*]',
 	'fields' => ['identifier']
 ];
 $zz['fields'][2]['unique_ignore'] = ['identifier'];
@@ -80,7 +80,7 @@ $zz['fields'][3]['not_identical_with'] = 'contact_id';
 $zz['fields'][3]['if']['where']['hide_in_form'] = true;
 $zz['fields'][3]['if']['where']['hide_in_list'] = true;
 $zz['fields'][3]['link'] = [
-	'area' => 'contacts_profile[*]',
+	'route' => 'contacts_profile[*]',
 	'fields' => ['main_identifier']
 ];
 $zz['fields'][3]['unique_ignore'] = ['identifier'];

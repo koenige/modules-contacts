@@ -48,7 +48,7 @@ $zz['fields'][4]['if']['batch_mode']['null_string'] = true;
 $zz['fields'][4]['merge_equal'] = true;
 $zz['fields'][4]['field_sequence'] = 15;
 $zz['fields'][4]['link'] = [
-	'area' => 'contacts_profile[person]',
+	'route' => 'contacts_profile[person]',
 	'fields' => ['identifier']
 ];
 $zz['fields'][4]['add_details_destination'] = true;
