@@ -174,7 +174,7 @@ function mf_contacts_identifiers($ids) {
 		LEFT JOIN categories
 			ON contacts_identifiers.identifier_category_id = categories.category_id
 		WHERE contact_id IN (%s)
-		ORDER BY categories.sequence, categories.path, contacts_identifiers.identifier';
+		ORDER BY categories.sequence, categories.path, ISNULL(current), contacts_identifiers.identifier';
 	$sql = sprintf($sql, implode(',', $ids));
 	$identifiers = wrap_db_fetch($sql, 'contact_identifier_id');
 	$identifiers = wrap_translate($identifiers, 'categories', 'category_id');
